@@ -1,11 +1,12 @@
-import { } from '../actions';
+import { ENTER_LOGIN_PAGE } from '../actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
-    // case ENTER_SIGNIN: {
-    //   action.history.push('/');
-    //   return;
-    // }
+    case ENTER_LOGIN_PAGE: {
+      console.log('mwRoutes')
+      action.history.push('/login');
+      return;
+    }
     // case ENTER_MAIN: {
     //   // store.dispatch
     //   // console.log('response.data', response.data);
