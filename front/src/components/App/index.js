@@ -32,6 +32,7 @@ const App = () => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
+        <Route>404</Route>
       </Switch>
       <Footer />
     </div>
