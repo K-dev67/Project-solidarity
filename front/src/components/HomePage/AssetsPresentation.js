@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 // == style
 import './styles.scss';
 
@@ -21,7 +21,9 @@ const AssetsPresentation = () => {
                     <p>Aussi bien bien assisté a des cours ou en donner, tout est gratuit...</p>
                 </div>
             </div>
-            <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+            <Link to="/lescours">
+                <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+            </Link>
         </div>
     );
 };
