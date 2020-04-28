@@ -16,6 +16,7 @@ const initialState = {
   mail: '',
   password: '',
   passwordConfirmation: '',
+  // user: {}
 };
 
 
@@ -57,6 +58,12 @@ export default (state = initialState, action = {}) => {
         passwordConfirmation: action.passwordConfirmation,
       };
     }
+    // case SET_FORM: {
+    //   return {
+    //     ...state,
+    //     user: action.user,
+    //   };
+    // }
     default: {
       return state;
     }
