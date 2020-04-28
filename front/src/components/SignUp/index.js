@@ -13,7 +13,8 @@ import {
   SYNC_LASTNAME,
   SYNC_MAIL,
   SYNC_PASSWORD,
-  SYNC_PASSWORD_CONFIRMATION
+  SYNC_PASSWORD_CONFIRMATION,
+  signup
 } from 'src/store/actions';
 
 // == semantic form
@@ -24,15 +25,61 @@ import './styles.scss';
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const { firstname,
+  // == reducer
+  const {
+    firstname,
     lastname,
     mail,
     password,
-    passwordConfirmation } = useSelector((state) => state);
+    passwordConfirmation
+  } = useSelector((state) => state);
+  // == history
+  const history = useHistory();
+  //! == traitement des erreurs en front
+  const errorsList = [];
+  // == handleSubmit ---------------
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('je submit');
+    if (!firstname) {
+      errorsList.push('Le prénom ne peut pas être vide');
+      // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });
+    }
+    if (!lastname) {
+      errorsList.push('Le nom ne peut pas être vide');
+      // dispatch({ type: SYNC_ERROR_LASTNAME, errorLastname: 'Please enter your last name' });
+    }
+    // - adresse email au bon format
+    if (!EmailValidator.validate(mail)) {
+      errorsList.push("L'email n'est pas un email correct");
+      // dispatch({ type: SYNC_ERROR_MAIL, errorMail: 'The email adress is invalid' });
+    }
+    // - longueur minimum du mot de passe (8 caractère minimum !)
+    if (password.length < 8) {
+      errorsList.push(
+        'Le mot de passe doit contenir un minimum de 8 caractères',
+      );
+      // dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
+    }
+    // - mot de passe = confirmation
+    if (password !== passwordConfirmation) {
+      errorsList.push(
+        'Le mot de passe et la confirmation ne correspondent pas',
+      );
+      // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
+    }
+    console.log('errorsList', errorsList);
+    if (errorsList.length === 0) {
+      dispatch(signup(history));
+    }
+  }
+  // == Fin handleSubmit ---------------
+
   return (
-    <div className="signup-form"><Form
-    // onSubmit={handleSubmit}
-  >
+    <div className="signup-form">
+      <Form
+    onSubmit={handleSubmit}
+      >
     <Form.Input
       // error={errorFirstname}
       type="text"
@@ -108,7 +155,7 @@ const SignUp = () => {
     <Button
       type="submit"
     >
-      Submit
+      Valider
     </Button>
   </Form></div>
   );
