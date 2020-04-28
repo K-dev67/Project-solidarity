@@ -91,23 +91,23 @@ const authController = {
         try {
             const { email, password } = req.body;
             console.log(req.body);
-
             await dataMapper.checkEmail(email, (error, data) => {
                 if (error) {
                     console.trace(error);
                     res.send(error);
                 }
                 const user = data.rows[0];
-                console.log(user);
+                console.log(user.password);
                 if (!user) {
                     return res.send("Cet email n'existe pas");
                 }
                 if (!bcrypt.compareSync(password, user.password ) ) {
-                    res.send("Mauvais mot de passe");
+                    return res.send("Mauvais mot de passe");
                 }
                 res.send('Vous etes connecté :');
+                req.session.user = user;
+                console.log(req.session.user);
             })
-
         } catch (error) {
             console.trace(error);
             res.send(error);
