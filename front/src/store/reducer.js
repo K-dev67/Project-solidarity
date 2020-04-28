@@ -1,5 +1,6 @@
 import {
   SET_INPUT_NAV,
+  SYNC_USERNAME,
   SYNC_FIRSTNAME,
   SYNC_LASTNAME,
   SYNC_MAIL,
@@ -9,8 +10,8 @@ import {
 } from './actions';
 
 const initialState = {
-  counter: 0,
   inputNav: '',
+  username: '',
   firstname: '',
   lastname: '',
   mail: '',
@@ -19,13 +20,20 @@ const initialState = {
   // user: {}
 };
 
-
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    // == Input Nav
     case SET_INPUT_NAV: {
       return {
         ...state,
         inputNav: action.payload,
+      };
+    }
+    // == form user
+    case SYNC_USERNAME: {
+      return {
+        ...state,
+        username: action.username,
       };
     }
     case SYNC_FIRSTNAME: {

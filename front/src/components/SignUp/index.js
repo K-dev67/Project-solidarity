@@ -9,6 +9,7 @@ import EmailValidator from 'email-validator';
 
 // == import actions
 import {
+  SYNC_USERNAME,
   SYNC_FIRSTNAME,
   SYNC_LASTNAME,
   SYNC_MAIL,
@@ -27,6 +28,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   // == reducer
   const {
+    username,
     firstname,
     lastname,
     mail,
@@ -41,6 +43,10 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('je submit');
+    if (!username) {
+      errorsList.push('Le username ne peut pas être vide');
+      // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });
+    }
     if (!firstname) {
       errorsList.push('Le prénom ne peut pas être vide');
       // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });
@@ -80,6 +86,21 @@ const SignUp = () => {
       <Form
     onSubmit={handleSubmit}
       >
+        <Form.Input
+      // error={errorFirstname}
+      type="text"
+      icon="user"
+      iconPosition="left"
+      // fluid
+      label="Username"
+      placeholder="Username"
+      name="username"
+      onChange={(evt) => {
+        const username = evt.target.value;
+        dispatch({ type: SYNC_USERNAME, username });
+      }}
+      value={username}
+    />
     <Form.Input
       // error={errorFirstname}
       type="text"

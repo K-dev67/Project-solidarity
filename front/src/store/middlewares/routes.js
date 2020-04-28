@@ -1,4 +1,5 @@
 import { ENTER_LOGIN_PAGE } from '../actions';
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case ENTER_LOGIN_PAGE: {
