@@ -12,8 +12,9 @@ router.get('/homePage', homeController.homePage);
 
 // LES ROUTES DE CONNECTION 
 router.get('/signup', authController.signupPage);
-
+router.get('/login', authController.showLoginForm);
 router.post('/signup', authController.signupAction);
+router.post('/login', authController.loginAction);
 
 
 

@@ -30,6 +30,12 @@ const dataMapper = {
         const values = [name];
         db_connection.query(query, values, callback);
     },
+    registerNewUser: (newUser, callback) => {
+        const query = 'INSERT INTO "user"("nickname","firstname","lastname","email","avatar","password","role","status")VALUES ($1,$2,$3,$4,$5,$6,$7,$8)';
+        const values = [newUser.nickname, newUser.firstname, newUser.lastname, newUser.email,
+        newUser.avatar,newUser.password, newUser.role, newUser.status,];
+        db_connection.query(query, values, callback);
+    },
 };
 
 // J'exporte mon module

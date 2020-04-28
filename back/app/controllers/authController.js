@@ -62,7 +62,15 @@ const authController = {
                             status: 'a validé',
                             avatar: info.avatar
                         }
-                        res.send(newUser);
+                        dataMapper.registerNewUser(newUser, (error, data) => {
+                            if (error) {
+                                console.trace(error);
+                                res.send(error);
+                            }
+                            if (data.rowCount === 1) {
+                                res.send('Compte crée avec succes')
+                            }
+                        })
 
                     } else {
                         res.send(errorsList);
@@ -74,6 +82,37 @@ const authController = {
             res.send(error);
         }
     },
+
+    showLoginForm: (req, res) => {
+        res.send('login page');
+    },
+
+    loginAction: async (req, res) => {
+        try {
+            const { email, password } = req.body;
+            console.log(req.body);
+
+            await dataMapper.checkEmail(email, (error, data) => {
+                if (error) {
+                    console.trace(error);
+                    res.send(error);
+                }
+                const user = data.rows[0];
+                console.log(user);
+                if (!user) {
+                    return res.send("Cet email n'existe pas");
+                }
+                if (!bcrypt.compareSync(password, user.password ) ) {
+                    res.send("Mauvais mot de passe");
+                }
+                res.send('Vous etes connecté :');
+            })
+
+        } catch (error) {
+            console.trace(error);
+            res.send(error);
+        }
+    }
 };
 
 module.exports = authController;
