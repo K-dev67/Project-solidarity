@@ -21,7 +21,6 @@ const App = () => {
   console.log('APP');
   return (
     <div className="app">
-
       <Nav />
       <Switch>
         <Route exact path="/">
