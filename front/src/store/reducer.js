@@ -1,14 +1,19 @@
+import {
+  SET_INPUT_NAV,
+} from './actions';
+
 const initialState = {
   counter: 0,
+  inputNav: '',
 };
 
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case 'INCREMENT': {
+    case SET_INPUT_NAV: {
       return {
         ...state,
-        counter: state.counter + 1,
+        inputNav: action.payload,
       };
     }
     default: {
