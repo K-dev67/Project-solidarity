@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=solidarite
+
+tables 2020-04-27T16:37:20Z kevin <storck.kevin67@gmail.com> # Add table to db
+domain 2020-04-27T16:37:40Z kevin <storck.kevin67@gmail.com> # Add domain to db
+infoTEST 2020-04-27T16:38:36Z kevin <storck.kevin67@gmail.com> # Add info for test db
