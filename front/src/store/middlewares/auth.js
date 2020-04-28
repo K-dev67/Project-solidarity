@@ -30,7 +30,6 @@ import {
     //       });
     //     return;
         store.dispatch(enterHomePage(action.history));
-
       }
       default: {
         next(action);
