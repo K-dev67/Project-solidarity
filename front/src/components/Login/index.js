@@ -14,8 +14,16 @@ import {
 const Login = () => {
   console.log('Login');
   return (
-    <Segment placeholder>
-      <Grid columns={2} relaxed="very" stackable>
+    <div className="login-form">
+       <Segment
+    placeholder
+     >
+      <Grid
+      columns={2}
+      relaxed="very"
+      stackable
+      // className="login-grid"
+      >
         <Grid.Column>
           <Form>
             <Form.Input
@@ -47,6 +55,8 @@ const Login = () => {
 
       <Divider vertical>Or</Divider>
     </Segment>
+    </div>
+
   );
 };
 

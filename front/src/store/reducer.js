@@ -10,7 +10,9 @@ import {
 } from './actions';
 
 const initialState = {
+  // == input du menu
   inputNav: '',
+  // form du signUp
   username: '',
   firstname: '',
   lastname: '',
