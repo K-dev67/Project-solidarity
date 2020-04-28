@@ -1,9 +1,11 @@
 const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
+//const mail = require('../middlewares/mailer');
 
 const authController = {
 
+        
     signupPage: (req, res) => {
         res.send('signup page');
     },
@@ -69,6 +71,8 @@ const authController = {
                             }
                             if (data.rowCount === 1) {
                                 res.send('Compte crée avec succes')
+                                // lancement mail 
+                                //mail.mailer();
                             }
                         })
 
@@ -112,7 +116,6 @@ const authController = {
             console.trace(error);
             res.send(error);
         }
-    }
+    },
 };
-
 module.exports = authController;
