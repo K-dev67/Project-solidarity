@@ -1,3 +1,4 @@
+// Component presentation
 .container_presentation{
     display: flex;
     width: 100%;
@@ -25,4 +26,37 @@
         width: 450px;
         height: 250px;
         border-radius: 5px;
+}
+
+// Component AssetsPresentation
+.AssetsPresentation_main{
+    margin: 0px 20%;
+    height: 200px;
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 10px 5px 5px #BDC3C7;
+}
+.AssetsPresentation_card{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.AssetsPresentation_button{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.button{
+    background-color: #a29bfe;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+}
+.button:hover{
+    background-color: #6c5ce7;
 }
