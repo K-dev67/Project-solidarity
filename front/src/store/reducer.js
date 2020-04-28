@@ -6,6 +6,7 @@ import {
   SYNC_MAIL,
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
+  RESET, // pour reset le state
   // SET_FORM,
 } from './actions';
 
@@ -66,6 +67,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         passwordConfirmation: action.payload,
+      };
+    }
+    case RESET: {
+      return {
+        ...initialState,
       };
     }
     // case SET_FORM: {
