@@ -1,0 +1,53 @@
+import React from 'react';
+
+// == Router
+import { Link } from 'react-router-dom';
+
+// == style
+import './styles.scss';
+
+// == semantic ui for form
+import {
+  Button, Divider, Form, Grid, Segment,
+} from 'semantic-ui-react';
+
+const Login = () => {
+  console.log('Login');
+  return (
+    <Segment placeholder>
+      <Grid columns={2} relaxed="very" stackable>
+        <Grid.Column>
+          <Form>
+            <Form.Input
+              // error={errorAuth.name}
+              type="mail"
+              icon="user"
+              iconPosition="left"
+              label="Mail"
+              placeholder="Mail"
+            />
+            <Form.Input
+            // error={errorAuth.name}
+              type="password"
+              icon="user"
+              iconPosition="left"
+              label="Password"
+              placeholder="Password"
+            />
+            <Button content="Login" primary />
+          </Form>
+        </Grid.Column>
+
+        <Grid.Column verticalAlign="middle">
+          <Link to="/signup">
+            <Button content="Sign up" icon="signup" size="big" />
+          </Link>
+        </Grid.Column>
+      </Grid>
+
+      <Divider vertical>Or</Divider>
+    </Segment>
+  );
+};
+
+export default Login;
