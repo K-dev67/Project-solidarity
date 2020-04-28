@@ -96,8 +96,7 @@ const SignUp = () => {
       placeholder="Username"
       name="username"
       onChange={(evt) => {
-        const username = evt.target.value;
-        dispatch({ type: SYNC_USERNAME, username });
+        dispatch({ type: SYNC_USERNAME, payload: evt.target.value });
       }}
       value={username}
     />
@@ -111,8 +110,7 @@ const SignUp = () => {
       placeholder="First name"
       name="firstname"
       onChange={(evt) => {
-        const firstname = evt.target.value;
-        dispatch({ type: SYNC_FIRSTNAME, firstname });
+        dispatch({ type: SYNC_FIRSTNAME, payload: evt.target.value });
       }}
       value={firstname}
     />
@@ -126,8 +124,7 @@ const SignUp = () => {
       placeholder="Last name"
       name="lastname"
       onChange={(evt) => {
-        const lastname = evt.target.value;
-        dispatch({ type: SYNC_LASTNAME, lastname });
+        dispatch({ type: SYNC_LASTNAME, payload: evt.target.value });
       }}
       value={lastname}
     />
@@ -139,8 +136,7 @@ const SignUp = () => {
       placeholder="Mail"
       name="mail"
       onChange={(evt) => {
-        const mail = evt.target.value;
-        dispatch({ type: SYNC_MAIL, mail });
+        dispatch({ type: SYNC_MAIL, payload: evt.target.value });
       }}
       value={mail}
     />
@@ -152,8 +148,7 @@ const SignUp = () => {
       placeholder="Password"
       name="password"
       onChange={(evt) => {
-        const password = evt.target.value;
-        dispatch({ type: SYNC_PASSWORD, password });
+        dispatch({ type: SYNC_PASSWORD, payload: evt.target.value });
       }}
       value={password}
     />
@@ -165,8 +160,7 @@ const SignUp = () => {
       placeholder="Password confirmation"
       name="passwordConfirmation"
       onChange={(evt) => {
-        const passwordConfirmation = evt.target.value;
-        dispatch({ type: SYNC_PASSWORD_CONFIRMATION, passwordConfirmation });
+        dispatch({ type: SYNC_PASSWORD_CONFIRMATION, payload: evt.target.value });
       }}
       value={passwordConfirmation}
     />

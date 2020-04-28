@@ -33,37 +33,37 @@ export default (state = initialState, action = {}) => {
     case SYNC_USERNAME: {
       return {
         ...state,
-        username: action.username,
+        username: action.payload,
       };
     }
     case SYNC_FIRSTNAME: {
       return {
         ...state,
-        firstname: action.firstname,
+        firstname: action.payload,
       };
     }
     case SYNC_LASTNAME: {
       return {
         ...state,
-        lastname: action.lastname,
+        lastname: action.payload,
       };
     }
     case SYNC_MAIL: {
       return {
         ...state,
-        mail: action.mail,
+        mail: action.payload,
       };
     }
     case SYNC_PASSWORD: {
       return {
         ...state,
-        password: action.password,
+        password: action.payload,
       };
     }
     case SYNC_PASSWORD_CONFIRMATION: {
       return {
         ...state,
-        passwordConfirmation: action.passwordConfirmation,
+        passwordConfirmation: action.payload,
       };
     }
     // case SET_FORM: {
