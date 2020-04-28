@@ -1,6 +1,7 @@
 📦 React Modele
 ===============
 
+
 Bienvenue dans ce modèle/template de projet React !
 
 - Première utilisation
@@ -21,10 +22,10 @@ git clone git@github.com:O-clock-{VotrePromo}/React-modele.git
 cd React-modele
 
 # installe les dépendances du projet
-yarn 
+yarn
 
 # lance le serveur de developpement
-yarn start 
+yarn start
 
 # rdv sur http://localhost:8080/
 ```
@@ -38,7 +39,7 @@ Comment démarrer un projet avec ce modèle ?
 
 On peut se baser sur React-modele pour démarrer un *nouveau* projet, ou bien pour travailler sur un challenge avec une base de code déjà existante.
 
-Dans les deux cas, il s'agit essentiellement de copier/coller les parties intéressantes du modèle dans le dossier du projet/challenge, sans écraser d'éventuels fichiers spécifiques. 
+Dans les deux cas, il s'agit essentiellement de copier/coller les parties intéressantes du modèle dans le dossier du projet/challenge, sans écraser d'éventuels fichiers spécifiques.
 
 Pour ce faire :
 
@@ -120,7 +121,7 @@ Permet de dupliquer un fichier / dossier
 
 
 ### Extension Navigateur React Dev Tools
-  
+
 - [pour Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 - [pour Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
 
@@ -189,7 +190,7 @@ Transpilation ES6/JSX -> ES5.
 - [`eslint`](https://github.com/eslint/eslint) - ESLint, linter / analyseur de code JS.
 - [`babel-eslint`](https://github.com/babel/babel-eslint) - Analyse le code Babel.
 - [`eslint-config-airbnb`](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) - Configuration Airbnb pour ESLint.
-- Plugins : 
+- Plugins :
   - [`eslint-plugin-import`](https://github.com/benmosher/eslint-plugin-import) - Analyse les imports de fichiers.
     - [`eslint-import-resolver-alias`](https://github.com/johvin/eslint-import-resolver-alias) - Permet de définir des alias pour les dossiers.
   - [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react) - Analyse le code React.
