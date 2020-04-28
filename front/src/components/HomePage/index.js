@@ -6,6 +6,7 @@ import TeacherPresentation from './TeacherPresentation';
 import TopLessonsPresentation from './TopLessonsPresentation';
 import HowItWorksPresentation from './HowItWorksPresentation';
 import UsersReviewsPresentation from './UsersReviewsPresentation';
+import AssetsPresentation from './AssetsPresentation';
 
 // == style
 import './styles.scss';
@@ -15,6 +16,7 @@ const HomePage = () => {
   return (
     <div>
       <Presentation />
+      <AssetsPresentation />
       <TeacherPresentation />
       <TopLessonsPresentation />
       <HowItWorksPresentation />
