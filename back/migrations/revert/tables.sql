@@ -13,7 +13,6 @@ DROP TABLE "user",
     user_subscribe_ask,
     user_subscribe_lesson,
     user_like_message,
-    user_has_lesson,
     user_want_lesson;
 
 COMMIT;

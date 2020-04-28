@@ -97,13 +97,6 @@ CREATE TABLE "user_like_message"(
     "updated_at" TIMESTAMP
 );
 
-CREATE TABLE "user_has_lesson"(
-    "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
-    "lesson_id" INT NOT NULL REFERENCES "lesson"("id") ON DELETE CASCADE,
-    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP
-);
-
 CREATE TABLE "user_want_lesson"(
     "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "lesson_id" INT NOT NULL REFERENCES "lesson"("id") ON DELETE CASCADE,
