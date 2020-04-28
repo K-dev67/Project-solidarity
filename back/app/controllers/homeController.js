@@ -34,6 +34,17 @@ const homeController = {
             });
         });
     },
+    
+    showTeacher: (req, res) => {
+        dataMapper.getTeacherList((error, data) => { 
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            res.send(data.rows);
+        });
+    },
+
 
 };
 

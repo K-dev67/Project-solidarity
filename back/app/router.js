@@ -16,7 +16,7 @@ router.get('/login', authController.showLoginForm);
 router.post('/signup', authController.signupAction);
 router.post('/login', authController.loginAction);
 
-
+router.get('/teacherList', homeController.showTeacher);
 
 
 // Route 404

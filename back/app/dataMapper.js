@@ -36,6 +36,10 @@ const dataMapper = {
         newUser.avatar,newUser.password, newUser.role, newUser.status,];
         db_connection.query(query, values, callback);
     },
+    getTeacherList: (callback) => {
+        const query = 'SELECT DISTINCT "user".id, nickname,firstname, lastname,avatar FROM "user" JOIN lesson ON "user".id = lesson.teacher_id WHERE "teacher_id" IS NOT NULL';
+        db_connection.query(query, callback);
+    }
 };
 
 // J'exporte mon module

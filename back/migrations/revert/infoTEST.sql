@@ -14,7 +14,6 @@ DELETE FROM ask_has_category;
 DELETE FROM user_subscribe_ask;
 DELETE FROM user_subscribe_lesson;
 DELETE FROM user_like_message;
-DELETE FROM user_has_lesson;
 DELETE FROM user_want_lesson;
 
 COMMIT;

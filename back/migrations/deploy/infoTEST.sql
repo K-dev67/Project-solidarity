@@ -75,13 +75,6 @@ INSERT INTO "user_like_message" ("message_id", "user_id") VALUES
 (4,4),
 (5,5);
 
-INSERT INTO "user_has_lesson" ("user_id", "lesson_id") VALUES 
-(1,1),
-(2,1),
-(3,4),
-(4,4),
-(5,5);
-
 INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES 
 (1,1),
 (2,2),
@@ -89,6 +82,5 @@ INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES
 (4,4),
 (4,5),
 (5,5);
-
 
 COMMIT;
