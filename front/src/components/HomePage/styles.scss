@@ -1,0 +1,28 @@
+.container_presentation{
+    display: flex;
+    width: 100%;
+    padding: 50px 100px;
+}
+.container_presentation_main{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.container_presentation_main h1{
+  font-size: 2.8em;
+}
+.container_presentation_main p{
+  font-size: 1.5em;
+  color: #BDC3C7;
+}
+.container_presentation_image{
+    width: 100%;
+       display: flex;
+       justify-content: center;
+       padding: 0 20px;
+}
+.container_presentation_image img{
+        width: 450px;
+        height: 250px;
+        border-radius: 5px;
+}
