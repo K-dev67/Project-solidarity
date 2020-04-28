@@ -8,6 +8,7 @@ import {
 
 // == Import Component
 import Nav from '../Nav';
+import Footer from '../Footer';
 import HomePage from '../HomePage';
 import SignUp from '../SignUp';
 import Login from '../Login';
@@ -33,6 +34,7 @@ const App = () => {
           <SignUp />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 };
