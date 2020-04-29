@@ -17,11 +17,9 @@ import { Input } from 'semantic-ui-react';
 const Nav = () => {
   const dispatch = useDispatch();
   const { inputNav, user } = useSelector((state) => state);
-  console.log('userInNavBar', user.email);
+  // ma navLink change en fonction de si un user est connecté ou non
   let navLink = navLinkVisitor;
   if (user.email !== undefined) navLink = navLinkUser;
-  // if user.
-  // je map
   const navLinkJsx = navLink.map((r) => (
     <NavLink
       exact
