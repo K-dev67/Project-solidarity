@@ -5,7 +5,7 @@ const mail = require('../middlewares/mailer');
 
 const authController = {
 
-        
+
     signupPage: (req, res) => {
         res.send('signup page');
     },
@@ -22,7 +22,7 @@ const authController = {
                 const userMail = data.rowCount;
                 if ( userMail === 1) {
                     errorsList.push('Cet email existe déjâ');
-                } 
+                }
                 dataMapper.checkName(info.pseudo, (error, data) => {
                     if (error) {
                         console.trace(error);
@@ -42,7 +42,7 @@ const authController = {
                         errorsList.push("Le nom ne peut pas etre vide");
                     }
                     if (!emailValidator.validate(info.email)) {
-                        errorsList.push("L'email n'est pas un email valide"); 
+                        errorsList.push("L'email n'est pas un email valide");
                     }
                     if (info.password.length < 8) {
                         errorsList.push("Le mot de passe doit contenir un minimum de 8 caracteres");
@@ -71,7 +71,7 @@ const authController = {
                             }
                             if (data.rowCount === 1) {
                                 res.send('Compte crée avec succes')
-                                // lancement mail 
+                                // lancement mail
                                 console.log(newUser);
                                 mail.mailer(newUser.email);
                             }
@@ -95,6 +95,8 @@ const authController = {
     loginAction: async (req, res) => {
         try {
             const { email, password } = req.body;
+            console.log('email', email);
+            console.log('password', password);
             console.log(req.body);
             await dataMapper.checkEmail(email, (error, data) => {
                 if (error) {
