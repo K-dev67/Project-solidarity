@@ -4,13 +4,12 @@ require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
-// const cors = require('cors');
+
 const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8000;
 const server = express();
 
-// server.use(cors());
 
 // == config cors
 server.use(bodyParser.json()); // => req.body va contenir le JSON de la req
