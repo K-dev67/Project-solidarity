@@ -39,7 +39,17 @@ const dataMapper = {
     getTeacherList: (callback) => {
         const query = 'SELECT DISTINCT "user".id, nickname,firstname, lastname,avatar FROM "user" JOIN lesson ON "user".id = lesson.teacher_id WHERE "teacher_id" IS NOT NULL';
         db_connection.query(query, callback);
-    }
+    },
+    updateStatusUser: (emailAccount, callback) => {
+        const query = `UPDATE "user" SET "status" = 'activé' WHERE "email" = $1`;
+        const values = [emailAccount];
+        db_connection.query(query, values, callback);
+    },
+    addLessonOnDB: (newLesson, callback) => {
+        const query = `INSERT INTO  "lesson"("title", "description", "level", "teacher_id", "plannified", "link_videos", "status") VALUES($1,$2,$3,$4,$5,$6,$7)`;
+        const values = [newLesson.title, newLesson.description, newLesson.level,newLesson.teacher_id, newLesson.plannified, newLesson.videos, newLesson.status];
+        db_connection.query(query, values, callback);
+    },
 };
 
 // J'exporte mon module

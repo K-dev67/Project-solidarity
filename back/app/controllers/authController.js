@@ -1,7 +1,7 @@
 const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
-//const mail = require('../middlewares/mailer');
+const mail = require('../middlewares/mailer');
 
 const authController = {
 
@@ -72,7 +72,8 @@ const authController = {
                             if (data.rowCount === 1) {
                                 res.send('Compte crée avec succes')
                                 // lancement mail 
-                                //mail.mailer();
+                                console.log(newUser);
+                                mail.mailer(newUser.email);
                             }
                         })
 
@@ -117,5 +118,20 @@ const authController = {
             res.send(error);
         }
     },
+    activation: async (req, res) => {
+        try {
+            const emailAccount = req.params.email;
+            dataMapper.updateStatusUser(emailAccount, (error, data) => {
+                if (error) {
+                    console.trace(error);
+                    res.send(error);
+                }
+                res.send('Votre compte est activé.')
+            });
+        } catch (error) {
+            console.trace(error);
+            console.log(error);
+        }
+    }
 };
 module.exports = authController;
