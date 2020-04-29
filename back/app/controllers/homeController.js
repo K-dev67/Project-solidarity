@@ -44,7 +44,15 @@ const homeController = {
             res.send(data.rows);
         });
     },
-
+    showAsk: (req, res) => {
+        dataMapper.getAskList((error, data) => { 
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            res.send(data.rows);
+        });
+    },
 
 };
 

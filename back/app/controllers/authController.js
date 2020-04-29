@@ -104,8 +104,6 @@ const authController = {
                     res.send(error);
                 }
                 const user = data.rows[0];
-                console.log('user', user)
-                // console.log(user.password);
                 if (!user) {
                     return res.send("Cet email n'existe pas");
                 }
