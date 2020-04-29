@@ -1,12 +1,9 @@
 // == Import npm
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 // == import Router
-//* au lieu de import Browser router as ..
-// import {
-//   BrowserRouter as Switch, Route, Redirect,
-// } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 
 // == Import Component
@@ -20,9 +17,14 @@ import ProfilUser from '../ProfilUser';
 // == Import style
 import './styles.scss';
 
+
+
 // == Composant
 const App = () => {
   console.log('APP');
+  const user = useSelector((state) => state.user);
+  console.log('user.mail', user.mail);
+
   return (
     <div className="app">
       <Nav />
@@ -36,9 +38,19 @@ const App = () => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
-        <Route exact path="/profiluser">
+        {/* <Route exact path="/profiluser">
           <ProfilUser />
-        </Route>
+        </Route> */}
+         <Route
+          exact
+          path="/profiluser"
+          render={() => {
+            if (user.mail === undefined) {
+              return <Redirect to="/" />;
+            }
+            return <ProfilUser />;
+          }}
+        />
         <Route>404</Route>
       </Switch>
       <Footer />
