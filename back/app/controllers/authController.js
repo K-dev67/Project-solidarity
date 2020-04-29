@@ -12,14 +12,15 @@ const authController = {
     signupAction: async (req, res) => {
         try {
             const info = req.body;
+            console.log('info', info)
             await dataMapper.checkEmail(info.email, (error, data) => {
                 if (error) {
                     console.trace(error);
                     res.send(error);
                 }
                 let errorsList = [];
-
                 const userMail = data.rowCount;
+                console.log('userMail', userMail)
                 if ( userMail === 1) {
                     errorsList.push('Cet email existe déjâ');
                 }
@@ -53,6 +54,7 @@ const authController = {
                     if (info.password !== info.confirmpassword ){
                         errorsList.push("Le mot de passe et la confirmation ne correspondent pas")
                     }
+                    console.log('errorsList', errorsList)
                     if (errorsList.length === 0) {
                         const newUser = {
                             nickname: info.pseudo,
@@ -64,6 +66,7 @@ const authController = {
                             status: 'a validé',
                             avatar: info.avatar
                         }
+                        console.log('newUser', newUser)
                         dataMapper.registerNewUser(newUser, (error, data) => {
                             if (error) {
                                 console.trace(error);
@@ -104,13 +107,15 @@ const authController = {
                     res.send(error);
                 }
                 const user = data.rows[0];
+                console.log('user', user)
                 if (!user) {
                     return res.send("Cet email n'existe pas");
                 }
                 if (!bcrypt.compareSync(password, user.password ) ) {
                     return res.send("Mauvais mot de passe");
                 }
-                res.send('Vous etes connecté :');
+                // res.send('Vous etes connecté :');
+                res.send(user)
                 req.session.user = user;
                 console.log(req.session.user);
             })
