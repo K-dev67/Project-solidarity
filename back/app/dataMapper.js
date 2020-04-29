@@ -89,6 +89,26 @@ const dataMapper = {
         const values = [userId, askId];
         db_connection.query(query, values, callback);
     },
+    checkIfRelationLessonCategoryExist: (lessonId, category, callback) => {
+        const query = 'SELECT * FROM lesson_has_category WHERE lesson_id = $1 AND category_id = $2';
+        const values = [lessonId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    addRelationLessonCategory: (lessonId, category, callback) => {
+        const query = 'INSERT INTO lesson_has_category ( "lesson_id", "category_id") VALUES ($1,$2)';
+        const values = [lessonId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    checkCategoryName: (infoCategory, callback) => {
+        const query = 'SELECT * FROM "category" WHERE "name" = $1'
+        const values = [infoCategory.name];
+        db_connection.query(query, values, callback);
+    },
+    deleteLessonId: (lessonId, categoryId, callback) => {
+        const query = 'DELETE FROM lesson_has_category * WHERE lesson_id = $1 AND category_id = $2';
+        const values = [lessonId, categoryId];
+        db_connection.query(query, values, callback);
+    }
 };
 
 // J'exporte mon module

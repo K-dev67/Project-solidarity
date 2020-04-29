@@ -27,11 +27,15 @@ router.get('/askList', homeController.showAsk);
 router.post('/user/:id/lesson', lessonController.addLesson);
 router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
 router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
+router.post('/user/:id/lesson/:Id/category', lessonController.addCategoryToLesson);
+router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCategoryToLesson);
 
 // LES ROUTES CONCERNANT ASK
 router.post('/user/:id/ask', askController.addAsk);
 router.patch('/user/:id/ask/:Id', askController.changeAsk);
 router.delete('/user/:id/ask/:Id', askController.deleteAsk);
+//router.post('/user/:id/ask/:Id/category/:ID', askController.addCategoryToAsk);
+//router.delete('/user/:id/ask/:Id/category/:ID', askController.addCategoryToAsk);
 
 
 

@@ -151,6 +151,7 @@ const lessonController = {
         try {
             const userId = req.params.id;
             const lessonId = req.params.Id;
+            
 
             dataMapper.deleteLessonFromDB(userId, lessonId, (error, data) => {
                 if (error) {
@@ -158,12 +159,101 @@ const lessonController = {
                     res.send(error);
                 }
                 if (data.rowCount === 0) {
-                    res.send("Ce n'est pas supprimé");
+                    res.send("Ce n'est pas votre cours");
                 }
                 if (data.rowCount === 1) {
-                    res.send("Cours Supprimé");
+                    res.send('Cours supprimé')
                 }
                 console.log(data);
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    },
+    addCategoryToLesson: async (req, res) => {
+        try {
+
+            const userId = req.params.id;
+            const lessonId = req.params.Id;
+            const infoCategory = req.body;
+
+            dataMapper.checkCategoryName(infoCategory, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                } 
+                if (data.rowCount === 0) {
+                    res.send("Cette catégorie n'existe pas");
+                }
+                const category = data.rows[0];
+                
+                dataMapper.checkLessonId(lessonId, userId, (error, data) => {
+                    if (error) {
+                        console.log(error);
+                        res.send(error);
+                    }
+                    if (data.rowCount === 0) {
+                        return res.send("Ce n'est pas votre cours.");
+                    }
+                    dataMapper.checkIfRelationLessonCategoryExist(lessonId, category,(error, data) => {
+                        if (error) {
+                            console.log(error);
+                            res.send(error);
+                        }
+                        if (data.rowCount === 1 || data.rowCount > 1){
+                            return res.send("Cette relation existe déja");
+                        }
+                        dataMapper.addRelationLessonCategory(lessonId, category, (error, data) => {
+                            if (error) {
+                                console.log(error);
+                                res.send(error);
+                            }
+                            if (data.rowCount === 0) {
+                                return res.send("La relation n'a pas était ajouté");
+                            }
+                            if (data.rowCount === 1 || data.rowCount < 1) {
+                                res.send("Category ajouté avec succes a votre cour.");
+                            }
+                        });
+                    });
+                });
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    },
+    deleteCategoryToLesson: async (req, res) => {
+        try {
+
+            const userId = req.params.id;
+            const lessonId = req.params.Id;
+            const categoryId = req.params.ID;
+            
+            dataMapper.checkLessonId(lessonId, userId, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Ce n'est pas votre cours");
+                }
+                dataMapper.deleteLessonId(lessonId, categoryId, (error, data) => {
+                    if (error) {
+                        console.log(error);
+                        res.send(error);
+                    }
+                    if (data.rowCount === 0) {
+                        return res.send("La catégory n'existe pas");
+                    }
+                    if (data.rowCount === 1) {
+                        return res.send("Cours supprimé avec succes");
+                    }
+                });
+
             });
 
         } catch (error) {
