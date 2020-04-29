@@ -16,7 +16,7 @@ import { Input } from 'semantic-ui-react';
 const Nav = () => {
   const dispatch = useDispatch();
   const inputNav = useSelector((state) => state.inputNav);
-
+  // je map
   const navLinkJsx = menu.map((r) => (
     <NavLink
       exact

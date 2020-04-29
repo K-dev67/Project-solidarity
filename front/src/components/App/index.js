@@ -2,6 +2,7 @@
 import React from 'react';
 
 // == import Router
+//* au lieu de import Browser router as ..
 // import {
 //   BrowserRouter as Switch, Route, Redirect,
 // } from 'react-router-dom';
