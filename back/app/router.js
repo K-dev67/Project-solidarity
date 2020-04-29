@@ -15,6 +15,7 @@ router.get('/signup', authController.signupPage);
 router.get('/login', authController.showLoginForm);
 router.post('/signup', authController.signupAction);
 router.post('/login', authController.loginAction);
+router.get('/activation/user/:email', authController.activation);
 
 router.get('/teacherList', homeController.showTeacher);
 
