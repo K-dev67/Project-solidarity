@@ -11,6 +11,20 @@ import {
     console.log('MW auth');
     switch (action.type) {
       case LOGIN: {
+        axios
+          .post('http://localhost:8888/login', {
+            email: store.getState().mail,
+            password: store.getState().password,
+          }, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log('user', res.data);
+            store.dispatch(enterHomePage(action.history));
+          })
+          .catch((error) => {
+            console.trace(error);
+          })
     //     axios
     //       .post('http://localhost:5050/login', {
     //         mail: store.getState().mail,
@@ -29,7 +43,7 @@ import {
     //         store.dispatch({ type: SET_ERROR_AUTH, error });
     //       });
     //     return;
-        store.dispatch(enterHomePage(action.history));
+        // store.dispatch(enterHomePage(action.history));
       }
       default: {
         next(action);
