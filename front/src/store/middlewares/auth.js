@@ -19,7 +19,6 @@ import {
             withCredentials: true,
           })
           .then((res) => {
-            // console.log('user', res.data);
             const user = res.data;
             console.log('user', user);
             store.dispatch({ type: SET_USER, user });
@@ -29,24 +28,6 @@ import {
             console.trace(error);
             store.dispatch({ type: SET_ERROR_AUTH, error });
           })
-    //     axios
-    //       .post('http://localhost:5050/login', {
-    //         mail: store.getState().mail,
-    //         password: store.getState().password,
-    //       }, {
-    //         withCredentials: true,
-    //       })
-    //       .then((response) => {
-    //         const { mail, firstname, lastname } = response.data;
-    //         const user = { mail, firstname, lastname };
-    //         store.dispatch({ type: SET_USER, user });
-    //         store.dispatch(enterHomePage(action.history, mail, firstname, lastname));
-    //       })
-    //       .catch((error) => {
-    //         console.log('errorLOGIN', error);
-    //         store.dispatch({ type: SET_ERROR_AUTH, error });
-    //       });
-    //     return;
       }
       default: {
         next(action);
