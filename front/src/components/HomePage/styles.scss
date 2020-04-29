@@ -1,13 +1,17 @@
 // Component presentation
 .container_presentation{
     display: flex;
-    width: 100%;
-    padding: 50px 100px;
+    justify-content: space-around;
+    width: 80%;
+    margin:50px auto 100px ;
 }
 .container_presentation_main{
     display: flex; 
     flex-direction: column;
     justify-content: space-evenly;
+    flex-basis: 70%;
+    padding: 20px 20px;
+
 }
 .container_presentation_main h1{
   font-size: 2.8em;
@@ -17,16 +21,14 @@
   color: #BDC3C7;
 }
 .container_presentation_image{
-    width: 100%;
-       display: flex;
-       justify-content: center;
-       padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px;
 }
 .container_presentation_image img{
-        width: 450px;
-        height: 250px;
-        border-radius: 5px;
-        box-shadow: 10px 5px 5px #BDC3C7;
+  width: 80%;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px #BDC3C7;
 }
 
 // Component AssetsPresentation
@@ -48,12 +50,12 @@
     text-align: center;
 }
 .AssetsPresentation_card p{
-color: #BDC3C7;
+    color: #BDC3C7;
 }
 .AssetsPresentation_button{
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .button{
     background-color: #a29bfe;
@@ -99,4 +101,42 @@ border-radius: 50%;
 }
 
 // Component TopLessonsPresentation
+.TopLessonsContainer{
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.TopLessonsContainer h2{
+  font-size: 2em;
 
+}
+.TopLessonsPresentation_container{
+  border: 1px solid #BDC3C7;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px #BDC3C7;
+  width: 90%;
+  height: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.TopLessonsPresentation_container_card{
+  display: flex;
+ width: 100%;
+}
+.TopLessonsPresentation_Card p{
+color: #BDC3C7;
+text-align: center;
+}
+.TopLessonsPresentation_Card{
+flex-basis:25% ;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding:2% 5%;
+}
+.TopLessonsPresentation_Card img{
+  width: 100%;
+}
