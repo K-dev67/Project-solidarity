@@ -6,11 +6,14 @@ import {
   SYNC_MAIL,
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
+  RESET, // pour reset le state
   // SET_FORM,
 } from './actions';
 
 const initialState = {
+  // == input du menu
   inputNav: '',
+  // form du signUp
   username: '',
   firstname: '',
   lastname: '',
@@ -64,6 +67,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         passwordConfirmation: action.payload,
+      };
+    }
+    case RESET: {
+      return {
+        ...initialState,
       };
     }
     // case SET_FORM: {

@@ -2,9 +2,12 @@
 import React from 'react';
 
 // == import Router
-import {
-  BrowserRouter as Switch, Route, Redirect,
-} from 'react-router-dom';
+//* au lieu de import Browser router as ..
+// import {
+//   BrowserRouter as Switch, Route, Redirect,
+// } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
 
 // == Import Component
 import Nav from '../Nav';
@@ -21,7 +24,6 @@ const App = () => {
   console.log('APP');
   return (
     <div className="app">
-
       <Nav />
       <Switch>
         <Route exact path="/">
@@ -33,6 +35,7 @@ const App = () => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
+        <Route>404</Route>
       </Switch>
       <Footer />
     </div>
