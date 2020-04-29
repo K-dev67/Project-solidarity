@@ -64,6 +64,10 @@ const dataMapper = {
         const query = 'DELETE FROM lesson * WHERE "id" = $2 AND teacher_id = $1;';
         const values = [userId, lessonId];
         db_connection.query(query, values, callback);
+    },
+    getAskList: (callback) => {
+        const query = 'SELECT * FROM "ask"';
+        db_connection.query(query, callback);
     }
 };
 

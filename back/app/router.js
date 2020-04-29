@@ -20,11 +20,17 @@ router.get('/activation/user/:email', authController.activation);
 
 // LES ROUTES D'AFFICHAGE
 router.get('/teacherList', homeController.showTeacher);
+router.get('/askList', homeController.showAsk);
 
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
 router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
 router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
+
+// LES ROUTES CONCERNANT ASK
+//router.post('/user/:id/ask', askController.addAsk);
+//router.patch('/user/:id/lesson/:Id', askController.changeAsk);
+//router.delete('/user/:id/lesson/:Id', askController.deleteAsk);
 
 
 
