@@ -1,0 +1,102 @@
+// Component presentation
+.container_presentation{
+    display: flex;
+    width: 100%;
+    padding: 50px 100px;
+}
+.container_presentation_main{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.container_presentation_main h1{
+  font-size: 2.8em;
+}
+.container_presentation_main p{
+  font-size: 1.5em;
+  color: #BDC3C7;
+}
+.container_presentation_image{
+    width: 100%;
+       display: flex;
+       justify-content: center;
+       padding: 0 20px;
+}
+.container_presentation_image img{
+        width: 450px;
+        height: 250px;
+        border-radius: 5px;
+        box-shadow: 10px 5px 5px #BDC3C7;
+}
+
+// Component AssetsPresentation
+.AssetsPresentation_main{
+    margin: 30px 20%;
+    height: 200px;
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 10px 5px 5px #BDC3C7;
+}
+.AssetsPresentation_card{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+}
+.AssetsPresentation_card p{
+color: #BDC3C7;
+}
+.AssetsPresentation_button{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.button{
+    background-color: #a29bfe;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+}
+.button:hover{
+    background-color: #6c5ce7;
+}
+
+// Component TeacherPresentation
+.TeacherPresentation_main{
+    margin: 120px 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.TeacherPresentation_main h2{
+  font-size: 2em;
+}
+.TeacherPresentation_main button{
+  margin-top: 60px;
+}
+.TeacherPresentation_card{
+    margin-top: 20px;
+    width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+}
+.TeacherPresentation_card img{
+width: 60px;
+border-radius: 50%;
+}
+.OneCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.OneCard p{
+  color: #BDC3C7;
+}
+
+// Component TopLessonsPresentation
+
