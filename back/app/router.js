@@ -31,7 +31,7 @@ router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 // LES ROUTES CONCERNANT ASK
 router.post('/user/:id/ask', askController.addAsk);
 router.patch('/user/:id/ask/:Id', askController.changeAsk);
-//router.delete('/user/:id/lesson/:Id', askController.deleteAsk);
+router.delete('/user/:id/ask/:Id', askController.deleteAsk);
 
 
 

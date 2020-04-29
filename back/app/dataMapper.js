@@ -83,7 +83,12 @@ const dataMapper = {
         const query = `UPDATE "ask" SET ("title", "description", "author_id", "want_it", "level", "status") = ($1,$2,$3,$4,$5,$6) WHERE "id" = $7`
         const values = [changeAsk.title, changeAsk.description,changeAsk.author_id,changeAsk.want_it, changeAsk.level, changeAsk.status, askId];
         db_connection.query(query, values, callback);
-    }
+    },
+    deleteAskFromDB: (userId, askId, callback) => {
+        const query = 'DELETE FROM ask * WHERE "id" = $2 AND author_id = $1;';
+        const values = [userId, askId];
+        db_connection.query(query, values, callback);
+    },
 };
 
 // J'exporte mon module

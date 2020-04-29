@@ -100,6 +100,30 @@ const askController = {
             res.send(error);
         }
     },
+    deleteAsk: async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const askId = req.params.Id;
+
+            dataMapper.deleteAskFromDB(userId, askId, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Ce n'est pas supprimé");
+                }
+                if (data.rowCount === 1) {
+                    res.send("Demande Supprimé");
+                }
+                console.log(data);
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    },
 };
 
 module.exports = askController;
