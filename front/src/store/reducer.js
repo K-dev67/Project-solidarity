@@ -7,7 +7,7 @@ import {
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
   RESET, // pour reset le state
-  // SET_FORM,
+  SET_FORM,
 } from './actions';
 
 const initialState = {
@@ -20,7 +20,7 @@ const initialState = {
   mail: '',
   password: '',
   passwordConfirmation: '',
-  // user: {}
+  user: {}
 };
 
 export default (state = initialState, action = {}) => {

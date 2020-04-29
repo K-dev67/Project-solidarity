@@ -19,7 +19,10 @@ import {
             withCredentials: true,
           })
           .then((res) => {
-            console.log('user', res.data);
+            // console.log('user', res.data);
+            const user = res.data;
+            console.log('user2', user)
+            //  store.dispatch({ type: SET_USER, user });
             store.dispatch(enterHomePage(action.history));
           })
           .catch((error) => {
