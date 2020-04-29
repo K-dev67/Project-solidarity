@@ -15,9 +15,10 @@ import Footer from '../Footer';
 import HomePage from '../HomePage';
 import SignUp from '../SignUp';
 import Login from '../Login';
+import ProfilUser from '../ProfilUser';
 
 // == Import style
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => {
@@ -34,6 +35,9 @@ const App = () => {
         </Route>
         <Route exact path="/signup">
           <SignUp />
+        </Route>
+        <Route exact path="/profiluser">
+          <ProfilUser />
         </Route>
         <Route>404</Route>
       </Switch>
