@@ -24,7 +24,7 @@ router.get('/teacherList', homeController.showTeacher);
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
 router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
-//router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
+router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 
 
 

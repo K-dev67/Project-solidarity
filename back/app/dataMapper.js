@@ -59,6 +59,11 @@ const dataMapper = {
         const query = `UPDATE "lesson" SET ("title", "description", "level", "teacher_id", "plannified", "link_videos", "status") = ($1,$2,$3,$4,$5,$6,$7) WHERE "id" = $8`
         const values = [changeLesson.title, changeLesson.description, changeLesson.level,changeLesson.teacher_id, changeLesson.plannified, changeLesson.videos, changeLesson.status, lessonId];
         db_connection.query(query, values, callback);
+    },
+    deleteLessonFromDB: (userId, lessonId, callback) => {
+        const query = 'DELETE FROM lesson * WHERE "id" = $2 AND teacher_id = $1;';
+        const values = [userId, lessonId];
+        db_connection.query(query, values, callback);
     }
 };
 

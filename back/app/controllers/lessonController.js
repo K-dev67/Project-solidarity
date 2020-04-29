@@ -146,6 +146,30 @@ const lessonController = {
             console.log(error);
             res.send(error);
         }
+    },
+    deleteLesson: async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const lessonId = req.params.Id;
+
+            dataMapper.deleteLessonFromDB(userId, lessonId, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    res.send("Ce n'est pas supprimé");
+                }
+                if (data.rowCount === 1) {
+                    res.send("Cours Supprimé");
+                }
+                console.log(data);
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
     }
 };
 
