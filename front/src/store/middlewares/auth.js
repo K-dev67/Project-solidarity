@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import {
     LOGIN,
-    enterHomePage
-    // SET_ERROR_AUTH,
-    // SET_USER,
+    enterHomePage,
+    SET_ERROR_AUTH,
+    SET_USER,
   } from 'src/store/actions';
 
   export default (store) => (next) => (action) => {
@@ -21,12 +21,13 @@ import {
           .then((res) => {
             // console.log('user', res.data);
             const user = res.data;
-            console.log('user2', user)
-            //  store.dispatch({ type: SET_USER, user });
+            console.log('user', user);
+            store.dispatch({ type: SET_USER, user });
             store.dispatch(enterHomePage(action.history));
           })
           .catch((error) => {
             console.trace(error);
+            store.dispatch({ type: SET_ERROR_AUTH, error });
           })
     //     axios
     //       .post('http://localhost:5050/login', {
@@ -46,7 +47,6 @@ import {
     //         store.dispatch({ type: SET_ERROR_AUTH, error });
     //       });
     //     return;
-        // store.dispatch(enterHomePage(action.history));
       }
       default: {
         next(action);

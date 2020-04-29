@@ -102,24 +102,39 @@ const authController = {
             console.log('password', password);
             console.log(req.body);
             await dataMapper.checkEmail(email, (error, data) => {
-                if (error) {
-                    console.trace(error);
-                    res.send(error);
-                }
+                // if (error) {
+                //     console.trace(error);
+                //     res.send(error);
+                // }
+                // const user = data.rows[0];
+                // console.log('user', user)
+                // if (!user) {
+                //     return res.send("Cet email n'existe pas");
+                // }
+                // if (!bcrypt.compareSync(password, user.password ) ) {
+                //     return res.send("Mauvais mot de passe");
+                // }
+                // // res.send('Vous etes connecté :');
+                // req.session.user = user;
+                // res.send(user)
+                // console.log(req.session.user);
+                //! => => antho
                 const user = data.rows[0];
-                console.log('user', user)
-                if (!user) {
-                    return res.send("Cet email n'existe pas");
-                }
-                if (!bcrypt.compareSync(password, user.password ) ) {
-                    return res.send("Mauvais mot de passe");
-                }
-                // res.send('Vous etes connecté :');
-                res.send(user)
-                req.session.user = user;
-                console.log(req.session.user);
+                // on compare les 2 mot de passe => me renvoi un booleen
+                const testPass = bcrypt.compareSync(password, user.password);
+                // si mon user existe et mon mdp est good alors
+                if (user && testPass) {
+                    console.log('<< 200 OK', user);
+                    req.session.user = user;
+                    res.send(user);
+                  } else {
+                    // peu importe l'erreur
+                    console.log('<< 401 UNAUTHORIZED');
+                    res.status(401).end();
+                  }
             })
         } catch (error) {
+            console.log('<< 500 INTERNAL SERVER ERROR');
             console.trace(error);
             res.send(error);
         }
