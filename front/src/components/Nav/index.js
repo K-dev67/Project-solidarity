@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // == Router
 import { NavLink } from 'react-router-dom';
 // == fichier data en js comportant les routes et les labels..
-import menu from '../../data/menu'
+import navLinkVisitor from '../../data/navLinkVisitor';
+import navLinkUser from '../../data/NavLinkUser';
 
 // actions
 import { SET_INPUT_NAV } from 'src/store/actions';
@@ -15,9 +16,13 @@ import { Input } from 'semantic-ui-react';
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const inputNav = useSelector((state) => state.inputNav);
+  const { inputNav, user } = useSelector((state) => state);
+  console.log('userInNavBar', user.email);
+  let navLink = navLinkVisitor;
+  if (user.email !== undefined) navLink = navLinkUser;
+  // if user.
   // je map
-  const navLinkJsx = menu.map((r) => (
+  const navLinkJsx = navLink.map((r) => (
     <NavLink
       exact
       key={r.label}
@@ -46,9 +51,6 @@ const Nav = () => {
       </form>
       <nav className="topbar-nav">
         {navLinkJsx}
-        {/* <a href="/">Accueil</a>
-        <a href="/login">Se connecter</a>
-        <a href="/signup">S'inscrire</a> */}
       </nav>
     </header>
   );
