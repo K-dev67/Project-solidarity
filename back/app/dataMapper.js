@@ -73,6 +73,16 @@ const dataMapper = {
         const query = `INSERT INTO  "ask"("title", "description", "author_id", "want_it", "level", "status") VALUES($1,$2,$3,$4,$5,$6)`;
         const values = [newAsk.title, newAsk.description, newAsk.author_id,newAsk.want_it, newAsk.level, newAsk.status];
         db_connection.query(query, values, callback);
+    },
+    checkAskId: (askId, userId, callback) => {
+        const query = `SELECT * FROM "ask" WHERE "id" = $1 AND author_id = $2;`;
+        const values = [askId, userId];
+        db_connection.query(query, values, callback);
+    },
+    updateAskOnDB: (changeAsk, askId, callback) => {
+        const query = `UPDATE "ask" SET ("title", "description", "author_id", "want_it", "level", "status") = ($1,$2,$3,$4,$5,$6) WHERE "id" = $7`
+        const values = [changeAsk.title, changeAsk.description,changeAsk.author_id,changeAsk.want_it, changeAsk.level, changeAsk.status, askId];
+        db_connection.query(query, values, callback);
     }
 };
 
