@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 
 // == import Router
 import { Route, Switch, Redirect } from 'react-router-dom';
+// import {
+//   BrowserRouter as Switch, Route, Redirect,
+// } from 'react-router-dom';
 
 
 // == Import Component
@@ -17,13 +20,10 @@ import ProfilUser from '../ProfilUser';
 // == Import style
 import './styles.scss';
 
-
-
 // == Composant
 const App = () => {
-  console.log('APP');
   const user = useSelector((state) => state.user);
-  console.log('user.mail', user.mail);
+  console.log('user.mail', user.email)
 
   return (
     <div className="app">
@@ -38,17 +38,16 @@ const App = () => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
-        {/* <Route exact path="/profiluser">
-          <ProfilUser />
-        </Route> */}
          <Route
           exact
           path="/profiluser"
           render={() => {
-            if (user.mail === undefined) {
+            if (user.email === undefined) {
               return <Redirect to="/" />;
+            } else {
+              return <ProfilUser />;
             }
-            return <ProfilUser />;
+
           }}
         />
         <Route>404</Route>
