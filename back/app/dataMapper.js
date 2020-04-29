@@ -45,6 +45,11 @@ const dataMapper = {
         const values = [emailAccount];
         db_connection.query(query, values, callback);
     },
+    addLessonOnDB: (newLesson, callback) => {
+        const query = `INSERT INTO  "lesson"("title", "description", "level", "teacher_id", "plannified", "link_videos", "status") VALUES($1,$2,$3,$4,$5,$6,$7)`;
+        const values = [newLesson.title, newLesson.description, newLesson.level,newLesson.teacher_id, newLesson.plannified, newLesson.videos, newLesson.status];
+        db_connection.query(query, values, callback);
+    },
 };
 
 // J'exporte mon module
