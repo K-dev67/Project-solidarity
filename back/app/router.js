@@ -23,6 +23,10 @@ router.get('/teacherList', homeController.showTeacher);
 
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
+router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
+//router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
+
+
 
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );

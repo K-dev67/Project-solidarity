@@ -50,6 +50,16 @@ const dataMapper = {
         const values = [newLesson.title, newLesson.description, newLesson.level,newLesson.teacher_id, newLesson.plannified, newLesson.videos, newLesson.status];
         db_connection.query(query, values, callback);
     },
+    checkLessonId: (lessonId, userId, callback) => {
+        const query = `SELECT * FROM "lesson" WHERE "id" = $1 AND teacher_id = $2;`;
+        const values = [lessonId, userId];
+        db_connection.query(query, values, callback);
+    },
+    updateLessonOnDB: (changeLesson, lessonId, callback) => {
+        const query = `UPDATE "lesson" SET ("title", "description", "level", "teacher_id", "plannified", "link_videos", "status") = ($1,$2,$3,$4,$5,$6,$7) WHERE "id" = $8`
+        const values = [changeLesson.title, changeLesson.description, changeLesson.level,changeLesson.teacher_id, changeLesson.plannified, changeLesson.videos, changeLesson.status, lessonId];
+        db_connection.query(query, values, callback);
+    }
 };
 
 // J'exporte mon module
