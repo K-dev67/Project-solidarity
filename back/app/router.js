@@ -6,6 +6,7 @@ const router = express.Router();
 const homeController = require('./controllers/homeController');
 const authController = require('./controllers/authController');
 const lessonController = require('./controllers/lessonController');
+const askController = require('./controllers/askController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
@@ -28,7 +29,7 @@ router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
 router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 
 // LES ROUTES CONCERNANT ASK
-//router.post('/user/:id/ask', askController.addAsk);
+router.post('/user/:id/ask', askController.addAsk);
 //router.patch('/user/:id/lesson/:Id', askController.changeAsk);
 //router.delete('/user/:id/lesson/:Id', askController.deleteAsk);
 

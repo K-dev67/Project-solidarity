@@ -68,6 +68,11 @@ const dataMapper = {
     getAskList: (callback) => {
         const query = 'SELECT * FROM "ask"';
         db_connection.query(query, callback);
+    },
+    addAskOnDB: (newAsk, callback) => {
+        const query = `INSERT INTO  "ask"("title", "description", "author_id", "want_it", "level", "status") VALUES($1,$2,$3,$4,$5,$6)`;
+        const values = [newAsk.title, newAsk.description, newAsk.author_id,newAsk.want_it, newAsk.level, newAsk.status];
+        db_connection.query(query, values, callback);
     }
 };
 

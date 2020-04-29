@@ -170,7 +170,7 @@ const lessonController = {
             console.log(error);
             res.send(error);
         }
-    }
+    },
 };
 
 module.exports = lessonController;
