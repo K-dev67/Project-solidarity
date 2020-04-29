@@ -2,9 +2,11 @@
 import React from 'react';
 
 // == import Router
-import {
-  BrowserRouter as Switch, Route, Redirect,
-} from 'react-router-dom';
+// import {
+//   BrowserRouter as Switch, Route, Redirect,
+// } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
 
 // == Import Component
 import Nav from '../Nav';

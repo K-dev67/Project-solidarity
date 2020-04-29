@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // == Router
 import { NavLink } from 'react-router-dom';
+// == fichier data en js comportant les routes et les labels..
 import menu from '../../data/menu'
 
 // actions
@@ -28,7 +29,6 @@ const Nav = () => {
     </NavLink>
   )
 )
-
 
   return (
     <header className="topbar">
