@@ -185,7 +185,7 @@ const lessonController = {
                     res.send(error);
                 } 
                 if (data.rowCount === 0) {
-                    res.send("Cette catégorie n'existe pas");
+                    return res.send("Cette catégorie n'existe pas");
                 }
                 const category = data.rows[0];
                 

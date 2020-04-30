@@ -124,6 +124,95 @@ const askController = {
             res.send(error);
         }
     },
+    addCategoryToAsk: async (req, res) => {
+        try {
+
+            const userId = req.params.id;
+            const askId = req.params.Id;
+            const infoCategory = req.body;
+
+            dataMapper.checkCategoryName(infoCategory, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                } 
+                if (data.rowCount === 0) {
+                    return res.send("Cette catégorie n'existe pas");
+                }
+                const category = data.rows[0];
+                
+                dataMapper.checkAskId(askId, userId, (error, data) => {
+                    if (error) {
+                        console.log(error);
+                        res.send(error);
+                    }
+                    if (data.rowCount === 0) {
+                        return res.send("Ce n'est pas votre cours.");
+                    }
+                    dataMapper.checkIfRelationAskCategoryExist(askId, category,(error, data) => {
+                        if (error) {
+                            console.log(error);
+                            res.send(error);
+                        }
+                        if (data.rowCount === 1 || data.rowCount > 1){
+                            return res.send("Cette relation existe déja");
+                        }
+                        dataMapper.addRelationAskCategory(askId, category, (error, data) => {
+                            if (error) {
+                                console.log(error);
+                                res.send(error);
+                            }
+                            if (data.rowCount === 0) {
+                                return res.send("La relation n'a pas était ajouté");
+                            }
+                            if (data.rowCount === 1 || data.rowCount < 1) {
+                                res.send("Category ajouté avec succes a votre demande.");
+                            }
+                        });
+                    });
+                });
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    },
+    deleteCategoryToAsk: async (req, res) => {
+        try {
+
+            const userId = req.params.id;
+            const askId = req.params.Id;
+            const categoryId = req.params.ID;
+            
+            dataMapper.checkAskId(askId, userId, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Ce n'est pas votre cours");
+                }
+                dataMapper.deleteAskId(askId, categoryId, (error, data) => {
+                    if (error) {
+                        console.log(error);
+                        res.send(error);
+                    }
+                    if (data.rowCount === 0) {
+                        return res.send("La catégory n'existe pas");
+                    }
+                    if (data.rowCount === 1) {
+                        return res.send("Demande de Cour supprimé avec succes");
+                    }
+                });
+
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    }
 };
 
 module.exports = askController;

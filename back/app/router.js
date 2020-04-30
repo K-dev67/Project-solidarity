@@ -34,8 +34,8 @@ router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCatego
 router.post('/user/:id/ask', askController.addAsk);
 router.patch('/user/:id/ask/:Id', askController.changeAsk);
 router.delete('/user/:id/ask/:Id', askController.deleteAsk);
-//router.post('/user/:id/ask/:Id/category/:ID', askController.addCategoryToAsk);
-//router.delete('/user/:id/ask/:Id/category/:ID', askController.addCategoryToAsk);
+router.post('/user/:id/ask/:Id/category', askController.addCategoryToAsk);
+router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAsk);
 
 
 

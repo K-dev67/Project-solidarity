@@ -108,6 +108,21 @@ const dataMapper = {
         const query = 'DELETE FROM lesson_has_category * WHERE lesson_id = $1 AND category_id = $2';
         const values = [lessonId, categoryId];
         db_connection.query(query, values, callback);
+    },
+    checkIfRelationAskCategoryExist: (askId, category, callback) => {
+        const query = 'SELECT * FROM ask_has_category WHERE ask_id = $1 AND category_id = $2';
+        const values = [askId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    addRelationAskCategory: (askId, category, callback) => {
+        const query = 'INSERT INTO ask_has_category ( "ask_id", "category_id") VALUES ($1,$2)';
+        const values = [askId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    deleteAskId: (askId, categoryId, callback) => {
+        const query = 'DELETE FROM ask_has_category * WHERE ask_id = $1 AND category_id = $2';
+        const values = [askId, categoryId];
+        db_connection.query(query, values, callback);
     }
 };
 
