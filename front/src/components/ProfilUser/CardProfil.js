@@ -40,7 +40,6 @@ const CardProfil = () => {
           </a>
         </Card.Content>
       </Card>
-
     </div>
   );
 };
