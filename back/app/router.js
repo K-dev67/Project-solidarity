@@ -43,7 +43,7 @@ router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAs
 
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
-//router.patch('/profiluser/:id', userController.changeProfile);
+router.patch('/profiluser/:id', userController.changeProfile);
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
 
