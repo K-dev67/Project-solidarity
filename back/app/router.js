@@ -8,6 +8,7 @@ const authController = require('./controllers/authController');
 const lessonController = require('./controllers/lessonController');
 const askController = require('./controllers/askController');
 const userController = require('./controllers/userController');
+const liveController = require('./controllers/liveController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
@@ -33,6 +34,7 @@ router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
 router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 router.post('/user/:id/lesson/:Id/category', lessonController.addCategoryToLesson);
 router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCategoryToLesson);
+router.get('/lesson/:id', lessonController.showThisLesson);
 
 // LES ROUTES CONCERNANT ASK
 router.post('/user/:id/ask', askController.addAsk);
@@ -40,6 +42,10 @@ router.patch('/user/:id/ask/:Id', askController.changeAsk);
 router.delete('/user/:id/ask/:Id', askController.deleteAsk);
 router.post('/user/:id/ask/:Id/category', askController.addCategoryToAsk);
 router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAsk);
+
+// lES ROUTES CONCERNANT LE LIVE
+router.get('/liveLesson', liveController.showAllLiveLesson);
+router.get('/liveLesson/:id', liveController.showThisLiveLesson);
 
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);

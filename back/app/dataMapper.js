@@ -152,7 +152,18 @@ const dataMapper = {
         const query = 'SELECT * FROM "user" WHERE email = $1';
         const values = [info.email];
         db_connection.query(query, values, callback);
-    }
+    },
+    getLiveLessonList: (callback) => {
+        const query = `SELECT * FROM "lesson" WHERE "status" = 'live'`;
+        db_connection.query(query, callback);
+    },
+    getLesson: (lessonId, callback) => {
+        const query = `SELECT * FROM "lesson" WHERE "id" = $1`;
+        const values = [lessonId];
+        db_connection.query(query, values, callback);
+    },
+    
+
 };
 
 // J'exporte mon module
