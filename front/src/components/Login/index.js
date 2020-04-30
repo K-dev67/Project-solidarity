@@ -19,7 +19,7 @@ import {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { mail, password } = useSelector((state) => state);
+  const { mail, password, errorAuth } = useSelector((state) => state);
   const history = useHistory();
 
   return (
@@ -40,7 +40,7 @@ const Login = () => {
           }}
           >
             <Form.Input
-              // error={errorAuth.name}
+              error={errorAuth}
               type="mail"
               icon="user"
               iconPosition="left"
@@ -52,7 +52,7 @@ const Login = () => {
               value={mail}
             />
             <Form.Input
-            // error={errorAuth.name}
+              error={errorAuth}
               type="password"
               icon="user"
               iconPosition="left"

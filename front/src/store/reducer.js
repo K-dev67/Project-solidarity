@@ -7,7 +7,8 @@ import {
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
   RESET, // pour reset le state
-  // SET_FORM,
+  SET_USER,
+  SET_ERROR_AUTH // pour error auth
 } from './actions';
 
 const initialState = {
@@ -20,7 +21,9 @@ const initialState = {
   mail: '',
   password: '',
   passwordConfirmation: '',
-  // user: {}
+  // == error authentification
+  errorAuth: '',
+  user: {}
 };
 
 export default (state = initialState, action = {}) => {
@@ -54,12 +57,14 @@ export default (state = initialState, action = {}) => {
     case SYNC_MAIL: {
       return {
         ...state,
+        errorAuth: '',
         mail: action.payload,
       };
     }
     case SYNC_PASSWORD: {
       return {
         ...state,
+        errorAuth: '',
         password: action.payload,
       };
     }
@@ -69,17 +74,26 @@ export default (state = initialState, action = {}) => {
         passwordConfirmation: action.payload,
       };
     }
+    // == une fois la réponse ok de la bdd pour l'inscription je reset le state
     case RESET: {
       return {
         ...initialState,
       };
     }
-    // case SET_FORM: {
-    //   return {
-    //     ...state,
-    //     user: action.user,
-    //   };
-    // }
+    // == si le auth ok
+    case SET_USER: {
+      return {
+        ...state,
+        user: action.user,
+      };
+    }
+    // == si auth non ok
+    case SET_ERROR_AUTH: {
+      return {
+        ...state,
+        errorAuth: 'Le mail ou le mot de passe est incorrect'
+      }
+    }
     default: {
       return state;
     }
