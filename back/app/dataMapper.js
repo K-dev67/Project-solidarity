@@ -137,11 +137,21 @@ const dataMapper = {
         const query = 'SELECT * FROM ask JOIN ask_has_category ON "id" = ask_id WHERE category_id=$1';
         const values = [category.id];
         db_connection.query(query, values, callback);
-    }, getUserId: (userId, callback) => {
+    },
+    getUserId: (userId, callback) => {
         const query = 'SELECT * FROM "user" WHERE "id" = $1';
         const values = [userId];
         db_connection.query(query, values, callback);
-
+    },
+    updateUser: (updateUser, userId, callback) => {
+        const query = `UPDATE "user" SET ("nickname", "firstname", "lastname", "email", "avatar","password", "role", "status") = ($1,$2,$3,$4,$5,$6,$7,$8) WHERE "id" = $9`
+        const values = [updateUser.nickname, updateUser.firstname,updateUser.lastname,updateUser.email, updateUser.avatar, updateUser.password, updateUser.role, updateUser.status, userId];
+        db_connection.query(query, values, callback);
+    },
+    checkEmailUpdate: (info, callback) => {
+        const query = 'SELECT * FROM "user" WHERE email = $1';
+        const values = [info.email];
+        db_connection.query(query, values, callback);
     }
 };
 
