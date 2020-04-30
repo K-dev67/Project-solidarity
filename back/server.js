@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000;
 const server = express();
 
-
 // == config cors
 server.use(bodyParser.json()); // => req.body va contenir le JSON de la req
 server.use((req, res, next) => {
