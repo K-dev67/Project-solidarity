@@ -123,6 +123,25 @@ const dataMapper = {
         const query = 'DELETE FROM ask_has_category * WHERE ask_id = $1 AND category_id = $2';
         const values = [askId, categoryId];
         db_connection.query(query, values, callback);
+    },
+    getLessonList: (callback) => {
+        const query = 'SELECT * FROM "lesson"';
+        db_connection.query(query, callback);
+    },
+    getAllLessonByCategory: (category, callback) => {
+        const query = 'SELECT * FROM lesson JOIN lesson_has_category ON "id" = lesson_id WHERE category_id=$1';
+        const values = [category.id];
+        db_connection.query(query, values, callback);
+    },
+    getAllAskByCategory: (category, callback) => {
+        const query = 'SELECT * FROM ask JOIN ask_has_category ON "id" = ask_id WHERE category_id=$1';
+        const values = [category.id];
+        db_connection.query(query, values, callback);
+    }, getUserId: (userId, callback) => {
+        const query = 'SELECT * FROM "user" WHERE "id" = $1';
+        const values = [userId];
+        db_connection.query(query, values, callback);
+
     }
 };
 

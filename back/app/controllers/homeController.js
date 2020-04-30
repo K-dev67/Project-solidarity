@@ -53,6 +53,61 @@ const homeController = {
             res.send(data.rows);
         });
     },
+    showLesson: (req, res) => {
+        dataMapper.getLessonList((error, data) => { 
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            res.send(data.rows);
+        });
+    },
+    showLessonByCategory: (req, res) => {
+        const infoCategory =req.body;
+        dataMapper.checkCategoryName(infoCategory, (error, data) => {
+            if (error) {
+                console.log(error);
+                res.send(error);
+            } 
+            if (data.rowCount === 0) {
+                return res.send("Cette category n'existe pas");
+            }
+            const category = data.rows[0];
+            dataMapper.getAllLessonByCategory(category, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Il n'y a pas de cours dans cette category")
+                }
+                return res.send(data.rows);
+            });
+        });
+    },
+    showAskByCategory: (req, res) => {
+        const infoCategory =req.body;
+        dataMapper.checkCategoryName(infoCategory, (error, data) => {
+            if (error) {
+                console.log(error);
+                res.send(error);
+            } 
+            if (data.rowCount === 0) {
+                return res.send("Cette category n'existe pas");
+            }
+            const category = data.rows[0];
+            dataMapper.getAllAskByCategory(category, (error, data) => {
+                if (error) {
+                    console.log(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Il n'y a pas de question dans cette category")
+                }
+                return res.send(data.rows);
+            });
+        });
+    }
 
 };
 

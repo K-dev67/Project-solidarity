@@ -7,6 +7,7 @@ const homeController = require('./controllers/homeController');
 const authController = require('./controllers/authController');
 const lessonController = require('./controllers/lessonController');
 const askController = require('./controllers/askController');
+const userController = require('./controllers/userController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
@@ -21,7 +22,10 @@ router.get('/activation/user/:email', authController.activation);
 
 // LES ROUTES D'AFFICHAGE
 router.get('/teacherList', homeController.showTeacher);
+router.get('/lessonList', homeController.showLesson);
+router.post('/lessonList', homeController.showLessonByCategory);
 router.get('/askList', homeController.showAsk);
+router.post('/askList', homeController.showAskByCategory);
 
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
@@ -37,8 +41,9 @@ router.delete('/user/:id/ask/:Id', askController.deleteAsk);
 router.post('/user/:id/ask/:Id/category', askController.addCategoryToAsk);
 router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAsk);
 
-
-
+// LES ROUTES CONCERNANT LES USER
+router.get('/profile/:id', userController.showProfile);
+//router.patch('/profiluser/:id', userController.changeProfile);
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
 
