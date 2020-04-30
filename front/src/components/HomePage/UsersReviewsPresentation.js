@@ -6,7 +6,7 @@ import './styles.scss';
 const UsersReviewsPresentation = () => {
     const lesAvis = AvisUser.map((Oneavis) => {
         return (
-            <div className="UsersReviewsPresentation_card">
+            <div key={Oneavis.id} className="UsersReviewsPresentation_card">
                 <img src={Oneavis.avatar}></img>
                 <p>{Oneavis.avis}</p>
                 <h4>{Oneavis.name}</h4>
