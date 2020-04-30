@@ -8,7 +8,9 @@ import {
   SYNC_PASSWORD_CONFIRMATION,
   RESET, // pour reset le state
   SET_USER,
-  SET_ERROR_AUTH // pour error auth
+  SET_ERROR_AUTH, // pour error auth
+  // GET_TEACHERS,
+  SET_TEACHERS,
 } from './actions';
 
 const initialState = {
@@ -23,7 +25,8 @@ const initialState = {
   passwordConfirmation: '',
   // == error authentification
   errorAuth: '',
-  user: {}
+  user: {},
+  teachers: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -91,8 +94,15 @@ export default (state = initialState, action = {}) => {
     case SET_ERROR_AUTH: {
       return {
         ...state,
-        errorAuth: 'Le mail ou le mot de passe est incorrect'
-      }
+        errorAuth: 'Le mail ou le mot de passe est incorrect',
+      };
+    }
+    // == set teachers
+    case SET_TEACHERS: {
+      return {
+        ...state,
+        teachers: action.payload,
+      };
     }
     default: {
       return state;

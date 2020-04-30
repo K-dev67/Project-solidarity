@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 // == Router
 import { NavLink } from 'react-router-dom';
 // == fichier data en js comportant les routes et les labels..
+import { SET_INPUT_NAV } from 'src/store/actions';
 import navLinkVisitor from '../../data/navLinkVisitor';
 import navLinkUser from '../../data/NavLinkUser';
 
 // actions
-import { SET_INPUT_NAV } from 'src/store/actions';
 
 // == style
 import './styles.scss';
@@ -28,10 +28,9 @@ const Nav = () => {
       to={r.route}
       activeClassName="menu-link--active"
     >
-    {r.label}
+      {r.label}
     </NavLink>
-  )
-)
+  ));
 
   return (
     <header className="topbar">

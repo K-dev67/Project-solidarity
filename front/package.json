@@ -49,9 +49,12 @@
   "dependencies": {
     "axios": "^0.19.2",
     "email-validator": "^2.0.4",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
+    "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",

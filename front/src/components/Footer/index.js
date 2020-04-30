@@ -4,13 +4,10 @@ import React from 'react';
 import './styles.css';
 
 
-const Footer = () => {
-
-    return (
-        <div className="footer">
-            Contact - Mention
-        </div>
-    );
-};
+const Footer = () => (
+  <div className="footer">
+    Contact - Mention
+  </div>
+);
 
 export default Footer;
