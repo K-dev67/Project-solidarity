@@ -14,7 +14,7 @@ import './styles.scss';
 const HomePage = () => {
   console.log('homepage');
   return (
-    <div>
+    <div className="homePage">
       <Presentation />
       <AssetsPresentation />
       <TeacherPresentation />
