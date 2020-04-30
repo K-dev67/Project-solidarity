@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 // == style
 import './styles.scss';
 
@@ -20,6 +20,9 @@ const TopLessonsPresentation = () => {
                 <div className="TopLessonsPresentation_container_card"></div>
                 {TopCours}
             </div>
+            <Link to="/lescours">
+                <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+            </Link>
         </div>
     );
 };
