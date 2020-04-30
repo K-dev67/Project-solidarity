@@ -73,6 +73,75 @@ const dataMapper = {
         const query = `INSERT INTO  "ask"("title", "description", "author_id", "want_it", "level", "status") VALUES($1,$2,$3,$4,$5,$6)`;
         const values = [newAsk.title, newAsk.description, newAsk.author_id,newAsk.want_it, newAsk.level, newAsk.status];
         db_connection.query(query, values, callback);
+    },
+    checkAskId: (askId, userId, callback) => {
+        const query = `SELECT * FROM "ask" WHERE "id" = $1 AND author_id = $2;`;
+        const values = [askId, userId];
+        db_connection.query(query, values, callback);
+    },
+    updateAskOnDB: (changeAsk, askId, callback) => {
+        const query = `UPDATE "ask" SET ("title", "description", "author_id", "want_it", "level", "status") = ($1,$2,$3,$4,$5,$6) WHERE "id" = $7`
+        const values = [changeAsk.title, changeAsk.description,changeAsk.author_id,changeAsk.want_it, changeAsk.level, changeAsk.status, askId];
+        db_connection.query(query, values, callback);
+    },
+    deleteAskFromDB: (userId, askId, callback) => {
+        const query = 'DELETE FROM ask * WHERE "id" = $2 AND author_id = $1;';
+        const values = [userId, askId];
+        db_connection.query(query, values, callback);
+    },
+    checkIfRelationLessonCategoryExist: (lessonId, category, callback) => {
+        const query = 'SELECT * FROM lesson_has_category WHERE lesson_id = $1 AND category_id = $2';
+        const values = [lessonId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    addRelationLessonCategory: (lessonId, category, callback) => {
+        const query = 'INSERT INTO lesson_has_category ( "lesson_id", "category_id") VALUES ($1,$2)';
+        const values = [lessonId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    checkCategoryName: (infoCategory, callback) => {
+        const query = 'SELECT * FROM "category" WHERE "name" = $1'
+        const values = [infoCategory.name];
+        db_connection.query(query, values, callback);
+    },
+    deleteLessonId: (lessonId, categoryId, callback) => {
+        const query = 'DELETE FROM lesson_has_category * WHERE lesson_id = $1 AND category_id = $2';
+        const values = [lessonId, categoryId];
+        db_connection.query(query, values, callback);
+    },
+    checkIfRelationAskCategoryExist: (askId, category, callback) => {
+        const query = 'SELECT * FROM ask_has_category WHERE ask_id = $1 AND category_id = $2';
+        const values = [askId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    addRelationAskCategory: (askId, category, callback) => {
+        const query = 'INSERT INTO ask_has_category ( "ask_id", "category_id") VALUES ($1,$2)';
+        const values = [askId, category.id];
+        db_connection.query(query, values, callback);
+    },
+    deleteAskId: (askId, categoryId, callback) => {
+        const query = 'DELETE FROM ask_has_category * WHERE ask_id = $1 AND category_id = $2';
+        const values = [askId, categoryId];
+        db_connection.query(query, values, callback);
+    },
+    getLessonList: (callback) => {
+        const query = 'SELECT * FROM "lesson"';
+        db_connection.query(query, callback);
+    },
+    getAllLessonByCategory: (category, callback) => {
+        const query = 'SELECT * FROM lesson JOIN lesson_has_category ON "id" = lesson_id WHERE category_id=$1';
+        const values = [category.id];
+        db_connection.query(query, values, callback);
+    },
+    getAllAskByCategory: (category, callback) => {
+        const query = 'SELECT * FROM ask JOIN ask_has_category ON "id" = ask_id WHERE category_id=$1';
+        const values = [category.id];
+        db_connection.query(query, values, callback);
+    }, getUserId: (userId, callback) => {
+        const query = 'SELECT * FROM "user" WHERE "id" = $1';
+        const values = [userId];
+        db_connection.query(query, values, callback);
+
     }
 };
 
