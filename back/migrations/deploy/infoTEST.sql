@@ -4,19 +4,41 @@ BEGIN;
 
 -- XXX Add DDLs here.
 INSERT INTO "user" ("nickname", "firstname", "lastname", "email", "avatar", "password", "role", "status") VALUES
-('Michou','Dupond', 'Michel', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Mich','Dupond', 'Michel', 'michel1.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Micho','Dupond', 'Michel', 'michel2.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Michouu','Dupond', 'Michel', 'michel3.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Michoul','Dupond', 'Michel', 'michel4.durand@gmail.com','ici une photo','sixOneNine','admin','desactivé');
+('Michou','Dupond', 'Frank', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Mich','Dupond', 'Romain', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Micho','Dupond', 'Pierre', 'michel2.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Camille.Breton20','Breton', 'Camille', 'michel3.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Ambre_Morin91','Morin', 'Ambre', 'michel4.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Louna.Roux','Roux', 'Louna', 'michel5.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Théo.Marchand18','Marchand', 'Théo', 'michel6.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Célia.Marchal15','Marchal', 'Célia', 'michel7.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Noa48','Lemoine', 'Noa', 'michel8.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Romain_Roussel21','Roussel', 'Romain', 'michel10.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Pauline9','Lefevre', 'Pauline', 'michel11.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Camille69','Dufour', 'Camille', 'michel31.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Antoine_Lecomte','Lecomte', 'Antoine', 'michel32.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Léo95','Roy', 'Léo', 'michel33.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Miche','Duponde', 'Michelle', 'michel34.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Michouuu','Dupond', 'Michel', 'michel35.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Clara21','Marie', 'Clara', 'michel36.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Yanis.Lemoine','Lemoine', 'Yanis', 'michel37.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Baptiste11','Dufour', 'Baptiste', 'michel38.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Jade.Louis68','Louis', 'Jade', 'michel39.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Pauline_Fernandez','Fernandez', 'Pauline', 'michel322.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Lena_Lefebvre','Lefebvre', 'Lena', 'michel422.durand@gmail.com','ici une photo','sixOneNine','admin','desactivé');
 
 
 INSERT INTO "lesson" ("title", "description","level", "teacher_id", "plannified", "status") VALUES
 ('La physique Chimie pour les Nul','Une introduction a la physique-chimie','easy',1,null,'finis'),
-('La physique Chimie pour les Novice','1er chapitre de physique-chimie','normal',1,null,'commencé'),
-('La physique Chimie pour les Pratiquant','On commence vraiement physique-chimie','expert',4,null,'plannifié'),
-('La physique Chimie pour les Pro','Un cours avancé de physique-chimie','hard',4,null,'plannifié'),
-('La physique Chimie pour les petits Enstein','Haut niveau de physique-chimie', 'hard',5,null,'supprimé');
+('La physique Chimie pour les Novice','1er chapitre de physique-chimie','normal',9,null,'commencé'),
+('La physique Chimie pour les Pratiquant','On commence vraiement physique-chimie','expert',10,null,'plannifié'),
+('Le JS pour les Pro','Un cours avancé de physique-chimie','easy',11,null,'plannifié'),
+('Les mathematiques analyse complexe','Un cours avancé de physique-chimie','easy',12,null,'plannifié'),
+('Pragmatique du discours','Un cours  de Pragmatique','normal',13,null,'plannifié'),
+('La physique Chimie pour les nuls','Un cours avancé de physique-chimie','hard',14,null,'commencé'),
+('La Pragmatique pour les Pro','Un cours avancé de Pragmatique','easy',15,null,'plannifié'),
+('La gymnastique pour les Pro','Un cours avancé de gymnastique accrobatique','hard',15,null,'commencé'),
+('La physique Chimie pour les petits Enstein','Haut niveau de physique-chimie', 'easy',5,null,'supprimé');
 
 INSERT INTO "ask" ("title", "description", "author_id","want_it", "level", "status") VALUES
 ('Par quoi commencer?','Quand on debute',1,1,'easy','actif'),
@@ -40,42 +62,42 @@ INSERT INTO "category" ("name", "color", "description", "status") VALUES
 ('Imitation', null, ' imitation',1),
 ('Nature', null,'bio',1);
 
-INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES 
+INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "ask_has_category" ("ask_id", "category_id") VALUES 
+INSERT INTO "ask_has_category" ("ask_id", "category_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_subscribe_ask" ("ask_id", "user_id") VALUES 
+INSERT INTO "user_subscribe_ask" ("ask_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_subscribe_lesson" ("lesson_id", "user_id") VALUES 
+INSERT INTO "user_subscribe_lesson" ("lesson_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_like_message" ("message_id", "user_id") VALUES 
+INSERT INTO "user_like_message" ("message_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES 
+INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),

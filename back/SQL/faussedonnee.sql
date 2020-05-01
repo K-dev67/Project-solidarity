@@ -1,9 +1,26 @@
 INSERT INTO "user" ("nickname", "firstname", "lastname", "email", "avatar", "password", "role", "status") VALUES
-('Michou','Dupond', 'Michel', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Mich','Dupond', 'Michel', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Micho','Dupond', 'Michel', 'michel2.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Michouu','Dupond', 'Michel', 'michel3.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
-('Michoul','Dupond', 'Michel', 'michel4.durand@gmail.com','ici une photo','sixOneNine','admin','desactivé');
+('Michou','Dupond', 'Frank', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Mich','Dupond', 'Romain', 'michel.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Micho','Dupond', 'Pierre', 'michel2.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Camille.Breton20','Breton', 'Camille', 'michel3.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Ambre_Morin91','Morin', 'Ambre', 'michel4.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Louna.Roux','Roux', 'Louna', 'michel5.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Théo.Marchand18','Marchand', 'Théo', 'michel6.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Célia.Marchal15','Marchal', 'Célia', 'michel7.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Noa48','Lemoine', 'Noa', 'michel8.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Romain_Roussel21','Roussel', 'Romain', 'michel10.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Pauline9','Lefevre', 'Pauline', 'michel11.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Camille69','Dufour', 'Camille', 'michel31.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Antoine_Lecomte','Lecomte', 'Antoine', 'michel32.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Léo95','Roy', 'Léo', 'michel33.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Miche','Duponde', 'Michelle', 'michel34.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Michouuu','Dupond', 'Michel', 'michel35.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Clara21','Marie', 'Clara', 'michel36.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Yanis.Lemoine','Lemoine', 'Yanis', 'michel37.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Baptiste11','Dufour', 'Baptiste', 'michel38.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Jade.Louis68','Louis', 'Jade', 'michel39.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Pauline_Fernandez','Fernandez', 'Pauline', 'michel322.durand@gmail.com','ici une photo','sixOneNine','user','activé'),
+('Lena_Lefebvre','Lefebvre', 'Lena', 'michel422.durand@gmail.com','ici une photo','sixOneNine','admin','desactivé');
 
 
 INSERT INTO "lesson" ("title", "description","level", "teacher_id", "plannified", "status") VALUES
@@ -35,42 +52,47 @@ INSERT INTO "category" ("name", "color", "description", "status") VALUES
 ('Imitation', null, ' imitation',1),
 ('Nature', null,'bio',1);
 
-INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES 
+INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES
 (1,1),
 (2,1),
 (3,4),
 (4,4),
 (5,5);
 
-INSERT INTO "ask_has_category" ("ask_id", "category_id") VALUES 
+INSERT INTO "ask_has_category" ("ask_id", "category_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_subscribe_ask" ("ask_id", "user_id") VALUES 
+INSERT INTO "user_subscribe_ask" ("ask_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_has_lesson" ("user_id", "lesson_id") VALUES 
+INSERT INTO "user_has_lesson" ("user_id", "lesson_id") VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
+(6,6);
+(7,7);
+(8,8);
+(9,9);
+(10,10);
+
+INSERT INTO "user_subscribe_lesson" ("lesson_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),
 (4,4),
 (5,5);
 
-INSERT INTO "user_subscribe_lesson" ("lesson_id", "user_id") VALUES 
-(1,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5);
-
-INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES 
+INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES
 (1,1),
 (2,2),
 (3,3),
