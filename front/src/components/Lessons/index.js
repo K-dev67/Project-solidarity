@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 // == import component semantic
-import { Card, Image, Icon } from 'semantic-ui-react';
+import {
+  Segment, Card, Image, Icon,
+} from 'semantic-ui-react';
 
 // react Moment
 import Moment from 'react-moment';
@@ -14,11 +16,14 @@ import './styles.scss';
 
 const Lessons = () => {
   const lessons = useSelector((state) => state.lessons);
-  console.log('lessons', lessons);
+  const teachers = useSelector((state) => state.teachers);
+  // const teacher = teachers.filter((t) => t.id === lesson.teacher_id);
+  // console.log('teacher', teacher);
+  // console.log('lessons', lessons);
   // todo gerer la photo du prof avec lesson.teacher_id
   const lessonsJSX = lessons.map((lesson) => (
     <Card>
-      <Image src="{avataree}" wrapped ui={false} />
+      {/* <Image src="{avataree}" wrapped ui={false} /> */}
       <Card.Content>
         <Card.Header>{lesson.title}</Card.Header>
         <Card.Meta>
@@ -38,11 +43,13 @@ const Lessons = () => {
   ));
   return (
     <div className="lessons">
-      <Card.Group
-        itemsPerRow={3}
-        stackable
-      >{lessonsJSX}
-      </Card.Group>
+      <Segment>
+        <Card.Group
+          itemsPerRow={3}
+          stackable
+        >{lessonsJSX}
+        </Card.Group>
+      </Segment>
     </div>
   );
 };
