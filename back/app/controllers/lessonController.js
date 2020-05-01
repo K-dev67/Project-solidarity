@@ -261,6 +261,19 @@ const lessonController = {
             res.send(error);
         }
     },
+    showThisLesson: (req, res) => {
+        const lessonId = req.params.id;
+        dataMapper.getLesson(lessonId, (error, data) => { 
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            if (data.rowCount === 0) {
+                return res.send('Pas de cour');
+            }
+            res.send(data.rows[0]);
+        });
+    },
 };
 
 module.exports = lessonController;

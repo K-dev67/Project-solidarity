@@ -152,6 +152,64 @@ const dataMapper = {
         const query = 'SELECT * FROM "user" WHERE email = $1';
         const values = [info.email];
         db_connection.query(query, values, callback);
+    },
+    getLiveLessonList: (callback) => {
+        const query = `SELECT * FROM "lesson" WHERE "status" = 'live'`;
+        db_connection.query(query, callback);
+    },
+    getLesson: (lessonId, callback) => {
+        const query = `SELECT * FROM "lesson" WHERE "id" = $1`;
+        const values = [lessonId];
+        db_connection.query(query, values, callback);
+    },
+    getAllPlanedLesson: (callback) => {
+        const query = `SELECT * FROM "lesson" WHERE "status" = 'plannifié'`;
+        db_connection.query(query, callback);
+    },
+    subToLesson: (userId, lessonId, callback) => {
+        const query = 'INSERT INTO "user_subscribe_lesson" ("user_id", "lesson_id") VALUES ($1,$2)';
+        const values = [userId, lessonId];
+        db_connection.query(query, values, callback);
+    },
+    checkSubLesson: (userId, lessonId, callback) => {
+        const query = 'SELECT * FROM "user_subscribe_lesson" WHERE "user_id" = $1 AND "lesson_id" = $2';
+        const values = [userId, lessonId];
+        db_connection.query(query, values, callback);
+    },
+    checkSubAsk: (userId, askId, callback) => {
+        const query = 'SELECT * FROM "user_subscribe_ask" WHERE "user_id" = $1 AND "ask_id" = $2';
+        const values = [userId, askId];
+        db_connection.query(query, values, callback);
+    },
+    subToAsk: (userId, askId, callback) => {
+        const query = 'INSERT INTO "user_subscribe_ask" ("user_id", "ask_id") VALUES ($1,$2)';
+        const values = [userId, askId];
+        db_connection.query(query, values, callback);
+    },
+    unsubToLesson: (userId, lessonId, callback) => {
+        const query = 'DELETE FROM "user_subscribe_lesson" * WHERE "user_id" = $1 AND "lesson_id" = $2';
+        const values = [userId, lessonId];
+        db_connection.query(query, values, callback);
+    },
+    unsubToAsk: (userId, askId, callback) => {
+        const query = 'DELETE FROM "user_subscribe_ask" * WHERE "user_id" = $1 AND "ask_id" = $2';
+        const values = [userId, askId];
+        db_connection.query(query, values, callback);
+    },
+    deleteOneLike: (askId, callback) => {
+        const query = `UPDATE "ask" SET "want_it" = "want_it"-1 WHERE "id" = $1`
+        const values = [askId];
+        db_connection.query(query, values, callback);
+    },
+    addOneLike: (askId, callback) => {
+        const query = `UPDATE "ask" SET "want_it" = "want_it"+1 WHERE "id" = $1`
+        const values = [askId];
+        db_connection.query(query, values, callback);
+    },
+    getOnlyAskId: (askId, callback) => {
+        const query = `SELECT * FROM "ask" WHERE "id" = $1`;
+        const values = [askId];
+        db_connection.query(query, values, callback);
     }
 };
 
