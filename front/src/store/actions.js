@@ -32,6 +32,8 @@ export const enterHomePage = (history) => ({ type: ENTER_HOME_PAGE, history });
 
 // == Set all teachers
 export const SET_TEACHERS = 'actions/SET_TEACHERS';
+// == set all lessons
+export const SET_LESSONS = 'actions/SET_LESSONS';
 
 // // == update profil user
 export const UPDATE_USER = 'actions/UPDATE_USER';

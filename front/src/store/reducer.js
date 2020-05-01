@@ -15,6 +15,7 @@ import {
   SET_TEACHERS,
   UPDATE_USER,
   SET_USER_ID,
+  SET_LESSONS,
 } from './actions';
 import store from '.';
 
@@ -34,6 +35,7 @@ const initialState = {
   user: {},
   userId: '',
   teachers: {},
+  lessons: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -120,6 +122,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         teachers: action.payload,
+      };
+    }
+    // == set lessons
+    case SET_LESSONS: {
+      return {
+        ...state,
+        lessons: action.payload,
       };
     }
     // == update user
