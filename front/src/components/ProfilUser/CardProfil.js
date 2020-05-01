@@ -23,7 +23,7 @@ const CardProfil = () => {
   const {
     firstname, lastname, nickname, avatar, email, created_at,
   } = user;
-  const avataree = `https://robohash.org/${nickname}`;
+  const avataree = `https://robohash.org/${email}`;
   return (
     <div className="profilUser">
       <Card>

@@ -12,7 +12,7 @@ const listTeachers = () => {
       key={teacher.id}
     >
       <Image
-        src={urlAvataree + teacher.nickname}
+        src={urlAvataree + teacher.email}
         wrapped
         ui={false}
       />
