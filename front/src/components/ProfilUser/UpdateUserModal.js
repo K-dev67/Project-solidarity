@@ -8,7 +8,8 @@ import FormUpdateUser from './FormUpdateUser';
 
 
 const ModalExampleCloseIcon = () => (
-  <Modal trigger={<Button><Icon name="pencil" size="large" corner="right" /></Button>} closeIcon>
+  // eslint-disable-next-line react/jsx-boolean-value
+  <Modal trigger={<Button><Icon name="pencil" size="large" corner="right" /></Button>} closeIcon closeOnDocumentClick={true}>
     <Header icon="pencil" content="Modifier votre profil" />
     <Modal.Content>
       <FormUpdateUser />
