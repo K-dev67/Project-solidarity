@@ -88,6 +88,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         user: action.user,
+        username: action.user.nickname,
+        firstname: action.user.firstname,
+        lastname: action.user.lastname,
+        mail: action.user.email,
+        password: '',
       };
     }
     // == si auth non ok
