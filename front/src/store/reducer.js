@@ -14,7 +14,9 @@ import {
   // GET_TEACHERS,
   SET_TEACHERS,
   UPDATE_USER,
+  SET_USER_ID,
 } from './actions';
+import store from '.';
 
 
 const initialState = {
@@ -30,6 +32,7 @@ const initialState = {
   // == error authentification
   errorAuth: '',
   user: {},
+  userId: '',
   teachers: {},
 };
 
@@ -99,6 +102,12 @@ export default (state = initialState, action = {}) => {
         password: '',
       };
     }
+    case SET_USER_ID: {
+      return {
+        ...state,
+        userId: action.payload,
+      };
+    }
     // == si auth non ok
     case SET_ERROR_AUTH: {
       return {
@@ -115,7 +124,7 @@ export default (state = initialState, action = {}) => {
     }
     // == update user
     case UPDATE_USER: {
-      const userId = state.user.id;
+      const { userId } = state;
       axios.patch(
         `${API_URL}/profiluser/${userId}`, {
           // gros objet avec les input de mon store
@@ -128,7 +137,8 @@ export default (state = initialState, action = {}) => {
           avatar: 'avatar',
         },
       ).then((res) => {
-        console.log(res.data);
+        console.log('response in UPDATEUSER', res.data);
+        store.dispatch({ type: SET_USER, user: res.data });
       });
     }
     default: {

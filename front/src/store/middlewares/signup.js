@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-import { SET_FORM, RESET, enterLoginPage } from 'src/store/actions';
+import {
+  SET_FORM, RESET, enterLoginPage,
+} from 'src/store/actions';
 
 export default (store) => (next) => (action) => {
   console.log('MW signup');
@@ -23,7 +25,7 @@ export default (store) => (next) => (action) => {
           store.dispatch(enterLoginPage(action.history));
         })
         .catch((error) => console.log('errorSIGNUP', error));
-        // store.dispatch(enterLoginPage(action.history))
+
       return;
     }
     default: {

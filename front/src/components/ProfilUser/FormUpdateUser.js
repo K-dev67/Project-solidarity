@@ -19,12 +19,8 @@ import {
   UPDATE_USER,
 } from 'src/store/actions';
 
-
-import { Button, Form } from 'semantic-ui-react';
-// == utils request bdd
-import updateProfilUser from '../../utils/updateProfilUser';
-
 // == semantic form
+import { Button, Form } from 'semantic-ui-react';
 
 // == style
 import './styles.scss';

@@ -5,6 +5,7 @@ import {
   enterHomePage,
   SET_ERROR_AUTH,
   SET_USER,
+  SET_USER_ID,
 } from 'src/store/actions';
 
 import { API_URL } from '../../utils/constante';
@@ -25,6 +26,7 @@ export default (store) => (next) => (action) => {
           const user = res.data;
           console.log('user', user);
           store.dispatch({ type: SET_USER, user });
+          store.dispatch({ type: SET_USER_ID, payload: user.id });
           store.dispatch(enterHomePage(action.history));
         })
         .catch((error) => {
