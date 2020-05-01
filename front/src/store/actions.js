@@ -29,6 +29,5 @@ export const ENTER_HOME_PAGE = 'actions/ENTER_HOME_PAGE';
 export const login = (history) => ({ type: LOGIN, history });
 export const enterHomePage = (history) => ({ type: ENTER_HOME_PAGE, history });
 
-// == get all teachers
-export const GET_TEACHERS = 'actions/GET_TEACHERS';
-export const SET_TEACHERS = 'actions/GET_TEACHERS';
+// == Set all teachers
+export const SET_TEACHERS = 'actions/SET_TEACHERS';

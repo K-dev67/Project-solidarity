@@ -1,20 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
+
+// == import component
+import ListTeachers from './teachersCard';
 
 // == style
 import './styles.scss';
 
 
-const Teachers = () => {
-  const teachers = useSelector((state) => state.teachers);
-  console.log('teachers', teachers);
-
-  return (
-    <div className="teachers">
-      <h1>teachers</h1>
+const Teachers = () => (
+  <div className="teachers">
+    <h1>Liste de nos Professeurs
+    </h1>
+    <div className="container-list-teachers">
+      <ListTeachers />
     </div>
-  );
-};
+  </div>
+);
 
 
 export default Teachers;

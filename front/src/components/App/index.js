@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 // == import Router
@@ -7,6 +7,10 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 // import {
 //   BrowserRouter as Switch, Route, Redirect,
 // } from 'react-router-dom';
+
+// == actions
+// import { GET_TEACHERS } from '../../store/actions';
+import getTeachers from '../../utils/getTeachers';
 
 
 // == Import Component
@@ -24,6 +28,8 @@ import './styles.scss';
 
 // == Composant
 const App = () => {
+  useEffect(getTeachers, []);
+
   const user = useSelector((state) => state.user);
   console.log('user.mail', user.email);
 
