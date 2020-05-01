@@ -7,12 +7,15 @@ import {
   SET_USER,
 } from 'src/store/actions';
 
+import { API_URL } from '../../utils/constante';
+
+
 export default (store) => (next) => (action) => {
   console.log('MW auth');
   switch (action.type) {
     case LOGIN: {
       axios
-        .post('http://localhost:8888/login', {
+        .post(`${API_URL}/login`, {
           email: store.getState().mail,
           password: store.getState().password,
         }, {

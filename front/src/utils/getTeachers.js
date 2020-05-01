@@ -1,10 +1,12 @@
 import axios from 'axios';
 import store from '../store/index';
 
+import { API_URL } from './constante';
+
 // == actions
 import { SET_TEACHERS } from '../store/actions';
 
-const teachersRequest = 'http://localhost:8888/teacherList';
+const teachersRequest = `${API_URL}/teacherList`;
 
 const getTeachers = (url = teachersRequest) => {
   const promise = axios.get(
