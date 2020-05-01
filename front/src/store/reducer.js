@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { API_URL } from '../utils/constante';
 import {
   SET_INPUT_NAV,
   SYNC_USERNAME,
@@ -11,7 +13,9 @@ import {
   SET_ERROR_AUTH, // pour error auth
   // GET_TEACHERS,
   SET_TEACHERS,
+  UPDATE_USER,
 } from './actions';
+
 
 const initialState = {
   // == input du menu
@@ -108,6 +112,24 @@ export default (state = initialState, action = {}) => {
         ...state,
         teachers: action.payload,
       };
+    }
+    // == update user
+    case UPDATE_USER: {
+      const userId = state.user.id;
+      axios.patch(
+        `${API_URL}/profiluser/${userId}`, {
+          // gros objet avec les input de mon store
+          nickname: state.username,
+          firstname: state.firstname,
+          lastname: state.lastname,
+          email: state.mail,
+          password: state.password,
+          confirmpassword: state.passwordConfirmation,
+          avatar: 'avatar',
+        },
+      ).then((res) => {
+        console.log(res.data);
+      });
     }
     default: {
       return state;

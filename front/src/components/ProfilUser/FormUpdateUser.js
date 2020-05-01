@@ -15,8 +15,8 @@ import {
   SYNC_LASTNAME,
   SYNC_MAIL,
   SYNC_PASSWORD,
-  //   SYNC_PASSWORD_CONFIRMATION,
-  signup,
+  SYNC_PASSWORD_CONFIRMATION,
+  UPDATE_USER,
 } from 'src/store/actions';
 
 
@@ -38,7 +38,7 @@ const FormUpdateUser = () => {
     lastname,
     mail,
     password,
-    // passwordConfirmation,
+    passwordConfirmation,
     user,
   } = useSelector((state) => state);
 
@@ -76,16 +76,16 @@ const FormUpdateUser = () => {
       // dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
     }
     // // - mot de passe = confirmation
-    // if (password !== passwordConfirmation) {
-    //   errorsList.push(
-    //     'Le mot de passe et la confirmation ne correspondent pas',
-    //   );
-    //   // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
-    // }
+    if (password !== passwordConfirmation) {
+      errorsList.push(
+        'Le mot de passe et la confirmation ne correspondent pas',
+      );
+      // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
+    }
     console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
     //   dispatch(signup(history));
-      updateProfilUser();
+      dispatch({ type: UPDATE_USER });
     }
   };
   // == Fin handleSubmit ---------------
@@ -161,7 +161,7 @@ const FormUpdateUser = () => {
           }}
           value={password}
         />
-        {/* <Form.Input
+        <Form.Input
       // error={errorPasswordConfirmation}
       // fluid
           type="password"
@@ -172,7 +172,7 @@ const FormUpdateUser = () => {
             dispatch({ type: SYNC_PASSWORD_CONFIRMATION, payload: evt.target.value });
           }}
           value={passwordConfirmation}
-        /> */}
+        />
         {/* <Form.Field>
     <Checkbox label="I agree to the Terms and Conditions" />
   </Form.Field> */}
