@@ -88,6 +88,8 @@ const userController = {
                                     //errorsList.push("L avatar ne peut pas etre vide");
                                     info.avatar = 'No avatar'
                                 }
+                                //* à voir avec KEVIN ------
+                                //* si on enleve pas un password confirmation
                                 if (info.password !== info.confirmpassword ){
                                     errorsList.push("Le mot de passe et la confirmation ne correspondent pas")
                                 }
@@ -129,7 +131,8 @@ const userController = {
                                                     console.log("email envoyé")
                                                 }
                                                 if (data.rowCount === 1) {
-                                                    return res.send("Vos modifications on bien était enregistrer");
+                                                    // return res.send("Vos modifications ont bien été enregistrées");
+                                                    return res.send(updateUser);
                                                 }
                                             });
                                 } else {
