@@ -2,9 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// == actions
-// import { GET_TEACHERS } from '../../store/actions';
-import getTeachers from '../../utils/getTeachers';
+
 
 // == style
 import './styles.scss';
