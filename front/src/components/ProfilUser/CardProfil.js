@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 // react Moment
 import Moment from 'react-moment';
+import 'moment/locale/fr';
 
 // component semanthic
 import { Card, Icon, Image } from 'semantic-ui-react';
@@ -27,7 +28,7 @@ const CardProfil = () => {
         <Card.Content>
           <Card.Header>{nickname}</Card.Header>
           <Card.Meta>
-            <span className="date">a rejoint la plateforme il y a <Moment fromNow ago>{created_at}</Moment> </span>
+            <span className="date">a rejoint la plateforme il y a <Moment locale="fr" fromNow ago>{created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
             {firstname} {lastname} est un musicien vivant à Paris.
