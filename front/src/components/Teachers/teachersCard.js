@@ -2,12 +2,23 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Icon, Image } from 'semantic-ui-react';
 
+// == import fausse image
+import christian from './christian.jpg';
+import avatarImg from './avatar.png';
+
+
 const listTeachers = () => {
   const teachers = useSelector((state) => state.teachers);
   console.log('teachers', teachers);
   const listTeachersJSX = teachers.map((teacher) => (
-    <Card>
-      <Image src="/images/avatar/large/matthew.png" wrapped ui={false} />
+    <Card
+      key={teacher.id}
+    >
+      <Image
+        src={avatarImg}
+        wrapped
+        ui={false}
+      />
       <Card.Content>
         <Card.Header>Matthew</Card.Header>
         <Card.Meta>
@@ -18,15 +29,15 @@ const listTeachers = () => {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <a>
+        {/* <a>
           <Icon name="user" />
           22 Friends
-        </a>
+        </a> */}
       </Card.Content>
     </Card>
   ));
   return (
-    <div>{listTeachersJSX}</div>
+    <>{listTeachersJSX}</>
   );
 };
 
