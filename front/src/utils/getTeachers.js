@@ -12,7 +12,6 @@ const getTeachers = (url = teachersRequest) => {
   );
   promise.then((res) => {
     const teachers = res.data;
-    console.log('teachers', teachers);
     store.dispatch({ type: SET_TEACHERS, payload: teachers });
   });
 };

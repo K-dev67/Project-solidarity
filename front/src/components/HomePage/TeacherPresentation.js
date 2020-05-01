@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // == actions
 // import { GET_TEACHERS } from '../../store/actions';
-import getTeachers from '../../utils/axios';
+import getTeachers from '../../utils/getTeachers';
 
 // == style
 import './styles.scss';
@@ -21,9 +21,10 @@ const TeacherPresentation = () => {
     </div>
   ));
 
-  const handleClick = () => {
-    getTeachers();
-  };
+  //   const handleClick = () => {
+  //     useEffect(getTeachers, []);
+  //     getTeachers();
+  //   };
 
   return (
     <div className="TeacherPresentation_main">
@@ -35,7 +36,7 @@ const TeacherPresentation = () => {
         <button
           className="button AssetsPresentation_button"
           type="button"
-          onClick={handleClick}
+        //   onClick={handleClick}
         >Voir la liste des profs
         </button>
       </Link>
