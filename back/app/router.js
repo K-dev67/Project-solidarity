@@ -12,7 +12,6 @@ const liveController = require('./controllers/liveController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
-router.get('/homePage', homeController.homePage);
 
 // LES ROUTES DE CONNECTION 
 router.get('/signup', authController.signupPage);
@@ -22,6 +21,7 @@ router.post('/login', authController.loginAction);
 router.get('/activation/user/:email', authController.activation);
 
 // LES ROUTES D'AFFICHAGE
+router.get('/homePage', homeController.homePage);
 router.get('/teacherList', homeController.showTeacher);
 router.get('/lessonList', homeController.showLesson);
 router.post('/lessonList', homeController.showLessonByCategory);
@@ -46,10 +46,18 @@ router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAs
 // lES ROUTES CONCERNANT LE LIVE
 router.get('/liveLesson', liveController.showAllLiveLesson);
 router.get('/liveLesson/:id', liveController.showThisLiveLesson);
+router.get('/calendar', liveController.showCalendar);
+router.get('/user/:id/lesson/:Id/subscribe', liveController.subscribeLesson);
+router.delete('/user/:id/lesson/:Id/subscribe', liveController.unsubLesson);
+router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
+router.delete('/user/:id/ask/:Id/subscribe', liveController.unsubAsk);
+
 
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
 router.patch('/profiluser/:id', userController.changeProfile);
+
+
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
 
