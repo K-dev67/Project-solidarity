@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { useDispatch, useSelector } from 'react-redux';
 
 // == pour gérer ma "route" au submit du form
@@ -16,12 +15,16 @@ import {
   SYNC_LASTNAME,
   SYNC_MAIL,
   SYNC_PASSWORD,
-  SYNC_PASSWORD_CONFIRMATION,
+  //   SYNC_PASSWORD_CONFIRMATION,
   signup,
 } from 'src/store/actions';
 
-// == semantic form
+
 import { Button, Form } from 'semantic-ui-react';
+// == utils request bdd
+import updateProfilUser from '../../utils/updateProfilUser';
+
+// == semantic form
 
 // == style
 import './styles.scss';
@@ -35,13 +38,13 @@ const FormUpdateUser = () => {
     lastname,
     mail,
     password,
-    passwordConfirmation,
+    // passwordConfirmation,
     user,
   } = useSelector((state) => state);
 
   console.log('user', user);
   // == history
-  const history = useHistory();
+  //   const history = useHistory();
   //! == traitement des erreurs en front
   const errorsList = [];
   // == handleSubmit ---------------
@@ -72,16 +75,17 @@ const FormUpdateUser = () => {
       );
       // dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
     }
-    // - mot de passe = confirmation
-    if (password !== passwordConfirmation) {
-      errorsList.push(
-        'Le mot de passe et la confirmation ne correspondent pas',
-      );
-      // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
-    }
+    // // - mot de passe = confirmation
+    // if (password !== passwordConfirmation) {
+    //   errorsList.push(
+    //     'Le mot de passe et la confirmation ne correspondent pas',
+    //   );
+    //   // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
+    // }
     console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
-      dispatch(signup(history));
+    //   dispatch(signup(history));
+      updateProfilUser();
     }
   };
   // == Fin handleSubmit ---------------
@@ -157,7 +161,7 @@ const FormUpdateUser = () => {
           }}
           value={password}
         />
-        <Form.Input
+        {/* <Form.Input
       // error={errorPasswordConfirmation}
       // fluid
           type="password"
@@ -168,7 +172,7 @@ const FormUpdateUser = () => {
             dispatch({ type: SYNC_PASSWORD_CONFIRMATION, payload: evt.target.value });
           }}
           value={passwordConfirmation}
-        />
+        /> */}
         {/* <Form.Field>
     <Checkbox label="I agree to the Terms and Conditions" />
   </Form.Field> */}
