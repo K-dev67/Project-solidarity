@@ -17,12 +17,14 @@ import './styles.scss';
 const Lessons = () => {
   const lessons = useSelector((state) => state.lessons);
   const teachers = useSelector((state) => state.teachers);
+  let teacher;
   // const teacher = teachers.filter((t) => t.id === lesson.teacher_id);
   // console.log('teacher', teacher);
   // console.log('lessons', lessons);
   // todo gerer la photo du prof avec lesson.teacher_id
   const lessonsJSX = lessons.map((lesson) => (
     <Card>
+      { (teachers.filter((t) => t.id === lesson.teacher_id)).firstname }
       {/* <Image src="{avataree}" wrapped ui={false} /> */}
       <Card.Content>
         <Card.Header>{lesson.title}</Card.Header>

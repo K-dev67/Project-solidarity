@@ -12,7 +12,7 @@ const listTeachers = () => {
       key={teacher.id}
     >
       <Image
-        src={urlAvataree + teacher.email}
+        src={urlAvataree + teacher.nickname}
         wrapped
         ui={false}
       />
@@ -30,6 +30,7 @@ const listTeachers = () => {
           <Icon name="user" />
           22 Friends
         </a> */}
+        {teacher.email}
       </Card.Content>
     </Card>
   ));

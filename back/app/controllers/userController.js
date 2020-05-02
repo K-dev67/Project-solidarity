@@ -132,11 +132,6 @@ const userController = {
                                                 }
                                                 if (data.rowCount === 1) {
                                                     // return res.send("Vos modifications ont bien été enregistrées");
-                                                    // petit pb à fixer ac kevin ici je ne recup pas de id
-                                                    // car je renvoi seulement updateUser en response => normal
-                                                    // mais je veux mon id en response
-                                                    // en fait j'aimerais le retour de la bdd c'est à dire
-                                                    // tout l'objet du user updaté
                                                     return res.send(updateUser);
                                                 }
                                             });
