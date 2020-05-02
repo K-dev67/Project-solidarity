@@ -214,6 +214,21 @@ const dataMapper = {
         const query = `SELECT * FROM "ask" WHERE "id" = $1`;
         const values = [askId];
         db_connection.query(query, values, callback);
+    },
+    saveEmailPassPhrase: (email, passPhrase, callback) => {
+        const query = 'INSERT INTO "passphrase_check_email" ("email", "passPhrase") VALUES($1, $2)';
+        const values = [email, passPhrase];
+        db_connection.query(query, values, callback);
+    },
+    checkEmailPassphrase: (email, passphrase, callback) => {
+        const query = 'SELECT * FROM "passphrase_check_email" WHERE "email" = $1 AND "passPhrase" = $2';
+        const values = [email, passphrase];
+        db_connection.query(query, values, callback);
+    },
+    newPassword: (email, newpassword, callback) => {
+        const query = 'UPDATE "user" SET "password" = $2 WHERE "email" = $1;';
+        const values = [email, newpassword];
+        db_connection.query(query, values, callback);
     }
 };
 
