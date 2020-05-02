@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // == import component semantic
 import {
@@ -17,17 +18,17 @@ import './styles.scss';
 const Lessons = () => {
   const lessons = useSelector((state) => state.lessons);
   const teachers = useSelector((state) => state.teachers);
-  let teacher;
+  // let teacher;
   // const teacher = teachers.filter((t) => t.id === lesson.teacher_id);
   // console.log('teacher', teacher);
   // console.log('lessons', lessons);
   // todo gerer la photo du prof avec lesson.teacher_id
   const lessonsJSX = lessons.map((lesson) => (
+    // lessons/${lesson.id}
     <Card>
-      { (teachers.filter((t) => t.id === lesson.teacher_id)).firstname }
       {/* <Image src="{avataree}" wrapped ui={false} /> */}
       <Card.Content>
-        <Card.Header>{lesson.title}</Card.Header>
+        <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
         <Card.Meta>
           <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
         </Card.Meta>
@@ -43,6 +44,7 @@ const Lessons = () => {
       </Card.Content>
     </Card>
   ));
+
   return (
     <div className="lessons">
       <Segment>
