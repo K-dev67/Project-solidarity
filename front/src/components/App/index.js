@@ -20,6 +20,7 @@ import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
 import Lesson from '../Lesson';
+import Loading from '../Loading';
 
 // == Import style
 import './styles.scss';
@@ -35,7 +36,11 @@ const App = () => {
   const LessonComponent = () => {
     if (!lessons) {
       // on peut ajouter une condition d'attente
-      return null;
+      return <Loading />;
+      // return null;
+    }
+    if (user.email === undefined) {
+      return <Redirect to="/login" />;
     }
     return lessons.map((lesson) => (
       <Route
