@@ -24,11 +24,26 @@ INSERT INTO "user" ("nickname", "firstname", "lastname", "email", "avatar", "pas
 
 
 INSERT INTO "lesson" ("title", "description","level", "teacher_id", "plannified", "status") VALUES
-('La physique Chimie pour les Nul','Une introduction a la physique-chimie','easy',1,null,'finis'),
-('La physique Chimie pour les Novice','1er chapitre de physique-chimie','normal',1,null,'commencé'),
-('La physique Chimie pour les Pratiquant','On commence vraiement physique-chimie','expert',4,null,'plannifié'),
-('La physique Chimie pour les Pro','Un cours avancé de physique-chimie','hard',4,null,'plannifié'),
-('La physique Chimie pour les petits Enstein','Haut niveau de physique-chimie', 'hard',5,null,'supprimé');
+('La physique Chimie pour les Nuls','Une introduction a la physique-chimie','easy',1,null,'finis'),
+('La physique Chimie pour les Novices','1er chapitre de physique-chimie','normal',3,null,'commencé'),
+('La physique Chimie pour les Pratiquant','On commence vraiment physique-chimie','expert',10,null,'plannifié'),
+('Le JS pour les Pro','Un cours avancé de physique-chimie','easy',11,null,'plannifié'),
+('Les mathematiques analyse complexe','Un cours avancé de mathématique complexe','hard',12,null,'plannifié'),
+('Pragmatique du discours','Un cours de Pragmatique','normal',13,null,'plannifié'),
+('La physique Chimie pour les novices','Un cours avancé de physique-chimie','easy',14,null,'commencé'),
+('La pragmatique pour les Pro','Un cours avancé de Pragmatique','hard',15,null,'plannifié'),
+('La gymnastique pour les Pro','Un cours avancé de gymnastique accrobatique','hard',16,null,'commencé'),
+('La Bio Chimie pour les Nuls','Une introduction a la physique-chimie','easy',1,null,'finis'),
+('La physique cellulaire pour les pros','1er chapitre de physique-cellulaire','normal',9,null,'finis'),
+('La physique Chimie pour les experts','On commence vraiment physique-chimie','hard',10,null,'commencé'),
+('Le HTML pour les Pro','Un cours avancé de HTML','easy',16,null,'plannifié'),
+('Les mathematiques au coeur de notre système sanguin','Un cours débutant de math','easy',17,null,'plannifié'),
+('Pragmatique de la parole','Un cours de parole','normal',17,null,'plannifié'),
+('La physique Chimie pour les experts en bio-dynamique','Un cours très avancé de physique-chimie','hard',18,null,'commencé'),
+('La géographie pour les Pro','Un cours avancé de géographie','hard',18,null,'plannifié'),
+('Espagnol pour les Pro','Un cours avancé de langue espagnol','hard',18,null,'commencé'),
+('La biométrie pour les petits Enstein','Haut niveau de physique-chimie', 'hard',5,null,'supprimé');
+('La mécanique quantique pour les petits Enstein','Haut niveau de physique', 'hard',5,null,'supprimé');
 
 INSERT INTO "ask" ("title", "description", "author_id","want_it", "level", "status") VALUES
 ('Par quoi commencer?','Quand on debute',1,1,'easy','actif'),
@@ -50,6 +65,21 @@ INSERT INTO "category" ("name", "color", "description", "status") VALUES
 ('Chimie', null,'un cour de chimie',1),
 ('Anglais', null,'des cours en anglais',1),
 ('Imitation', null, ' imitation',1),
+('Pragmatique', null,'des cours de Pragmatique',1),
+('Histoire', null,'des cours d histoire',1),
+('JavaScript', null,'des cours de JavaScript',1),
+('Mathématiques', null,'des cours de mathématiques',1),
+('Biologie', null,'des cours de Biologie',1),
+('Analyse Complexe', null,'des cours de math',1),
+('Algèbre', null,'des cours d algèbre',1),
+('Bio-chimie', null,'des cours de Bio-chimie',1),
+('Espagnol', null,'des cours en espagnol',1),
+('Allemand', null,'des cours en Allemand',1),
+('Magie', null,'des cours de Magie',1),
+('Poterie', null,'des cours de Poterie',1),
+('Economie', null,'des cours d économie',1),
+('Yoga', null,'des cours de yoga',1),
+('Philosophie', null,'des cours de Philosophie',1),
 ('Nature', null,'bio',1);
 
 INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES
@@ -79,11 +109,7 @@ INSERT INTO "user_has_lesson" ("user_id", "lesson_id") VALUES
 (3,3),
 (4,4),
 (5,5);
-(6,6);
-(7,7);
-(8,8);
-(9,9);
-(10,10);
+
 
 INSERT INTO "user_subscribe_lesson" ("lesson_id", "user_id") VALUES
 (1,1),
