@@ -13,6 +13,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import getTeachers from '../../utils/getTeachers';
 import getLessons from '../../utils/getLessons';
 
+
 // == Import Component
 import Nav from '../Nav';
 import Footer from '../Footer';
@@ -22,17 +23,51 @@ import Login from '../Login';
 import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
+import Lesson from '../Lesson';
 
 // == Import style
 import './styles.scss';
 
 // == Composant
 const App = () => {
+  // getLessons();
+  const user = useSelector((state) => state.user);
+  const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
+  // let routeLessonJSX = '';
+  // if (lessons === undefined) {
+  //   routeLessonJSX = null;
+  // }
+  // else {
+  //   routeLessonJSX = (
+  //     lessons.map((lesson) => (
+  //       <Route
+  //         key={lesson.id}
+  //         exact
+  //         path={`lessons/${lesson.id}`}
+  //       >
+  //         <Lesson {...lesson} />
+  //       </Route>
+  //     ))
+  //   );
+  // }
+  const LessonComponent = () => {
+    if (!lessons) {
+      return null;
+    }
+    return lessons.map((lesson) => (
+      <Route
+        key={lesson.id}
+        exact
+        path={`/lessons/${lesson.id}`}
+      >
+        <Lesson lesson={lesson} />
+      </Route>
+    ));
+  };
 
-  const user = useSelector((state) => state.user);
-  console.log('user.mail', user.email);
+  console.log('lessons in App', lessons);
 
   return (
     <div className="app">
@@ -77,6 +112,7 @@ const App = () => {
             return <Teachers />;
           }}
         />
+        <LessonComponent />
         <Route>404</Route>
       </Switch>
       <Footer />

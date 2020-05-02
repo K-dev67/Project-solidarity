@@ -8,10 +8,12 @@ import { Provider } from 'react-redux';
 // == Router
 import { BrowserRouter as Router } from 'react-router-dom';
 
+
 // == Import : local
 // Composants
 import App from 'src/components/App';
 import store from 'src/store';
+
 
 // == Import Semantic UI React
 import 'semantic-ui-css/semantic.min.css';
