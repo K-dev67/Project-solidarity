@@ -4,29 +4,25 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const TopLessonsPresentation = () => {
-
-    const TopCours = fauxCours.map((cour) => {
-        return (
-            <div key={cour.id} className="TopLessonsPresentation_Card">
-                <img src={cour.teacher_avatar}></img>
-                <h4>{cour.teacher_id}</h4>
-                <p>{cour.description} </p>
-            </div>
-        )
-    })
-    return (
-        <div className="TopLessonsContainer">
-            <h2>Cours les mieux notés</h2>
-            <div className="TopLessonsPresentation_container">
-                <div className="TopLessonsPresentation_container_card"></div>
-                {TopCours}
-            </div>
-            <Link to="/lescours">
-                <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
-            </Link>
-        </div>
-    );
-
+  const TopCours = fauxCours.map((cour) => (
+    <div key={cour.id} className="TopLessonsPresentation_Card">
+      <img src={cour.teacher_avatar} />
+      <h4>{cour.teacher_id}</h4>
+      <p>{cour.description} </p>
+    </div>
+  ));
+  return (
+    <div className="TopLessonsContainer">
+      <h2>Cours les mieux notés</h2>
+      <div className="TopLessonsPresentation_container">
+        <div className="TopLessonsPresentation_container_card" />
+        {TopCours}
+      </div>
+      <Link to="/lessons">
+        <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+      </Link>
+    </div>
+  );
 };
 
 // "title", "description","level", "teacher_id", "plannified", "status"

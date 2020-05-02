@@ -12,6 +12,7 @@ export const RESET = 'actions/RESET';
 
 // == une fois la réponse ok de la bdd => reponse 200
 export const SET_USER = 'actions/SET_USER';
+export const SET_USER_ID = 'actions/SET_USER_ID';
 // == if error authentification => response 401 de mon server
 export const SET_ERROR_AUTH = 'actions/SET_ERROR_AUTH';
 
@@ -31,3 +32,8 @@ export const enterHomePage = (history) => ({ type: ENTER_HOME_PAGE, history });
 
 // == Set all teachers
 export const SET_TEACHERS = 'actions/SET_TEACHERS';
+// == set all lessons
+export const SET_LESSONS = 'actions/SET_LESSONS';
+
+// // == update profil user
+export const UPDATE_USER = 'actions/UPDATE_USER';

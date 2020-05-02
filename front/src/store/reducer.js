@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { API_URL } from '../utils/constante';
 import {
   SET_INPUT_NAV,
   SYNC_USERNAME,
@@ -11,7 +13,12 @@ import {
   SET_ERROR_AUTH, // pour error auth
   // GET_TEACHERS,
   SET_TEACHERS,
+  UPDATE_USER,
+  SET_USER_ID,
+  SET_LESSONS,
 } from './actions';
+import store from '.';
+
 
 const initialState = {
   // == input du menu
@@ -26,7 +33,9 @@ const initialState = {
   // == error authentification
   errorAuth: '',
   user: {},
+  userId: '',
   teachers: {},
+  lessons: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -88,6 +97,17 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         user: action.user,
+        username: action.user.nickname,
+        firstname: action.user.firstname,
+        lastname: action.user.lastname,
+        mail: action.user.email,
+        password: '',
+      };
+    }
+    case SET_USER_ID: {
+      return {
+        ...state,
+        userId: action.payload,
       };
     }
     // == si auth non ok
@@ -103,6 +123,32 @@ export default (state = initialState, action = {}) => {
         ...state,
         teachers: action.payload,
       };
+    }
+    // == set lessons
+    case SET_LESSONS: {
+      return {
+        ...state,
+        lessons: action.payload,
+      };
+    }
+    // == update user
+    case UPDATE_USER: {
+      const { userId } = state;
+      axios.patch(
+        `${API_URL}/profiluser/${userId}`, {
+          // gros objet avec les input de mon store
+          nickname: state.username,
+          firstname: state.firstname,
+          lastname: state.lastname,
+          email: state.mail,
+          password: state.password,
+          confirmpassword: state.passwordConfirmation,
+          avatar: 'avatar',
+        },
+      ).then((res) => {
+        console.log('response in UPDATEUSER', res.data);
+        store.dispatch({ type: SET_USER, user: res.data });
+      });
     }
     default: {
       return state;

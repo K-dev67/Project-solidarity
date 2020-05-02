@@ -2,19 +2,27 @@ import React from 'react';
 
 
 // == import component
+import { Segment, Card } from 'semantic-ui-react';
 import ListTeachers from './teachersCard';
 
+
+// == import semanthic
 // == style
 import './styles.scss';
 
 
 const Teachers = () => (
   <div className="teachers">
-    <h1>Liste de nos Professeurs
-    </h1>
-    <div className="container-list-teachers">
-      <ListTeachers />
-    </div>
+    <h2>Liste de nos Professeurs
+    </h2>
+    <Segment>
+      <Card.Group
+        itemsPerRow={3}
+        stackable
+      >
+        <ListTeachers />
+      </Card.Group>
+    </Segment>
   </div>
 );
 

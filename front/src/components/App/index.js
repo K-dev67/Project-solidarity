@@ -11,7 +11,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 // == actions
 // import { GET_TEACHERS } from '../../store/actions';
 import getTeachers from '../../utils/getTeachers';
-
+import getLessons from '../../utils/getLessons';
 
 // == Import Component
 import Nav from '../Nav';
@@ -29,6 +29,7 @@ import './styles.scss';
 // == Composant
 const App = () => {
   useEffect(getTeachers, []);
+  useEffect(getLessons, []);
 
   const user = useSelector((state) => state.user);
   console.log('user.mail', user.email);

@@ -5,14 +5,18 @@ import {
   enterHomePage,
   SET_ERROR_AUTH,
   SET_USER,
+  SET_USER_ID,
 } from 'src/store/actions';
+
+import { API_URL } from '../../utils/constante';
+
 
 export default (store) => (next) => (action) => {
   console.log('MW auth');
   switch (action.type) {
     case LOGIN: {
       axios
-        .post('http://localhost:8888/login', {
+        .post(`${API_URL}/login`, {
           email: store.getState().mail,
           password: store.getState().password,
         }, {
@@ -22,6 +26,7 @@ export default (store) => (next) => (action) => {
           const user = res.data;
           console.log('user', user);
           store.dispatch({ type: SET_USER, user });
+          store.dispatch({ type: SET_USER_ID, payload: user.id });
           store.dispatch(enterHomePage(action.history));
         })
         .catch((error) => {
