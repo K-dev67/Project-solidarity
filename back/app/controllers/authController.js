@@ -5,12 +5,23 @@ const mail = require('../middlewares/mailer');
 
 const authController = {
 
-
+    passPhrase: () => {
+        let longueur = 256,
+          character = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+          value = character[Math.floor(Math.random() * character.length)],
+          compteur = 1,
+          number = '1234567890'+character
+        for (; compteur < longueur; compteur++) {
+        value += number[Math.floor(Math.random() * number.length)];
+        }
+        return value;
+    },
     signupPage: (req, res) => {
         res.send('signup page');
     },
     signupAction: async (req, res) => {
         try {
+            let randomRobot = Math.floor(Math.random() * 4) +1;
             const info = req.body;
             console.log('info', info)
             await dataMapper.checkEmail(info.email, (error, data) => {
@@ -49,7 +60,7 @@ const authController = {
                         errorsList.push("Le mot de passe doit contenir un minimum de 8 caracteres");
                     } if (!info.avatar) {
                         //errorsList.push("L avatar ne peut pas etre vide");
-                        info.avatar = 'No avatar'
+                        info.avatar = `https://robohash.org/${info.pseudo}?sets=set${randomRobot}`;
                     }
                     if (info.password !== info.confirmpassword ){
                         errorsList.push("Le mot de passe et la confirmation ne correspondent pas")
@@ -148,6 +159,67 @@ const authController = {
                     res.send(error);
                 }
                 res.send('Votre compte est activé.')
+            });
+        } catch (error) {
+            console.trace(error);
+            console.log(error);
+        }
+    },
+    askEmail: async (req, res) => {
+        try {
+            const email = req.body.email;
+
+            dataMapper.checkEmail(email, (error, data) => {
+                if (error) {
+                    console.trace(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Cette email n'existe pas");
+                }
+                //const mail = data.rows[0];
+                const passPhrase = authController.passPhrase();
+                dataMapper.saveEmailPassPhrase(email, passPhrase, (error, data) => {
+                    if (error) {
+                        console.trace(error);
+                        res.send(error);
+                    }
+                    const verif = {
+                        email: email,
+                        passphrase: passPhrase
+                    };
+                    mail.forgetPassword(verif);
+                    res.send("Un email vous a était envoyé");
+                });
+            });
+        } catch (error) {
+            console.trace(error);
+            console.log(error);
+        }
+    },
+    forgetPassword: async (req, res) => {
+        try {
+            const passphrase = req.params.passPhrase;
+            const email = req.body.email;
+            const newpassword = bcrypt.hashSync(req.body.newpassword, 10);
+            dataMapper.checkEmailPassphrase(email, passphrase, (error, data) => {
+                if (error) {
+                    console.trace(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Cette email et ce passphrase ne correspondent pas");
+                }
+                dataMapper.newPassword(email, newpassword, (error, data) => {
+                    if (error) {
+                        console.trace(error);
+                        res.send(error);
+                    }
+                    if (data.rowCount === 0) {
+                        return res.send("Rien a était modifié");
+                    }
+                    return res.send("Votre mot de passe a était modifié.")
+                })
             });
         } catch (error) {
             console.trace(error);

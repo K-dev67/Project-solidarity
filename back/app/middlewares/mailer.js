@@ -4,12 +4,10 @@ const mail = {
 
     mailer: async (req, res) => {
         try {
+            
             let testAccount = await nodemailer.createTestAccount();
             
             let transporter = nodemailer.createTransport( {
-                //host: "smtp-email.outlook.com",
-                //port: 587,
-                //secure: false, 
                 service: "Gmail",
                 auth: {
                     user: process.env.MAIL,
@@ -17,7 +15,6 @@ const mail = {
                 },
                 tls: {
                     rejectUnauthorized: false,
-                    //ciphers: 'SSLv3'
                 }
                 
             });
@@ -35,6 +32,40 @@ const mail = {
             res.send(error);
         }
     },
+    forgetPassword: async (req, res) => {
+        try {
+            const email = req.email;
+            const passphrase = req.passphrase;
+            console.log('passphrase', passphrase);
+            console.log('email', email);
+
+            let testAccount = await nodemailer.createTestAccount();
+            
+            let transporter = nodemailer.createTransport( {
+                service: "Gmail",
+                auth: {
+                    user: process.env.MAIL,
+                    pass: process.env.MAILPASS
+                },
+                tls: {
+                    rejectUnauthorized: false,
+                }
+                
+            });
+            let info = await transporter.sendMail({
+                from: '"Team Solidarité " <solidarite.no.reply@gmail.com>',
+                to: `${email}`,
+                subject: "Mot de passe oublié?",
+                text: "Vous avez indiquez avoir oublié votre mot de passe.",
+                html: `<p>Cliquez <a href="http://localhost:8888/forgetPassword/${passphrase}">ici</a> pour modifié votre mot de passe.</p>`
+            });
+            console.log("Message sent: %s ", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        } catch (error) {
+            console.trace(error);
+            res.send(error);
+        }
+    }
 };
 
 module.exports = mail;
