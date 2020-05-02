@@ -34,7 +34,7 @@ const Nav = () => {
 
   return (
     <header className="topbar">
-      <h1>Solidarity</h1>
+      <NavLink exact to="/"><h1>Solidarity</h1></NavLink>
       <form>
         <Input
           className="input-topbar"
