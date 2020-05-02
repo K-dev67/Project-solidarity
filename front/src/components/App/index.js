@@ -4,12 +4,8 @@ import { useSelector } from 'react-redux';
 
 // == import Router
 import { Route, Switch, Redirect } from 'react-router-dom';
-// import {
-//   BrowserRouter as Switch, Route, Redirect,
-// } from 'react-router-dom';
 
 // == actions
-// import { GET_TEACHERS } from '../../store/actions';
 import getTeachers from '../../utils/getTeachers';
 import getLessons from '../../utils/getLessons';
 
@@ -35,25 +31,10 @@ const App = () => {
   const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
-  // let routeLessonJSX = '';
-  // if (lessons === undefined) {
-  //   routeLessonJSX = null;
-  // }
-  // else {
-  //   routeLessonJSX = (
-  //     lessons.map((lesson) => (
-  //       <Route
-  //         key={lesson.id}
-  //         exact
-  //         path={`lessons/${lesson.id}`}
-  //       >
-  //         <Lesson {...lesson} />
-  //       </Route>
-  //     ))
-  //   );
-  // }
+  // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {
+      // on peut ajouter une condition d'attente
       return null;
     }
     return lessons.map((lesson) => (
@@ -66,8 +47,6 @@ const App = () => {
       </Route>
     ));
   };
-
-  console.log('lessons in App', lessons);
 
   return (
     <div className="app">
