@@ -143,7 +143,7 @@ export default (state = initialState, action = {}) => {
           email: state.mail,
           password: state.password,
           confirmpassword: state.passwordConfirmation,
-          avatar: 'avatar',
+          avatar: state.user.avatar,
         },
       ).then((res) => {
         console.log('response in UPDATEUSER', res.data);
