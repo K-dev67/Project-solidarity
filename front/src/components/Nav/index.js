@@ -13,10 +13,25 @@ import navLinkUser from '../../data/NavLinkUser';
 // == style
 import './styles.scss';
 import { Input } from 'semantic-ui-react';
+import { RESET } from '../../store/actions';
+
+// deconnexion JSX
+
 
 const Nav = () => {
   const dispatch = useDispatch();
   const { inputNav, user } = useSelector((state) => state);
+  let deconnexionJSX = '';
+  if (user.email !== undefined) {
+    deconnexionJSX = (
+      <span
+        onClick={() => {
+          dispatch({ type: RESET });
+        }}
+      >Déconnexion
+      </span>
+    );
+  }
   // ma navLink change en fonction de si un user est connecté ou non
   let navLink = navLinkVisitor;
   if (user.email !== undefined) navLink = navLinkUser;
@@ -32,9 +47,16 @@ const Nav = () => {
     </NavLink>
   ));
 
+
   return (
     <header className="topbar">
       <NavLink exact to="/"><h1>Solidarity</h1></NavLink>
+      {/* <div
+        onClick={() => {
+          dispatch({ type: RESET });
+        }}
+      >Deco
+      </div> */}
       <form>
         <Input
           className="input-topbar"
@@ -48,9 +70,11 @@ const Nav = () => {
       </form>
       <nav className="topbar-nav">
         {navLinkJsx}
+        {deconnexionJSX}
       </nav>
     </header>
   );
 };
+
 
 export default Nav;
