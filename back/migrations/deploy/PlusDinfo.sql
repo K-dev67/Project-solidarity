@@ -1,10 +1,15 @@
+-- Deploy solidarite:PlusDinfo to pg
+
+BEGIN;
+
+-- XXX Add DDLs here.
 INSERT INTO "user" ("nickname", "firstname", "lastname", "email", "avatar", "password", "role", "status") VALUES
-('Michou','Dupond', 'Frank', 'michel.durand@gmail.com','https://robohash.org/michou?set=set2','sixOneNine','user','activé'),
-('Mich','Dupond', 'Romain', 'michel.durand@gmail.com','https://robohash.org/michou?set=set1','sixOneNine','user','activé'),
-('Micho','Dupond', 'Pierre', 'michel2.durand@gmail.com','https://robohash.org/michou?set=set3','sixOneNine','user','activé'),
-('Camille.Breton20','Breton', 'Camille', 'michel3.durand@gmail.com','https://robohash.org/michou?set=set4','sixOneNine','user','activé'),
-('Ambre_Morin91','Morin', 'Ambre', 'michel4.durand@gmail.com','https://robohash.org/michou?set=set1','sixOneNine','user','activé'),
-('Louna.Roux','Roux', 'Louna', 'michel5.durand@gmail.com','https://robohash.org/guillaume?set=set1','sixOneNine','user','activé'),
+('Mic','Dupond', 'Frank', 'michel44.durand@gmail.com','https://robohash.org/michou?set=set2','sixOneNine','user','activé'),
+('Michto','Dupond', 'Romain', 'michel52.durand@gmail.com','https://robohash.org/michou?set=set1','sixOneNine','user','activé'),
+('Micholo','Dupond', 'Pierre', 'michel22.durand@gmail.com','https://robohash.org/michou?set=set3','sixOneNine','user','activé'),
+('Camille.Breton20','Breton', 'Camille', 'michel133.durand@gmail.com','https://robohash.org/michou?set=set4','sixOneNine','user','activé'),
+('Ambre_Morin91','Morin', 'Ambre', 'michel54.durand@gmail.com','https://robohash.org/michou?set=set1','sixOneNine','user','activé'),
+('Louna.Roux','Roux', 'Louna', 'michel15.durand@gmail.com','https://robohash.org/guillaume?set=set1','sixOneNine','user','activé'),
 ('Théo.Marchand18','Marchand', 'Théo', 'michel6.durand@gmail.com','https://robohash.org/guillaume?set=set2','sixOneNine','user','activé'),
 ('Célia.Marchal15','Marchal', 'Célia', 'michel7.durand@gmail.com','https://robohash.org/guillaume?set=set2','sixOneNine','user','activé'),
 ('Noa48','Lemoine', 'Noa', 'michel8.durand@gmail.com','https://robohash.org/guillaume?set=set3','sixOneNine','user','activé'),
@@ -42,7 +47,7 @@ INSERT INTO "lesson" ("title", "description","level", "teacher_id", "plannified"
 ('La physique Chimie pour les experts en bio-dynamique','Un cours très avancé de physique-chimie','hard',18,null,'commencé'),
 ('La géographie pour les Pro','Un cours avancé de géographie','hard',18,null,'plannifié'),
 ('Espagnol pour les Pro','Un cours avancé de langue espagnol','hard',18,null,'commencé'),
-('La biométrie pour les petits Enstein','Haut niveau de physique-chimie', 'hard',5,null,'supprimé');
+('La biométrie pour les petits Enstein','Haut niveau de physique-chimie', 'hard',5,null,'supprimé'),
 ('La mécanique quantique pour les petits Enstein','Haut niveau de physique', 'hard',5,null,'supprimé');
 
 INSERT INTO "ask" ("title", "description", "author_id","want_it", "level", "status") VALUES
@@ -61,10 +66,7 @@ INSERT INTO "message" ("author_id","lesson_id", "content", "status") VALUES
 
 
 INSERT INTO "category" ("name", "color", "description", "status") VALUES
-('Physique', null, 'un cours de physique',1),
-('Chimie', null,'un cour de chimie',1),
-('Anglais', null,'des cours en anglais',1),
-('Imitation', null, ' imitation',1),
+
 ('Pragmatique', null,'des cours de Pragmatique',1),
 ('Histoire', null,'des cours d histoire',1),
 ('JavaScript', null,'des cours de JavaScript',1),
@@ -79,8 +81,7 @@ INSERT INTO "category" ("name", "color", "description", "status") VALUES
 ('Poterie', null,'des cours de Poterie',1),
 ('Economie', null,'des cours d économie',1),
 ('Yoga', null,'des cours de yoga',1),
-('Philosophie', null,'des cours de Philosophie',1),
-('Nature', null,'bio',1);
+('Philosophie', null,'des cours de Philosophie',1);
 
 INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES
 (1,1),
@@ -103,14 +104,6 @@ INSERT INTO "user_subscribe_ask" ("ask_id", "user_id") VALUES
 (4,4),
 (5,5);
 
-INSERT INTO "user_has_lesson" ("user_id", "lesson_id") VALUES
-(1,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5);
-
-
 INSERT INTO "user_subscribe_lesson" ("lesson_id", "user_id") VALUES
 (1,1),
 (2,2),
@@ -125,3 +118,5 @@ INSERT INTO "user_want_lesson" ("lesson_id", "user_id") VALUES
 (4,4),
 (4,5),
 (5,5);
+
+COMMIT;
