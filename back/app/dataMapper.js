@@ -20,6 +20,10 @@ const dataMapper = {
         const query = 'SELECT * FROM category LIMIT 4';
         db_connection.query(query, callback);
     },
+    getHomePage: (callback) => {
+        const query = 'SELECT * FROM "user" JOIN "lesson" ON "user".id = lesson.teacher_id JOIN "lesson_has_category" ON "lesson".id = lesson_id JOIN "category" ON "lesson_has_category".category_id = "category".id WHERE "teacher_id" IS NOT NULL AND category_id IS NOT NULL';
+        db_connection.query(query, callback);
+    },
     checkEmail: (email, callback) => {
         const query = 'SELECT * FROM "user" WHERE email = $1';
         const values = [email];

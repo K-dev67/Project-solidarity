@@ -11,6 +11,7 @@ const authController = {
     },
     signupAction: async (req, res) => {
         try {
+            let randomRobot = Math.floor(Math.random() * 4) +1;
             const info = req.body;
             console.log('info', info)
             await dataMapper.checkEmail(info.email, (error, data) => {
@@ -49,7 +50,7 @@ const authController = {
                         errorsList.push("Le mot de passe doit contenir un minimum de 8 caracteres");
                     } if (!info.avatar) {
                         //errorsList.push("L avatar ne peut pas etre vide");
-                        info.avatar = 'No avatar'
+                        info.avatar = `https://robohash.org/${info.pseudo}?sets=set${randomRobot}`;
                     }
                     if (info.password !== info.confirmpassword ){
                         errorsList.push("Le mot de passe et la confirmation ne correspondent pas")
