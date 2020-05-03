@@ -14,14 +14,14 @@ const ModalExampleCloseIcon = () => (
     <Modal.Content>
       <FormUpdateUser />
     </Modal.Content>
-    <Modal.Actions>
+    {/* <Modal.Actions>
       <Button color="red">
         <Icon name="remove" /> No
       </Button>
       <Button color="green">
         <Icon name="checkmark" /> Yes
       </Button>
-    </Modal.Actions>
+    </Modal.Actions> */}
   </Modal>
 );
 

@@ -24,12 +24,12 @@ const Nav = () => {
   let deconnexionJSX = '';
   if (user.email !== undefined) {
     deconnexionJSX = (
-      <span
+      <a
         onClick={() => {
           dispatch({ type: RESET });
         }}
       >Déconnexion
-      </span>
+      </a>
     );
   }
   // ma navLink change en fonction de si un user est connecté ou non
