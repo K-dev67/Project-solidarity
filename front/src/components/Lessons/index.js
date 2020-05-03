@@ -42,12 +42,8 @@ const Lessons = () => {
       </Card.Content>
       <Card.Content extra>
         <a>
-          <Icon name="user" />
-          le cours aura lieu le :
-          <Moment format="D MMM YYYY HH:mm" withTitle>
-            {lesson.plannified}
-          </Moment>
-
+          <Icon name="calendar" />
+          Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
         </a>
       </Card.Content>
     </Card>
