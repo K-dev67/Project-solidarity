@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 
 // == import component semantic
 import {
-  Segment, Card, Image, Icon,
+  Segment, Card, Image, Icon, Button,
 } from 'semantic-ui-react';
 
 // react Moment
 import Moment from 'react-moment';
 import 'moment/locale/fr';
+
+// == component
+import AddLessonModal from './AddLessonModal';
 
 // == style
 import './styles.scss';
@@ -48,6 +51,7 @@ const Lessons = () => {
   return (
     <div className="lessons">
       <Segment>
+        <AddLessonModal />
         <Card.Group
           itemsPerRow={3}
           stackable

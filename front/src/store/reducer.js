@@ -16,6 +16,7 @@ import {
   UPDATE_USER,
   SET_USER_ID,
   SET_LESSONS,
+  GET_LESSON_DATA,
 } from './actions';
 import store from '.';
 
@@ -36,6 +37,8 @@ const initialState = {
   userId: '',
   teachers: {},
   lessons: {},
+  addLessonData: {},
+  // == add lesson data
 };
 
 export default (state = initialState, action = {}) => {
@@ -149,6 +152,13 @@ export default (state = initialState, action = {}) => {
         console.log('response in UPDATEUSER', res.data);
         store.dispatch({ type: SET_USER, user: res.data });
       });
+    }
+    // == add lesson data
+    case GET_LESSON_DATA: {
+      return {
+        ...state,
+        addLessonData: action.payload,
+      };
     }
     default: {
       return state;
