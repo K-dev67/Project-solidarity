@@ -37,6 +37,7 @@ export const SET_LESSONS = 'actions/SET_LESSONS';
 
 // == Add Lesson Data
 export const GET_LESSON_DATA = 'actions/GET_LESSON_DATA';
+export const ADD_LESSON_IN_BDD = 'actions/ADD_LESSON_IN_BDD';
 
 // // == update profil user
 export const UPDATE_USER = 'actions/UPDATE_USER';

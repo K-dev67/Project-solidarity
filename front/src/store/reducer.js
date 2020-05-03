@@ -17,6 +17,7 @@ import {
   SET_USER_ID,
   SET_LESSONS,
   GET_LESSON_DATA,
+  ADD_LESSON_IN_BDD,
 } from './actions';
 import store from '.';
 
@@ -154,11 +155,25 @@ export default (state = initialState, action = {}) => {
       });
     }
     // == add lesson data
+    // eslint-disable-next-line no-fallthrough
     case GET_LESSON_DATA: {
       return {
         ...state,
         addLessonData: action.payload,
       };
+    }
+    case ADD_LESSON_IN_BDD: {
+      const { userId } = state;
+      axios.post(
+        `${API_URL}/user/${userId}/lesson`, {
+          title: state.addLessonData.Titre,
+          description: state.addLessonData.Description,
+          level: state.addLessonData.Niveau,
+          plannified: state.addLessonData.Date,
+          videos: state.addLessonData.Video,
+          category: state.addLessonData.Catégorie,
+        },
+      );
     }
     default: {
       return state;

@@ -37,12 +37,17 @@ const Lessons = () => {
         </Card.Meta>
         <Card.Description>
           {lesson.description}
+          {lesson.level}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <a>
           <Icon name="user" />
-          {lesson.level}
+          le cours aura lieu le :
+          <Moment format="D MMM YYYY HH:mm" withTitle>
+            {lesson.plannified}
+          </Moment>
+
         </a>
       </Card.Content>
     </Card>

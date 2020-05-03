@@ -3,13 +3,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 // == actions
-import { GET_LESSON_DATA } from 'src/store/actions';
+import { GET_LESSON_DATA, ADD_LESSON_IN_BDD } from 'src/store/actions';
 
 export default function AddLessonForm() {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     dispatch({ type: GET_LESSON_DATA, payload: data });
+    dispatch({ type: ADD_LESSON_IN_BDD });
     console.log('il a cliqué');
     console.log(data);
   };
