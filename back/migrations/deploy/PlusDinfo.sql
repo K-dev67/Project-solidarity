@@ -31,7 +31,7 @@ INSERT INTO "user" ("nickname", "firstname", "lastname", "email", "avatar", "pas
 INSERT INTO "lesson" ("title", "description","level", "teacher_id", "plannified", "status") VALUES
 ('La physique Chimie pour les Nuls','Une introduction a la physique-chimie','easy',1,null,'finis'),
 ('La physique Chimie pour les Novices','1er chapitre de physique-chimie','normal',3,null,'commencé'),
-('La physique Chimie pour les Pratiquant','On commence vraiment physique-chimie','expert',10,null,'plannifié'),
+('La physique Chimie pour les Pratiquant 2','On commence vraiment physique-chimie','expert',10,null,'plannifié'),
 ('Le JS pour les Pro','Un cours avancé de physique-chimie','easy',11,null,'plannifié'),
 ('Les mathematiques analyse complexe','Un cours avancé de mathématique complexe','hard',12,null,'plannifié'),
 ('Pragmatique du discours','Un cours de Pragmatique','normal',13,null,'plannifié'),
@@ -51,11 +51,11 @@ INSERT INTO "lesson" ("title", "description","level", "teacher_id", "plannified"
 ('La mécanique quantique pour les petits Enstein','Haut niveau de physique', 'hard',5,null,'supprimé');
 
 INSERT INTO "ask" ("title", "description", "author_id","want_it", "level", "status") VALUES
-('Par quoi commencer?','Quand on debute',1,1,'easy','actif'),
-('Jaimerais un cours sur ','Un pied devant lautre',2,1,'normal','actif'),
-('La numero TROIS','Qui sy frotte sy pique',3,1,'hard','actif'),
-('PAYER POUR AGIRE','Quand on a de la bouteille',4,1,'expert','inactif'),
-('PAS POUR LIRE','Quand on veux se perfectionner',5,2,'hard','actif');
+('Par quoi commencer 2?','Quand on debute',1,1,'easy','actif'),
+('Jaimerais un cours sur ça ','Un pied devant lautre',2,1,'normal','actif'),
+('La numero TROIS TE','Qui sy frotte sy pique',3,1,'hard','actif'),
+('PAYER POUR AGIRE AUSSI','Quand on a de la bouteille',4,1,'expert','inactif'),
+('PAS POUR LIRE NON','Quand on veux se perfectionner',5,2,'hard','actif');
 
 INSERT INTO "message" ("author_id","lesson_id", "content", "status") VALUES
 (1,1,'blablabla','lue'),
