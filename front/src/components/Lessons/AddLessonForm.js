@@ -8,11 +8,9 @@ import { GET_LESSON_DATA, ADD_LESSON_IN_BDD } from 'src/store/actions';
 export default function AddLessonForm() {
   // == get all categories
   const categories = useSelector((state) => state.categories);
-  console.log('categories', categories);
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
   ));
-  console.log('optionCategoryJSX', optionCategoryJSX);
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
@@ -37,8 +35,6 @@ export default function AddLessonForm() {
       </select>
       <select name="Catégorie" ref={register}>
         {optionCategoryJSX}
-        {/* <option value="math">math</option>
-        <option value=" anglais"> anglais</option> */}
       </select>
       <input type="text" placeholder="Video" name="Video" ref={register} />
       <input type="submit" />

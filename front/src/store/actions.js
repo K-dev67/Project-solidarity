@@ -40,6 +40,7 @@ export const SET_CATEGORIES = 'actions/SET_CATEGORIES';
 // == Add Lesson Data
 export const GET_LESSON_DATA = 'actions/GET_LESSON_DATA';
 export const ADD_LESSON_IN_BDD = 'actions/ADD_LESSON_IN_BDD';
+export const SET_NEW_LESSON = 'actions/SET_NEW_LESSON';
 
 // // == update profil user
 export const UPDATE_USER = 'actions/UPDATE_USER';

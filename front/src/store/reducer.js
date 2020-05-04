@@ -18,6 +18,8 @@ import {
   SET_LESSONS,
   GET_LESSON_DATA,
   ADD_LESSON_IN_BDD,
+  // == add new lesson in lesson list
+  SET_NEW_LESSON,
   SET_CATEGORIES,
 } from './actions';
 import store from '.';
@@ -182,10 +184,19 @@ export default (state = initialState, action = {}) => {
           category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in UPDATEUSER', res.data);
-        // store.dispatch({ type: SET_USER, user: res.data });
+        console.log('response in UPDATELESSON', res.data);
+        store.dispatch({ type: SET_NEW_LESSON, newLesson: res.data });
       });
     }
+    // case SET_NEW_LESSON: {
+    //   const { lessons } = state;
+    //   lessons.push(addLessonData);
+    //   return {
+    //     ...state,
+    //     // lessons: [...lessons, action.newLesson],
+    //     lessons,
+    //   };
+    // }
     default: {
       return state;
     }
