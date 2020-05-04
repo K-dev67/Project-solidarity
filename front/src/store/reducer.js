@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import axios from 'axios';
 import { API_URL } from '../utils/constante';
 import {
@@ -165,6 +166,7 @@ export default (state = initialState, action = {}) => {
       });
     }
     // == add lesson data
+    // == ce que j'envoi à la bdd
     // eslint-disable-next-line no-fallthrough
     case GET_LESSON_DATA: {
       return {
@@ -188,15 +190,16 @@ export default (state = initialState, action = {}) => {
         store.dispatch({ type: SET_NEW_LESSON, newLesson: res.data });
       });
     }
-    // case SET_NEW_LESSON: {
-    //   const { lessons } = state;
-    //   lessons.push(addLessonData);
-    //   return {
-    //     ...state,
-    //     // lessons: [...lessons, action.newLesson],
-    //     lessons,
-    //   };
-    // }
+    // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
+    case SET_NEW_LESSON: {
+      const { newLesson } = action;
+      const allLesson = state.lessons;
+      allLesson.push(newLesson);
+      return {
+        ...state,
+        lessons: allLesson,
+      };
+    }
     default: {
       return state;
     }
