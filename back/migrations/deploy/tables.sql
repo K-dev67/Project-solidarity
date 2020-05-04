@@ -19,7 +19,7 @@ CREATE TABLE "user"(
 
 CREATE TABLE "lesson"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "title" TEXT NOT NULL,
+    "title" TEXT NOT NULL UNIQUE,
     "description" TEXT NOT NULL,
     "level" TEXT NOT NULL,-- DOMAINE A CREER 'easy' 'normal' 'hard' 'expert"
     "teacher_id" INT NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE "message"(
 
 CREATE TABLE "ask"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "title" TEXT NOT NULL,
+    "title" TEXT NOT NULL UNIQUE,
     "description" TEXT NOT NULL,
     "author_id" INT NOT NULL,
     "want_it" INT NOT  NULL,

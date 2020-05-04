@@ -3,7 +3,7 @@ const dataMapper = require('../dataMapper');
 const homeController = {
     // Fonction de la Page d'accueil Recupere un nombre defini de ( dans l'ordre) : User, Lesson, Ask, Category
     homePage: (req, res) => {
-        dataMapper.getHomePage((error, data) => { // Requete pour recuperer USER
+        dataMapper.getTeacherLessonCategory((error, data) => { // Requete pour recuperer USER
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -14,7 +14,7 @@ const homeController = {
     },
     
     showTeacher: (req, res) => {
-        dataMapper.getTeacherList((error, data) => { 
+        dataMapper.getTeacherLessonCategory((error, data) => { 
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -32,7 +32,7 @@ const homeController = {
         });
     },
     showLesson: (req, res) => {
-        dataMapper.getLessonList((error, data) => { 
+        dataMapper.getTeacherLessonCategory((error, data) => { 
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -85,7 +85,19 @@ const homeController = {
                 return res.send(data.rows);
             });
         });
-    }
+    },
+    showAllCategory: (req, res) => {
+        dataMapper.getAllCategory((error, data) => { 
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            if ( data.rowCount === 0) {
+                return res.send('Nothing');
+            }
+            res.send(data.rows);
+        });
+    },
 
 };
 

@@ -29,6 +29,7 @@ router.get('/lessonList', homeController.showLesson);
 router.post('/lessonList', homeController.showLessonByCategory);
 router.get('/askList', homeController.showAsk);
 router.post('/askList', homeController.showAskByCategory);
+router.get('/categoryList', homeController.showAllCategory);
 
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
