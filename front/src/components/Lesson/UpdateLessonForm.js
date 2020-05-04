@@ -8,13 +8,14 @@ import { GET_UPDATE_LESSON_DATA, UPDATE_LESSON } from '../../store/actions';
 
 const UpdateLessonForm = ({ lesson }) => {
   // == get all categories
-  const categories = useSelector((state) => state.categories);
-  const optionCategoryJSX = categories.map((categorie) => (
-    <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
-  ));
+  // const categories = useSelector((state) => state.categories);
+  // const optionCategoryJSX = categories.map((categorie) => (
+  //   <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
+  // ));
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
+    console.log('click on UPDATE');
     dispatch({ type: GET_UPDATE_LESSON_DATA, payload: data });
     dispatch({ type: UPDATE_LESSON, payload: lesson.id });
     // console.log(data);
@@ -31,9 +32,9 @@ const UpdateLessonForm = ({ lesson }) => {
         <option value=" hard"> hard</option>
         <option value=" expert"> expert</option>
       </select>
-      <select name="Catégorie" ref={register}>
+      {/* <select name="Catégorie" ref={register}>
         {optionCategoryJSX}
-      </select>
+      </select> */}
       <input type="text" placeholder="Video" name="Video" ref={register} />
       <input type="submit" />
     </form>
