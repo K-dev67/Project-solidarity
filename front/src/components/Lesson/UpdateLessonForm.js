@@ -17,7 +17,7 @@ const UpdateLessonForm = ({ lesson }) => {
   const onSubmit = (data) => {
     dispatch({ type: GET_UPDATE_LESSON_DATA, payload: data });
     dispatch({ type: UPDATE_LESSON, payload: lesson.id });
-    console.log(data);
+    // console.log(data);
   };
   console.log('error in UpdateLessonForm', errors);
   return (

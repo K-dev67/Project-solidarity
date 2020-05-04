@@ -169,7 +169,7 @@ export default (state = initialState, action = {}) => {
           avatar: state.user.avatar,
         },
       ).then((res) => {
-        console.log('response in UPDATEUSER', res.data);
+        // console.log('response in UPDATEUSER', res.data);
         store.dispatch({ type: SET_USER, user: res.data });
       });
     }
@@ -194,7 +194,7 @@ export default (state = initialState, action = {}) => {
           category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in ADDLESSON', res.data);
+        // console.log('response in ADDLESSON', res.data);
         // store.dispatch({ type: GET_LESSON });
         getLesson();
       });
@@ -212,7 +212,7 @@ export default (state = initialState, action = {}) => {
     case UPDATE_LESSON: {
       const { userId } = state;
       const lessonId = action.payload;
-      console.log('lessonIdInAXIOS', lessonId);
+      // console.log('lessonIdInAXIOS', lessonId);
       axios.patch(
         `${API_URL}/user/${userId}/lesson/${lessonId}`, {
           title: state.updateLessonData.Titre,
@@ -223,13 +223,12 @@ export default (state = initialState, action = {}) => {
           // category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in UPDATELESSON', res.data);
+        // console.log('response in UPDATELESSON', res.data);
         // store.dispatch({ type: GET_LESSON });
         getLesson();
       });
     }
     case DELETE_LESSON: {
-      console.log('action.payload in DELETE_LESSON', action.payload);
       const { userId, lessonId } = action.payload;
       axios
         .delete(`${API_URL}/user/${userId}/lesson/${lessonId}`)

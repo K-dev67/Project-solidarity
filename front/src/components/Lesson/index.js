@@ -22,7 +22,6 @@ import './styles.scss';
 const Lesson = ({ lesson }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.userId);
-  console.log(lesson);
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
   if (userId === lesson.teacher_id) {
@@ -38,7 +37,7 @@ const Lesson = ({ lesson }) => {
             },
           });
         }}
-      >Supprimer
+      >Supprimer votre cours
       </Button>
     );
   }
