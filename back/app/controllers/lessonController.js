@@ -64,6 +64,7 @@ const lessonController = {
                             console.log(error);
                             res.send(error);
                         }
+                        console.log(data);
                         if (data.rowCount === 1) {
                             return res.send("Erreur Titre déja utilisé");
                         }
@@ -129,7 +130,7 @@ const lessonController = {
                 if (error) {
                     console.trace(error);
                     res.send(error);
-                } 
+                }
                 if (data.rowCount === 0) {
                     return res.send("Ce n'est pas votre cours.");
                 }
@@ -244,12 +245,12 @@ const lessonController = {
                 if (error) {
                     console.log(error);
                     res.send(error);
-                } 
+                }
                 if (data.rowCount === 0) {
                     return res.send("Cette catégorie n'existe pas");
                 }
                 const category = data.rows[0];
-                
+
                 dataMapper.checkLessonId(lessonId, userId, (error, data) => {
                     if (error) {
                         console.log(error);
@@ -293,7 +294,7 @@ const lessonController = {
             const userId = req.params.id;
             const lessonId = req.params.Id;
             const categoryId = req.params.ID;
-            
+
             dataMapper.checkLessonId(lessonId, userId, (error, data) => {
                 if (error) {
                     console.log(error);
@@ -324,7 +325,7 @@ const lessonController = {
     },
     showThisLesson: (req, res) => {
         const lessonId = req.params.id;
-        dataMapper.getLesson(lessonId, (error, data) => { 
+        dataMapper.getLesson(lessonId, (error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
