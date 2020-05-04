@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 // == hook reduc
 import { useDispatch, useSelector } from 'react-redux';
 // == actions
-import { GET_LESSON_DATA } from '../../store/actions';
+import { GET_LESSON_DATA, UPDATE_LESSON } from '../../store/actions';
 
 const UpdateLessonForm = ({ lesson }) => {
   // == get all categories
@@ -16,14 +16,14 @@ const UpdateLessonForm = ({ lesson }) => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     dispatch({ type: GET_LESSON_DATA, payload: data });
-    // dispatch({ type: ADD_LESSON_IN_BDD });
+    dispatch({ type: UPDATE_LESSON, payload: lesson.id });
     console.log(data);
   };
-  console.log(errors);
+  console.log('error in UpdateLessonForm', errors);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input type="text" placeholder={lesson.title} name="Titre" ref={register({ required: true, maxLength: 80 })} />
-      <textarea name={lesson.description} ref={register({ required: true, min: 0, maxLength: 300 })} />
+      <textarea name="Description" placeholder={lesson.description} ref={register({ required: true, min: 0, maxLength: 300 })} />
       <input type="datetime-local" placeholder="Date" name="Date" ref={register} />
       <select name="Niveau" ref={register({ required: true })}>
         <option value="easy">easy</option>

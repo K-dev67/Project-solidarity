@@ -21,6 +21,7 @@ import {
   SET_LESSONS,
   GET_LESSON_DATA,
   ADD_LESSON_IN_BDD,
+  UPDATE_LESSON,
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
@@ -190,7 +191,7 @@ export default (state = initialState, action = {}) => {
           category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in UPDATELESSON', res.data);
+        console.log('response in ADDLESSON', res.data);
         store.dispatch({ type: GET_LESSON });
       });
     }
@@ -198,12 +199,25 @@ export default (state = initialState, action = {}) => {
     case GET_LESSON: {
       getLesson();
     }
-    // case GET_UPDATE_LESSON_DATA: {
-    //   return {
-    //     ...state,
-    //     updateLessonData: action.payload,
-    //   };
-    // }
+    case UPDATE_LESSON: {
+      const { userId } = state;
+      const lessonId = action.payload;
+      console.log('lessonIdInAXIOS', lessonId);
+      axios.patch(
+        `${API_URL}/user/${userId}/lesson/${lessonId}`, {
+          title: state.addLessonData.Titre,
+          description: state.addLessonData.Description,
+          level: state.addLessonData.Niveau,
+          plannified: state.addLessonData.Date,
+          videos: state.addLessonData.Video,
+          // category: state.addLessonData.Catégorie,
+        },
+      ).then((res) => {
+        console.log('response in UPDATELESSON', res.data);
+        // store.dispatch({ type: GET_LESSON });
+        getLesson();
+      });
+    }
     default: {
       return state;
     }
