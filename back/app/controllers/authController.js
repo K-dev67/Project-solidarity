@@ -132,7 +132,14 @@ const authController = {
                 //! => => antho
                 const user = data.rows[0];
                 // on compare les 2 mot de passe => me renvoi un booleen
-                const testPass = bcrypt.compareSync(password, user.password);
+                // if (!bcrypt.compareSync(password, user.password ) ) {
+                //     return res.send("Mauvais mot de passe");
+                // }
+                let testPass = "";
+                if (user) {
+                 testPass = bcrypt.compareSync(password, user.password);
+                }
+
                 // si mon user existe et mon mdp est good alors
                 if (user && testPass) {
                     console.log('<< 200 OK', user);

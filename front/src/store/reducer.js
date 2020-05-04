@@ -16,6 +16,8 @@ import {
   UPDATE_USER,
   SET_USER_ID,
   SET_LESSONS,
+  GET_LESSON_DATA,
+  ADD_LESSON_IN_BDD,
 } from './actions';
 import store from '.';
 
@@ -36,6 +38,8 @@ const initialState = {
   userId: '',
   teachers: {},
   lessons: {},
+  addLessonData: {},
+  // == add lesson data
 };
 
 export default (state = initialState, action = {}) => {
@@ -143,11 +147,35 @@ export default (state = initialState, action = {}) => {
           email: state.mail,
           password: state.password,
           confirmpassword: state.passwordConfirmation,
-          avatar: 'avatar',
+          avatar: state.user.avatar,
         },
       ).then((res) => {
         console.log('response in UPDATEUSER', res.data);
         store.dispatch({ type: SET_USER, user: res.data });
+      });
+    }
+    // == add lesson data
+    // eslint-disable-next-line no-fallthrough
+    case GET_LESSON_DATA: {
+      return {
+        ...state,
+        addLessonData: action.payload,
+      };
+    }
+    case ADD_LESSON_IN_BDD: {
+      const { userId } = state;
+      axios.post(
+        `${API_URL}/user/${userId}/lesson`, {
+          title: state.addLessonData.Titre,
+          description: state.addLessonData.Description,
+          level: state.addLessonData.Niveau,
+          plannified: state.addLessonData.Date,
+          videos: state.addLessonData.Video,
+          category: state.addLessonData.Catégorie,
+        },
+      ).then((res) => {
+        console.log('response in UPDATEUSER', res.data);
+        // store.dispatch({ type: SET_USER, user: res.data });
       });
     }
     default: {

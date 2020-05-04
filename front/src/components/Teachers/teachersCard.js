@@ -5,14 +5,14 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 const listTeachers = () => {
   const teachers = useSelector((state) => state.teachers);
-  const urlAvataree = 'https://robohash.org/';
+  // const urlAvataree = 'https://robohash.org/';
 
   const listTeachersJSX = teachers.map((teacher) => (
     <Card
       key={teacher.id}
     >
       <Image
-        src={urlAvataree + teacher.nickname}
+        src={teacher.avatar}
         wrapped
         ui={false}
       />

@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 
 // == import component semantic
 import {
-  Segment, Card, Image, Icon,
+  Segment, Card, Image, Icon, Button,
 } from 'semantic-ui-react';
 
 // react Moment
 import Moment from 'react-moment';
 import 'moment/locale/fr';
+
+// == component
+import AddLessonModal from './AddLessonModal';
 
 // == style
 import './styles.scss';
@@ -34,12 +37,13 @@ const Lessons = () => {
         </Card.Meta>
         <Card.Description>
           {lesson.description}
+          {lesson.level}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <a>
-          <Icon name="user" />
-          {lesson.level}
+          <Icon name="calendar" />
+          Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
         </a>
       </Card.Content>
     </Card>
@@ -48,6 +52,7 @@ const Lessons = () => {
   return (
     <div className="lessons">
       <Segment>
+        <AddLessonModal />
         <Card.Group
           itemsPerRow={3}
           stackable

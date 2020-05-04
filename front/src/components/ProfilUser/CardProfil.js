@@ -23,11 +23,11 @@ const CardProfil = () => {
   const {
     firstname, lastname, nickname, avatar, email, created_at,
   } = user;
-  const avataree = `https://robohash.org/${nickname}`;
+  // const avataree = `https://robohash.org/${nickname}`;
   return (
     <div className="profilUser">
       <Card>
-        <Image src={avataree} wrapped ui={false} />
+        <Image src={avatar} wrapped ui={false} />
         <Card.Content>
           <UpdateUserModal />
           <Card.Header>{nickname}</Card.Header>
