@@ -59,24 +59,22 @@ const lessonController = {
                         status: lessonStatus,
                         teacher_id: userId,
                     }
-                    dataMapper.addLessonOnDB(newLesson, (error, data) => {
+                    dataMapper.getLessonByName(lessonInfo, (error, data) => {
                         if (error) {
                             console.log(error);
                             res.send(error);
                         }
                         if (data.rowCount === 1) {
-                            //console.log('Cours enregistrer');
-                            dataMapper.getLessonByName(lessonInfo, (error, data) => {
-                                if (error) {
-                                    console.log(error);
-                                    res.send(error);
-                                }
-                                if (data.rowCount === 0) {
-                                    return res.send("Erreur category");
-                                }
-                                const newInfo = data.rows[0];
-                                console.log('newInfo', newInfo);
-                                dataMapper.checkCatName(lessonInfo, (error, data) => {
+                            return res.send("Erreur Titre déja utilisé");
+                        }
+                        dataMapper.addLessonOnDB(newLesson, (error, data) => {
+                            if (error) {
+                                console.log(error);
+                                res.send(error);
+                            }
+                            if (data.rowCount === 1) {
+                                //console.log('Cours enregistrer');
+                                dataMapper.getLessonByName(lessonInfo, (error, data) => {
                                     if (error) {
                                         console.log(error);
                                         res.send(error);
@@ -84,18 +82,29 @@ const lessonController = {
                                     if (data.rowCount === 0) {
                                         return res.send("Erreur category");
                                     }
-                                    const categoryInfo = data.rows[0];
-                                    console.log('categoryInfo',categoryInfo);
-                                    dataMapper.addCatToLesson(newInfo, categoryInfo, (error, data) => {
+                                    const newInfo = data.rows[0];
+                                    console.log('newInfo', newInfo);
+                                    dataMapper.checkCatName(lessonInfo, (error, data) => {
                                         if (error) {
                                             console.log(error);
                                             res.send(error);
                                         }
-                                        res.send("Cours et category ajouté"); 
+                                        if (data.rowCount === 0) {
+                                            return res.send("Erreur category");
+                                        }
+                                        const categoryInfo = data.rows[0];
+                                        console.log('categoryInfo',categoryInfo);
+                                        dataMapper.addCatToLesson(newInfo, categoryInfo, (error, data) => {
+                                            if (error) {
+                                                console.log(error);
+                                                res.send(error);
+                                            }
+                                            return res.send(newInfo);
+                                        });
                                     });
                                 });
-                            });
-                        }
+                            }
+                        });
                     });
                 } else {
                     res.send(errorsList);

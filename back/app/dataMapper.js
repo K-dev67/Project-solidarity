@@ -264,6 +264,10 @@ const dataMapper = {
         const query = 'DELETE FROM "ask_has_category" * WHERE "ask_id" = $1';
         const values = [askInfo.id];
         db_connection.query(query, values, callback);
+    },
+    getTeacherLessonCategoryById: (callback) => {
+        const query = 'SELECT * FROM "user" JOIN "lesson" ON "user".id = lesson.teacher_id JOIN "lesson_has_category" ON "lesson".id = lesson_id JOIN "category" ON "lesson_has_category".category_id = "category".id WHERE "teacher_id" IS NOT NULL AND category_id IS NOT NULL';
+        db_connection.query(query, callback);
     }
 };
 
