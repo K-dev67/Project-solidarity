@@ -23,6 +23,7 @@ import {
   ADD_LESSON_IN_BDD,
   GET_UPDATE_LESSON_DATA,
   UPDATE_LESSON,
+  DELETE_LESSON,
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
@@ -226,6 +227,16 @@ export default (state = initialState, action = {}) => {
         // store.dispatch({ type: GET_LESSON });
         getLesson();
       });
+    }
+    case DELETE_LESSON: {
+      console.log('action.payload in DELETE_LESSON', action.payload);
+      const { userId, lessonId } = action.payload;
+      axios
+        .delete(`${API_URL}/user/${userId}/lesson/${lessonId}`)
+        .then((res) => {
+          console.log('res in Delete Lesson', res);
+          getLesson();
+        });
     }
     default: {
       return state;

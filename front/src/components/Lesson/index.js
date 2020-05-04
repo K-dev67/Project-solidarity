@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // react Moment
 import Moment from 'react-moment';
 import 'moment/locale/fr';
+
+// == semantic
+import { Button } from 'semantic-ui-react';
+
+// == action
+import { DELETE_LESSON } from '../../store/actions';
 
 // component
 import UpdateLessonModal from './UpdateLessonModal';
@@ -14,10 +20,28 @@ import './styles.scss';
 
 
 const Lesson = ({ lesson }) => {
+  const dispatch = useDispatch();
   const userId = useSelector((state) => state.userId);
   console.log(lesson);
   let modifyButtonJSX = '';
-  if (userId === lesson.teacher_id) modifyButtonJSX = <UpdateLessonModal lesson={lesson} />;
+  let deleteButtonJSX = '';
+  if (userId === lesson.teacher_id) {
+    modifyButtonJSX = <UpdateLessonModal lesson={lesson} />;
+    deleteButtonJSX = (
+      <Button
+        onClick={() => {
+          dispatch({
+            type: DELETE_LESSON,
+            payload: {
+              userId,
+              lessonId: lesson.id,
+            },
+          });
+        }}
+      >Supprimer
+      </Button>
+    );
+  }
   return (
     <div className="room">
       <div className="room--description">
@@ -29,6 +53,7 @@ const Lesson = ({ lesson }) => {
         <div className="room-description">description : {lesson.description}</div>
         <div className="room-plannified">le cours aura lieu le : <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment></div>
         <div>{modifyButtonJSX}</div>
+        <div>{deleteButtonJSX}</div>
       </div>
     </div>
   );

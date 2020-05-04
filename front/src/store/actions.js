@@ -43,6 +43,7 @@ export const ADD_LESSON_IN_BDD = 'actions/ADD_LESSON_IN_BDD';
 export const GET_LESSON = 'actions/GET_LESSON';
 export const GET_UPDATE_LESSON_DATA = 'actions/GET_UPDATE_LESSON_DATA';
 export const UPDATE_LESSON = 'actions/UPDATE_LESSON';
+export const DELETE_LESSON = 'actions/DELETE_LESSON';
 
 // // == update profil user
 export const UPDATE_USER = 'actions/UPDATE_USER';
