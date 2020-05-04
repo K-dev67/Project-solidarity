@@ -192,7 +192,8 @@ export default (state = initialState, action = {}) => {
         },
       ).then((res) => {
         console.log('response in ADDLESSON', res.data);
-        store.dispatch({ type: GET_LESSON });
+        // store.dispatch({ type: GET_LESSON });
+        getLesson();
       });
     }
     // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
