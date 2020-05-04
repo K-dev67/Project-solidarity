@@ -7,12 +7,10 @@ import {
   Segment, Card, Image, Icon, Button,
 } from 'semantic-ui-react';
 
-// == import function from API
-import Moment from 'react-moment';
-// import getLessons from '../../utils/getLessons';
 
 // react Moment
 import 'moment/locale/fr';
+import Moment from 'react-moment';
 
 // == component
 import AddLessonModal from './AddLessonModal';
@@ -23,17 +21,13 @@ import './styles.scss';
 
 const Lessons = () => {
   // useEffect(getLessons, []);
-  const lessons = useSelector((state) => state.lessons);
-  // const teachers = useSelector((state) => state.teachers);
-  // let teacher;
-  // const teacher = teachers.filter((t) => t.id === lesson.teacher_id);
-  // console.log('teacher', teacher);
-  // console.log('lessons', lessons);
+  const { lessons, userId } = useSelector((state) => state);
+  // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
+
   // todo gerer la photo du prof avec lesson.teacher_id
   const lessonsJSX = lessons.map((lesson) => (
     // lessons/${lesson.id}
-    <Card>
-      {/* <Image src="{avataree}" wrapped ui={false} /> */}
+    <Card key={lesson.id}>
       <Card.Content>
         <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
         <Card.Meta>
