@@ -1,5 +1,6 @@
 /* eslint-disable no-fallthrough */
 import axios from 'axios';
+import getLesson from '../utils/getLessons';
 import { API_URL } from '../utils/constante';
 import {
   SET_INPUT_NAV,
@@ -192,13 +193,7 @@ export default (state = initialState, action = {}) => {
     }
     // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
     case SET_NEW_LESSON: {
-      const { newLesson } = action;
-      const allLesson = state.lessons;
-      allLesson.push(newLesson);
-      return {
-        ...state,
-        lessons: allLesson,
-      };
+      getLesson();
     }
     default: {
       return state;

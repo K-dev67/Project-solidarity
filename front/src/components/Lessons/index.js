@@ -7,8 +7,11 @@ import {
   Segment, Card, Image, Icon, Button,
 } from 'semantic-ui-react';
 
-// react Moment
+// == import function from API
 import Moment from 'react-moment';
+// import getLessons from '../../utils/getLessons';
+
+// react Moment
 import 'moment/locale/fr';
 
 // == component
@@ -19,8 +22,9 @@ import './styles.scss';
 
 
 const Lessons = () => {
+  // useEffect(getLessons, []);
   const lessons = useSelector((state) => state.lessons);
-  const teachers = useSelector((state) => state.teachers);
+  // const teachers = useSelector((state) => state.teachers);
   // let teacher;
   // const teacher = teachers.filter((t) => t.id === lesson.teacher_id);
   // console.log('teacher', teacher);
