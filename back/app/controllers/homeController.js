@@ -12,9 +12,9 @@ const homeController = {
             res.send(dataUser);
         });
     },
-    
+
     showTeacher: (req, res) => {
-        dataMapper.getTeacherLessonCategory((error, data) => { 
+        dataMapper.getTeacherList((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -23,7 +23,7 @@ const homeController = {
         });
     },
     showAsk: (req, res) => {
-        dataMapper.getAskList((error, data) => { 
+        dataMapper.getAskList((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -32,7 +32,7 @@ const homeController = {
         });
     },
     showLesson: (req, res) => {
-        dataMapper.getTeacherLessonCategory((error, data) => { 
+        dataMapper.getLessonList((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -46,7 +46,7 @@ const homeController = {
             if (error) {
                 console.log(error);
                 res.send(error);
-            } 
+            }
             if (data.rowCount === 0) {
                 return res.send("Cette category n'existe pas");
             }
@@ -69,7 +69,7 @@ const homeController = {
             if (error) {
                 console.log(error);
                 res.send(error);
-            } 
+            }
             if (data.rowCount === 0) {
                 return res.send("Cette category n'existe pas");
             }
@@ -87,7 +87,7 @@ const homeController = {
         });
     },
     showAllCategory: (req, res) => {
-        dataMapper.getAllCategory((error, data) => { 
+        dataMapper.getAllCategory((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
