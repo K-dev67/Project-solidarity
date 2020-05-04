@@ -45,6 +45,9 @@ const lessonController = {
                     lessonStatus = 'plannifié';
                     //console.log(lessonStatus);
                 }
+                if (!lessonInfo.category) {
+                    errorsList.push("Vous n'avez pas indiquer de category")
+                }
 
                 if (errorsList.length === 0) {
                     const newLesson = {
@@ -61,11 +64,38 @@ const lessonController = {
                             console.log(error);
                             res.send(error);
                         }
-                        console.log(data)
                         if (data.rowCount === 1) {
-                            res.send('Cours enregistrer');
+                            //console.log('Cours enregistrer');
+                            dataMapper.getLessonByName(lessonInfo, (error, data) => {
+                                if (error) {
+                                    console.log(error);
+                                    res.send(error);
+                                }
+                                if (data.rowCount === 0) {
+                                    return res.send("Erreur category");
+                                }
+                                const newInfo = data.rows[0];
+                                console.log('newInfo', newInfo);
+                                dataMapper.checkCatName(lessonInfo, (error, data) => {
+                                    if (error) {
+                                        console.log(error);
+                                        res.send(error);
+                                    }
+                                    if (data.rowCount === 0) {
+                                        return res.send("Erreur category");
+                                    }
+                                    const categoryInfo = data.rows[0];
+                                    console.log('categoryInfo',categoryInfo);
+                                    dataMapper.addCatToLesson(newInfo, categoryInfo, (error, data) => {
+                                        if (error) {
+                                            console.log(error);
+                                            res.send(error);
+                                        }
+                                        res.send("Cours et category ajouté"); 
+                                    });
+                                });
+                            });
                         }
-
                     });
                 } else {
                     res.send(errorsList);
@@ -159,22 +189,36 @@ const lessonController = {
         try {
             const userId = req.params.id;
             const lessonId = req.params.Id;
-            
-
-            dataMapper.deleteLessonFromDB(userId, lessonId, (error, data) => {
+            dataMapper.checkLessonId(lessonId, userId, (error, data) => {
                 if (error) {
                     console.log(error);
                     res.send(error);
                 }
                 if (data.rowCount === 0) {
-                    res.send("Ce n'est pas votre cours");
+                    return res.send("Ce cours n'existe pas");
                 }
-                if (data.rowCount === 1) {
-                    res.send('Cours supprimé')
-                }
-                console.log(data);
+                const lessonInfo = data.rows[0];
+                console.log('lessonInfo', lessonInfo);
+                dataMapper.deleteAllRelation(lessonInfo, (error, data) => {
+                    if (error) {
+                        console.log(error);
+                        res.send(error);
+                    }
+                    dataMapper.deleteLessonFromDB(userId, lessonId, (error, data) => {
+                        if (error) {
+                            console.log(error);
+                            res.send(error);
+                        }
+                        if (data.rowCount === 0) {
+                            res.send("Ce n'est pas votre cours");
+                        }
+                        if (data.rowCount === 1) {
+                            res.send('Cours supprimé')
+                        }
+                        console.log(data);
+                    });
+                });
             });
-
         } catch (error) {
             console.log(error);
             res.send(error);

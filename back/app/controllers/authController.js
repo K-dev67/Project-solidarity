@@ -28,7 +28,7 @@ const authController = {
                 if (error) {
                     console.trace(error);
                     res.send(error);
-                }
+                } 
                 let errorsList = [];
                 const userMail = data.rowCount;
                 console.log('userMail', userMail)
@@ -119,9 +119,9 @@ const authController = {
                 // }
                 // const user = data.rows[0];
                 // console.log('user', user)
-                // if (!user) {
-                //     return res.send("Cet email n'existe pas");
-                // }
+                 if (data.rowCount === 0) {
+                     return res.send("Cet email n'existe pas");
+                 }
                 // if (!bcrypt.compareSync(password, user.password ) ) {
                 //     return res.send("Mauvais mot de passe");
                 // }
