@@ -18,6 +18,7 @@ import {
   SET_LESSONS,
   GET_LESSON_DATA,
   ADD_LESSON_IN_BDD,
+  SET_CATEGORIES,
 } from './actions';
 import store from '.';
 
@@ -39,7 +40,7 @@ const initialState = {
   teachers: {},
   lessons: {},
   addLessonData: {},
-  // == add lesson data
+  categories: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -133,6 +134,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         lessons: action.payload,
+      };
+    }
+    // == set categories
+    case SET_CATEGORIES: {
+      return {
+        ...state,
+        categories: action.payload,
       };
     }
     // == update user

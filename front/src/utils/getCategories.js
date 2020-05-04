@@ -6,7 +6,7 @@ import { API_URL } from './constante';
 // == actions
 import { SET_CATEGORIES } from '../store/actions';
 
-const categoriesRequest = `${API_URL}/lessonList`;
+const categoriesRequest = `${API_URL}/categoryList`;
 
 const getCategories = (url = categoriesRequest) => {
   const promise = axios.get(
