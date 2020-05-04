@@ -21,6 +21,7 @@ import {
   SET_LESSONS,
   GET_LESSON_DATA,
   ADD_LESSON_IN_BDD,
+  GET_UPDATE_LESSON_DATA,
   UPDATE_LESSON,
   // == add new lesson in lesson list
   GET_LESSON,
@@ -46,6 +47,7 @@ const initialState = {
   teachers: {},
   lessons: {},
   addLessonData: {},
+  updateLessonData: {},
   categories: {},
   // gerer l'ouverture des modals
   // openModal: false,
@@ -200,17 +202,23 @@ export default (state = initialState, action = {}) => {
     case GET_LESSON: {
       getLesson();
     }
+    case GET_UPDATE_LESSON_DATA: {
+      return {
+        ...state,
+        updateLessonData: action.payload,
+      };
+    }
     case UPDATE_LESSON: {
       const { userId } = state;
       const lessonId = action.payload;
       console.log('lessonIdInAXIOS', lessonId);
       axios.patch(
         `${API_URL}/user/${userId}/lesson/${lessonId}`, {
-          title: state.addLessonData.Titre,
-          description: state.addLessonData.Description,
-          level: state.addLessonData.Niveau,
-          plannified: state.addLessonData.Date,
-          videos: state.addLessonData.Video,
+          title: state.updateLessonData.Titre,
+          description: state.updateLessonData.Description,
+          level: state.updateLessonData.Niveau,
+          plannified: state.updateLessonData.Date,
+          videos: state.updateLessonData.Video,
           // category: state.addLessonData.Catégorie,
         },
       ).then((res) => {

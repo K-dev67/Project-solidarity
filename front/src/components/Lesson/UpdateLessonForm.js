@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 // == hook reduc
 import { useDispatch, useSelector } from 'react-redux';
 // == actions
-import { GET_LESSON_DATA, UPDATE_LESSON } from '../../store/actions';
+import { GET_UPDATE_LESSON_DATA, UPDATE_LESSON } from '../../store/actions';
 
 const UpdateLessonForm = ({ lesson }) => {
   // == get all categories
@@ -15,7 +15,7 @@ const UpdateLessonForm = ({ lesson }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    dispatch({ type: GET_LESSON_DATA, payload: data });
+    dispatch({ type: GET_UPDATE_LESSON_DATA, payload: data });
     dispatch({ type: UPDATE_LESSON, payload: lesson.id });
     console.log(data);
   };
