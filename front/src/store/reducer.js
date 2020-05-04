@@ -17,11 +17,12 @@ import {
   SET_TEACHERS,
   UPDATE_USER,
   SET_USER_ID,
+  // == LESSON
   SET_LESSONS,
   GET_LESSON_DATA,
   ADD_LESSON_IN_BDD,
   // == add new lesson in lesson list
-  SET_NEW_LESSON,
+  GET_LESSON,
   SET_CATEGORIES,
 } from './actions';
 import store from '.';
@@ -190,13 +191,19 @@ export default (state = initialState, action = {}) => {
         },
       ).then((res) => {
         console.log('response in UPDATELESSON', res.data);
-        store.dispatch({ type: SET_NEW_LESSON, newLesson: res.data });
+        store.dispatch({ type: GET_LESSON });
       });
     }
     // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
-    case SET_NEW_LESSON: {
+    case GET_LESSON: {
       getLesson();
     }
+    // case GET_UPDATE_LESSON_DATA: {
+    //   return {
+    //     ...state,
+    //     updateLessonData: action.payload,
+    //   };
+    // }
     default: {
       return state;
     }
