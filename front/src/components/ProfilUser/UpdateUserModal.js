@@ -1,4 +1,6 @@
-import React from 'react';
+// == j'importe useState pour fermer mes modales..
+// == pas besoin de blinder mon reducer
+import React, { useState } from 'react';
 
 // == component
 import {
@@ -7,22 +9,27 @@ import {
 import FormUpdateUser from './FormUpdateUser';
 
 
-const ModalExampleCloseIcon = () => (
+const ModalExampleCloseIcon = () => {
+  console.log('modal');
+  return (
+  // je souhaite changer un boolean en fonction de l'ouverture ou la fermeture de la modale
   // eslint-disable-next-line react/jsx-boolean-value
-  <Modal trigger={<Button><Icon name="pencil" size="large" corner="right" /></Button>} closeIcon closeOnDocumentClick={true}>
-    <Header icon="pencil" content="Modifier votre profil" />
-    <Modal.Content>
-      <FormUpdateUser />
-    </Modal.Content>
-    {/* <Modal.Actions>
-      <Button color="red">
-        <Icon name="remove" /> No
-      </Button>
-      <Button color="green">
-        <Icon name="checkmark" /> Yes
-      </Button>
-    </Modal.Actions> */}
-  </Modal>
-);
+    <Modal trigger={<Button><Icon name="pencil" size="large" corner="right" /></Button>} closeIcon>
+      <Header icon="pencil" content="Modifier votre profil" />
+      <Modal.Content>
+        <FormUpdateUser />
+      </Modal.Content>
+      {/* <Modal.Actions>
+    <Button color="red">
+      <Icon name="remove" /> No
+    </Button>
+    <Button color="green">
+      <Icon name="checkmark" /> Yes
+    </Button>
+  </Modal.Actions> */}
+    </Modal>
+  );
+};
+
 
 export default ModalExampleCloseIcon;

@@ -24,7 +24,7 @@ import {
   SET_NEW_LESSON,
   SET_CATEGORIES,
 } from './actions';
-import store from '.';
+// import store from '.';
 
 
 const initialState = {
@@ -45,6 +45,8 @@ const initialState = {
   lessons: {},
   addLessonData: {},
   categories: {},
+  // gerer l'ouverture des modals
+  // openModal: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -149,6 +151,8 @@ export default (state = initialState, action = {}) => {
     }
     // == update user
     case UPDATE_USER: {
+      // const { openModal } = state;
+      // state.openModal = false;
       const { userId } = state;
       axios.patch(
         `${API_URL}/profiluser/${userId}`, {
