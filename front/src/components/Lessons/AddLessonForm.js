@@ -17,6 +17,7 @@ export default function AddLessonForm() {
   console.log(errors);
 
   return (
+  // <div className="add-lesson-form">
     <form onSubmit={handleSubmit(onSubmit)}>
       <input type="text" placeholder="Titre" name="Titre" ref={register({ required: true, maxLength: 80 })} />
       <textarea name="Description" ref={register({ required: true, min: 0, maxLength: 300 })} />
@@ -32,8 +33,8 @@ export default function AddLessonForm() {
         <option value=" anglais"> anglais</option>
       </select>
       <input type="text" placeholder="Video" name="Video" ref={register} />
-
       <input type="submit" />
     </form>
+  // </div>
   );
 }

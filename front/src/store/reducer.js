@@ -173,7 +173,10 @@ export default (state = initialState, action = {}) => {
           videos: state.addLessonData.Video,
           category: state.addLessonData.Catégorie,
         },
-      );
+      ).then((res) => {
+        console.log('response in UPDATEUSER', res.data);
+        // store.dispatch({ type: SET_USER, user: res.data });
+      });
     }
     default: {
       return state;
