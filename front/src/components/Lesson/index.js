@@ -52,8 +52,8 @@ const Lesson = ({ lesson }) => {
         <div className="room-level">niveau : {lesson.level}</div>
         <div className="room-description">description : {lesson.description}</div>
         <div className="room-plannified">le cours aura lieu le : <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment></div>
-        <div>{modifyButtonJSX}</div>
-        <div>{deleteButtonJSX}</div>
+        <div className="room-modify-button">{modifyButtonJSX}</div>
+        <div className="room-delete-button">{deleteButtonJSX}</div>
       </div>
     </div>
   );
