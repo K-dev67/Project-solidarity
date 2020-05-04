@@ -24,8 +24,8 @@ const Lesson = ({ lesson }) => {
   const userId = useSelector((state) => state.userId);
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
+  if (userId === lesson.teacher_id) modifyButtonJSX = <UpdateLessonModal lesson={lesson} />;
   if (userId === lesson.teacher_id) {
-    modifyButtonJSX = <UpdateLessonModal lesson={lesson} />;
     deleteButtonJSX = (
       <Button
         onClick={() => {
@@ -42,6 +42,8 @@ const Lesson = ({ lesson }) => {
       </Button>
     );
   }
+
+
   return (
     <div className="room">
       <div className="room--description">

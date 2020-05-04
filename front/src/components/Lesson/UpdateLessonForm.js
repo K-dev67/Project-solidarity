@@ -36,7 +36,7 @@ const UpdateLessonForm = ({ lesson }) => {
         {optionCategoryJSX}
       </select> */}
       <input type="text" placeholder="Video" name="Video" ref={register} />
-      <input type="submit" />
+      <input type="submit" name="submitUpdate" />
     </form>
   );
 };
