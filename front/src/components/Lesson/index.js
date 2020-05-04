@@ -17,7 +17,7 @@ const Lesson = ({ lesson }) => {
   const userId = useSelector((state) => state.userId);
   console.log(lesson);
   let modifyButtonJSX = '';
-  if (userId === lesson.teacher_id) modifyButtonJSX = <UpdateLessonModal />;
+  if (userId === lesson.teacher_id) modifyButtonJSX = <UpdateLessonModal lesson={lesson} />;
   return (
     <div className="room">
       <div className="room--description">
