@@ -60,7 +60,7 @@ const lessonController = {
                         status: lessonStatus,
                         teacher_id: userId,
                     }
-                    dataMapper.getLessonByName(lessonInfo, (error, data) => {
+                    dataMapper.getLessonByName(lessonInfo.title, (error, data) => {
                         if (error) {
                             console.log(error);
                             res.send(error);
@@ -76,7 +76,7 @@ const lessonController = {
                             }
                             if (data.rowCount === 1) {
                                 //console.log('Cours enregistrer');
-                                dataMapper.getLessonByName(lessonInfo, (error, data) => {
+                                dataMapper.getLessonByName(lessonInfo.title, (error, data) => {
                                     if (error) {
                                         console.log(error);
                                         res.send(error);
@@ -136,7 +136,9 @@ const lessonController = {
                 if (data.rowCount === 0) {
                     return res.send("Ce n'est pas votre cours.");
                 }
-            });
+                //console.log('verif',data.rows[0])
+                const verifId = data.rows[0];
+            
 
             if (!lessonInfo.title) {
                 errorsList.push("Il manque un titre");
@@ -176,21 +178,34 @@ const lessonController = {
                     status: lessonStatus,
                     teacher_id: userId,
                 }
-                await dataMapper.updateLessonOnDB(changeLesson, lessonId, (error, data) => {
+                dataMapper.getLessonByName(changeLesson.title, (error, data) => {
                     if (error) {
                         console.log(error);
                         res.send(error);
                     }
-                    console.log(data)
+                    //console.log(data);
                     if (data.rowCount === 1) {
-                       res.send('Cours modifié');
+                        const verifName = data.rows[0];
+                        if (verifName.id !== verifId.id){
+                            return res.send("Erreur Titre déja utilisé");
+                        }
                     }
-                    
-
+                    dataMapper.updateLessonOnDB(changeLesson, lessonId, (error, data) => {
+                        if (error) {
+                            console.log(error);
+                            res.send(error);
+                        }
+                        console.log(data)
+                        if (data.rowCount === 1) {
+                        res.send('Cours modifié');
+                        }
                 });
+                });
+            
             } else {
                 res.send(errorsList);
             }
+        });
         } catch (error) {
             console.log(error);
             res.send(error);

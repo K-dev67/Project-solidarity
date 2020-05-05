@@ -37,9 +37,9 @@ const dataMapper = {
         const query = 'SELECT * FROM "lesson"';
         db_connection.query(query, callback);
     },
-    getLessonByName: (newInfo, callback) => {
+    getLessonByName: (title, callback) => {
         const query = `SELECT * FROM "lesson" WHERE "title" = $1`;
-        const values = [newInfo.title];
+        const values = [title];
         db_connection.query(query, values, callback);
     },
     getLiveLessonList: (callback) => {
