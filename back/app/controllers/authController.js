@@ -5,6 +5,7 @@ const mail = require('../middlewares/mailer');
 
 const authController = {
 
+    // Génere la passPhrase Pour la fonction : askEmail / forgetPassword
     passPhrase: () => {
         let longueur = 256,
           character = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -16,9 +17,11 @@ const authController = {
         }
         return value;
     },
+    // '/signup' => Affiche le formulaire d'inscription
     signupPage: (req, res) => {
         res.send('signup page');
     },
+    // '/signup' => Recupere et traite les information du formulaire d'inscription
     signupAction: async (req, res) => {
         try {
             let randomRobot = Math.floor(Math.random() * 4) +1;
@@ -101,11 +104,11 @@ const authController = {
             res.send(error);
         }
     },
-
+    // '/login' => Affiche le formulaire de connection
     showLoginForm: (req, res) => {
         res.send('login page');
     },
-
+    // '/login' => Recupere et traite les information du formulaire de connection
     loginAction: async (req, res) => {
         try {
             const { email, password } = req.body;
@@ -157,6 +160,7 @@ const authController = {
             res.send(error);
         }
     },
+    //'/activation/user/:email' => Met a jour dans la BDD le status du User
     activation: async (req, res) => {
         try {
             const emailAccount = req.params.email;
@@ -172,6 +176,7 @@ const authController = {
             console.log(error);
         }
     },
+    // '/forgetPassword' => Envoie un mail si il existe dans la BDD avec une passPhrase 
     askEmail: async (req, res) => {
         try {
             const email = req.body.email;
@@ -204,6 +209,8 @@ const authController = {
             console.log(error);
         }
     },
+    // '/forgetPassword/:passPhrase' => Compare l'email entré et la passPhrase dans la BDD 
+    // pour s'assuré que c'est bien le proprietaire de l'adresse email = le compte
     forgetPassword: async (req, res) => {
         try {
             const passphrase = req.params.passPhrase;

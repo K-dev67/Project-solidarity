@@ -21,6 +21,7 @@ router.post('/login', authController.loginAction);
 router.get('/activation/user/:email', authController.activation);
 router.post('/forgetPassword', authController.askEmail);
 router.post('/forgetPassword/:passPhrase', authController.forgetPassword);
+//router.get('/check', mailController.subscribeToLesson);
 
 // LES ROUTES D'AFFICHAGE
 router.get('/homePage', homeController.homePage);
@@ -55,14 +56,11 @@ router.delete('/user/:id/lesson/:Id/subscribe', liveController.unsubLesson);
 router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
 router.delete('/user/:id/ask/:Id/subscribe', liveController.unsubAsk);
 
-
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
 router.patch('/profiluser/:id', userController.changeProfile);
 
-
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
-
 
 module.exports = router;

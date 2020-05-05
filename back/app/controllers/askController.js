@@ -1,7 +1,7 @@
-const dataMapper = require('../dataMapper');
+ const dataMapper = require('../dataMapper');
 
 const askController = {
-
+    // '/user/:id/ask' => Ajouté une question
     addAsk: async  (req, res) => {
         try {
             const askInfo = req.body;
@@ -28,25 +28,24 @@ const askController = {
                     author_id: authorId,
                     want_it: 1
                 }
-                dataMapper.addAskOnDB(newAsk, (error, data) => {
+                dataMapper.getAskByName(askInfo, (error, data) => {
                     if (error) {
                         console.log(error);
                         res.send(error);
                     }
-                    console.log(data)
                     if (data.rowCount === 1) {
-                        //res.send('Votre demande est enregistré');
-                        dataMapper.getAskByName(askInfo, (error, data) => {
-                            if (error) {
-                                console.log(error);
-                                res.send(error);
-                            }
-                            if (data.rowCount === 0) {
-                                return res.send("Erreur category");
-                            }
-                            const newInfo = data.rows[0];
-                            console.log('newInfo', newInfo);
-                            dataMapper.checkCatName(askInfo, (error, data) => {
+                        return res.send("Erreur Titre déja utilisé");
+                    }
+                    //res.send('Votre demande est enregistré');
+                    dataMapper.addAskOnDB(newAsk, (error, data) => {
+                        if (error) {
+                            console.log(error);
+                            res.send(error);
+                        }
+                        console.log(data)
+                        if (data.rowCount === 1) {
+                            //res.send('Votre demande est enregistré');
+                            dataMapper.getAskByName(askInfo, (error, data) => {
                                 if (error) {
                                     console.log(error);
                                     res.send(error);
@@ -54,19 +53,29 @@ const askController = {
                                 if (data.rowCount === 0) {
                                     return res.send("Erreur category");
                                 }
-                                const categoryInfo = data.rows[0];
-                                console.log('categoryInfo',categoryInfo);
-                                dataMapper.addCatToAsk(newInfo, categoryInfo, (error, data) => {
+                                const newInfo = data.rows[0];
+                                console.log('newInfo', newInfo);
+                                dataMapper.checkCatName(askInfo.category, (error, data) => {
                                     if (error) {
                                         console.log(error);
                                         res.send(error);
                                     }
-                                    res.send("Cours et category ajouté"); 
+                                    if (data.rowCount === 0) {
+                                        return res.send("Erreur category");
+                                    }
+                                    const categoryInfo = data.rows[0];
+                                    console.log('categoryInfo',categoryInfo);
+                                    dataMapper.addRelationAskCategory(newInfo.id, categoryInfo.id, (error, data) => {
+                                        if (error) {
+                                            console.log(error);
+                                            res.send(error);
+                                        }
+                                        res.send("Cours et category ajouté"); 
+                                    });
                                 });
                             });
-                        });
-                    }
-
+                        }
+                    });
                 });
             } else {
                 res.send(errorsList);
@@ -76,6 +85,7 @@ const askController = {
             res.send(error);
         }
     },
+    // '/user/:id/ask/:Id' => Modifié une demande (titre, description...)
     changeAsk: async (req, res) => {
         try {
 
@@ -92,6 +102,7 @@ const askController = {
                 if (data.rowCount === 0) {
                     return res.send("Ce n'est pas votre demande.");
                 }
+                const verifId = data.rows[0];
                 if (!askInfo.title) {
                     errorsList.push("Il manque un titre");
                 }
@@ -110,15 +121,27 @@ const askController = {
                         level: askInfo.level,
                         status: 'actif',
                     }
-                    dataMapper.updateAskOnDB(changeAsk, askId, (error, data) => {
+                    dataMapper.getAskByName(askInfo, (error, data) => {
                         if (error) {
                             console.log(error);
                             res.send(error);
                         }
-                        console.log(data)
                         if (data.rowCount === 1) {
-                           res.send('Demande modifié');
+                            const verifName = data.rows[0];
+                            if (verifName.id !== verifId.id) {
+                                return res.send("Ce titre est déja utilisé");
+                            }
                         }
+                        dataMapper.updateAskOnDB(changeAsk, askId, (error, data) => {
+                            if (error) {
+                                console.log(error);
+                                res.send(error);
+                            }
+                            console.log(data)
+                            if (data.rowCount === 1) {
+                            res.send('Demande modifié');
+                            }
+                        });
                     });
                 } else {
                     res.send(errorsList);
@@ -129,6 +152,7 @@ const askController = {
             res.send(error);
         }
     },
+    // '/user/:id/ask/:Id' => Supprimez une demande Si on en est le propriétaire
     deleteAsk: async (req, res) => {
         try {
             const userId = req.params.id;
@@ -168,6 +192,7 @@ const askController = {
             res.send(error);
         }
     },
+    // '/user/:id/ask/:Id/category' => Ajout d'une relation [Demande:Category]
     addCategoryToAsk: async (req, res) => {
         try {
 
@@ -175,7 +200,7 @@ const askController = {
             const askId = req.params.Id;
             const infoCategory = req.body;
 
-            dataMapper.checkCategoryName(infoCategory, (error, data) => {
+            dataMapper.checkCatName(infoCategory.name, (error, data) => {
                 if (error) {
                     console.log(error);
                     res.send(error);
@@ -201,7 +226,7 @@ const askController = {
                         if (data.rowCount === 1 || data.rowCount > 1){
                             return res.send("Cette relation existe déja");
                         }
-                        dataMapper.addRelationAskCategory(askId, category, (error, data) => {
+                        dataMapper.addRelationAskCategory(askId, category.id, (error, data) => {
                             if (error) {
                                 console.log(error);
                                 res.send(error);
@@ -222,6 +247,7 @@ const askController = {
             res.send(error);
         }
     },
+    // '/user/:id/ask/:Id/category/:ID' => Suppression d'une relation [demande:category]
     deleteCategoryToAsk: async (req, res) => {
         try {
 

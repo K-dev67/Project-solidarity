@@ -1,7 +1,7 @@
 const dataMapper = require('../dataMapper');
 
 const homeController = {
-    // Fonction de la Page d'accueil Recupere un nombre defini de ( dans l'ordre) : User, Lesson, Ask, Category
+    // /homePage' => Requete Profs / Cour / Category
     homePage: (req, res) => {
         dataMapper.getTeacherLessonCategory((error, data) => { // Requete pour recuperer USER
             if (error) {
@@ -11,10 +11,10 @@ const homeController = {
             const dataUser = data.rows;
             res.send(dataUser);
         });
-    },
-    
+    }, 
+    // /teacherList' => Affiche tout les profs
     showTeacher: (req, res) => {
-        dataMapper.getTeacherLessonCategory((error, data) => { 
+        dataMapper.getTeacherList((error, data) => { 
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -22,6 +22,7 @@ const homeController = {
             res.send(data.rows);
         });
     },
+    // '/askList' => Affiche toute les question
     showAsk: (req, res) => {
         dataMapper.getAskList((error, data) => { 
             if (error) {
@@ -31,8 +32,9 @@ const homeController = {
             res.send(data.rows);
         });
     },
+    // '/lessonList' => Affiche tout les cours
     showLesson: (req, res) => {
-        dataMapper.getTeacherLessonCategory((error, data) => { 
+        dataMapper.getLessonList((error, data) => { 
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -40,9 +42,10 @@ const homeController = {
             res.send(data.rows);
         });
     },
+    // '/lessonList' => Affiche tout les cours par category (Non-Utilisé En front)
     showLessonByCategory: (req, res) => {
         const infoCategory =req.body;
-        dataMapper.checkCategoryName(infoCategory, (error, data) => {
+        dataMapper.checkCatName(infoCategory.name, (error, data) => {
             if (error) {
                 console.log(error);
                 res.send(error);
@@ -63,9 +66,10 @@ const homeController = {
             });
         });
     },
+    // '/askList'  => Affiche les cours selon une category ( Non-Utilisé en front)
     showAskByCategory: (req, res) => {
         const infoCategory =req.body;
-        dataMapper.checkCategoryName(infoCategory, (error, data) => {
+        dataMapper.checkCatName(infoCategory.name, (error, data) => {
             if (error) {
                 console.log(error);
                 res.send(error);
@@ -86,6 +90,7 @@ const homeController = {
             });
         });
     },
+    // '/categoryList' => Affiche toute les category
     showAllCategory: (req, res) => {
         dataMapper.getAllCategory((error, data) => { 
             if (error) {

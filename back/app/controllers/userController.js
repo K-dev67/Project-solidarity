@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const sendMail = require('../middlewares/mailer');
 const userController = {
 
+    // '/profile/:id' => Affiche le profile du user correspondant a l'id
     showProfile: async (req, res) => {
         try {
 
@@ -23,6 +24,7 @@ const userController = {
             res.send(error);
         }
     },
+    // '/profiluser/:id' => Permet de modifié son profil
     changeProfile: async (req, res) => {
         try {
             const userId = req.params.id;
@@ -42,7 +44,7 @@ const userController = {
                         return res.send('Erreur')
                     }
                     const user = data.rows[0];
-                    dataMapper.checkEmailUpdate(info, (error, data) => {
+                    dataMapper.checkEmail(info.email, (error, data) => {
                         if (error) {
                             console.trace(error);
                             res.send(error);
