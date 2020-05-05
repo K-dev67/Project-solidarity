@@ -37,6 +37,7 @@ const homeController = {
     // '/lessonList' => Affiche tout les cours
     showLesson: (req, res) => {
 
+
         dataMapper.getLessonList((error, data) => {
             if (error) {
                 console.trace(error);

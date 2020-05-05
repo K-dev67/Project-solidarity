@@ -1,8 +1,8 @@
-const dataMapper = require('dataMapper');
+const dataMapper = require('../dataMapper');
 
 const mailController = {
 
-    /*subscribeToLesson: (req, res) => {
+    subscribeToLesson: (req, res) => {
         dataMapper.getNextLessonList((error, data) => {
             if (error) {
                 console.trace(error);
@@ -12,13 +12,12 @@ const mailController = {
                 return res.send("Il n'y a pas de cours");
             }
             const allNextLesson = data.rows;
-            dataMapper.
-
-
-
+            console.log(allNextLesson);
+            
+            res.send('controller')
         });
-    },*/
+    },
 
-}
+};
 
 module.exports = mailController;

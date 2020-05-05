@@ -282,7 +282,7 @@ const lessonController = {
                             console.log(error);
                             res.send(error);
                         }
-                        if (data.rowCount === 1 || data.rowCount > 1){
+                        if (data.rowCount === 1 || data.rowCount < 1){
                             return res.send("Cette relation existe déja");
                         }
                         dataMapper.addRelationLessonCategory(lessonId, category.id, (error, data) => {
@@ -353,7 +353,19 @@ const lessonController = {
             if (data.rowCount === 0) {
                 return res.send('Pas de cour');
             }
-            res.send(data.rows[0]);
+            const lessonInfo = data.rows;
+            dataMapper.getCategoryWithRelation((error, data) => {
+                if (error) {
+                    console.trace(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send('Pas de cour');
+                }
+                const categoryInfo = data.rows;
+                res.send({lessonInfo, categoryInfo})
+                // SELECT * FROM "category" JOIN lesson_has_category ON category.id = category_id
+            });
         });
     },
 };
