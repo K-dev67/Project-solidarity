@@ -102,6 +102,7 @@ const askController = {
                 if (data.rowCount === 0) {
                     return res.send("Ce n'est pas votre demande.");
                 }
+                const verifId = data.rows[0];
                 if (!askInfo.title) {
                     errorsList.push("Il manque un titre");
                 }
@@ -120,15 +121,27 @@ const askController = {
                         level: askInfo.level,
                         status: 'actif',
                     }
-                    dataMapper.updateAskOnDB(changeAsk, askId, (error, data) => {
+                    dataMapper.getAskByName(askInfo, (error, data) => {
                         if (error) {
                             console.log(error);
                             res.send(error);
                         }
-                        console.log(data)
                         if (data.rowCount === 1) {
-                           res.send('Demande modifié');
+                            const verifName = data.rows[0];
+                            if (verifName.id !== verifId.id) {
+                                return res.send("Ce titre est déja utilisé");
+                            }
                         }
+                        dataMapper.updateAskOnDB(changeAsk, askId, (error, data) => {
+                            if (error) {
+                                console.log(error);
+                                res.send(error);
+                            }
+                            console.log(data)
+                            if (data.rowCount === 1) {
+                            res.send('Demande modifié');
+                            }
+                        });
                     });
                 } else {
                     res.send(errorsList);
