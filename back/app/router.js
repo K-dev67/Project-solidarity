@@ -55,14 +55,11 @@ router.delete('/user/:id/lesson/:Id/subscribe', liveController.unsubLesson);
 router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
 router.delete('/user/:id/ask/:Id/subscribe', liveController.unsubAsk);
 
-
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
 router.patch('/profiluser/:id', userController.changeProfile);
 
-
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
-
 
 module.exports = router;

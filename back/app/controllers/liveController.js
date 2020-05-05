@@ -2,6 +2,7 @@ const dataMapper = require('../dataMapper');
 
 const liveController = {
 
+    // '/liveLesson' => Affiche tout les cours en live
     showAllLiveLesson: (req, res) => {
         dataMapper.getLiveLessonList((error, data) => { 
             if (error) {
@@ -14,6 +15,7 @@ const liveController = {
             res.send('Les cours en live');
         });
     },
+    // '/liveLesson/:id' => Affiche la tchatRoom du cours en question
     showThisLiveLesson: (req, res) => {
         const liveLessonId = req.params.id;
         dataMapper.getLesson(liveLessonId, (error, data) => { 
@@ -27,6 +29,7 @@ const liveController = {
             res.send(data.rows[0]);
         });
     },
+    // '/calendar' =>  Affiche le calendrier des cours
     showCalendar: (req, res) => {
 
         dataMapper.getAllPlanedLesson((error, data) => { 
@@ -40,6 +43,7 @@ const liveController = {
             res.send(data.rows);
         });
     },
+    // '/user/:id/lesson/:Id/subscribe' => S'inscrire a une lesson
     subscribeLesson: (req, res) => {
 
        const userId = req.params.id;
@@ -89,6 +93,7 @@ const liveController = {
         }
     });
     },
+    // '/user/:id/ask/:Id/subscribe' => permet de "s'inscrire" (envoie un mail avant le cour(mail non traité))'
     subscribeAsk: (req, res) => {
 
         const userId = req.params.id;
@@ -143,6 +148,7 @@ const liveController = {
             }
         });
      },
+     // '/user/:id/lesson/:Id/subscribe' => Se désinscrire d'un cour
      unsubLesson: (req, res) => {
 
         const userId = req.params.id;
@@ -168,6 +174,7 @@ const liveController = {
              }
         });
      },
+     // '/user/:id/ask/:Id/subscribe' => Permet de se "désinscrire d'une demande de cours"
      unsubAsk: (req, res) => {
 
         const userId = req.params.id;
