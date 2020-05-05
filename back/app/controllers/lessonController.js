@@ -2,6 +2,7 @@ const dataMapper = require('../dataMapper');
 
 const lessonController = {
 
+    // '/user/:id/lesson' => Recupere et traite les information 
     addLesson: async  (req, res) => {
         try {
             const lessonInfo = req.body;
@@ -59,7 +60,7 @@ const lessonController = {
                         status: lessonStatus,
                         teacher_id: userId,
                     }
-                    dataMapper.getLessonByName(lessonInfo, (error, data) => {
+                    dataMapper.getLessonByName(lessonInfo.title, (error, data) => {
                         if (error) {
                             console.log(error);
                             res.send(error);
@@ -75,7 +76,7 @@ const lessonController = {
                             }
                             if (data.rowCount === 1) {
                                 //console.log('Cours enregistrer');
-                                dataMapper.getLessonByName(lessonInfo, (error, data) => {
+                                dataMapper.getLessonByName(lessonInfo.title, (error, data) => {
                                     if (error) {
                                         console.log(error);
                                         res.send(error);
@@ -85,7 +86,7 @@ const lessonController = {
                                     }
                                     const newInfo = data.rows[0];
                                     console.log('newInfo', newInfo);
-                                    dataMapper.checkCatName(lessonInfo, (error, data) => {
+                                    dataMapper.checkCatName(lessonInfo.category, (error, data) => {
                                         if (error) {
                                             console.log(error);
                                             res.send(error);
@@ -95,7 +96,7 @@ const lessonController = {
                                         }
                                         const categoryInfo = data.rows[0];
                                         console.log('categoryInfo',categoryInfo);
-                                        dataMapper.addCatToLesson(newInfo, categoryInfo, (error, data) => {
+                                        dataMapper.addRelationLessonCategory(newInfo.id, categoryInfo.id, (error, data) => {
                                             if (error) {
                                                 console.log(error);
                                                 res.send(error);
@@ -116,9 +117,10 @@ const lessonController = {
             res.send(error);
         }
     },
+    // '/user/:id/lesson/:Id' => Recupere  et traite les information du formulaire
     changeLesson: async (req, res) => {
         try {
-
+            
             const userId = req.params.id;
             const lessonId = req.params.Id;
             const lessonInfo = req.body;
@@ -134,7 +136,9 @@ const lessonController = {
                 if (data.rowCount === 0) {
                     return res.send("Ce n'est pas votre cours.");
                 }
-            });
+                //console.log('verif',data.rows[0])
+                const verifId = data.rows[0];
+            
 
             if (!lessonInfo.title) {
                 errorsList.push("Il manque un titre");
@@ -164,8 +168,6 @@ const lessonController = {
                 lessonStatus = 'plannifié';
                 //console.log(lessonStatus);
             }
-
-
             if (errorsList.length === 0) {
                 const changeLesson = {
                     title: lessonInfo.title,
@@ -176,25 +178,40 @@ const lessonController = {
                     status: lessonStatus,
                     teacher_id: userId,
                 }
-                await dataMapper.updateLessonOnDB(changeLesson, lessonId, (error, data) => {
+                dataMapper.getLessonByName(changeLesson.title, (error, data) => {
                     if (error) {
                         console.log(error);
                         res.send(error);
                     }
-                    console.log(data)
+                    //console.log(data);
                     if (data.rowCount === 1) {
-                       res.send('Cours modifié');
+                        const verifName = data.rows[0];
+                        if (verifName.id !== verifId.id){
+                            return res.send("Erreur Titre déja utilisé");
+                        }
                     }
-
+                    dataMapper.updateLessonOnDB(changeLesson, lessonId, (error, data) => {
+                        if (error) {
+                            console.log(error);
+                            res.send(error);
+                        }
+                        console.log(data)
+                        if (data.rowCount === 1) {
+                        res.send('Cours modifié');
+                        }
                 });
+                });
+            
             } else {
                 res.send(errorsList);
             }
+        });
         } catch (error) {
             console.log(error);
             res.send(error);
         }
     },
+    // '/user/:id/lesson/:Id' => Supprimer son cour si on en est le propriétaire
     deleteLesson: async (req, res) => {
         try {
             const userId = req.params.id;
@@ -234,6 +251,7 @@ const lessonController = {
             res.send(error);
         }
     },
+    // '/user/:id/lesson/:Id/category' => Ajout d'une relation [Lesson:Category]
     addCategoryToLesson: async (req, res) => {
         try {
 
@@ -241,7 +259,7 @@ const lessonController = {
             const lessonId = req.params.Id;
             const infoCategory = req.body;
 
-            dataMapper.checkCategoryName(infoCategory, (error, data) => {
+            dataMapper.checkCatName(infoCategory.name, (error, data) => {
                 if (error) {
                     console.log(error);
                     res.send(error);
@@ -259,7 +277,7 @@ const lessonController = {
                     if (data.rowCount === 0) {
                         return res.send("Ce n'est pas votre cours.");
                     }
-                    dataMapper.checkIfRelationLessonCategoryExist(lessonId, category,(error, data) => {
+                    dataMapper.checkIfRelationLessonCategoryExist(lessonId, category.id,(error, data) => {
                         if (error) {
                             console.log(error);
                             res.send(error);
@@ -267,7 +285,7 @@ const lessonController = {
                         if (data.rowCount === 1 || data.rowCount > 1){
                             return res.send("Cette relation existe déja");
                         }
-                        dataMapper.addRelationLessonCategory(lessonId, category, (error, data) => {
+                        dataMapper.addRelationLessonCategory(lessonId, category.id, (error, data) => {
                             if (error) {
                                 console.log(error);
                                 res.send(error);
@@ -288,6 +306,7 @@ const lessonController = {
             res.send(error);
         }
     },
+    // '/user/:id/lesson/:Id/category/:ID' => Suppression d'une relation [Lesson:Category]
     deleteCategoryToLesson: async (req, res) => {
         try {
 
@@ -323,6 +342,7 @@ const lessonController = {
             res.send(error);
         }
     },
+    // '/lesson/:id' => Affiche un cour en particulier par son id
     showThisLesson: (req, res) => {
         const lessonId = req.params.id;
         dataMapper.getLesson(lessonId, (error, data) => {
