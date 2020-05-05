@@ -13,9 +13,9 @@ import {
   SYNC_USERNAME,
   SYNC_FIRSTNAME,
   SYNC_LASTNAME,
-  SYNC_MAIL,
-  SYNC_PASSWORD,
-  SYNC_PASSWORD_CONFIRMATION,
+  // SYNC_MAIL,
+  // SYNC_PASSWORD,
+  // SYNC_PASSWORD_CONFIRMATION,
   UPDATE_USER,
 } from 'src/store/actions';
 
@@ -32,10 +32,10 @@ const FormUpdateUser = () => {
     username,
     firstname,
     lastname,
-    mail,
-    password,
-    passwordConfirmation,
-    user,
+    // mail,
+    // password,
+    // passwordConfirmation,
+    // user,
   } = useSelector((state) => state);
 
   // == history
