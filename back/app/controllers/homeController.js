@@ -12,10 +12,10 @@ const homeController = {
             res.send(dataUser);
         });
 
-    }, 
+    },
     // /teacherList' => Affiche tout les profs
     showTeacher: (req, res) => {
-        dataMapper.getTeacherList((error, data) => { 
+        dataMapper.getTeacherList((error, data) => {
 
             if (error) {
                 console.trace(error);
@@ -37,7 +37,8 @@ const homeController = {
     // '/lessonList' => Affiche tout les cours
     showLesson: (req, res) => {
 
-        dataMapper.getLessonList((error, data) => { 
+
+        dataMapper.getLessonList((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
