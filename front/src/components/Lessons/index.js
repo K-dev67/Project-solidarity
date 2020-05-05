@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { SET_INPUT_NAV } from 'src/store/actions';
 
 // == import component semantic
 import {
-  Segment, Card, Image, Icon, Button,
+  Segment, Card, Image, Icon, Button, Input,
 } from 'semantic-ui-react';
 
 
@@ -20,8 +21,9 @@ import './styles.scss';
 
 
 const Lessons = () => {
+  const dispatch = useDispatch();
   // useEffect(getLessons, []);
-  const { lessons, userId } = useSelector((state) => state);
+  const { lessons, inputNav } = useSelector((state) => state);
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
 
   // todo gerer la photo du prof avec lesson.teacher_id
@@ -51,6 +53,17 @@ const Lessons = () => {
     <div className="lessons">
       <Segment>
         <AddLessonModal />
+        <form>
+          <Input
+            className="input-topbar"
+            icon="search"
+            placeholder="rechercher un cours"
+            onChange={(evt) => {
+              dispatch({ type: SET_INPUT_NAV, payload: evt.target.value });
+            }}
+            value={inputNav}
+          />
+        </form>
         <Card.Group
           itemsPerRow={3}
           stackable
