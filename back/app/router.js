@@ -21,7 +21,7 @@ router.post('/login', authController.loginAction);
 router.get('/activation/user/:email', authController.activation);
 router.post('/forgetPassword', authController.askEmail);
 router.post('/forgetPassword/:passPhrase', authController.forgetPassword);
-router.get('/check', mailController.subscribeToLesson);
+//router.get('/check', mailController.subscribeToLesson);
 
 // LES ROUTES D'AFFICHAGE
 router.get('/homePage', homeController.homePage);

@@ -37,6 +37,10 @@ const dataMapper = {
         const query = 'SELECT * FROM "lesson"';
         db_connection.query(query, callback);
     },
+    getNextLessonList: (callback) => {
+        const query = `SELECT * FROM "lesson" WHERE plannified BETWEEN now() AND now() + interval '2 hours'`;
+        db_connection.query(query, callback);
+    },
     getLessonByName: (title, callback) => {
         const query = `SELECT * FROM "lesson" WHERE "title" = $1`;
         const values = [title];
@@ -230,8 +234,8 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     subToLesson: (userId, lessonId, callback) => {
-        const query = 'INSERT INTO "user_subscribe_lesson" ("user_id", "lesson_id") VALUES ($1,$2)';
-        const values = [userId, lessonId];
+        const query = 'INSERT INTO "user_subscribe_lesson" ("user_id", "lesson_id", "status") VALUES ($1,$2,$3)';
+        const values = [userId, lessonId,'todo'];
         db_connection.query(query, values, callback);
     },
     subToAsk: (userId, askId, callback) => {
