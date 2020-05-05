@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // == Router
 import { NavLink } from 'react-router-dom';
 // == fichier data en js comportant les routes et les labels..
-import { SET_INPUT_NAV } from 'src/store/actions';
+// import { SET_INPUT_NAV } from 'src/store/actions';
 import navLinkVisitor from '../../data/navLinkVisitor';
 import navLinkUser from '../../data/NavLinkUser';
 
@@ -12,7 +12,7 @@ import navLinkUser from '../../data/NavLinkUser';
 
 // == style
 import './styles.scss';
-import { Input } from 'semantic-ui-react';
+// import { Input } from 'semantic-ui-react';
 import { RESET } from '../../store/actions';
 
 // deconnexion JSX
@@ -20,7 +20,7 @@ import { RESET } from '../../store/actions';
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const { inputNav, user } = useSelector((state) => state);
+  const { user } = useSelector((state) => state);
   let deconnexionJSX = '';
   if (user.email !== undefined) {
     deconnexionJSX = (
@@ -57,7 +57,7 @@ const Nav = () => {
         }}
       >Deco
       </div> */}
-      <form>
+      {/* <form>
         <Input
           className="input-topbar"
           icon="search"
@@ -67,7 +67,7 @@ const Nav = () => {
           }}
           value={inputNav}
         />
-      </form>
+      </form> */}
       <nav className="topbar-nav">
         {navLinkJsx}
         {deconnexionJSX}

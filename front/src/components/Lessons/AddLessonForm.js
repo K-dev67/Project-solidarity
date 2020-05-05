@@ -25,20 +25,34 @@ export default function AddLessonForm() {
   return (
   // <div className="add-lesson-form">
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="Titre" name="Titre" ref={register({ required: true, maxLength: 80 })} />
-      <textarea name="Description" ref={register({ required: true, min: 0, maxLength: 300 })} />
-      <input type="datetime-local" placeholder="Date" name="Date" ref={register} />
-      <select name="Niveau" ref={register({ required: true })}>
-        <option value="easy">easy</option>
-        <option value=" normal"> normal</option>
-        <option value=" hard"> hard</option>
-        <option value=" expert"> expert</option>
-      </select>
-      <select name="Catégorie" ref={register}>
-        {optionCategoryJSX}
-      </select>
-      <input type="text" placeholder="Video" name="Video" ref={register} />
-      <input type="submit" name="submitAddLesson" />
+      <div>
+        <input type="text" placeholder="Titre" name="Titre" ref={register({ required: true, maxLength: 80 })} />
+      </div>
+      <div>
+        <textarea name="Description" ref={register({ required: true, min: 0, maxLength: 300 })} />
+      </div>
+      <div>
+        <input type="datetime-local" placeholder="Date" name="Date" ref={register} />
+      </div>
+      <div>
+        <select name="Niveau" ref={register({ required: true })}>
+          <option value="easy">easy</option>
+          <option value=" normal"> normal</option>
+          <option value=" hard"> hard</option>
+          <option value=" expert"> expert</option>
+        </select>
+      </div>
+      <div>
+        <select name="Catégorie" ref={register}>
+          {optionCategoryJSX}
+        </select>
+      </div>
+      <div>
+        <input type="text" placeholder="Video" name="Video" ref={register} />
+      </div>
+      <div>
+        <input type="submit" name="submitAddLesson" />
+      </div>
     </form>
   // </div>
   );

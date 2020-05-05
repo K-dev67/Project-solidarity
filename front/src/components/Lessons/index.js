@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+// import { SET_INPUT_NAV } from 'src/store/actions';
 
 // == import component semantic
 import {
@@ -14,19 +15,18 @@ import Moment from 'react-moment';
 
 // == component
 import AddLessonModal from './AddLessonModal';
+import InputSearchLesson from './InputSearchLesson';
 
 // == style
 import './styles.scss';
 
 
 const Lessons = () => {
-  // useEffect(getLessons, []);
-  const { lessons, userId } = useSelector((state) => state);
+  const { lessons, lessonsFiltered } = useSelector((state) => state);
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
 
   // todo gerer la photo du prof avec lesson.teacher_id
-  const lessonsJSX = lessons.map((lesson) => (
-    // lessons/${lesson.id}
+  const lessonsJSX = lessonsFiltered.map((lesson) => (
     <Card key={lesson.id}>
       <Card.Content>
         <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
@@ -51,6 +51,7 @@ const Lessons = () => {
     <div className="lessons">
       <Segment>
         <AddLessonModal />
+        <InputSearchLesson />
         <Card.Group
           itemsPerRow={3}
           stackable

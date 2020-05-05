@@ -1,10 +1,9 @@
 .lessons {
     min-height: 85vh;
     .ui .button {
-        margin: 0 0 15px 0 !important;
+        margin: 0 0 10px 0 !important;
     }
-    // .add-lesson-form form{
-    //     display: flex !important;
-    //     flex-direction: column;
-    // }
+    .input-topbar {
+        margin: 0 0 10px 0 !important;
+    }
 }
