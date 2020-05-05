@@ -12,7 +12,7 @@ import FormUpdateUser from './FormUpdateUser';
 const ModalExampleCloseIcon = () => (
   // je souhaite changer un boolean en fonction de l'ouverture ou la fermeture de la modale
   // eslint-disable-next-line react/jsx-boolean-value
-  <Modal trigger={<Button><Icon name="pencil" size="large" corner="right" /></Button>} closeIcon>
+  <Modal trigger={<Button>Modifier votre profil</Button>} closeIcon>
     <Header icon="pencil" content="Modifier votre profil" />
     <Modal.Content>
       <FormUpdateUser />
@@ -25,6 +25,7 @@ const ModalExampleCloseIcon = () => (
       <Icon name="checkmark" /> Yes
     </Button>
   </Modal.Actions> */}
+    {/* <Icon name="pencil" size="large" corner="right" /> */}
   </Modal>
 );
 

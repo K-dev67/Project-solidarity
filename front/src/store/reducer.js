@@ -179,9 +179,9 @@ export default (state = initialState, action = {}) => {
           nickname: state.username,
           firstname: state.firstname,
           lastname: state.lastname,
-          email: state.mail,
-          password: state.password,
-          confirmpassword: state.passwordConfirmation,
+          // email: state.mail,
+          // password: state.password,
+          // confirmpassword: state.passwordConfirmation,
           avatar: state.user.avatar,
         },
       ).then((res) => {
