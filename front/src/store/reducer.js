@@ -28,6 +28,8 @@ import {
   GET_UPDATE_LESSON_DATA,
   UPDATE_LESSON,
   DELETE_LESSON,
+  // == ajout catégorie sur leçon
+  ADD_CATEGORY_ON_LESSON,
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
@@ -251,6 +253,18 @@ export default (state = initialState, action = {}) => {
       axios.delete(`${API_URL}/user/${userId}/lesson/${lessonId}`)
         .then(() => {
           // console.log('res in Delete Lesson', res);
+          getLesson();
+        });
+    }
+    case ADD_CATEGORY_ON_LESSON: {
+      const { userId, lessonId, categoryName } = action.payload;
+      console.log('action.payload', action.payload);
+      axios
+        .post(`${API_URL}/user/${userId}/lesson/${lessonId}/category`, {
+          name: categoryName,
+        })
+        .then((res) => {
+          console.log(res);
           getLesson();
         });
     }
