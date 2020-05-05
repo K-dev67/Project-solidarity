@@ -15,12 +15,13 @@ import {
   SYNC_PASSWORD_CONFIRMATION,
   // pour reset le state
   RESET,
+  // USER
   SET_USER,
+  UPDATE_USER,
+  SET_USER_ID,
   SET_ERROR_AUTH, // pour error auth
   // GET_TEACHERS,
   SET_TEACHERS,
-  UPDATE_USER,
-  SET_USER_ID,
   // == LESSON
   SET_LESSONS,
   GET_LESSON_DATA,
@@ -54,7 +55,7 @@ const initialState = {
   user: {},
   userId: '',
   teachers: {},
-  lesson: {},
+  lessonInfo: {},
   lessons: {},
   addLessonData: {},
   updateLessonData: {},
@@ -168,6 +169,10 @@ export default (state = initialState, action = {}) => {
     case SET_LESSON_BY_ID: {
       console.log('SETLESSONID');
       console.log('payload', action.payload);
+      return {
+        ...state,
+        lessonInfo: action.payload,
+      };
     }
     // == set categories
     case SET_CATEGORIES: {

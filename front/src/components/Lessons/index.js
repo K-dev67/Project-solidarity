@@ -37,7 +37,7 @@ const Lessons = () => {
         className={classNameOwner}
         onClick={() => {
           console.log('click');
-          // getLessonById(lesson.id);
+          getLessonById(lesson.id);
         }}
       >
         <Card.Content>
@@ -46,9 +46,9 @@ const Lessons = () => {
             <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-            {classNameOwner}
-            {lesson.description}
-            {lesson.level}
+            <p>{classNameOwner}</p>
+            <p>{lesson.description}</p>
+            <p>{lesson.level}</p>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
