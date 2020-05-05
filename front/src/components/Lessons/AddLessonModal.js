@@ -5,6 +5,7 @@ import {
   Button, Header, Image, Modal,
 } from 'semantic-ui-react';
 import AddLessonForm from './AddLessonForm';
+// == function getLessonFromBdd
 
 
 const AddLessonModal = () => (

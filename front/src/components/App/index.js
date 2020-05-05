@@ -8,6 +8,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 // == actions
 import getTeachers from '../../utils/getTeachers';
 import getLessons from '../../utils/getLessons';
+import getCategories from '../../utils/getCategories';
 
 
 // == Import Component
@@ -32,6 +33,7 @@ const App = () => {
   const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
+  useEffect(getCategories, []);
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {

@@ -4,15 +4,21 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 // == actions
 import { GET_LESSON_DATA, ADD_LESSON_IN_BDD } from 'src/store/actions';
+// == function
+// import getLessons from '../../utils/getLessons';
 
 export default function AddLessonForm() {
+  // == get all categories
+  const categories = useSelector((state) => state.categories);
+  const optionCategoryJSX = categories.map((categorie) => (
+    <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
+  ));
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     dispatch({ type: GET_LESSON_DATA, payload: data });
     dispatch({ type: ADD_LESSON_IN_BDD });
-    console.log('il a cliqué');
-    console.log(data);
+    // console.log(data);
   };
   console.log(errors);
 
@@ -29,11 +35,10 @@ export default function AddLessonForm() {
         <option value=" expert"> expert</option>
       </select>
       <select name="Catégorie" ref={register}>
-        <option value="math">math</option>
-        <option value=" anglais"> anglais</option>
+        {optionCategoryJSX}
       </select>
       <input type="text" placeholder="Video" name="Video" ref={register} />
-      <input type="submit" />
+      <input type="submit" name="submitAddLesson" />
     </form>
   // </div>
   );

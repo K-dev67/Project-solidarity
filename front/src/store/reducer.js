@@ -1,4 +1,6 @@
+/* eslint-disable no-fallthrough */
 import axios from 'axios';
+import getLesson from '../utils/getLessons';
 import { API_URL } from '../utils/constante';
 import {
   SET_INPUT_NAV,
@@ -15,9 +17,16 @@ import {
   SET_TEACHERS,
   UPDATE_USER,
   SET_USER_ID,
+  // == LESSON
   SET_LESSONS,
   GET_LESSON_DATA,
   ADD_LESSON_IN_BDD,
+  GET_UPDATE_LESSON_DATA,
+  UPDATE_LESSON,
+  DELETE_LESSON,
+  // == add new lesson in lesson list
+  GET_LESSON,
+  SET_CATEGORIES,
 } from './actions';
 import store from '.';
 
@@ -39,7 +48,10 @@ const initialState = {
   teachers: {},
   lessons: {},
   addLessonData: {},
-  // == add lesson data
+  updateLessonData: {},
+  categories: {},
+  // gerer l'ouverture des modals
+  // openModal: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -135,6 +147,13 @@ export default (state = initialState, action = {}) => {
         lessons: action.payload,
       };
     }
+    // == set categories
+    case SET_CATEGORIES: {
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    }
     // == update user
     case UPDATE_USER: {
       const { userId } = state;
@@ -150,11 +169,12 @@ export default (state = initialState, action = {}) => {
           avatar: state.user.avatar,
         },
       ).then((res) => {
-        console.log('response in UPDATEUSER', res.data);
+        // console.log('response in UPDATEUSER', res.data);
         store.dispatch({ type: SET_USER, user: res.data });
       });
     }
     // == add lesson data
+    // == ce que j'envoi à la bdd
     // eslint-disable-next-line no-fallthrough
     case GET_LESSON_DATA: {
       return {
@@ -174,9 +194,51 @@ export default (state = initialState, action = {}) => {
           category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in UPDATEUSER', res.data);
-        // store.dispatch({ type: SET_USER, user: res.data });
+        // console.log('response in ADDLESSON', res.data);
+        // store.dispatch({ type: GET_LESSON });
+        getLesson();
       });
+    }
+    // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
+    case GET_LESSON: {
+      getLesson();
+    }
+    case GET_UPDATE_LESSON_DATA: {
+      return {
+        ...state,
+        updateLessonData: action.payload,
+      };
+    }
+    case UPDATE_LESSON: {
+      const { userId } = state;
+      const lessonId = action.payload;
+      console.log('lessonIdInUpdate', lessonId);
+      console.log('userIdInUpdate', userId);
+      console.log('state.updateLessonData', state.updateLessonData);
+      axios.patch(
+        `${API_URL}/user/${userId}/lesson/${lessonId}`, {
+          title: state.updateLessonData.Titre,
+          description: state.updateLessonData.Description,
+          level: state.updateLessonData.Niveau,
+          plannified: state.updateLessonData.Date,
+          videos: state.updateLessonData.Video,
+          // category: state.addLessonData.Catégorie,
+        },
+      ).then((res) => {
+        console.log('response in UPDATELESSON', res.data);
+        // store.dispatch({ type: GET_LESSON });
+        getLesson();
+      }).catch((err) => console.trace(err));
+      // break;
+      next(action);
+    }
+    case DELETE_LESSON: {
+      const { userId, lessonId } = action.payload;
+      axios.delete(`${API_URL}/user/${userId}/lesson/${lessonId}`)
+        .then((res) => {
+          console.log('res in Delete Lesson', res);
+          getLesson();
+        });
     }
     default: {
       return state;

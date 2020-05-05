@@ -34,10 +34,16 @@ export const enterHomePage = (history) => ({ type: ENTER_HOME_PAGE, history });
 export const SET_TEACHERS = 'actions/SET_TEACHERS';
 // == set all lessons
 export const SET_LESSONS = 'actions/SET_LESSONS';
+// == set all categories
+export const SET_CATEGORIES = 'actions/SET_CATEGORIES';
 
-// == Add Lesson Data
+// ==  Lesson Data
 export const GET_LESSON_DATA = 'actions/GET_LESSON_DATA';
 export const ADD_LESSON_IN_BDD = 'actions/ADD_LESSON_IN_BDD';
+export const GET_LESSON = 'actions/GET_LESSON';
+export const GET_UPDATE_LESSON_DATA = 'actions/GET_UPDATE_LESSON_DATA';
+export const UPDATE_LESSON = 'actions/UPDATE_LESSON';
+export const DELETE_LESSON = 'actions/DELETE_LESSON';
 
 // // == update profil user
 export const UPDATE_USER = 'actions/UPDATE_USER';

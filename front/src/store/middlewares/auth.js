@@ -12,7 +12,6 @@ import { API_URL } from '../../utils/constante';
 
 
 export default (store) => (next) => (action) => {
-  console.log('MW auth');
   switch (action.type) {
     case LOGIN: {
       axios
@@ -24,7 +23,7 @@ export default (store) => (next) => (action) => {
         })
         .then((res) => {
           const user = res.data;
-          console.log('user', user);
+          // console.log('user', user);
           store.dispatch({ type: SET_USER, user });
           store.dispatch({ type: SET_USER_ID, payload: user.id });
           store.dispatch(enterHomePage(action.history));

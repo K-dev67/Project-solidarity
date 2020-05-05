@@ -38,7 +38,6 @@ const FormUpdateUser = () => {
     user,
   } = useSelector((state) => state);
 
-  console.log('user', user);
   // == history
   //   const history = useHistory();
   //! == traitement des erreurs en front
@@ -46,7 +45,6 @@ const FormUpdateUser = () => {
   // == handleSubmit ---------------
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('je submit');
     if (!username) {
       errorsList.push('Le username ne peut pas être vide');
       // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });

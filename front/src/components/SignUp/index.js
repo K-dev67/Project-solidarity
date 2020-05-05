@@ -42,7 +42,7 @@ const SignUp = () => {
   // == handleSubmit ---------------
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('je submit');
+
     if (!username) {
       errorsList.push('Le username ne peut pas être vide');
       // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });

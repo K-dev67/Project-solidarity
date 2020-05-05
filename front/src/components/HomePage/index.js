@@ -1,6 +1,6 @@
 import React from 'react';
 
-//import components
+// import components
 import Presentation from './Presentation';
 import TeacherPresentation from './TeacherPresentation';
 import TopLessonsPresentation from './TopLessonsPresentation';
@@ -11,18 +11,15 @@ import AssetsPresentation from './AssetsPresentation';
 // == style
 import './styles.scss';
 
-const HomePage = () => {
-  console.log('homepage');
-  return (
-    <div className="homePage">
-      <Presentation />
-      <AssetsPresentation />
-      <TeacherPresentation />
-      <TopLessonsPresentation />
-      <HowItWorksPresentation />
-      <UsersReviewsPresentation />
-    </div>
-  );
-};
+const HomePage = () => (
+  <div className="homePage">
+    <Presentation />
+    <AssetsPresentation />
+    <TeacherPresentation />
+    <TopLessonsPresentation />
+    <HowItWorksPresentation />
+    <UsersReviewsPresentation />
+  </div>
+);
 
 export default HomePage;

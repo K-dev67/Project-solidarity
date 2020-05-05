@@ -1,11 +1,8 @@
-```JS
- const loginCheck = useCallback((path, component) => {
-    if (!user) {
-      return <Redirect to={path} />;
-    }
-    return { component };
-  }, [user]);
-```
-```JS
-<Route exact path="/search" render={() => loginCheck('/login', <Search />)} />
-```
+
+regarder les paquets
+- sanitize
+- multer
+- morgan
+https://github.com/O-clock-Bifrost/okanban-SimonMARTIN87/blob/master/index.js <= server.js de Simon le kanban
+
+pouvoir supprimer un compte user

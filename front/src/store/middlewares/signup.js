@@ -5,7 +5,6 @@ import {
 } from 'src/store/actions';
 
 export default (store) => (next) => (action) => {
-  console.log('MW signup');
   switch (action.type) {
     case SET_FORM: {
       axios
@@ -20,7 +19,7 @@ export default (store) => (next) => (action) => {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('response in SIGNUP.JS', response.data);
+          // console.log('response in SIGNUP.JS', response.data);
           store.dispatch({ type: RESET });
           store.dispatch(enterLoginPage(action.history));
         })

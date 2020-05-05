@@ -11,10 +11,12 @@ const homeController = {
             const dataUser = data.rows;
             res.send(dataUser);
         });
+
     }, 
     // /teacherList' => Affiche tout les profs
     showTeacher: (req, res) => {
         dataMapper.getTeacherList((error, data) => { 
+
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -24,7 +26,7 @@ const homeController = {
     },
     // '/askList' => Affiche toute les question
     showAsk: (req, res) => {
-        dataMapper.getAskList((error, data) => { 
+        dataMapper.getAskList((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -34,7 +36,9 @@ const homeController = {
     },
     // '/lessonList' => Affiche tout les cours
     showLesson: (req, res) => {
+
         dataMapper.getLessonList((error, data) => { 
+p
             if (error) {
                 console.trace(error);
                 res.send(error);
@@ -49,7 +53,7 @@ const homeController = {
             if (error) {
                 console.log(error);
                 res.send(error);
-            } 
+            }
             if (data.rowCount === 0) {
                 return res.send("Cette category n'existe pas");
             }
@@ -73,7 +77,7 @@ const homeController = {
             if (error) {
                 console.log(error);
                 res.send(error);
-            } 
+            }
             if (data.rowCount === 0) {
                 return res.send("Cette category n'existe pas");
             }
@@ -92,7 +96,7 @@ const homeController = {
     },
     // '/categoryList' => Affiche toute les category
     showAllCategory: (req, res) => {
-        dataMapper.getAllCategory((error, data) => { 
+        dataMapper.getAllCategory((error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);

@@ -3,14 +3,10 @@ import { ENTER_LOGIN_PAGE, ENTER_HOME_PAGE } from '../actions';
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case ENTER_LOGIN_PAGE: {
-      console.log('mwRoutes ENTER_LOGIN_PAGE');
       action.history.push('/login');
       return;
     }
     case ENTER_HOME_PAGE: {
-      // store.dispatch
-      // console.log('response.data', response.data);
-      console.log('mwRoutes ENTER_HOME_PAGE');
       action.history.push('/');
       return;
     }
