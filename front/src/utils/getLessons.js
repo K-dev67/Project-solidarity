@@ -8,7 +8,7 @@ import { SET_LESSONS } from '../store/actions';
 
 const lessonsRequest = `${API_URL}/lessonList`;
 
-const getTeachers = (url = lessonsRequest) => {
+const getLessons = (url = lessonsRequest) => {
   const promise = axios.get(
     url,
   );
@@ -18,4 +18,4 @@ const getTeachers = (url = lessonsRequest) => {
   });
 };
 
-export default getTeachers;
+export default getLessons;

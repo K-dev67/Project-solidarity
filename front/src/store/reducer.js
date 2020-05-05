@@ -230,6 +230,7 @@ export default (state = initialState, action = {}) => {
         getLesson();
       }).catch((err) => console.trace(err));
       // break;
+      next(action);
     }
     case DELETE_LESSON: {
       const { userId, lessonId } = action.payload;
