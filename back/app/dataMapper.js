@@ -38,7 +38,10 @@ const dataMapper = {
         db_connection.query(query, callback);
     },
     getNextLessonList: (callback) => {
-        const query = `SELECT * FROM "lesson" WHERE plannified BETWEEN now() AND now() + interval '2 hours'`;
+        const query = `SELECT * FROM "user"
+        JOIN user_subscribe_lesson ON "user".id = user_id
+        JOIN "lesson" ON lesson_id = lesson.id
+        WHERE plannified BETWEEN now() AND now() + interval '2 hours' AND user_subscribe_lesson.status = 'todo'`;
         db_connection.query(query, callback);
     },
     getLessonByName: (title, callback) => {
@@ -109,7 +112,7 @@ const dataMapper = {
     },
     checkIfRelationLessonCategoryExist: (lessonId, category, callback) => {
         const query = 'SELECT * FROM lesson_has_category WHERE lesson_id = $1 AND category_id = $2';
-        const values = [lessonId, category.id];
+        const values = [lessonId, category];
         db_connection.query(query, values, callback);
     },
     getAllLessonByCategory: (category, callback) => {

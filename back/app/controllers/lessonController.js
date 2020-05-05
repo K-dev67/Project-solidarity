@@ -282,7 +282,8 @@ const lessonController = {
                             console.log(error);
                             res.send(error);
                         }
-                        if (data.rowCount === 1 || data.rowCount < 1){
+                        //console.log(data.rows[0]);
+                        if (data.rowCount >= 1){
                             return res.send("Cette relation existe déja");
                         }
                         dataMapper.addRelationLessonCategory(lessonId, category.id, (error, data) => {

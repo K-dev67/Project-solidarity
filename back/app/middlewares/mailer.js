@@ -65,6 +65,38 @@ const mail = {
             console.trace(error);
             res.send(error);
         }
+    },
+    subscribe: async (req, res) => {
+        try {
+            const email = req;
+            console.log('email', email);
+
+            let testAccount = await nodemailer.createTestAccount();
+            
+            let transporter = nodemailer.createTransport( {
+                service: "Gmail",
+                auth: {
+                    user: process.env.MAIL,
+                    pass: process.env.MAILPASS
+                },
+                tls: {
+                    rejectUnauthorized: false,
+                }
+                
+            });
+            let info = await transporter.sendMail({
+                from: '"Team Solidarité " <solidarite.no.reply@gmail.com>',
+                to: `${email}`,
+                subject: "Bientôt l'heure ! :D",
+                text: "Vous vous etes inscrit a un cours.",
+                html: `<p>Votre cours commence bientôt !</p>`
+            });
+            console.log("Message sent: %s ", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        } catch (error) {
+            console.trace(error);
+            res.send(error);
+        }
     }
 };
 
