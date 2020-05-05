@@ -9,8 +9,51 @@
     }
 }
 
-.container-updateLesson-category {
+// == container in modal update lesson
+.container-update-lesson-form{
+    padding: 3em;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+
+    .update-lesson-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .title-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .title {
+                input {
+                    height: 2em;
+                    width: 10em;
+                    border-radius: 0.5em;
+                }
+            }
+            .description {
+                textarea {
+                    width: 20em;
+                    height: 5em;
+                    border-radius: 0.5em;
+                }
+            }
+        }
+        .date-video-level {
+            input {
+                height: 2em;
+                width: 12em;
+                border-radius: 0.5em;
+            }
+        }
+    }
+
+    .submit-lesson-form {
+        padding-top: 2em;
+        display: flex;
+        justify-content: center;
+        input {
+            height: 2em;
+            width: 5em;
+        }
+    }
 }
