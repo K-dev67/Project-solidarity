@@ -28,6 +28,7 @@ import {
   GET_UPDATE_LESSON_DATA,
   UPDATE_LESSON,
   DELETE_LESSON,
+  SET_LESSON_BY_ID,
   // == ajout catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   // == add new lesson in lesson list
@@ -53,6 +54,7 @@ const initialState = {
   user: {},
   userId: '',
   teachers: {},
+  lesson: {},
   lessons: {},
   addLessonData: {},
   updateLessonData: {},
@@ -162,6 +164,10 @@ export default (state = initialState, action = {}) => {
         lessonsFiltered: action.payload,
         // lessonsFiltered: [...state.lessons, ...action.payload],
       };
+    }
+    case SET_LESSON_BY_ID: {
+      console.log('SETLESSONID');
+      console.log('payload', action.payload);
     }
     // == set categories
     case SET_CATEGORIES: {

@@ -17,6 +17,9 @@ import Moment from 'react-moment';
 import AddLessonModal from './AddLessonModal';
 import InputSearchLesson from './InputSearchLesson';
 
+// == import from BDD
+import getLessonById from '../../utils/getLessonById';
+
 // == style
 import './styles.scss';
 
@@ -32,6 +35,10 @@ const Lessons = () => {
       <Card
         key={lesson.id}
         className={classNameOwner}
+        onClick={() => {
+          console.log('click');
+          // getLessonById(lesson.id);
+        }}
       >
         <Card.Content>
           <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
