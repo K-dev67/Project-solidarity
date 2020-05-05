@@ -1,5 +1,6 @@
 // == input de la navBar
 export const SET_INPUT_NAV = 'actions/SET_INPUT_NAV';
+export const SET_FILTERED_LESSONS = 'actions/SET_FILTERED_LESSONS';
 // == sync userForm in signUp
 export const SYNC_USERNAME = 'actions/SYNC_USERNAME';
 export const SYNC_FIRSTNAME = 'actions/SYNC_FIRSTNAME';
@@ -13,6 +14,7 @@ export const RESET = 'actions/RESET';
 // == une fois la réponse ok de la bdd => reponse 200
 export const SET_USER = 'actions/SET_USER';
 export const SET_USER_ID = 'actions/SET_USER_ID';
+export const UPDATE_USER = 'actions/UPDATE_USER';
 // == if error authentification => response 401 de mon server
 export const SET_ERROR_AUTH = 'actions/SET_ERROR_AUTH';
 
@@ -44,6 +46,3 @@ export const GET_LESSON = 'actions/GET_LESSON';
 export const GET_UPDATE_LESSON_DATA = 'actions/GET_UPDATE_LESSON_DATA';
 export const UPDATE_LESSON = 'actions/UPDATE_LESSON';
 export const DELETE_LESSON = 'actions/DELETE_LESSON';
-
-// // == update profil user
-export const UPDATE_USER = 'actions/UPDATE_USER';

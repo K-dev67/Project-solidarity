@@ -1,13 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { SET_INPUT_NAV } from 'src/store/actions';
+import { SET_INPUT_NAV, SET_FILTERED_LESSONS } from 'src/store/actions';
 import { Input } from 'semantic-ui-react';
 
 const InputSearchLesson = () => {
   const dispatch = useDispatch();
-  const { inputNav } = useSelector((state) => state);
+  const { inputNav, lessons } = useSelector((state) => state);
+  // == pour filtrer les leçons en fonction des touches du clavier
+  // pour filtrer les pokemons en fonction des touches du clavier..
+  console.log('lessons', lessons);
+  const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
+  console.log('lessonFiltered', lessonFiltered);
 
-  console.log('inputSearchLesson');
   return (
     <Input
       fluid
@@ -16,6 +20,7 @@ const InputSearchLesson = () => {
       placeholder="rechercher un cours"
       onChange={(evt) => {
         dispatch({ type: SET_INPUT_NAV, payload: evt.target.value });
+        dispatch({ type: SET_FILTERED_LESSONS, payload: lessonFiltered });
       }}
       value={inputNav}
     />

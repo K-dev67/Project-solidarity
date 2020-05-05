@@ -3,14 +3,18 @@ import axios from 'axios';
 import getLesson from '../utils/getLessons';
 import { API_URL } from '../utils/constante';
 import {
+  // == input navBar
   SET_INPUT_NAV,
+  SET_FILTERED_LESSONS,
+  // == signUp Page
   SYNC_USERNAME,
   SYNC_FIRSTNAME,
   SYNC_LASTNAME,
   SYNC_MAIL,
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
-  RESET, // pour reset le state
+  // pour reset le state
+  RESET,
   SET_USER,
   SET_ERROR_AUTH, // pour error auth
   // GET_TEACHERS,
@@ -34,6 +38,7 @@ import store from '.';
 const initialState = {
   // == input du menu
   inputNav: '',
+  lessonsFiltered: {},
   // form du signUp
   username: '',
   firstname: '',
@@ -61,6 +66,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         inputNav: action.payload,
+      };
+    }
+    case SET_FILTERED_LESSONS: {
+      return {
+        ...state,
+        lessonsFiltered: [...action.payload],
+        // lessons: state.lessonsFiltered,
       };
     }
     // == form user
@@ -145,6 +157,8 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         lessons: action.payload,
+        lessonsFiltered: action.payload,
+        // lessonsFiltered: [...state.lessons, ...action.payload],
       };
     }
     // == set categories
@@ -193,7 +207,7 @@ export default (state = initialState, action = {}) => {
           videos: state.addLessonData.Video,
           category: state.addLessonData.Catégorie,
         },
-      ).then((res) => {
+      ).then(() => {
         // console.log('response in ADDLESSON', res.data);
         // store.dispatch({ type: GET_LESSON });
         getLesson();
@@ -212,9 +226,9 @@ export default (state = initialState, action = {}) => {
     case UPDATE_LESSON: {
       const { userId } = state;
       const lessonId = action.payload;
-      console.log('lessonIdInUpdate', lessonId);
-      console.log('userIdInUpdate', userId);
-      console.log('state.updateLessonData', state.updateLessonData);
+      // console.log('lessonIdInUpdate', lessonId);
+      // console.log('userIdInUpdate', userId);
+      // console.log('state.updateLessonData', state.updateLessonData);
       axios.patch(
         `${API_URL}/user/${userId}/lesson/${lessonId}`, {
           title: state.updateLessonData.Titre,
@@ -224,8 +238,8 @@ export default (state = initialState, action = {}) => {
           videos: state.updateLessonData.Video,
           // category: state.addLessonData.Catégorie,
         },
-      ).then((res) => {
-        console.log('response in UPDATELESSON', res.data);
+      ).then(() => {
+        // console.log('response in UPDATELESSON', res.data);
         // store.dispatch({ type: GET_LESSON });
         getLesson();
       }).catch((err) => console.trace(err));
@@ -235,8 +249,8 @@ export default (state = initialState, action = {}) => {
     case DELETE_LESSON: {
       const { userId, lessonId } = action.payload;
       axios.delete(`${API_URL}/user/${userId}/lesson/${lessonId}`)
-        .then((res) => {
-          console.log('res in Delete Lesson', res);
+        .then(() => {
+          // console.log('res in Delete Lesson', res);
           getLesson();
         });
     }

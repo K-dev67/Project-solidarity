@@ -22,11 +22,11 @@ import './styles.scss';
 
 
 const Lessons = () => {
-  const { lessons } = useSelector((state) => state);
+  const { lessons, lessonsFiltered } = useSelector((state) => state);
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
 
   // todo gerer la photo du prof avec lesson.teacher_id
-  const lessonsJSX = lessons.map((lesson) => (
+  const lessonsJSX = lessonsFiltered.map((lesson) => (
     <Card key={lesson.id}>
       <Card.Content>
         <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
