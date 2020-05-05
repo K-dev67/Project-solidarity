@@ -70,6 +70,10 @@ const dataMapper = {
         const values = [categoryName];
         db_connection.query(query, values, callback);
     },
+    getCategoryWithRelation: (callback) => {
+        const query = 'SELECT * FROM "category" JOIN lesson_has_category ON category.id = category_id';
+        db_connection.query(query, callback);
+    },
 //? /// \\\ ASK      ///\\\
 
     getAskList: (callback) => {

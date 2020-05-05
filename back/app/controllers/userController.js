@@ -29,9 +29,6 @@ const userController = {
         try {
             const userId = req.params.id;
             const info = req.body;
-            let userStatus = 'activé';
-            let errorsList = [];
-
                 await dataMapper.getUserId(userId, (error, data) => {
                     if (error) {
                         console.trace(error);
@@ -40,11 +37,43 @@ const userController = {
                     if (data.rowCount === 0) {
                         return res.send("Cette utilisateur n'existe pas")
                     }
-                    if (!info.email) {
-                        return res.send('Erreur')
-                    }
                     const user = data.rows[0];
-                    dataMapper.checkEmail(info.email, (error, data) => {
+                            dataMapper.checkName(info.nickname, (error, data) => {
+                                if (error) {
+                                    console.trace(error);
+                                    res.send(error);
+                                }
+                                const nickname = data;
+                                if (nickname.rowCount === 1 && user.nickname !== info.nickname) {
+                                    return res.send('Ce pseudo existe déjâ');
+                                }
+                                    for (let [keyInfo, valueInfo] of Object.entries(info)) {
+                                        if (!valueInfo) {
+                                            console.log('info manquante')
+                                        } else {
+                                            user[keyInfo] = valueInfo;
+                                        }
+                                    }
+                    dataMapper.updateUser(user,userId, (error, data) => {
+                        if (error) {
+                            console.trace(error);
+                            res.send(error);
+                        }
+                        if (data.rowCount === 0 ) {
+                            return res.send("Rien a était modifier")
+                        }
+                        return res.send("C'est bien mis a jour");
+                    });
+                });
+            });
+        } catch (error) {
+            console.trace(error);
+            res.send(error);
+        }
+    },
+};
+                    // A GARDER POUR CHANGER SON EMAIL
+                    /*dataMapper.checkEmail(info.email, (error, data) => {
                         if (error) {
                             console.trace(error);
                             res.send(error);
@@ -52,27 +81,18 @@ const userController = {
                         /*if () {
                             return res.send('')
                         }*/
-                        const mail = data.rows;
+                        /*const mail = data.rows;
                         if (mail.rowCount === 1 && user.email !== info.email) {
                             errorsList.push("Cette email existe déja");
-                        }
-                            dataMapper.checkName(info.nickname, (error, data) => {
-                                if (error) {
-                                    console.trace(error);
-                                    res.send(error);
-                                }
-                                const nickname = data;
-                                console.log('nickname', nickname);
-                                if (mail.rowCount === 0) {
+                        }*/
+                    /*if (mail.rowCount === 0) {
                                     userStatus = 'a validé'
                                 }
                                 if (mail.email === info.email && user.email !== info.email) {
                                     errorsList.push('Cette email existe déja');
                                 }
-                                if (nickname.rowCount === 1 && user.nickname !== info.nickname) {
-                                    errorsList.push('Ce pseudo existe déjâ');
-                                }
-                                if (!info.nickname) {
+                                */
+                                /*if (!info.nickname) {
                                     errorsList.push("Le pseudo ne peut pas etre vide");
                                 }
                                 if (!info.firstname) {
@@ -86,68 +106,51 @@ const userController = {
                                 }
                                 if (info.password.length < 8) {
                                     errorsList.push("Le mot de passe doit contenir un minimum de 8 caracteres");
-                                } if (!info.avatar) {
+                                }*/
+                                /* if (!info.avatar) {
                                     //errorsList.push("L avatar ne peut pas etre vide");
                                     info.avatar = 'No avatar'
-                                }
-                                //* à voir avec KEVIN ------
-                                //* si on enleve pas un password confirmation
-                                if (info.password !== info.confirmpassword ){
+                                }*/
+                                
+                                /*if (info.password !== info.confirmpassword ){
                                     errorsList.push("Le mot de passe et la confirmation ne correspondent pas")
-                                }
-                                if (!bcrypt.compareSync(info.password, user.password ) ) {
+                                }*/
+                                // Autre controller => Gerer le mod de passe
+                                /*if (!bcrypt.compareSync(info.password, user.password ) ) {
                                     return res.send("Mauvais mot de passe");
-                                }
+                                }*/
                                 // FRONT = METTRE laissez vide pour garder votre mdp actuel
-                                if (!info.newpassword) {
+                                /*if (!info.newpassword) {
                                     info.newpassword = info.password;
-                                }
-                                if (info.newpassword.length < 8) {
+                                }*/
+                                /*if (info.newpassword.length < 8) {
                                     errorsList.push("Le mot de passe doit contenir un minimum de 8 caracteres")
-                                }
-                                if (info.email !== user.email) {
+                                }*/
+                                /*if (info.email !== user.email) {
                                     userStatus = 'a validé';
-                                }
-                                if (errorsList.length === 0) {
+                                }*/
+                    /*if (errorsList.length === 0) {
                                     const updateUser = {
                                         nickname: info.nickname,
                                         firstname: info.firstname,
                                         lastname: info.lastname,
                                         email: info.email,
-                                        password: bcrypt.hashSync(info.newpassword, 10),
+                                        password: bcrypt.hashSync(info.password, 10),
                                         role: 'user',
                                         status: userStatus,
                                         avatar: info.avatar
-                                    }
-                                            dataMapper.updateUser(updateUser,userId, (error, data) => {
-                                                if (error) {
-                                                    console.trace(error);
-                                                    res.send(error);
-                                                }
-                                                console.log(data);
-                                                if (data.rowCount === 0 ) {
-                                                    return res.send("Rien a était modifier")
-                                                }
-                                                if (userStatus === 'a validé') {
+                                    }*/
+                                                // A RECUPERER POUR L'EMAIL
+                                                /*if (userStatus === 'a validé') {
                                                     sendMail.mailer(updateUser.email)
                                                     console.log("email envoyé")
-                                                }
-                                                if (data.rowCount === 1) {
+                                                }*/
+                                                /*if (data.rowCount === 1) {
                                                     // return res.send("Vos modifications ont bien été enregistrées");
                                                     return res.send(updateUser);
-                                                }
-                                            });
-                                } else {
-                                    return res.send(errorsList);
-                                }
-                            });
-                    });
-                });
-        } catch (error) {
-            console.trace(error);
-            res.send(error);
-        }
-    },
-};
+                                                }*/
+                                         /*} else {
+                                    return res.send(errorsList);*/
+                //});
 
 module.exports = userController;

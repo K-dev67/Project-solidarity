@@ -38,7 +38,6 @@ const homeController = {
     showLesson: (req, res) => {
 
         dataMapper.getLessonList((error, data) => { 
-p
             if (error) {
                 console.trace(error);
                 res.send(error);
