@@ -2,7 +2,7 @@ import React from 'react';
 
 
 // == import component
-import { Segment, Card } from 'semantic-ui-react';
+import { Container, Segment, Card } from 'semantic-ui-react';
 import ListTeachers from './teachersCard';
 
 
