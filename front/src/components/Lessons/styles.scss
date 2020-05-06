@@ -63,3 +63,9 @@
         }
     }
 }
+
+@media (max-width: 650px) {
+    .add-lesson-form{
+        flex-direction: column;
+        align-items: center;
+}}
