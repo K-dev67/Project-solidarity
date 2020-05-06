@@ -5,25 +5,16 @@ import { Icon, Label } from 'semantic-ui-react';
 import { DELETE_CATEGORY_LABEL } from '../../store/actions';
 
 
-const LabelCategory = ({ lessonId }) => {
-  const { lessonInfo } = useSelector((state) => state);
-  // console.log(lessonInfo);
-  // const infoLesson = lessonInfo.lessonInfo;
+const LabelCategory = ({ lessonId, teacherId }) => {
+  const { lessonInfo, userId } = useSelector((state) => state);
   const { categoryInfo } = lessonInfo;
-  // console.log('infoLesson', infoLesson);
-  console.log('categoryInfo', categoryInfo);
   if (categoryInfo === undefined) {
     return null;
   }
   const categoryJSX = categoryInfo.map((category) => {
     const dispatch = useDispatch();
-    // console.log('category.name', category.name);
-
     const handleClick = (e) => {
-      // console.log('cliqué');
-      // console.log('e.target', e.target.getAttribute('data-key'));
       const categoryId = e.target.getAttribute('data-key');
-      // console.log('lessonId', lessonId);
       dispatch({
         type: DELETE_CATEGORY_LABEL,
         payload:
@@ -33,16 +24,22 @@ const LabelCategory = ({ lessonId }) => {
          },
       });
     };
-    return (
-      <Label image>
-        <img src="https://react.semantic-ui.com/images/avatar/small/ade.jpg" />
-        {category.name}
+    let iconJSX = '';
+    if (userId === teacherId) {
+      iconJSX = (
         <Icon
           onClick={handleClick}
           name="delete"
           key={category.category_id}
           data-key={category.category_id}
         />
+      );
+    }
+    return (
+      <Label image>
+        <img src="https://react.semantic-ui.com/images/avatar/small/ade.jpg" />
+        {category.name}
+        {iconJSX}
       </Label>
     );
   });
@@ -53,8 +50,9 @@ const LabelCategory = ({ lessonId }) => {
   );
 };
 
-LabelCategory.PropTypes = {
+LabelCategory.propTypes = {
   lessonId: PropTypes.number,
+  teacherId: PropTypes.number,
 };
 
 export default LabelCategory;
