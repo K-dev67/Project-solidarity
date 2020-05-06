@@ -209,6 +209,95 @@ const liveController = {
                  res.send("Vous n'etes pas inscrit");
              }
         });
+     },
+     likeLesson: (req, res) => {
+
+        const userId = req.params.id;
+        const lessonId = req.params.Id;
+        dataMapper.getUserId(userId, (error, data) => {
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            if (data.rowCount === 1) {
+                dataMapper.getLesson(lessonId, (error, data) => {
+                    if (error) {
+                        console.trace(error);
+                        res.send(error);
+                    }
+                    if (data.rowCount === 1) {
+                        dataMapper.checkLessonLike(userId, lessonId, (error, data) => {
+                             if (error) {
+                                 console.trace(error);
+                                 res.send(error);
+                             }
+                             if (data.rowCount === 0) {                                 
+                                 dataMapper.lessonLiked(userId, lessonId, (error, data) => {
+                                     if (error) {
+                                         console.trace(error);
+                                         res.send(error);
+                                     }
+                                     if (data.rowCount === 0) {
+                                         res.send("Vous n'etes pas inscrit");
+                                     }
+                                     if (data.rowCount === 1) {
+                                        dataMapper.addOneLikeLesson(lessonId, (error, data) => {
+                                            if (error) {
+                                                console.trace(error);
+                                                res.send(error);
+                                            } else {
+                                                res.send("Un like en plus");
+                                            }
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    res.send("Vous etes deja inscrit");
+                                }
+                        });
+                    } else {
+                        res.send("Cette demande n'existe pas");
+                    }
+                });
+            } else {
+                res.send("Cette utilisateur n'existe pas")
+            }
+        });
+     },
+     dislikeLesson: (req, res) => {
+
+        const userId = req.params.id;
+        const lessonId = req.params.Id;
+        dataMapper.checkLessonLike(userId, lessonId, (error, data) => {
+             if (error) {
+                 console.trace(error);
+                 res.send(error);
+             } 
+             if (!data) {
+                 res.send("L'utilisateur ou le cour n'existe pas");
+             }
+             if (data.rowCount === 1) {
+                 
+                 dataMapper.unLikeLesson(userId, lessonId, (error, data) => {
+                     if (error) {
+                         console.trace(error);
+                         res.send(error);
+                     }
+                     if (data.rowCount === 1 || data.rowCount > 1) {
+                         dataMapper.deleteOneLikeLesson(lessonId, (error, data) => {
+                            if (error) {
+                                console.trace(error);
+                                res.send(error);
+                            } else {
+                                res.send("Un like en moins");
+                            }
+                         });
+                     }
+                 });
+             } else {
+                 res.send("Vous n'etes pas inscrit");
+             }
+        });
      }
 };
 
