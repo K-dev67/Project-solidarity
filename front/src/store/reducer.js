@@ -286,7 +286,9 @@ export default (state = initialState, action = {}) => {
       //   ...state,
       //   labelCategory: categoryName,
       // };
+      next(action);
     }
+
     case DELETE_CATEGORY_LABEL: {
       const { userId } = state;
       let { categoryId, lessonId } = action.payload;
