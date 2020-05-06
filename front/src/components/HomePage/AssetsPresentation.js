@@ -15,7 +15,7 @@ const AssetsPresentation = () => (
         <p>Salles de cours facile à utliser et complète</p>
       </div>
       <div className="AssetsPresentation_card">
-        <h3>Benevolat</h3>
+        <h3>Bénevolat</h3>
         <p>Assister à des cours ou en donner, tout est gratuit...</p>
       </div>
     </div>
