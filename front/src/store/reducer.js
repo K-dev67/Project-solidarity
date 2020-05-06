@@ -35,6 +35,9 @@ import {
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
+  // message positif
+  MESSAGE_POSITIF_TRUE,
+  MESSAGE_POSTIF_FALSE,
 } from './actions';
 import store from '.';
 
@@ -61,7 +64,7 @@ const initialState = {
   updateLessonData: {},
   categories: {},
   // gerer l'ouverture des modals
-  // openModal: false,
+  messagePositif: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -220,10 +223,12 @@ export default (state = initialState, action = {}) => {
           videos: state.addLessonData.Video,
           category: state.addLessonData.Catégorie,
         },
-      ).then(() => {
-        // console.log('response in ADDLESSON', res.data);
+      ).then((res) => {
+        console.log('response in ADDLESSON', res);
+
         // store.dispatch({ type: GET_LESSON });
         getLesson();
+        store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
     }
     // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
@@ -274,6 +279,18 @@ export default (state = initialState, action = {}) => {
           console.log(res);
           getLesson();
         });
+    }
+    case MESSAGE_POSITIF_TRUE: {
+      return {
+        ...state,
+        messagePositif: true,
+      };
+    }
+    case MESSAGE_POSTIF_FALSE: {
+      return {
+        ...state,
+        messagePositif: false,
+      };
     }
     default: {
       return state;

@@ -49,3 +49,7 @@ export const SET_LESSON_BY_ID = 'actions/SET_LESSON_BY_ID';
 export const GET_UPDATE_LESSON_DATA = 'actions/GET_UPDATE_LESSON_DATA';
 export const UPDATE_LESSON = 'actions/UPDATE_LESSON';
 export const DELETE_LESSON = 'actions/DELETE_LESSON';
+
+// == message positif
+export const MESSAGE_POSITIF_TRUE = 'actions/MESSAGE_POSITIF_TRUE';
+export const MESSAGE_POSTIF_FALSE = 'actions/MESSAGE_POSTIF_FALSE';
