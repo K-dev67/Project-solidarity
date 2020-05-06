@@ -20,7 +20,7 @@ const mailController = {
             // A MODIFIER POUR LINSTANT SA SELECTIONNE TOUT
             /*UPDATE "user_subscribe_lesson"
             SET status = 'envoyé'
-            FROM "user", "lesson"
+            FROM lesson
             WHERE plannified BETWEEN now() AND now() + interval '2 hours' AND user_subscribe_lesson.status = 'todo';*/
             res.send('done');
         });

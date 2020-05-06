@@ -316,7 +316,15 @@ const dataMapper = {
 //!  /// \\\  ****** ///\\\ 
 //!  /// \\\  OTHERS ///\\\ 
 //!  /// \\\  ****** ///\\\ 
-
+    resetPasswordDone: (email, callback) => {
+        const query = 'DELETE FROM "passphrase_check_email" WHERE email = $1';
+        const values = [email];
+        db_connection.query(query, values, callback);
+    },
+    resetAllPassphrase: (callback) => {
+        const query = 'DELETE FROM "passphrase_check_email"';
+        db_connection.query(query, callback);
+    }
 
 };
 
