@@ -1,6 +1,7 @@
 /* eslint-disable no-fallthrough */
 import axios from 'axios';
 import getLesson from '../utils/getLessons';
+import getLessonById from '../utils/getLessons';
 import { API_URL } from '../utils/constante';
 import {
   // == input navBar
@@ -30,8 +31,9 @@ import {
   UPDATE_LESSON,
   DELETE_LESSON,
   SET_LESSON_BY_ID,
-  // == ajout catégorie sur leçon
+  // == ajout/remove catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
+  DELETE_CATEGORY_LABEL,
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
@@ -63,6 +65,7 @@ const initialState = {
   addLessonData: {},
   updateLessonData: {},
   categories: {},
+  labelCategory: {},
   // gerer l'ouverture des modals
   messagePositif: false,
 };
@@ -270,7 +273,6 @@ export default (state = initialState, action = {}) => {
     }
     case ADD_CATEGORY_ON_LESSON: {
       const { userId, lessonId, categoryName } = action.payload;
-      console.log('action.payload', action.payload);
       axios
         .post(`${API_URL}/user/${userId}/lesson/${lessonId}/category`, {
           name: categoryName,
@@ -278,6 +280,22 @@ export default (state = initialState, action = {}) => {
         .then((res) => {
           console.log(res);
           getLesson();
+          // getLessonById(lessonId);
+        });
+      // return {
+      //   ...state,
+      //   labelCategory: categoryName,
+      // };
+    }
+    case DELETE_CATEGORY_LABEL: {
+      const { userId } = state;
+      let { categoryId, lessonId } = action.payload;
+      categoryId = parseFloat(categoryId);
+      axios
+        .delete(`${API_URL}/user/${userId}/lesson/${lessonId}/category/${categoryId}`)
+        .then((res) => {
+          console.log('resInDeleteCategory', res);
+          // getLesson();
         });
     }
     case MESSAGE_POSITIF_TRUE: {
