@@ -232,8 +232,37 @@ const authController = {
                     if (data.rowCount === 0) {
                         return res.send("Rien a était modifié");
                     }
-                    return res.send("Votre mot de passe a était modifié.")
-                })
+                    //return res.send("Votre mot de passe a était modifié.")
+                    // DELETE FROM "passphrase_check_email";
+                    dataMapper.resetPasswordDone(email, (error, data) => {
+                        if (error) {
+                            console.trace(error);
+                            res.send(error);
+                        }
+                        if (data.rowCount === 0) {
+                            return res.send("Rien a était modifié");
+                        }
+                        res.send('Votre mot de passe a bien était modifié!')
+                    });
+                });
+            });
+        } catch (error) {
+            console.trace(error);
+            console.log(error);
+        }
+    },
+    // DELETE FROM "passphrase_check_email";
+    autoDeletePassphrase: async (req, res) => {
+        try {
+            dataMapper.resetAllPassphrase( (error, data) => {
+                if (error) {
+                    console.trace(error);
+                    res.send(error);
+                }
+                if (data.rowCount === 0) {
+                    return res.send("Rien a était modifié");
+                }
+                return res.send('Passphrase Reinitialisé');
             });
         } catch (error) {
             console.trace(error);
