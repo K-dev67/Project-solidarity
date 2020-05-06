@@ -39,8 +39,10 @@ const LabelCategory = ({ lessonId, teacherId }) => {
       );
     }
     return (
-      <Label image>
-        <img src="https://react.semantic-ui.com/images/avatar/small/ade.jpg" />
+      <Label
+        image
+        color="teal"
+      >
         {category.name}
         {iconJSX}
       </Label>
