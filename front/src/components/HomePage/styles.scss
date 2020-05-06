@@ -76,7 +76,7 @@
 
 // Component TeacherPresentation
 .TeacherPresentation_main{
-    margin: 120px 20%;
+    margin: 120px 10%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -85,7 +85,7 @@
   font-size: 2em;
 }
 .TeacherPresentation_main button{
-  margin-top: 40px;
+  margin-top: 30px;
 }
 .TeacherPresentation_card{
     margin-top: 20px;
@@ -157,7 +157,7 @@ padding:2% 5%;
   width: 100%;
 }
 .TopLessonsContainer button{
-  margin-top: -30px;
+  margin-top: 1em;
 }
 
 // Component HowItWorksPresentation
@@ -240,18 +240,18 @@ margin-bottom: 2%;
         flex-direction: column;
         align-items: center;
       }
+      // user advise
+      .UsersReviewsPresentation_container_card {
+        width: 75%;
+      }
 }
 
-// ipad => 768px
+//! ipad => 768px
 @media (max-width: 768px) {
-  // .HowItWorksPresentation_main {
-  //   flex-direction: column;
-  //   align-items: center;
-  // }
+
   .container_presentation {
     flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
+
     &_main {
       text-align: center;
     }
@@ -271,16 +271,27 @@ margin-bottom: 2%;
     }
   }
 
+  // == teacher list
+  .TeacherPresentation_main {
+    margin: 80px 10%;
+    h2 {
+      text-align: center;
+    }
+    .TeacherPresentation_card {
+      // width: 80%;
+      .OneCard {
+        width: 24%;
+      }
+    }
+
+  }
+
 
   .TopLessonsPresentation_container {
     flex-direction: column;
     .TopLessonsPresentation_container_card {
       .TopLessonsPresentation_Card {
-        // display: flex;
-        // flex-direction: row !important;
-        // .image-teacher {
-        //   width: 20px;
-        // }
+
       }
     }
   }
@@ -294,8 +305,20 @@ margin-bottom: 2%;
     }
   }
 
+}
 
-
+//! ==> telephone
+@media (max-width: 450px) {
+  .container_presentation {
+    width: 98%;
+    margin: 0px auto 50px;
+  }
+  .TeacherPresentation_main {
+    margin: 40px 10%;
+  }
+  .TopLessonsContainer {
+    margin-top: 5%;
+  }
 }
 
 
