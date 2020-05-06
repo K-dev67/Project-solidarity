@@ -6,16 +6,20 @@ import './styles.scss';
 const TopLessonsPresentation = () => {
   const TopCours = fauxCours.map((cour) => (
     <div key={cour.id} className="TopLessonsPresentation_Card">
-      <img src={cour.teacher_avatar} />
-      <h4>{cour.teacher_id}</h4>
-      <p>{cour.description} </p>
+      <div className="image-teacher">
+        <img src={cour.teacher_avatar} />
+      </div>
+      <div className="name-description">
+        <h4>{cour.teacher_id}</h4>
+        <p>{cour.description} </p>
+      </div>
     </div>
   ));
   return (
     <div className="TopLessonsContainer">
       <h2>Cours les mieux notés</h2>
       <div className="TopLessonsPresentation_container">
-        <div className="TopLessonsPresentation_container_card" />
+        {/* <div className="TopLessonsPresentation_container_card" /> */}
         {TopCours}
       </div>
       <Link to="/lessons">

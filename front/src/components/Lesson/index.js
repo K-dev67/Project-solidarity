@@ -27,6 +27,7 @@ const Lesson = ({ lesson }) => {
   // == test to get category
   console.log('lessonInfo', lessonInfo.categoryInfo);
   console.log('lessonInfo', lessonInfo.lessonInfo);
+  // const { categoryInfo } = lessonInfo;
 
 
   let modifyButtonJSX = '';

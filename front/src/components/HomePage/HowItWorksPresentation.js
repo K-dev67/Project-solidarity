@@ -8,16 +8,16 @@ const HowItWorksPresentation = () => (
     <h2>Comment ça fonctionne ?</h2>
     <div className="HowItWorksPresentation_main">
       <div className="HowItWorksPresentation_content">
-        <p>
-          odfugofhogiudf ghodufiodhiuoiudih uodiuhioduihodu hihuopiuihduophup gggr rezhrhh rztryzrzy yzytrz yzyzry zyzryz zyzyrzyz zyzyrzyrdfyter rezyryyz yzrrzy zyzyz
-        </p>
         <img src={img1} />
+        <p>
+          Le professeur propose un cours à une date et une heure qui l'interesse
+        </p>
       </div>
       <div className="HowItWorksPresentation_content">
-        <img src={img2} />
         <p>
-          odfugofhogiudf ghodufiodhiuoiudih uodiuhioduihodu hihuopiuihduophup gggr rezhrhh rztryzrzy yzytrz yzyzry zyzryz zyzyrzyz zyzyrzyrdfyter rezyryyz yzrrzy zyzyz
+          L'étudiant s'inscrit au cours et revient à l'heure souahité pour suivre le cours
         </p>
+        <img src={img2} />
       </div>
     </div>
   </div>
