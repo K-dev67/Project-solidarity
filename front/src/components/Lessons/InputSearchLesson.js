@@ -8,9 +8,9 @@ const InputSearchLesson = () => {
   const { inputNav, lessons } = useSelector((state) => state);
   // == pour filtrer les leçons en fonction des touches du clavier
   // pour filtrer les pokemons en fonction des touches du clavier..
-  console.log('lessons', lessons);
+  // console.log('lessons', lessons);
   const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
-  console.log('lessonFiltered', lessonFiltered);
+  // console.log('lessonFiltered', lessonFiltered);
 
   return (
     <Input
