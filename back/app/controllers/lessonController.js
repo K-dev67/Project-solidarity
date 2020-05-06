@@ -2,7 +2,7 @@ const dataMapper = require('../dataMapper');
 
 const lessonController = {
 
-    // '/user/:id/lesson' => Recupere et traite les information 
+    // '/user/:id/lesson' => Recupere et traite les information
     addLesson: async  (req, res) => {
         try {
             const lessonInfo = req.body;
@@ -120,7 +120,7 @@ const lessonController = {
     // '/user/:id/lesson/:Id' => Recupere  et traite les information du formulaire
     changeLesson: async (req, res) => {
         try {
-            
+
             const userId = req.params.id;
             const lessonId = req.params.Id;
             const lessonInfo = req.body;
@@ -138,7 +138,7 @@ const lessonController = {
                 }
                 //console.log('verif',data.rows[0])
                 const verifId = data.rows[0];
-            
+
 
             if (!lessonInfo.title) {
                 errorsList.push("Il manque un titre");
@@ -201,7 +201,7 @@ const lessonController = {
                         }
                 });
                 });
-            
+
             } else {
                 res.send(errorsList);
             }
@@ -282,6 +282,7 @@ const lessonController = {
                             console.log(error);
                             res.send(error);
                         }
+
                         //console.log(data.rows[0]);
                         if (data.rowCount >= 1){
                             return res.send("Cette relation existe déja");

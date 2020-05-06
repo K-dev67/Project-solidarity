@@ -1,9 +1,57 @@
 .lessons {
     min-height: 85vh;
+    .card-owner:hover {
+        border-color: red !important;
+    }
     .ui .button {
         margin: 0 0 10px 0 !important;
     }
     .input-topbar {
         margin: 0 0 10px 0 !important;
+    }
+}
+
+  // == modal add lesson
+.add-lesson-form {
+    display: flex ;
+    justify-content: space-evenly;
+    padding: 30px;
+
+    .title-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .title {
+            input {
+                height: 2em;
+                width: 10em;
+                border-radius: 0.5em;
+            }
+        }
+        .description {
+            textarea {
+                width: 20em;
+                height: 5em;
+                border-radius: 0.5em;
+            }
+        }
+    }
+
+    .level-category-date-video {
+        input {
+            height: 2em;
+            width: 12em;
+            border-radius: 0.5em;
+        }
+    }
+}
+
+.submit-add-lesson {
+    padding-top: 2em;
+    display: flex;
+    justify-content: center;
+    input {
+        height: 2em;
+        width: 5em;
     }
 }

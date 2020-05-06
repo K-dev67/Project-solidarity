@@ -5,9 +5,9 @@ const db_connection = require('./db_connection');
 
 const dataMapper = {
 
-//!  /// \\\  ****** ///\\\ 
-//!  /// \\\  SELECT ///\\\  
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
+//!  /// \\\  SELECT ///\\\
+//!  /// \\\  ****** ///\\\
 
 //? /// \\\ USER     ///\\\
 
@@ -151,9 +151,9 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
 
-//!  /// \\\  ****** ///\\\ 
-//!  /// \\\  UPDATE ///\\\ 
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
+//!  /// \\\  UPDATE ///\\\
+//!  /// \\\  ****** ///\\\
 
 //? /// \\\ USER     ///\\\
 
@@ -161,7 +161,7 @@ const dataMapper = {
         const query = `UPDATE "user" SET "status" = 'activé' WHERE "email" = $1`;
         const values = [emailAccount];
         db_connection.query(query, values, callback);
-    },  
+    },
     updateUser: (updateUser, userId, callback) => {
         const query = `UPDATE "user" SET ("nickname", "firstname", "lastname", "email", "avatar","password", "role", "status") = ($1,$2,$3,$4,$5,$6,$7,$8) WHERE "id" = $9`
         const values = [updateUser.nickname, updateUser.firstname,updateUser.lastname,updateUser.email, updateUser.avatar, updateUser.password, updateUser.role, updateUser.status, userId];
@@ -213,9 +213,9 @@ const dataMapper = {
 //? /// \\\ LIAISON  ///\\\
 
 
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
 //!  /// \\\  INSERT ///\\\
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
 
 //? /// \\\ USER     ///\\\
 
@@ -276,7 +276,7 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
 
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
 //!  /// \\\  DELETE ///\\\
 //!  /// \\\  ****** ///\\\
 
@@ -295,7 +295,7 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     //? /// \\\ CATEGORY ///\\\
-    
+
     //? /// \\\ ASK      ///\\\
 
     deleteAskFromDB: (userId, askId, callback) => {
@@ -303,8 +303,8 @@ const dataMapper = {
         const values = [userId, askId];
         db_connection.query(query, values, callback);
     },
-    //? /// \\\ MESSAGE  ///\\\  
-    
+    //? /// \\\ MESSAGE  ///\\\
+
     //? /// \\\ LIAISON  ///\\\
 
     deleteLessonId: (lessonId, categoryId, callback) => {
@@ -337,6 +337,7 @@ const dataMapper = {
         const values = [askInfo.id];
         db_connection.query(query, values, callback);
     },
+
 
 //!  /// \\\  ****** ///\\\ 
 //!  /// \\\  OTHERS ///\\\ 

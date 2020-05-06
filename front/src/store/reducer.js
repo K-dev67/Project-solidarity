@@ -15,12 +15,13 @@ import {
   SYNC_PASSWORD_CONFIRMATION,
   // pour reset le state
   RESET,
+  // USER
   SET_USER,
+  UPDATE_USER,
+  SET_USER_ID,
   SET_ERROR_AUTH, // pour error auth
   // GET_TEACHERS,
   SET_TEACHERS,
-  UPDATE_USER,
-  SET_USER_ID,
   // == LESSON
   SET_LESSONS,
   GET_LESSON_DATA,
@@ -28,11 +29,15 @@ import {
   GET_UPDATE_LESSON_DATA,
   UPDATE_LESSON,
   DELETE_LESSON,
+  SET_LESSON_BY_ID,
   // == ajout catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
+  // message positif
+  MESSAGE_POSITIF_TRUE,
+  MESSAGE_POSTIF_FALSE,
 } from './actions';
 import store from '.';
 
@@ -53,12 +58,13 @@ const initialState = {
   user: {},
   userId: '',
   teachers: {},
+  lessonInfo: {},
   lessons: {},
   addLessonData: {},
   updateLessonData: {},
   categories: {},
   // gerer l'ouverture des modals
-  // openModal: false,
+  messagePositif: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -163,6 +169,14 @@ export default (state = initialState, action = {}) => {
         // lessonsFiltered: [...state.lessons, ...action.payload],
       };
     }
+    case SET_LESSON_BY_ID: {
+      console.log('SETLESSONID');
+      console.log('payload', action.payload);
+      return {
+        ...state,
+        lessonInfo: action.payload,
+      };
+    }
     // == set categories
     case SET_CATEGORIES: {
       return {
@@ -179,9 +193,9 @@ export default (state = initialState, action = {}) => {
           nickname: state.username,
           firstname: state.firstname,
           lastname: state.lastname,
-          email: state.mail,
-          password: state.password,
-          confirmpassword: state.passwordConfirmation,
+          // email: state.mail,
+          // password: state.password,
+          // confirmpassword: state.passwordConfirmation,
           avatar: state.user.avatar,
         },
       ).then((res) => {
@@ -209,10 +223,12 @@ export default (state = initialState, action = {}) => {
           videos: state.addLessonData.Video,
           category: state.addLessonData.Catégorie,
         },
-      ).then(() => {
-        // console.log('response in ADDLESSON', res.data);
+      ).then((res) => {
+        console.log('response in ADDLESSON', res);
+
         // store.dispatch({ type: GET_LESSON });
         getLesson();
+        store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
     }
     // == pour ajouter ma leçon nouvellement crée par le user à mon state.lessons
@@ -263,6 +279,18 @@ export default (state = initialState, action = {}) => {
           console.log(res);
           getLesson();
         });
+    }
+    case MESSAGE_POSITIF_TRUE: {
+      return {
+        ...state,
+        messagePositif: true,
+      };
+    }
+    case MESSAGE_POSTIF_FALSE: {
+      return {
+        ...state,
+        messagePositif: false,
+      };
     }
     default: {
       return state;

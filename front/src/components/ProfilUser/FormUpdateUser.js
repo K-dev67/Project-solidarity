@@ -13,9 +13,9 @@ import {
   SYNC_USERNAME,
   SYNC_FIRSTNAME,
   SYNC_LASTNAME,
-  SYNC_MAIL,
-  SYNC_PASSWORD,
-  SYNC_PASSWORD_CONFIRMATION,
+  // SYNC_MAIL,
+  // SYNC_PASSWORD,
+  // SYNC_PASSWORD_CONFIRMATION,
   UPDATE_USER,
 } from 'src/store/actions';
 
@@ -32,10 +32,10 @@ const FormUpdateUser = () => {
     username,
     firstname,
     lastname,
-    mail,
-    password,
-    passwordConfirmation,
-    user,
+    // mail,
+    // password,
+    // passwordConfirmation,
+    // user,
   } = useSelector((state) => state);
 
   // == history
@@ -58,24 +58,24 @@ const FormUpdateUser = () => {
       // dispatch({ type: SYNC_ERROR_LASTNAME, errorLastname: 'Please enter your last name' });
     }
     // - adresse email au bon format
-    if (!EmailValidator.validate(mail)) {
-      errorsList.push("L'email n'est pas un email correct");
-      // dispatch({ type: SYNC_ERROR_MAIL, errorMail: 'The email adress is invalid' });
-    }
+    // if (!EmailValidator.validate(mail)) {
+    //   errorsList.push("L'email n'est pas un email correct");
+    //   // dispatch({ type: SYNC_ERROR_MAIL, errorMail: 'The email adress is invalid' });
+    // }
     // - longueur minimum du mot de passe (8 caractère minimum !)
-    if (password.length < 8) {
-      errorsList.push(
-        'Le mot de passe doit contenir un minimum de 8 caractères',
-      );
-      // dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
-    }
+    // if (password.length < 8) {
+    //   errorsList.push(
+    //     'Le mot de passe doit contenir un minimum de 8 caractères',
+    //   );
+    //   // dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
+    // }
     // // - mot de passe = confirmation
-    if (password !== passwordConfirmation) {
-      errorsList.push(
-        'Le mot de passe et la confirmation ne correspondent pas',
-      );
-      // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
-    }
+    // if (password !== passwordConfirmation) {
+    //   errorsList.push(
+    //     'Le mot de passe et la confirmation ne correspondent pas',
+    //   );
+    //   // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
+    // }
     console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
     //   dispatch(signup(history));
@@ -131,7 +131,7 @@ const FormUpdateUser = () => {
           }}
           value={lastname}
         />
-        <Form.Input
+        {/* <Form.Input
       // error={errorMail}
       // fluid
           type="mail"
@@ -142,8 +142,8 @@ const FormUpdateUser = () => {
             dispatch({ type: SYNC_MAIL, payload: evt.target.value });
           }}
           value={mail}
-        />
-        <Form.Input
+        /> */}
+        {/* <Form.Input
       // error={errorPassword}
       // fluid
           type="password"
@@ -154,8 +154,8 @@ const FormUpdateUser = () => {
             dispatch({ type: SYNC_PASSWORD, payload: evt.target.value });
           }}
           value={password}
-        />
-        <Form.Input
+        /> */}
+        {/* <Form.Input
       // error={errorPasswordConfirmation}
       // fluid
           type="password"
@@ -166,7 +166,7 @@ const FormUpdateUser = () => {
             dispatch({ type: SYNC_PASSWORD_CONFIRMATION, payload: evt.target.value });
           }}
           value={passwordConfirmation}
-        />
+        /> */}
         {/* <Form.Field>
     <Checkbox label="I agree to the Terms and Conditions" />
   </Form.Field> */}

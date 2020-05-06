@@ -23,7 +23,12 @@ import './styles.scss';
 
 const Lesson = ({ lesson }) => {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.userId);
+  const { userId, lessonInfo } = useSelector((state) => state);
+  // == test to get category
+  console.log('lessonInfo', lessonInfo.categoryInfo);
+  console.log('lessonInfo', lessonInfo.lessonInfo);
+
+
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
   let addCategoryJSX = '';
@@ -52,6 +57,7 @@ const Lesson = ({ lesson }) => {
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
   ));
+  // == submit du select addCategory
   const onSubmit = (data) => {
     console.log('jai cliqué');
     console.log('dataCategory', data.Catégorie);
@@ -91,7 +97,6 @@ const Lesson = ({ lesson }) => {
     <div className="room">
       <div className="room--description">
         <span className="room-number"># Cockpit numero {lesson.id}</span>
-
         <h2 className="room-title">titre : {lesson.title}</h2>
         <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
         </div>

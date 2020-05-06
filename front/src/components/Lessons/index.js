@@ -17,35 +17,49 @@ import Moment from 'react-moment';
 import AddLessonModal from './AddLessonModal';
 import InputSearchLesson from './InputSearchLesson';
 
+// == import from BDD
+import getLessonById from '../../utils/getLessonById';
+
 // == style
 import './styles.scss';
 
 
 const Lessons = () => {
-  const { lessons, lessonsFiltered } = useSelector((state) => state);
+  const { lessons, lessonsFiltered, userId } = useSelector((state) => state);
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
-
+  let classNameOwner = '';
   // todo gerer la photo du prof avec lesson.teacher_id
-  const lessonsJSX = lessonsFiltered.map((lesson) => (
-    <Card key={lesson.id}>
-      <Card.Content>
-        <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
-        <Card.Meta>
-          <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
-        </Card.Meta>
-        <Card.Description>
-          {lesson.description}
-          {lesson.level}
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <a>
-          <Icon name="calendar" />
-          Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
-        </a>
-      </Card.Content>
-    </Card>
-  ));
+  const lessonsJSX = lessonsFiltered.map((lesson) => {
+    if (lesson.teacher_id === userId) classNameOwner = 'card-owner';
+    return (
+      <Card
+        key={lesson.id}
+        className={classNameOwner}
+        onClick={() => {
+          console.log('click');
+          getLessonById(lesson.id);
+        }}
+      >
+        <Card.Content>
+          <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
+          <Card.Meta>
+            <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
+          </Card.Meta>
+          <Card.Description>
+            <p>{classNameOwner}</p>
+            <p>{lesson.description}</p>
+            <p>{lesson.level}</p>
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <a>
+            <Icon name="calendar" />
+            Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
+          </a>
+        </Card.Content>
+      </Card>
+    );
+  });
 
   return (
     <div className="lessons">
