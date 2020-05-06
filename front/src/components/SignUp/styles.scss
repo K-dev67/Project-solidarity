@@ -4,3 +4,12 @@
     text-align: center;
     min-height: 85vh;
 }
+
+@media (max-width: 500px) {
+    .signup-form {
+        margin: 1em auto;
+        width: 90%;
+        min-height: 75vh;
+    }
+
+}
