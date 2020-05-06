@@ -62,6 +62,11 @@ const dataMapper = {
         const query = `SELECT * FROM "lesson" WHERE "status" = 'plannifié'`;
         db_connection.query(query, callback);
     },
+    checkLessonLike: (userId, lessonId, callback) => {
+        const query = 'SELECT * FROM "user_like_lesson" WHERE "user_id" = $1 AND "lesson_id" = $2';
+        const values = [userId, lessonId];
+        db_connection.query(query, values, callback);
+    },
 //? /// \\\ CATEGORY ///\\\
 
     getAllCategory: (callback) => {
@@ -174,6 +179,16 @@ const dataMapper = {
         const values = [changeLesson.title, changeLesson.description, changeLesson.level,changeLesson.teacher_id, changeLesson.plannified, changeLesson.videos, changeLesson.status, lessonId];
         db_connection.query(query, values, callback);
     },
+    addOneLikeLesson: (lessonId, callback) => {
+        const query = `UPDATE "lesson" SET "like" = "like"+1 WHERE "id" = $1`
+        const values = [lessonId];
+        db_connection.query(query, values, callback);
+    },
+    deleteOneLikeLesson: (lessonId, callback) => {
+        const query = `UPDATE "lesson" SET "like" = "like"-1 WHERE "id" = $1`
+        const values = [lessonId];
+        db_connection.query(query, values, callback);
+    },
 //? /// \\\ CATEGORY ///\\\
 
 //? /// \\\ ASK      ///\\\
@@ -215,6 +230,11 @@ const dataMapper = {
     addLessonOnDB: (newLesson, callback) => {
         const query = `INSERT INTO  "lesson"("title", "description", "level", "teacher_id", "plannified", "link_videos", "status") VALUES($1,$2,$3,$4,$5,$6,$7)`;
         const values = [newLesson.title, newLesson.description, newLesson.level,newLesson.teacher_id, newLesson.plannified, newLesson.videos, newLesson.status];
+        db_connection.query(query, values, callback);
+    },
+    lessonLiked: (userId, lessonId, callback) => {
+        const query = 'INSERT INTO "user_like_lesson" ("user_id", "lesson_id") VALUES ($1,$2)';
+        const values = [userId, lessonId];
         db_connection.query(query, values, callback);
     },
 //? /// \\\ CATEGORY ///\\\
@@ -266,6 +286,11 @@ const dataMapper = {
 
     deleteLessonFromDB: (userId, lessonId, callback) => {
         const query = 'DELETE FROM lesson * WHERE "id" = $2 AND teacher_id = $1;';
+        const values = [userId, lessonId];
+        db_connection.query(query, values, callback);
+    },
+    unLikeLesson: (userId, lessonId, callback) => {
+        const query = 'DELETE FROM "user_like_lesson" * WHERE "user_id" = $1 AND "lesson_id" = $2';
         const values = [userId, lessonId];
         db_connection.query(query, values, callback);
     },

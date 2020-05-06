@@ -57,6 +57,8 @@ router.get('/user/:id/lesson/:Id/subscribe', liveController.subscribeLesson);
 router.delete('/user/:id/lesson/:Id/subscribe', liveController.unsubLesson);
 router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
 router.delete('/user/:id/ask/:Id/subscribe', liveController.unsubAsk);
+router.get('/user/:id/lesson/:Id/like', liveController.likeLesson);
+router.delete('/user/:id/lesson/:Id/like', liveController.dislikeLesson);
 
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);

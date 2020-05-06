@@ -3,6 +3,6 @@
 BEGIN;
 
 -- XXX Add DDLs here.
-ALTER TABLE "lesson" ADD COLUMN "like" INT;
+ALTER TABLE "lesson" ADD COLUMN "like" INT NOT NULL DEFAULT 1;
 
 COMMIT;
