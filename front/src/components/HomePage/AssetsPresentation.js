@@ -4,25 +4,35 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const AssetsPresentation = () => (
-  <div>
+  <div className="container-assets-presentation">
     <div className="AssetsPresentation_main">
       <div className="AssetsPresentation_card">
         <h3>Confort</h3>
-        <p>Des cours depuis le confort de votre domicile, profitez de tous nos cours...</p>
+        <p>Profitez du confort de votre domicile pour suivre vos cours</p>
       </div>
       <div className="AssetsPresentation_card">
-        <h3>Salle de cours interactives</h3>
-        <p>Salle de cours facile a utliser et complete</p>
+        <h3>Salles de cours interactives</h3>
+        <p>Salles de cours facile à utliser et complète</p>
       </div>
       <div className="AssetsPresentation_card">
         <h3>Benevolat</h3>
-        <p>Aussi bien bien assisté a des cours ou en donner, tout est gratuit...</p>
+        <p>Assister à des cours ou en donner, tout est gratuit...</p>
       </div>
     </div>
-    <Link to="/lessons">
-      <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
-    </Link>
+
+    <div className="button-assets-presentation">
+      <Link to="/lessons">
+        <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+      </Link>
+    </div>
   </div>
+
+  // <div className="button-assets-presentation">
+  //   <Link to="/lessons">
+  //     <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+  //   </Link>
+  // </div>
+
 );
 
 export default AssetsPresentation;
