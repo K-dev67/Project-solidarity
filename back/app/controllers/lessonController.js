@@ -356,13 +356,13 @@ const lessonController = {
                 return res.send('Pas de cour');
             }
             const lessonInfo = data.rows;
-            dataMapper.getCategoryWithRelation((error, data) => {
+            dataMapper.getCategoryWithRelation(lessonId, (error, data) => {
                 if (error) {
                     console.trace(error);
                     res.send(error);
                 }
                 if (data.rowCount === 0) {
-                    return res.send('Pas de cour');
+                    return res.send('Pas de category');
                 }
                 const categoryInfo = data.rows;
                 res.send({lessonInfo, categoryInfo})
