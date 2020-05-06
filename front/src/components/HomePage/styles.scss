@@ -6,7 +6,7 @@
     margin:50px auto 100px ;
 }
 .container_presentation_main{
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     flex-basis: 70%;
@@ -32,8 +32,15 @@
 }
 
 // Component AssetsPresentation
-.AssetsPresentation_main{
-    margin: 30px 20%;
+.container-assets-presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .AssetsPresentation_main{
+    // margin: 30px 20%;
+    width: 75%;
     height: 200px;
     border: 1px solid #BDC3C7;
     border-radius: 5px;
@@ -41,22 +48,21 @@
     justify-content: space-around;
     align-items: center;
     box-shadow: 10px 5px 5px #BDC3C7;
+    margin-bottom: 1em;
+  }
 }
+
 .AssetsPresentation_card{
-    width: 20%;
+    width: 25%;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     text-align: center;
 }
 .AssetsPresentation_card p{
     color: #BDC3C7;
 }
-.AssetsPresentation_button{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
+
 .button{
     background-color: #a29bfe;
     padding: 10px 20px;
@@ -138,12 +144,20 @@ display: flex;
 flex-direction: column;
 align-items: center;
 padding:2% 5%;
+  .name-description {
+    display: flex;
+    flex-direction: column;
+     h4 {
+       text-align: center;
+       margin: 10px !important;
+     }
+  }
 }
 .TopLessonsPresentation_Card img{
   width: 100%;
 }
 .TopLessonsContainer button{
-  margin-top: -40px;
+  margin-top: -30px;
 }
 
 // Component HowItWorksPresentation
@@ -219,6 +233,70 @@ border-radius: 50%;
 margin-bottom: 2%;
 }
 
+// reprise antho
+// 1100 px
+@media (max-width: 1100px) {
+      .HowItWorksPresentation_main {
+        flex-direction: column;
+        align-items: center;
+      }
+}
+
+// ipad => 768px
+@media (max-width: 768px) {
+  // .HowItWorksPresentation_main {
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+  .container_presentation {
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    &_main {
+      text-align: center;
+    }
+  }
+
+  .container-assets-presentation {
+    display: flex;
+    // width: 80% !important;
+    .AssetsPresentation_main {
+      display: flex;
+      // align-items: center;
+      justify-content: space-around;
+      width: 80% !important;
+    }
+    .AssetsPresentation_card{
+      width: 30%;
+    }
+  }
+
+
+  .TopLessonsPresentation_container {
+    flex-direction: column;
+    .TopLessonsPresentation_container_card {
+      .TopLessonsPresentation_Card {
+        // display: flex;
+        // flex-direction: row !important;
+        // .image-teacher {
+        //   width: 20px;
+        // }
+      }
+    }
+  }
+
+  .UsersReviewsPresentation_container_card {
+    flex-direction: column;
+    align-items: center;
+    .UsersReviewsPresentation_card {
+      width: 70%;
+      margin: 1em;
+    }
+  }
+
+
+
+}
 
 
 
