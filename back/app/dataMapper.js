@@ -78,9 +78,14 @@ const dataMapper = {
         const values = [categoryName];
         db_connection.query(query, values, callback);
     },
-    getCategoryWithRelation: (callback) => {
-        const query = 'SELECT * FROM "category" JOIN lesson_has_category ON category.id = category_id';
-        db_connection.query(query, callback);
+    getCategoryWithRelation: (lessonId, callback) => {
+        const query = `SELECT * FROM "category"
+        JOIN lesson_has_category ON category.id = category_id
+        JOIN lesson ON lesson_id = lesson.id
+        JOIN "user" ON "teacher_id" = "user".id
+        WHERE lesson.id = $1;`
+        const values = [lessonId]
+        db_connection.query(query, values, callback);
     },
 //? /// \\\ ASK      ///\\\
 
@@ -339,9 +344,9 @@ const dataMapper = {
     },
 
 
-//!  /// \\\  ****** ///\\\ 
-//!  /// \\\  OTHERS ///\\\ 
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
+//!  /// \\\  OTHERS ///\\\
+//!  /// \\\  ****** ///\\\
     resetPasswordDone: (email, callback) => {
         const query = 'DELETE FROM "passphrase_check_email" WHERE email = $1';
         const values = [email];
