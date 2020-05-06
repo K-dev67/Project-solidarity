@@ -362,7 +362,7 @@ const lessonController = {
                     res.send(error);
                 }
                 if (data.rowCount === 0) {
-                    return res.send('Pas de cour');
+                    return res.send('Pas de category');
                 }
                 const categoryInfo = data.rows;
                 res.send({lessonInfo, categoryInfo})

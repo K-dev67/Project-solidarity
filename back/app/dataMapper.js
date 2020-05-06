@@ -79,7 +79,11 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     getCategoryWithRelation: (lessonId, callback) => {
-        const query = `SELECT * FROM "category"
+
+
+
+        const query = `SELECT * FROM "category" 
+
         JOIN lesson_has_category ON category.id = category_id
         JOIN lesson ON lesson_id = lesson.id
         JOIN "user" ON "teacher_id" = "user".id
@@ -216,7 +220,15 @@ const dataMapper = {
 //? /// \\\ MESSAGE  ///\\\
 
 //? /// \\\ LIAISON  ///\\\
-
+    UpdateAfterEmail: (callback) => {
+        const query =   `UPDATE "user_subscribe_lesson"
+                         SET status = 'envoyé' 
+                         WHERE lesson_id IN ( 
+                                SELECT lesson.id FROM lesson
+                                WHERE plannified BETWEEN now() AND now() + interval '2 hours'
+                            )`
+        db_connection.query(query, callback)
+    },
 
 //!  /// \\\  ****** ///\\\
 //!  /// \\\  INSERT ///\\\
@@ -341,6 +353,10 @@ const dataMapper = {
         const query = 'DELETE FROM "ask_has_category" * WHERE "ask_id" = $1';
         const values = [askInfo.id];
         db_connection.query(query, values, callback);
+    },
+    deleteAllStatusEnvoye: (callback) => {
+        const query = `DELETE FROM lesson * WHERE "status" = 'envoyé'`;
+        db_connection.query(query, callback);
     },
 
 
