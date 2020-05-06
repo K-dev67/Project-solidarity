@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon, Label } from 'semantic-ui-react';
@@ -6,13 +6,15 @@ import { DELETE_CATEGORY_LABEL } from '../../store/actions';
 
 
 const LabelCategory = ({ lessonId, teacherId }) => {
+  const dispatch = useDispatch();
   const { lessonInfo, userId } = useSelector((state) => state);
   const { categoryInfo } = lessonInfo;
   if (categoryInfo === undefined) {
     return null;
   }
+
   const categoryJSX = categoryInfo.map((category) => {
-    const dispatch = useDispatch();
+    // == fct pour qui réagit au handleClick
     const handleClick = (e) => {
       const categoryId = e.target.getAttribute('data-key');
       dispatch({
@@ -24,6 +26,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
          },
       });
     };
+    // == icone de la croix pour remove category
     let iconJSX = '';
     if (userId === teacherId) {
       iconJSX = (
