@@ -8,7 +8,8 @@ import { NavLink } from 'react-router-dom';
 import navLinkVisitor from '../../data/navLinkVisitor';
 import navLinkUser from '../../data/NavLinkUser';
 
-// actions
+// logo
+import solidarityLogo from '../../assets/img/logo.png';
 
 // == style
 import './styles.scss';
@@ -50,7 +51,13 @@ const Nav = () => {
 
   return (
     <header className="topbar">
-      <NavLink exact to="/"><h1>Solidarity</h1></NavLink>
+      <NavLink exact to="/">
+        {/* <h1>Solidarity</h1> */}
+        <img
+          className="logo"
+          src={solidarityLogo}
+        />
+      </NavLink>
       {/* <div
         onClick={() => {
           dispatch({ type: RESET });

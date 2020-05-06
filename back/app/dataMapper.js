@@ -79,7 +79,11 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     getCategoryWithRelation: (lessonId, callback) => {
+
+
+
         const query = `SELECT * FROM "category" 
+
         JOIN lesson_has_category ON category.id = category_id
         JOIN lesson ON lesson_id = lesson.id
         JOIN "user" ON "teacher_id" = "user".id
@@ -356,9 +360,9 @@ const dataMapper = {
     },
 
 
-//!  /// \\\  ****** ///\\\ 
-//!  /// \\\  OTHERS ///\\\ 
-//!  /// \\\  ****** ///\\\ 
+//!  /// \\\  ****** ///\\\
+//!  /// \\\  OTHERS ///\\\
+//!  /// \\\  ****** ///\\\
     resetPasswordDone: (email, callback) => {
         const query = 'DELETE FROM "passphrase_check_email" WHERE email = $1';
         const values = [email];

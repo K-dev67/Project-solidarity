@@ -1,7 +1,7 @@
 import React from 'react';
 
 // == style
-import './styles.css';
+import './styles.scss';
 
 
 const Footer = () => (
