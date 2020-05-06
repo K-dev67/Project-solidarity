@@ -40,7 +40,6 @@ const Nav = () => {
     <NavLink
       exact
       key={r.label}
-      // className="menu-link"
       to={r.route}
       activeClassName="menu-link--active"
     >
@@ -53,28 +52,14 @@ const Nav = () => {
     <header className="topbar">
       <NavLink exact to="/">
         {/* <h1>Solidarity</h1> */}
-        <img
-          className="logo"
-          src={solidarityLogo}
-        />
+        <div className="container-logo">
+          <img
+            alt="our_logo"
+            className="logo"
+            src={solidarityLogo}
+          />
+        </div>
       </NavLink>
-      {/* <div
-        onClick={() => {
-          dispatch({ type: RESET });
-        }}
-      >Deco
-      </div> */}
-      {/* <form>
-        <Input
-          className="input-topbar"
-          icon="search"
-          placeholder="rechercher un cours"
-          onChange={(evt) => {
-            dispatch({ type: SET_INPUT_NAV, payload: evt.target.value });
-          }}
-          value={inputNav}
-        />
-      </form> */}
       <nav className="topbar-nav">
         {navLinkJsx}
         {deconnexionJSX}
