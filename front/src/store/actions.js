@@ -38,8 +38,9 @@ export const SET_TEACHERS = 'actions/SET_TEACHERS';
 export const SET_LESSONS = 'actions/SET_LESSONS';
 // == set all categories
 export const SET_CATEGORIES = 'actions/SET_CATEGORIES';
-// == add category on lesson
+// == add/remove category on lesson
 export const ADD_CATEGORY_ON_LESSON = 'actions/ADD_CATEGORY_ON_LESSON';
+export const DELETE_CATEGORY_LABEL = 'actions/DELETE_CATEGORY_LABEL';
 
 // ==  Lesson Data
 export const GET_LESSON_DATA = 'actions/GET_LESSON_DATA';

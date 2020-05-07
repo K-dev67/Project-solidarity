@@ -8,3 +8,10 @@
         margin-bottom: 10px !important;
     }
 }
+
+@media (max-width: 500px) {
+    .container-profil-page {
+        height: 85vh;
+    }
+
+}

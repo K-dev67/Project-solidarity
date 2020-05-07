@@ -2,16 +2,23 @@
 topbar
 ---------------*/
 
-.logo {
-  height: 4em;
-  width: auto;
-}
+
 
 .topbar {
     background-color: teal;
     color: #fff;
     div .input .input-topbar {
         display: none !important;
+    }
+    .container-logo {
+      padding: 1em 0 0 0;
+      .logo {
+        display: block;
+        height: 5em;
+        width: auto;
+        margin: 0 auto;
+        // padding: 1em 0;
+      }
     }
   }
 
@@ -50,6 +57,12 @@ topbar
         align-items: center;
         height: 64px;
         padding: 0 25px;
+        .container-logo {
+          padding: 0;
+          .logo {
+            height: 4em;
+          }
+        }
       }
 
       .topbar-logo {

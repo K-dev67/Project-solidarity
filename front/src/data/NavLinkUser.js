@@ -4,7 +4,15 @@ export default [
     label: 'Accueil',
   },
   {
+    route: '/lessons',
+    label: 'Cours',
+  },
+  {
+    route: '/teachers',
+    label: 'Professeurs',
+  },
+  {
     route: '/profiluser',
-    label: 'Mon profil',
+    label: 'Mon compte',
   },
 ];

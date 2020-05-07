@@ -9,13 +9,14 @@ import Moment from 'react-moment';
 import 'moment/locale/fr';
 
 // == semantic
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 // == action
 import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON } from '../../store/actions';
 
 // component
 import UpdateLessonModal from './UpdateLessonModal';
+import LabelCategory from './LabelCategory';
 
 // == style
 import './styles.scss';
@@ -23,11 +24,7 @@ import './styles.scss';
 
 const Lesson = ({ lesson }) => {
   const dispatch = useDispatch();
-  const { userId, lessonInfo } = useSelector((state) => state);
-  // == test to get category
-  console.log('lessonInfo', lessonInfo.categoryInfo);
-  console.log('lessonInfo', lessonInfo.lessonInfo);
-  // const { categoryInfo } = lessonInfo;
+  const { userId } = useSelector((state) => state);
 
 
   let modifyButtonJSX = '';
@@ -96,9 +93,11 @@ const Lesson = ({ lesson }) => {
 
   return (
     <div className="room">
+      <Icon size="large" name="chevron circle left" />
       <div className="room--description">
         <span className="room-number"># Cockpit numero {lesson.id}</span>
-        <h2 className="room-title">titre : {lesson.title}</h2>
+        <h2 className="room-title">{lesson.title}</h2>
+        <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
         <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
         </div>
         <div className="room-level">niveau : {lesson.level}</div>
