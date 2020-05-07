@@ -1,3 +1,6 @@
+import moment from 'moment';
+
+
 import {
   ENTER_CHAT,
   MESSAGE_RECEIVED,
@@ -37,7 +40,7 @@ export default (store) => (next) => (action) => {
         authorId: userId,
         firstname: user.firstname,
         content: message,
-        //   timestamp: moment().unix(),
+        created_at: moment(),
       });
       next(action);
       return;

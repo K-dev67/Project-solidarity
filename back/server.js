@@ -92,6 +92,14 @@ io.on('connection', (ws) => {
     io.emit('send_message', message);
     // Transmission du message aux clients connecté (io.emit et non pas ws.emit)
   });
+
+  // pour gerer la deco du user
+   //* avoir une info quand le client ferme son onglet
+   ws.on('disconnect', () => {
+    console.log( 'user deco');
+    ws.disconnect;
+  })
+
 });
 
 //! ---------------------------

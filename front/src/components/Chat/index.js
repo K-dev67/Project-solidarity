@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// == moment react JS
+import Moment from 'moment';
+import 'moment/locale/fr';
+
+
 import { sendMessage, syncMessage } from 'src/store/actions';
 
 // == utils/axios
@@ -15,9 +20,9 @@ const Chat = () => {
 
   const currentMessage = useSelector((state) => state.message);
   const { messages, user } = useSelector((state) => state);
-  useEffect(getMessages, []);
+  // useEffect(getMessages, []);
   if (messages === undefined) return null;
-  const messageJSX = messages.map((message) => <li>{message.firstname} : {message.content}</li>);
+  const messageJSX = messages.map((message) => <li><Moment locale="fr" fromNow ago>{message.created_at}</Moment>  {message.firstname} : {message.content}</li>);
 
   return (
     <div className="chat-main">
