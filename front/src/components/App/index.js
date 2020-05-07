@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux';
 // == import Router
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-// == actions
+// == utils/axios
 import getTeachers from '../../utils/getTeachers';
 import getLessons from '../../utils/getLessons';
 import getCategories from '../../utils/getCategories';
-
+import getMessages from '../../utils/getMessages';
 
 // == Import Component
 import Nav from '../Nav';
@@ -21,6 +21,7 @@ import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
 import Lesson from '../Lesson';
+import Chat from '../Chat';
 import Loading from '../Loading';
 
 // == Import style
@@ -34,6 +35,7 @@ const App = () => {
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
   useEffect(getCategories, []);
+  useEffect(getMessages, []);
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {
@@ -96,6 +98,16 @@ const App = () => {
               return <Redirect to="/login" />;
             }
             return <Teachers />;
+          }}
+        />
+        <Route
+          exact
+          path="/chat"
+          render={() => {
+            if (user.email === undefined) {
+              return <Redirect to="/login" />;
+            }
+            return <Chat />;
           }}
         />
         <LessonComponent />
