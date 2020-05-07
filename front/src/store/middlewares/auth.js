@@ -6,6 +6,7 @@ import {
   SET_ERROR_AUTH,
   SET_USER,
   SET_USER_ID,
+  ENTER_CHAT,
 } from 'src/store/actions';
 
 import { API_URL } from '../../utils/constante';
@@ -27,6 +28,7 @@ export default (store) => (next) => (action) => {
           store.dispatch({ type: SET_USER, user });
           store.dispatch({ type: SET_USER_ID, payload: user.id });
           store.dispatch(enterHomePage(action.history));
+          store.dispatch({ type: ENTER_CHAT });
         })
         .catch((error) => {
           console.trace(error);

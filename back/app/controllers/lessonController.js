@@ -370,6 +370,16 @@ const lessonController = {
             });
         });
     },
+    showMessage: (req, res) => {
+        //const lessonId = req.params.id;
+        dataMapper.getMessage((error, data) => {
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            //console.log(data.rows);
+            res.send(data.rows);
+        });
+    },
 };
-
 module.exports = lessonController;

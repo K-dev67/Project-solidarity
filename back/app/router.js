@@ -10,11 +10,12 @@ const askController = require('./controllers/askController');
 const userController = require('./controllers/userController');
 const liveController = require('./controllers/liveController');
 const mailController = require('./controllers/mailController');
+const socketController = require('./controllers/socketController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
 
-// LES ROUTES DE CONNECTION 
+// LES ROUTES DE CONNECTION
 router.get('/signup', authController.signupPage);
 router.get('/login', authController.showLoginForm);
 router.post('/signup', authController.signupAction);
@@ -41,6 +42,7 @@ router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 router.post('/user/:id/lesson/:Id/category', lessonController.addCategoryToLesson);
 router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCategoryToLesson);
 router.get('/lesson/:id', lessonController.showThisLesson);
+router.get('/messages', lessonController.showMessage);
 
 // LES ROUTES CONCERNANT ASK
 router.post('/user/:id/ask', askController.addAsk);
@@ -63,6 +65,9 @@ router.delete('/user/:id/lesson/:Id/like', liveController.dislikeLesson);
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
 router.patch('/profiluser/:id', userController.changeProfile);
+
+// LES ROUTE SOCKET
+//router.get('/socket', socketController.socket);
 
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );

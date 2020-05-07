@@ -1,7 +1,7 @@
 .room {
     min-height: 85vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     .room-modify-button {

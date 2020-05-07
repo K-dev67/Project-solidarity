@@ -15,4 +15,8 @@ export default [
     route: '/profiluser',
     label: 'Mon compte',
   },
+  {
+    route: '/chat',
+    label: 'Chatroom',
+  },
 ];

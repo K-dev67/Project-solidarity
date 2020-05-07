@@ -4,9 +4,9 @@ const mail = {
 
     mailer: async (req, res) => {
         try {
-            
+
             let testAccount = await nodemailer.createTestAccount();
-            
+
             let transporter = nodemailer.createTransport( {
                 service: "Gmail",
                 auth: {
@@ -16,7 +16,7 @@ const mail = {
                 tls: {
                     rejectUnauthorized: false,
                 }
-                
+
             });
             let info = await transporter.sendMail({
                 from: '"Team Solidarité " <solidarite.no.reply@gmail.com>',
@@ -40,7 +40,7 @@ const mail = {
             console.log('email', email);
 
             let testAccount = await nodemailer.createTestAccount();
-            
+
             let transporter = nodemailer.createTransport( {
                 service: "Gmail",
                 auth: {
@@ -50,7 +50,7 @@ const mail = {
                 tls: {
                     rejectUnauthorized: false,
                 }
-                
+
             });
             let info = await transporter.sendMail({
                 from: '"Team Solidarité " <solidarite.no.reply@gmail.com>',
@@ -72,7 +72,7 @@ const mail = {
             console.log('email', email);
 
             let testAccount = await nodemailer.createTestAccount();
-            
+
             let transporter = nodemailer.createTransport( {
                 service: "Gmail",
                 auth: {
@@ -82,7 +82,7 @@ const mail = {
                 tls: {
                     rejectUnauthorized: false,
                 }
-                
+
             });
             let info = await transporter.sendMail({
                 from: '"Team Solidarité " <solidarite.no.reply@gmail.com>',

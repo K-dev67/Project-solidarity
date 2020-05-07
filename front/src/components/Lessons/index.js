@@ -29,6 +29,7 @@ const Lessons = () => {
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
   let classNameOwner = '';
   // todo gerer la photo du prof avec lesson.teacher_id
+  if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) classNameOwner = 'card-owner';
     return (

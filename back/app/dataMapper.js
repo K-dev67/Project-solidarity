@@ -82,7 +82,7 @@ const dataMapper = {
 
 
 
-        const query = `SELECT * FROM "category" 
+        const query = `SELECT * FROM "category"
 
         JOIN lesson_has_category ON category.id = category_id
         JOIN lesson ON lesson_id = lesson.id
@@ -113,6 +113,11 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
 //? /// \\\ MESSAGE  ///\\\
+
+    getMessage: (callback) => {
+        const query = 'SELECT * FROM "message" JOIN "user" ON author_id = "user".id';
+        db_connection.query(query, callback);
+    },
 
 //? /// \\\ LIAISON  ///\\\
     // ENVOIE ENORME OBJET -- Peut etre a modifier pour ne pas avoir de doublons
@@ -222,8 +227,8 @@ const dataMapper = {
 //? /// \\\ LIAISON  ///\\\
     UpdateAfterEmail: (callback) => {
         const query =   `UPDATE "user_subscribe_lesson"
-                         SET status = 'envoyé' 
-                         WHERE lesson_id IN ( 
+                         SET status = 'envoyé'
+                         WHERE lesson_id IN (
                                 SELECT lesson.id FROM lesson
                                 WHERE plannified BETWEEN now() AND now() + interval '2 hours'
                             )`
@@ -264,7 +269,11 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
 //? /// \\\ MESSAGE  ///\\\
-
+    putMsgOnDb: (message, callback) => {
+        const query = `INSERT INTO "message"("author_id", "lesson_id", "content", "status")VALUES($1,$2,$3,$4)`;
+        const values = [message.authorId,2, message.content, 'lue'];
+        db_connection.query(query, values, callback);
+    },
 //? /// \\\ LIAISON  ///\\\
 
     addRelationLessonCategory: (lessonId, categoryId, callback) => {
