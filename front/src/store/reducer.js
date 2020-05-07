@@ -40,6 +40,10 @@ import {
   // message positif
   MESSAGE_POSITIF_TRUE,
   MESSAGE_POSTIF_FALSE,
+  // message chatroom
+  SYNC_MESSAGE,
+  MESSAGE_RECEIVED,
+  SET_MESSAGES,
 } from './actions';
 import store from '.';
 
@@ -68,6 +72,9 @@ const initialState = {
   labelCategory: {},
   // gerer l'ouverture des modals
   messagePositif: false,
+  // message
+  message: '',
+  messages: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -309,6 +316,25 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         messagePositif: false,
+      };
+    }
+    // == Chatroom
+    case SYNC_MESSAGE: {
+      return { ...state, message: action.message };
+    }
+    case MESSAGE_RECEIVED: {
+      return {
+        ...state,
+        // Ajout du nouveau message à la liste actuelle des messages
+        messages: [...state.messages, action.message],
+        // Reset de l'input d'envoi d'un message à ''
+        message: initialState.message,
+      };
+    }
+    case SET_MESSAGES: {
+      return {
+        ...state,
+        messages: action.payload,
       };
     }
     default: {
