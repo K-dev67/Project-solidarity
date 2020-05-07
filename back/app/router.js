@@ -42,6 +42,7 @@ router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 router.post('/user/:id/lesson/:Id/category', lessonController.addCategoryToLesson);
 router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCategoryToLesson);
 router.get('/lesson/:id', lessonController.showThisLesson);
+router.get('/messages', lessonController.showMessage);
 
 // LES ROUTES CONCERNANT ASK
 router.post('/user/:id/ask', askController.addAsk);
