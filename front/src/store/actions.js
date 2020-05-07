@@ -54,3 +54,6 @@ export const DELETE_LESSON = 'actions/DELETE_LESSON';
 // == message positif
 export const MESSAGE_POSITIF_TRUE = 'actions/MESSAGE_POSITIF_TRUE';
 export const MESSAGE_POSTIF_FALSE = 'actions/MESSAGE_POSTIF_FALSE';
+
+// == chatroom
+export const ENTER_CHAT = 'actions/ENTER_CHAT';

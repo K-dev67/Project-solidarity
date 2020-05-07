@@ -7,6 +7,7 @@ import TopLessonsPresentation from './TopLessonsPresentation';
 import HowItWorksPresentation from './HowItWorksPresentation';
 import UsersReviewsPresentation from './UsersReviewsPresentation';
 import AssetsPresentation from './AssetsPresentation';
+import Socket from './socket';
 // import components
 // import Presentation2 from './Presentation2';
 
@@ -22,6 +23,7 @@ const HomePage = () => (
     <TopLessonsPresentation />
     <HowItWorksPresentation />
     <UsersReviewsPresentation />
+    <Socket />
   </div>
 );
 
