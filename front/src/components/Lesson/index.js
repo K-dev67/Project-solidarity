@@ -17,6 +17,7 @@ import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON } from '../../store/actions';
 // component
 import UpdateLessonModal from './UpdateLessonModal';
 import LabelCategory from './LabelCategory';
+import Chatroom from '../Chat';
 
 // == style
 import './styles.scss';
@@ -106,6 +107,9 @@ const Lesson = ({ lesson }) => {
         <div className="room-modify-button">{modifyButtonJSX}</div>
         <div className="room-delete-button">{deleteButtonJSX}</div>
         <div className="room-addCategory-select">{addCategoryJSX}</div>
+      </div>
+      <div className="tchat">
+        <Chatroom />
       </div>
     </div>
   );

@@ -20,9 +20,17 @@ const Chat = () => {
 
   const currentMessage = useSelector((state) => state.message);
   const { messages, user } = useSelector((state) => state);
-  // useEffect(getMessages, []);
+  useEffect(getMessages, []);
   if (messages === undefined) return null;
-  const messageJSX = messages.map((message) => <li><Moment locale="fr" fromNow ago>{message.created_at}</Moment>  {message.firstname} : {message.content}</li>);
+  const messageJSX = messages.map((message) => (
+    <li>
+      {/* <Moment locale="fr" fromNow ago>
+        {message.created_at}
+      </Moment> */}
+      {message.created_at}
+      {message.firstname} : {message.content}
+    </li>
+  ));
 
   return (
     <div className="chat-main">
