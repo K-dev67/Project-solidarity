@@ -7,7 +7,7 @@ const mailController = {
         dataMapper.getNextLessonList((error, data) => {
             if (error) {
                 console.trace(error);
-                res.send(error);
+                return res.send(error);
             }
             if ( data.rowCount === 0) {
                 return res.send("Il n'y a pas de cours");
@@ -19,17 +19,16 @@ const mailController = {
             dataMapper.UpdateAfterEmail((error, data) => {
                 if (error) {
                     console.trace(error);
-                    res.send(error);
+                    return res.send(error);
                 }
                 dataMapper.deleteAllStatusEnvoye((error, data) => {
                     if (error) {
                         console.trace(error);
-                        res.send(error);
+                        return res.send(error);
                     }
-                    res.send('done');
                 });
             });
-            res.send('not done');
+            return res.send('not done');
         });
     },
 };
