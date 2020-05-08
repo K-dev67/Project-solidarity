@@ -76,3 +76,117 @@ pouvoir supprimer un compte user
 
 // export default LabelCategory;
 
+
+
+Session
+
+```JS
+// src/index.js
+import React from 'react'; // couche 1
+import { render } from 'react-dom'; // couche 2
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { enterHomePage } from 'src/store/actions';
+
+// == Import : local
+// Composants
+import App from 'src/components/App';
+import store from 'src/store';
+
+const user = JSON.parse(sessionStorage.getItem('user'));
+if (user) {
+  store.dispatch(enterHomepage(user));
+}
+
+const rootReactElement = (
+...
+```
+
+```JS
+import axios from 'axios';
+import { LOGIN, enterHomePgae } from 'src/store/actions';
+
+export default (store) => (next) => (action) => {
+  switch (action.type) {
+    case LOGIN: {
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/connection',
+        data: action.values,
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            sessionStorage.user = JSON.stringify(res.data);
+            store.dispatch(enterHomePage(res.data));
+          }
+        });
+      return;
+    }
+
+    default: {
+      next(action);
+    }
+  }
+};
+```
+
+```JS
+// reducer.js
+import {
+  ENTER_HOME_PAGE,
+  GET_USERS,
+} from './actions';
+
+const initialState = {
+  user: {
+    role: '',
+    firstname: '',
+    lastname: '',
+    email: '',
+    token: '',
+  },
+  staffMembers: [],
+};
+
+export default (state = initialState, action = {}) => {
+  switch (action.type) {
+    case ENTER_OBOLE: {
+      return {
+        ...state,
+        user: {
+          role: action.values.role,
+          firstname: action.values.firstname,
+          lastname: action.values.lastname,
+          email: action.values.email,
+          token: action.values.token,
+        },
+      };
+    }
+...
+```
+
+pour remove le session/cookie
+https://developer.mozilla.org/fr/docs/Web/API/Window/sessionStorage
+
+
+SInon coté back
+me faut une route logout dans ton serveur
+Une requête get qui supprime le cookie
+
+```JS
+server​.​route​({
+            method​:​ ​'​GET​'​,
+            path​:​ ​'​/logout​'​,
+            config​:​ {
+                description​:​ ​'​Remove the authentification by cookie​'​,
+                tags​:​ [​'​api​'​, ​'​logout​'​]
+            },
+            ​handler​:​ (​request​, ​h​) ​=>​ {
+
+                ​//​ remove the cookie​
+                ​request​.​cookieAuth​.​clear​();
+                ​return​ ​h​.​redirect​(​'​/​'​);
+            }
+        });
+```
+coté back
