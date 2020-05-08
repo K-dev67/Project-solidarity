@@ -11,6 +11,7 @@ const userController = require('./controllers/userController');
 const liveController = require('./controllers/liveController');
 const mailController = require('./controllers/mailController');
 const socketController = require('./controllers/socketController');
+const chatController = require('./controllers/chatController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
@@ -41,7 +42,7 @@ router.patch('/user/:id/lesson/:Id', lessonController.changeLesson);
 router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 router.post('/user/:id/lesson/:Id/category', lessonController.addCategoryToLesson);
 router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCategoryToLesson);
-router.get('/lesson/:id', lessonController.showThisLesson);
+router.get('/lessons/:id', lessonController.showThisLesson);
 router.get('/messages', lessonController.showMessage);
 
 // LES ROUTES CONCERNANT ASK
@@ -61,6 +62,7 @@ router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
 router.delete('/user/:id/ask/:Id/subscribe', liveController.unsubAsk);
 router.get('/user/:id/lesson/:Id/like', liveController.likeLesson);
 router.delete('/user/:id/lesson/:Id/like', liveController.dislikeLesson);
+//router.get('/lessons/:id', chatController.getRoom);
 
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
