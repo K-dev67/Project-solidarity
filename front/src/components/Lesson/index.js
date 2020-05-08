@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
@@ -92,7 +93,7 @@ const Lesson = ({ lesson }) => {
 
   return (
     <div className="room">
-      <Icon size="large" name="chevron circle left" />
+      <Link to="/lessons/"><Icon size="large" name="chevron circle left" /></Link>;
       <div className="room--description">
         <span className="room-number"># Cockpit numero {lesson.id}</span>
         <h2 className="room-title">{lesson.title}</h2>
