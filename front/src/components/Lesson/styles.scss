@@ -1,3 +1,4 @@
+// container de toute la leçon chatroom
 .room {
     min-height: 85vh;
     display: flex;
@@ -8,6 +9,7 @@
         padding: 10px 0;
     }
 }
+
 
 // == container in modal update lesson
 .container-update-lesson-form{

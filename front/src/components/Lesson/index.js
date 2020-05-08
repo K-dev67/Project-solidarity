@@ -58,8 +58,6 @@ const Lesson = ({ lesson }) => {
   ));
   // == submit du select addCategory
   const onSubmit = (data) => {
-    console.log('jai cliqué');
-    console.log('dataCategory', data.Catégorie);
     const categoryName = data.Catégorie;
     dispatch({
       type: ADD_CATEGORY_ON_LESSON,
