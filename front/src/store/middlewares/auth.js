@@ -23,15 +23,17 @@ export default (store) => (next) => (action) => {
           withCredentials: true,
         })
         .then((res) => {
-          const user = res.data;
-          // sessionStorage.user = JSON.stringify(res.data);
-          // console.log('sessionStorage', sessionStorage);
-          // const user = JSON.parse(sessionStorage.getItem('user'));
-          console.log('userInAuth.js', user);
-          store.dispatch({ type: SET_USER, user });
-          store.dispatch({ type: SET_USER_ID, payload: user.id });
-          store.dispatch(enterHomePage(action.history));
-          store.dispatch({ type: ENTER_CHAT });
+          if (res.status === 200) {
+            const user = res.data;
+            // sessionStorage.user = JSON.stringify(res.data);
+            // console.log('sessionStorage', sessionStorage);
+            // const user = JSON.parse(sessionStorage.getItem('user'));
+            // console.log('userInAuth.js', user);
+            store.dispatch({ type: SET_USER, user });
+            store.dispatch({ type: SET_USER_ID, payload: user.id });
+            store.dispatch(enterHomePage(action.history));
+            store.dispatch({ type: ENTER_CHAT });
+          }
         })
         .catch((error) => {
           console.trace(error);
