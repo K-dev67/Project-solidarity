@@ -21,15 +21,73 @@ app.get('/', (req, res) => {
  });
 //! Rajout Kevin 6:00
 
-const socketController = require('./app/controllers/socketController');
+//const socketController = require('./app/controllers/socketController');
 //io.on('connection', socketController.respond);
 
 // A test 
-const chat = io
+/*const chatRoom = io
  .of('/') // <== Ici mettre le namespace lessons // meme en front 
- .on('connection', function(socket) {
-   socketController.respond(chat,socket);
- });
+ .on('connection', (socket) => {
+   socket.on('joinRoom', ({username, room }) => {
+     socketController.respond(chat,socket);
+   })
+ });*/
+
+ const dataMapper = require('./app/dataMapper');
+
+ const formatMessage = require('./app/utils/messages');
+ const {
+   userJoin,
+   getCurrentUser,
+   userLeave,
+   getRoomUsers
+ } = require('./app/utils/users');
+ 
+ const botName = 'El Boto'
+
+io.on('connection', socket => {
+  socket.on('joinRoom', ({ username, room}) => {
+
+    const user = userJoin(socket.id, username, room);
+    
+    socket.join(user.room);
+    
+    socket.emit('message',formatMessage(botName, 'Welcome to the Chat !'));
+    
+    socket.broadcast
+    .to(user.room)
+    .emit(
+      'message',
+      formatMessage(botName, `${user.username} has joined the chat`)
+      );
+      
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users: getRoomUsers(user.room)
+    });
+  });
+  
+  
+  socket.on('chatMessage', msg => {
+    const user = getCurrentUser(socket.id);
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
+  
+  socket.on('disconnect', () => {
+    const user = userLeave(socket.id);
+    if (user) {
+      io.to(user.room).emit(
+        'message',
+           formatMessage(botName, `${user.username} has left the chat`)
+           );
+           io.to(user.room).emit('roomUsers', {
+           room: user.room,
+           users: getRoomUsers(user.room)
+      });
+    }
+  });
+});
+
 
 
 //! ----------------
@@ -124,6 +182,3 @@ server.listen(PORT, () => {
   console.log(`Listening on PORT: ${PORT}`);
 
 });
-
-
-
