@@ -23,9 +23,11 @@ const Nav = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state);
   let deconnexionJSX = '';
+  const linkStyle = { cursor: 'pointer' };
   if (user.email !== undefined) {
     deconnexionJSX = (
       <a
+        style={linkStyle}
         onClick={() => {
           dispatch({ type: RESET });
         }}

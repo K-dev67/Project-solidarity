@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// == moment react JS
-import Moment from 'moment';
+// react Moment
 import 'moment/locale/fr';
+import Moment from 'react-moment';
 
 
 import { sendMessage, syncMessage } from 'src/store/actions';
@@ -17,48 +17,51 @@ import './styles.scss';
 
 const Chat = () => {
   const dispatch = useDispatch();
-
+  useEffect(getMessages, []);
   const currentMessage = useSelector((state) => state.message);
   const { messages, user } = useSelector((state) => state);
-  useEffect(getMessages, []);
+
+  let classNameAuthor = 'chat-message';
   if (messages === undefined) return null;
-  const messageJSX = messages.map((message) => (
-    <li>
-      {/* <Moment locale="fr" fromNow ago>
-        {message.created_at}
-      </Moment> */}
-      {message.created_at}
-      {message.firstname} : {message.content}
-    </li>
-  ));
+  const messageJSX = messages.map((message) => {
+    if (message.author_id === user.id) classNameAuthor = 'chat-message author';
+    return (
+      <li className={classNameAuthor}>
+        <strong className="message-author">{message.firstname}</strong>
+        <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
+        <p className="message-content">{message.content}</p>
+      </li>
+    );
+  });
 
   return (
-    <div className="chat-main">
-      <p className="chat-nickname">{user.firstname}</p>
-      <ul className="chat-messages">{messageJSX}</ul>
-      <form
-        className="chat-send-message"
-        onSubmit={(evt) => {
-          evt.preventDefault();
-          dispatch(sendMessage());
-        }}
-      >
-        <input
-          type="text"
-          className="chat-send-message_input"
-          placeholder="Votre message"
-          value={currentMessage}
-          onChange={(evt) => {
-            dispatch(syncMessage(evt.target.value));
+    <div className="container-chat-main">
+      <ul className="chat-all-messages">{messageJSX}</ul>
+      <div className="container-input-submit">
+        <form
+          className="chat-send-message"
+          onSubmit={(evt) => {
+            evt.preventDefault();
+            dispatch(sendMessage());
           }}
-        />
-        <button
-          type="submit"
-          className="chat-send-message_button"
         >
-          Envoyer
-        </button>
-      </form>
+          <input
+            type="text"
+            className="chat-send-message_input"
+            placeholder="Votre message"
+            value={currentMessage}
+            onChange={(evt) => {
+              dispatch(syncMessage(evt.target.value));
+            }}
+          />
+          <button
+            type="submit"
+            className="chat-send-message_button"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
