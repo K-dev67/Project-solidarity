@@ -31,6 +31,8 @@ import './styles.scss';
 const App = () => {
   // getLessons();
   const user = useSelector((state) => state.user);
+  // == test session
+  // const user = JSON.parse(sessionStorage.getItem('user'));
   const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
@@ -98,16 +100,6 @@ const App = () => {
               return <Redirect to="/login" />;
             }
             return <Teachers />;
-          }}
-        />
-        <Route
-          exact
-          path="/chat"
-          render={() => {
-            if (user.email === undefined) {
-              return <Redirect to="/login" />;
-            }
-            return <Chat />;
           }}
         />
         <LessonComponent />

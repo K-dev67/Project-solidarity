@@ -24,7 +24,10 @@ export default (store) => (next) => (action) => {
         })
         .then((res) => {
           const user = res.data;
-          // console.log('user', user);
+          // sessionStorage.user = JSON.stringify(res.data);
+          // console.log('sessionStorage', sessionStorage);
+          // const user = JSON.parse(sessionStorage.getItem('user'));
+          console.log('userInAuth.js', user);
           store.dispatch({ type: SET_USER, user });
           store.dispatch({ type: SET_USER_ID, payload: user.id });
           store.dispatch(enterHomePage(action.history));
