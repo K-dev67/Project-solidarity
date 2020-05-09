@@ -28,6 +28,11 @@ const Lesson = ({ lesson }) => {
   const dispatch = useDispatch();
   const { userId, roomUsers } = useSelector((state) => state);
   console.log('roomUsers', roomUsers);
+  const roomUsersJSX = roomUsers.map((user) => (
+    <div>{user.username}</div>
+  ));
+  // const { messages, user } = useSelector((state) => state);
+
 
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
@@ -117,6 +122,7 @@ const Lesson = ({ lesson }) => {
       </div>
       <div className="tchat">
         <Chatroom lessonId={lesson.id} />
+        {roomUsersJSX}
       </div>
     </div>
   );

@@ -76,7 +76,7 @@ const initialState = {
   // message
   message: '',
   messages: [{ content: 'blabla' }],
-  roomUsers: {},
+  roomUsers: [{ username: 'robot' }],
 };
 
 export default (state = initialState, action = {}) => {

@@ -25,27 +25,30 @@ const Chat = ({ lessonId }) => {
   const dispatch = useDispatch();
   // useEffect(getMessages, []);
   useEffect(() => {
-    window.scrollTo(0, 1000);
+    window.scrollTo(1000, 1000);
   }, []);
   const currentMessage = useSelector((state) => state.message);
   const { messages, user } = useSelector((state) => state);
-  console.log('messages', messages);
-  if (messages === undefined || messages === null) {
-    return null;
-  } if (messages === {}) {
-    return null;
-  }
-  if (!messages) {
-    return <Loading />;
-  }
+
+  // console.log('messages', messages);
+  // if (messages === undefined || messages === null) {
+  //   return null;
+  // } if (messages === {}) {
+  //   return null;
+  // }
+  // if (!messages) {
+  //   return <Loading />;
+  // }
   // const messageJSX = () => {
   const messageJSX = messages.map((message) => (
-    <li className="">
-      {/* <strong className="message-author">{message.nickname}</strong> */}
+    <li className="chat-message">
+      <strong className="message-author">{message.nickname}</strong>
       <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
       <p className="message-content">{message.content}</p>
     </li>
   ));
+
+
   // };
 
 
