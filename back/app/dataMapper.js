@@ -186,6 +186,16 @@ const dataMapper = {
         const values = [email, newpassword];
         db_connection.query(query, values, callback);
     },
+    changePassword: (password, userId, callback) => {
+        const query = 'UPDATE "user" SET "password" = $1 WHERE "id" = $2;';
+        const values = [password, userId];
+        db_connection.query(query, values, callback);
+    },
+    newEmail: (email, userId, callback) => {
+        const query = 'UPDATE "user" SET ("email","status") = ($1,$2) WHERE "id" = $3;';
+        const values = [email, 'a validé', userId];
+        db_connection.query(query, values, callback);
+    },
 //? /// \\\ LESSON   ///\\\
 
     updateLessonOnDB: (changeLesson, lessonId, callback) => {
