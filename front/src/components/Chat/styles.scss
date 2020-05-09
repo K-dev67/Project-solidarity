@@ -1,5 +1,6 @@
 .container-chat-main {
     height: 33.6vh;
+    // min-width: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,9 +19,6 @@
 
             }
         }
-        // .author {
-        //     color: red;
-        // }
 
     }
     .container-input-submit {
