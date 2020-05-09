@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import { SET_INPUT_NAV } from 'src/store/actions';
 
@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import {
   Segment, Card, Image, Icon, Button,
 } from 'semantic-ui-react';
+
+// == import action
+import { ENTER_CHAT } from '../../store/actions';
 
 
 // react Moment
@@ -19,6 +22,7 @@ import InputSearchLesson from './InputSearchLesson';
 
 // == import from BDD
 import getLessonById from '../../utils/getLessonById';
+import getMessages from '../../utils/getMessages';
 
 // == style
 import './styles.scss';
@@ -26,23 +30,39 @@ import './styles.scss';
 
 const Lessons = () => {
   const { lessons, lessonsFiltered, userId } = useSelector((state) => state);
+  const dispatch = useDispatch();
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
   let classNameOwner = '';
   // todo gerer la photo du prof avec lesson.teacher_id
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) classNameOwner = 'card-owner';
+    const handleClick = () => {
+      // recup via une requete les id de la leçon et
+      // crée un socket
+      console.log('lesson.id', lesson.id);
+      getLessonById(lesson.id);
+      // useEffect(getMessages(lesson.id), []);
+      getMessages(lesson.id);
+      dispatch({ type: ENTER_CHAT, payload: lesson.id });
+    };
     return (
       <Card
         key={lesson.id}
         className={classNameOwner}
-        onClick={() => {
-          console.log('click');
-          getLessonById(lesson.id);
-        }}
+        // onClick={() => {
+        //   console.log('click');
+        //   // getLessonById(lesson.id);
+        // }}
       >
         <Card.Content>
-          <Card.Header><Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link></Card.Header>
+          <Card.Header>
+            <Link
+              to={`/lessons/${lesson.id}`}
+              onClick={handleClick}
+            >{lesson.title}
+            </Link>
+          </Card.Header>
           <Card.Meta>
             <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
           </Card.Meta>

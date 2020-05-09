@@ -48,7 +48,7 @@ const App = () => {
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
   useEffect(getCategories, []);
-  useEffect(getMessages, []);
+  // useEffect(getMessages, []);
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {

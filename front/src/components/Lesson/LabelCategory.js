@@ -12,6 +12,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
   if (categoryInfo === undefined) {
     return null;
   }
+  console.log('categoryInfo', categoryInfo);
 
   const categoryJSX = categoryInfo.map((category) => {
     // == fct pour qui réagit au handleClick

@@ -79,11 +79,7 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     getCategoryWithRelation: (lessonId, callback) => {
-
-
-
         const query = `SELECT * FROM "category"
-
         JOIN lesson_has_category ON category.id = category_id
         JOIN lesson ON lesson_id = lesson.id
         JOIN "user" ON "teacher_id" = "user".id
@@ -117,6 +113,16 @@ const dataMapper = {
     getMessage: (callback) => {
         const query = 'SELECT * FROM "message" JOIN "user" ON author_id = "user".id';
         db_connection.query(query, callback);
+    },
+    getRoomMessage: (lessonId, callback) => {
+        const query = 'SELECT * FROM "message" JOIN "user" ON author_id = "user".id WHERE "lesson_id" = $1';
+        const values = [lessonId]
+        db_connection.query(query, values, callback);
+    },
+    getOnlyRoomMessage: (lessonId, callback) => {
+        const query = 'SELECT * FROM "message" WHERE "lesson_id" = $1';
+        const values = [lessonId]
+        db_connection.query(query, values, callback);
     },
 
 //? /// \\\ LIAISON  ///\\\
@@ -279,9 +285,9 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
 //? /// \\\ MESSAGE  ///\\\
-    putMsgOnDb: (message, callback) => {
-        const query = `INSERT INTO "message"("author_id", "lesson_id", "content", "status")VALUES($1,$2,$3,$4)`;
-        const values = [message.authorId,2, message.content, 'lue'];
+    putMsgOnDb: (message, userId, lessonId, callback) => {
+        const query = `INSERT INTO "message"("content", "author_id", "lesson_id", "status")VALUES($1,$2,$3,$4)`;
+        const values = [message, userId, lessonId, 'lue'];
         db_connection.query(query, values, callback);
     },
 //? /// \\\ LIAISON  ///\\\
