@@ -32,7 +32,7 @@ export default (store) => (next) => (action) => {
             store.dispatch({ type: SET_USER, user });
             store.dispatch({ type: SET_USER_ID, payload: user.id });
             store.dispatch(enterHomePage(action.history));
-            store.dispatch({ type: ENTER_CHAT });
+            // store.dispatch({ type: ENTER_CHAT });
           }
         })
         .catch((error) => {

@@ -24,9 +24,9 @@ app.get('/', (req, res) => {
 //const socketController = require('./app/controllers/socketController');
 //io.on('connection', socketController.respond);
 
-// A test 
+// A test
 /*const chatRoom = io
- .of('/') // <== Ici mettre le namespace lessons // meme en front 
+ .of('/') // <== Ici mettre le namespace lessons // meme en front
  .on('connection', (socket) => {
    socket.on('joinRoom', ({username, room }) => {
      socketController.respond(chat,socket);
@@ -42,37 +42,52 @@ app.get('/', (req, res) => {
    userLeave,
    getRoomUsers
  } = require('./app/utils/users');
- 
+
  const botName = 'El Boto'
 
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room}) => {
 
-    const user = userJoin(socket.id, username, room);
-    
+    //console.log(username, room);
+
+    const userId = username.id;
+    //console.log('userId', userId);
+    const user = userJoin(socket.id, username.nickname, userId, room);
+
+    console.log('user', user);
+
     socket.join(user.room);
-    
-    socket.emit('message',formatMessage(botName, 'Welcome to the Chat !'));
-    
+    console.log('Bienvenue dans le chat');
+    socket.emit('message',formatMessage(botName, `Welcome to the Chat ! ${room}`));
+
     socket.broadcast
     .to(user.room)
     .emit(
       'message',
       formatMessage(botName, `${user.username} has joined the chat`)
       );
-      
+
     io.to(user.room).emit('roomUsers', {
       room: user.room,
       users: getRoomUsers(user.room)
     });
   });
-  
-  
+
+
+
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
-    io.to(user.room).emit('message', formatMessage(user.username, msg));
+    io.to(user.room).emit('message', formatMessage(user.username, msg.content));
   });
-  
+
+  /*const userId = username.id;
+  dataMapper.putMsgOnDb(message, (error, data) => {
+  if (error) {
+  console.trace(error);
+  res.send(error);
+  }
+  });*/
+
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
     if (user) {

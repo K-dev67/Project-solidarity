@@ -33,7 +33,7 @@ const Chat = () => {
     if (message.author_id === user.id) classNameAuthor = 'chat-message author';
     return (
       <li className={classNameAuthor}>
-        <strong className="message-author">{message.firstname}</strong>
+        <strong className="message-author">{message.nickname}</strong>
         <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
         <p className="message-content">{message.content}</p>
       </li>
