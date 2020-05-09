@@ -15,6 +15,9 @@ import { Button, Icon } from 'semantic-ui-react';
 // == action
 import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON, LEAVE_ROOM } from '../../store/actions';
 
+// == fonction utils
+// import getLessonById from '../../utils/getLessonById';
+
 // component
 import UpdateLessonModal from './UpdateLessonModal';
 import LabelCategory from './LabelCategory';
@@ -73,6 +76,7 @@ const Lesson = ({ lesson }) => {
         categoryName,
       },
     });
+    // getLessonById(lesson.id);
   };
   if (userId === lesson.teacher_id) {
     addCategoryJSX = (

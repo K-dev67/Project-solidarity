@@ -299,13 +299,13 @@ export default (state = initialState, action = {}) => {
         })
         .then((res) => {
           console.log(res);
-          // getLesson();
-          getLessonById(lessonId);
+          const promise = axios.get(
+            `${API_URL}/lessons/${lessonId}`,
+          );
+          promise.then((res) => {
+            store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
+          });
         });
-      // return {
-      //   ...state,
-      //   labelCategory: categoryName,
-      // };
       next(action);
     }
     case DELETE_CATEGORY_LABEL: {
@@ -317,6 +317,12 @@ export default (state = initialState, action = {}) => {
         .then((res) => {
           console.log('resInDeleteCategory', res);
           // getLesson();
+          // getLessonById(lessonId);
+          axios.get(
+            `${API_URL}/lessons/${lessonId}`,
+          ).then((res) => {
+            store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
+          });
         });
     }
     case MESSAGE_POSITIF_TRUE: {
