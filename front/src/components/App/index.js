@@ -1,9 +1,12 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+// == action
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { SET_USER } from '../../store/actions';
 
 // == import Router
-import { Route, Switch, Redirect } from 'react-router-dom';
 
 // == utils/axios
 import getTeachers from '../../utils/getTeachers';
@@ -21,16 +24,26 @@ import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
 import Lesson from '../Lesson';
-import Chat from '../Chat';
+// import Chat from '../Chat';
 import Loading from '../Loading';
 
 // == Import style
 import './styles.scss';
 
+// == auto connect
+
+
 // == Composant
 const App = () => {
+  //! test sessions mais bcp de bug à fixer
+  // const user = JSON.parse(sessionStorage.getItem('user'));
+  // const dispatch = useDispatch();
+  // if (user) {
+  //   dispatch({ type: SET_USER, user });
+  // }
   // getLessons();
   const user = useSelector((state) => state.user);
+
   const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
@@ -98,16 +111,6 @@ const App = () => {
               return <Redirect to="/login" />;
             }
             return <Teachers />;
-          }}
-        />
-        <Route
-          exact
-          path="/chat"
-          render={() => {
-            if (user.email === undefined) {
-              return <Redirect to="/login" />;
-            }
-            return <Chat />;
           }}
         />
         <LessonComponent />

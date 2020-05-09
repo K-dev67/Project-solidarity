@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
@@ -58,8 +59,6 @@ const Lesson = ({ lesson }) => {
   ));
   // == submit du select addCategory
   const onSubmit = (data) => {
-    console.log('jai cliqué');
-    console.log('dataCategory', data.Catégorie);
     const categoryName = data.Catégorie;
     dispatch({
       type: ADD_CATEGORY_ON_LESSON,
@@ -94,8 +93,8 @@ const Lesson = ({ lesson }) => {
 
   return (
     <div className="room">
-      <Icon size="large" name="chevron circle left" />
       <div className="room--description">
+        <Link to="/lessons/"><Icon size="large" name="chevron circle left" /></Link>;
         <span className="room-number"># Cockpit numero {lesson.id}</span>
         <h2 className="room-title">{lesson.title}</h2>
         <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />

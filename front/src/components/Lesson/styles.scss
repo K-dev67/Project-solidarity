@@ -1,13 +1,18 @@
+// container de toute la leçon chatroom
 .room {
     min-height: 85vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    .room--description {
+        padding: 0.5em;
+    }
     .room-modify-button {
         padding: 10px 0;
     }
 }
+
 
 // == container in modal update lesson
 .container-update-lesson-form{
@@ -59,6 +64,9 @@
 }
 
 @media (max-width: 650px) {
+    .room {
+        flex-direction: column;
+    }
     .container-update-lesson-form{
         // padding: 3em;
         // display: flex;
