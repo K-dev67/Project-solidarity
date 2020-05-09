@@ -16,8 +16,14 @@ import './styles.scss';
 
 
 const Chat = () => {
+  // scroll down non ok
+  document.getElementsByClassName('container-chat-main').scrollTop = document.getElementsByClassName('container-chat-main').scrollHeight;
+  // console.log('objectCHAT', document.getElementsByClassName('container-chat-main'));
   const dispatch = useDispatch();
   useEffect(getMessages, []);
+  useEffect(() => {
+    window.scrollTo(0, 1000);
+  }, []);
   const currentMessage = useSelector((state) => state.message);
   const { messages, user } = useSelector((state) => state);
 

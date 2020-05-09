@@ -93,8 +93,8 @@ const Lesson = ({ lesson }) => {
 
   return (
     <div className="room">
-      <Link to="/lessons/"><Icon size="large" name="chevron circle left" /></Link>;
       <div className="room--description">
+        <Link to="/lessons/"><Icon size="large" name="chevron circle left" /></Link>;
         <span className="room-number"># Cockpit numero {lesson.id}</span>
         <h2 className="room-title">{lesson.title}</h2>
         <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />

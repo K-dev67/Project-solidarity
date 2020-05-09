@@ -5,6 +5,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    .room--description {
+        padding: 0.5em;
+    }
     .room-modify-button {
         padding: 10px 0;
     }
@@ -61,6 +64,9 @@
 }
 
 @media (max-width: 650px) {
+    .room {
+        flex-direction: column;
+    }
     .container-update-lesson-form{
         // padding: 3em;
         // display: flex;
