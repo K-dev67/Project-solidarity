@@ -15,10 +15,15 @@ import { Button, Icon } from 'semantic-ui-react';
 // == action
 import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON, LEAVE_ROOM } from '../../store/actions';
 
+// == fonction utils
+// import getLessonById from '../../utils/getLessonById';
+
 // component
 import UpdateLessonModal from './UpdateLessonModal';
 import LabelCategory from './LabelCategory';
 import Chatroom from '../Chat';
+import RoomUsers from './RoomUsers';
+
 
 // == style
 import './styles.scss';
@@ -26,8 +31,10 @@ import './styles.scss';
 
 const Lesson = ({ lesson }) => {
   const dispatch = useDispatch();
-  const { userId, roomUsers } = useSelector((state) => state);
-  console.log('roomUsers', roomUsers);
+  const { userId } = useSelector((state) => state);
+
+  // const { messages, user } = useSelector((state) => state);
+
 
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
@@ -52,7 +59,7 @@ const Lesson = ({ lesson }) => {
   }
   // == category
   const { register, handleSubmit, errors } = useForm();
-  // == get all categories
+  // == get all categories to add category
   const categories = useSelector((state) => state.categories);
   console.log('categories', categories);
   const optionCategoryJSX = categories.map((categorie) => (
@@ -69,6 +76,7 @@ const Lesson = ({ lesson }) => {
         categoryName,
       },
     });
+    // getLessonById(lesson.id);
   };
   if (userId === lesson.teacher_id) {
     addCategoryJSX = (
@@ -117,6 +125,7 @@ const Lesson = ({ lesson }) => {
       </div>
       <div className="tchat">
         <Chatroom lessonId={lesson.id} />
+        <RoomUsers />
       </div>
     </div>
   );
