@@ -6,11 +6,11 @@ import { API_URL } from './constante';
 // == actions
 import { SET_MESSAGES } from '../store/actions';
 
-const messagesRequest = `${API_URL}/messages`;
-
-const getLessons = (url = messagesRequest) => {
+const messagesRequest = `${API_URL}/messages/`;
+// + lessonId, lessonId
+const getMessages = (lessonId) => {
   const promise = axios.get(
-    url,
+    messagesRequest + lessonId,
   );
   promise.then((res) => {
     const messages = res.data;
@@ -18,4 +18,4 @@ const getLessons = (url = messagesRequest) => {
   });
 };
 
-export default getLessons;
+export default getMessages;

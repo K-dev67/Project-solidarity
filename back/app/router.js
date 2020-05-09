@@ -43,7 +43,7 @@ router.delete('/user/:id/lesson/:Id', lessonController.deleteLesson);
 router.post('/user/:id/lesson/:Id/category', lessonController.addCategoryToLesson);
 router.delete('/user/:id/lesson/:Id/category/:ID', lessonController.deleteCategoryToLesson);
 router.get('/lessons/:id', lessonController.showThisLesson);
-router.get('/messages', lessonController.showMessage);
+router.get('/messages/:id', lessonController.showMessage);
 
 // LES ROUTES CONCERNANT ASK
 router.post('/user/:id/ask', askController.addAsk);

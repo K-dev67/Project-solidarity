@@ -365,14 +365,25 @@ const lessonController = {
                     return res.send('Pas de category');
                 }
                 const categoryInfo = data.rows;
-                res.send({lessonInfo, categoryInfo})
+                console.log(categoryInfo);
+                return res.send({lessonInfo, categoryInfo});
+                //dataMapper.getOnlyRoomMessage(lessonId, (error, data) => {
+                    //if (error) {
+                    //   console.trace(error);
+                     //   res.send(error);
+                    //}
+                    /*if (!data) {
+                    }*/
+                    //const messageInfo = data.rows;
+                    //res.send(lessonInfo, categoryInfo, messageInfo)
+                //});
                 // SELECT * FROM "category" JOIN lesson_has_category ON category.id = category_id
             });
         });
     },
     showMessage: (req, res) => {
-        //const lessonId = req.params.id;
-        dataMapper.getMessage((error, data) => {
+        const lessonId = req.params.id;
+        dataMapper.getOnlyRoomMessage(lessonId, (error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);

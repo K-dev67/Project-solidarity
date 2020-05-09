@@ -66,3 +66,5 @@ export const syncMessage = (message) => ({
   type: SYNC_MESSAGE,
   message,
 });
+export const LEAVE_ROOM = 'actions/LEAVE_ROOM';
+export const SET_USERS_IN_ROOM = 'actions/SET_USERS_IN_ROOM';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import { SET_INPUT_NAV } from 'src/store/actions';
@@ -22,6 +22,7 @@ import InputSearchLesson from './InputSearchLesson';
 
 // == import from BDD
 import getLessonById from '../../utils/getLessonById';
+import getMessages from '../../utils/getMessages';
 
 // == style
 import './styles.scss';
@@ -37,10 +38,12 @@ const Lessons = () => {
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) classNameOwner = 'card-owner';
     const handleClick = () => {
-      // recup via une requete les id de la lecçon et
+      // recup via une requete les id de la leçon et
       // crée un socket
       console.log('lesson.id', lesson.id);
       getLessonById(lesson.id);
+      // useEffect(getMessages(lesson.id), []);
+      getMessages(lesson.id);
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
     return (

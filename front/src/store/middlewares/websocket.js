@@ -5,7 +5,8 @@ import {
   ENTER_CHAT,
   MESSAGE_RECEIVED,
   SEND_MESSAGE,
-
+  LEAVE_ROOM,
+  SET_USERS_IN_ROOM,
 } from '../actions';
 import { API_URL } from '../../utils/constante';
 
@@ -34,6 +35,12 @@ export default (store) => (next) => (action) => {
         store.dispatch({ type: MESSAGE_RECEIVED, message });
       });
 
+      socket.on('roomUsers', ({ room, users }) => {
+        console.log('room', room);
+        console.log('users', users);
+        store.dispatch({ type: SET_USERS_IN_ROOM, payload: users });
+      });
+
       console.log(socket);
       next(action);
       return;
@@ -43,7 +50,7 @@ export default (store) => (next) => (action) => {
       console.log('Envoi du message au serveur central');
       // const { user } = store.getState();
       const { message } = store.getState();
-
+      console.log('message', message);
       socket.emit('chatMessage', {
         // authorId: userId,
         // firstname: user.firstname,
@@ -51,6 +58,12 @@ export default (store) => (next) => (action) => {
         // message,
         // created_at: moment(),
       });
+      // next(action);
+      return;
+    }
+    case LEAVE_ROOM: {
+      console.log('leave_room');
+      socket.close();
       next(action);
       return;
     }

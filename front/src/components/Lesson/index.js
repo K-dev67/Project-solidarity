@@ -13,7 +13,7 @@ import 'moment/locale/fr';
 import { Button, Icon } from 'semantic-ui-react';
 
 // == action
-import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON } from '../../store/actions';
+import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON, LEAVE_ROOM } from '../../store/actions';
 
 // component
 import UpdateLessonModal from './UpdateLessonModal';
@@ -26,8 +26,8 @@ import './styles.scss';
 
 const Lesson = ({ lesson }) => {
   const dispatch = useDispatch();
-  const { userId } = useSelector((state) => state);
-
+  const { userId, roomUsers } = useSelector((state) => state);
+  console.log('roomUsers', roomUsers);
 
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
@@ -54,6 +54,7 @@ const Lesson = ({ lesson }) => {
   const { register, handleSubmit, errors } = useForm();
   // == get all categories
   const categories = useSelector((state) => state.categories);
+  console.log('categories', categories);
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
   ));
@@ -94,7 +95,14 @@ const Lesson = ({ lesson }) => {
   return (
     <div className="room">
       <div className="room--description">
-        <Link to="/lessons/"><Icon size="large" name="chevron circle left" /></Link>;
+        <Link
+          to="/lessons/"
+          onClick={() => {
+            dispatch({ type: LEAVE_ROOM });
+          }}
+        >
+          <Icon size="large" name="chevron circle left" />
+        </Link>;
         <span className="room-number"># Cockpit numero {lesson.id}</span>
         <h2 className="room-title">{lesson.title}</h2>
         <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
@@ -108,7 +116,7 @@ const Lesson = ({ lesson }) => {
         <div className="room-addCategory-select">{addCategoryJSX}</div>
       </div>
       <div className="tchat">
-        <Chatroom />
+        <Chatroom lessonId={lesson.id} />
       </div>
     </div>
   );

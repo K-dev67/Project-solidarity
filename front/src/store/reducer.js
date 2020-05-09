@@ -44,6 +44,7 @@ import {
   SYNC_MESSAGE,
   MESSAGE_RECEIVED,
   SET_MESSAGES,
+  SET_USERS_IN_ROOM,
 } from './actions';
 import store from '.';
 
@@ -75,6 +76,7 @@ const initialState = {
   // message
   message: '',
   messages: {},
+  roomUsers: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -335,6 +337,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         messages: action.payload,
+      };
+    }
+    case SET_USERS_IN_ROOM: {
+      return {
+        ...state,
+        roomUsers: action.payload,
       };
     }
     default: {

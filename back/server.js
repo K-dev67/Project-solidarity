@@ -76,20 +76,23 @@ io.on('connection', socket => {
 
 
   socket.on('chatMessage', msg => {
+    console.log('msg', msg)
     const user = getCurrentUser(socket.id);
     io.to(user.room).emit('message', formatMessage(user.username, msg.content));
+    console.log('msg.content', msg.content);
+        dataMapper.putMsgOnDb(msg.content, user.userId, user.room, (error, data) => {
+        if (error) {
+        console.trace(error);
+        res.send(error);
+        }
+        });
   });
 
-  /*const userId = username.id;
-  dataMapper.putMsgOnDb(message, (error, data) => {
-  if (error) {
-  console.trace(error);
-  res.send(error);
-  }
-  });*/
+  //const userId = username.id;
 
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
+    console.log('user has left the channel');
     if (user) {
       io.to(user.room).emit(
         'message',
