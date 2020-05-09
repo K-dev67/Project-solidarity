@@ -30,25 +30,22 @@ import Loading from '../Loading';
 // == Import style
 import './styles.scss';
 
-// == auto connect
-
 
 // == Composant
 const App = () => {
   //! test sessions mais bcp de bug à fixer
+  // == auto connect
   // const user = JSON.parse(sessionStorage.getItem('user'));
   // const dispatch = useDispatch();
   // if (user) {
   //   dispatch({ type: SET_USER, user });
   // }
-  // getLessons();
   const user = useSelector((state) => state.user);
 
   const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
   useEffect(getCategories, []);
-  // useEffect(getMessages, []);
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {

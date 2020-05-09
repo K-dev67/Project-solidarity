@@ -18,18 +18,25 @@ import './styles.scss';
 
 const Chat = ({ lessonId }) => {
   console.log('lessonId In Chat', lessonId);
-  // getMessages(lessonId);
   // scroll down non ok
   document.getElementsByClassName('container-chat-main').scrollTop = document.getElementsByClassName('container-chat-main').scrollHeight;
   // console.log('objectCHAT', document.getElementsByClassName('container-chat-main'));
   const dispatch = useDispatch();
   // useEffect(getMessages, []);
-  useEffect(() => {
-    window.scrollTo(1000, 1000);
-  }, []);
-  const currentMessage = useSelector((state) => state.message);
-  const { messages, user } = useSelector((state) => state);
 
+  const currentMessage = useSelector((state) => state.message);
+  const { messages } = useSelector((state) => state);
+
+  //* try to add scroll down
+  // useEffect(() => {
+  //   window.scrollTo(1000, 1000);
+  // }, []);
+
+  //* className for author
+  // const classNameAuthor = 'chat-message';
+  // if (message.author_id === user.id) classNameAuthor = 'chat-message author';
+
+  //* try to add loader
   // console.log('messages', messages);
   // if (messages === undefined || messages === null) {
   //   return null;
@@ -47,13 +54,6 @@ const Chat = ({ lessonId }) => {
       <p className="message-content">{message.content}</p>
     </li>
   ));
-
-
-  // };
-
-
-  // useEffect(messageJSX, [messages]);
-  // messageJSX();
 
   return (
     <div className="container-chat-main">
@@ -102,6 +102,5 @@ export default Chat;
 // useEffect(messageJSX, [messages]);
 // console.log('messages', messages.messageInfo);
 // const messageRoom = messages.messageInfo;
-// const classNameAuthor = 'chat-message';
-// if (message.author_id === user.id) classNameAuthor = 'chat-message author';
+
 // || messages === null
