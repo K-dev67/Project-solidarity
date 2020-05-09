@@ -52,7 +52,18 @@ import store from '.';
 const initialState = {
   // == input du menu
   inputNav: '',
-  lessonsFiltered: {},
+  lessonsFiltered: [{
+    id: 1,
+    title: 'La physique Chimie pour les Nul',
+    description: 'Une introduction a la physique-chimie',
+    level: 'easy',
+    teacher_id: 1,
+    plannified: null,
+    link_videos: null,
+    status: 'finis',
+    created_at: '2020-05-02T13:20:28.574Z',
+    updated_at: null,
+  }],
   // form du signUp
   username: '',
   firstname: '',
@@ -288,8 +299,8 @@ export default (state = initialState, action = {}) => {
         })
         .then((res) => {
           console.log(res);
-          getLesson();
-          // getLessonById(lessonId);
+          // getLesson();
+          getLessonById(lessonId);
         });
       // return {
       //   ...state,
