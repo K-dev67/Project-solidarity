@@ -75,7 +75,7 @@ const initialState = {
   messagePositif: false,
   // message
   message: '',
-  messages: {},
+  messages: [{ content: 'blabla' }],
   roomUsers: {},
 };
 
