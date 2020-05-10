@@ -103,7 +103,6 @@ const Room = ({ lesson }) => {
   //*    END   partie modifier le cours
   //* ----------------------------------------------
 
-
   return (
     <div className="room">
       <Link
@@ -122,7 +121,6 @@ const Room = ({ lesson }) => {
 
       <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
       <div className="room--description">
-
         <span className="room-number"># Cockpit numero {lesson.id}</span>
         <h2 className="room-title">{lesson.title}</h2>
         <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
