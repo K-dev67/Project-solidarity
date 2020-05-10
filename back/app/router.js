@@ -10,8 +10,6 @@ const askController = require('./controllers/askController');
 const userController = require('./controllers/userController');
 const liveController = require('./controllers/liveController');
 const mailController = require('./controllers/mailController');
-const socketController = require('./controllers/socketController');
-const chatController = require('./controllers/chatController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES
@@ -68,6 +66,7 @@ router.get('/profile/:id', userController.showProfile);
 router.patch('/profiluser/:id', userController.changeProfile);
 router.patch('/profiluser/:id/changeEmail', userController.changeEmail);
 router.patch('/profiluser/:id/changePassword', userController.changePassword);
+
 
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
