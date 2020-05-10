@@ -302,7 +302,7 @@ export default (state = initialState, action = {}) => {
           const promise = axios.get(
             `${API_URL}/lessons/${lessonId}`,
           );
-          promise.then((res) => {
+          promise.then((res2) => {
             store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
           });
         });
@@ -320,7 +320,7 @@ export default (state = initialState, action = {}) => {
           // getLessonById(lessonId);
           axios.get(
             `${API_URL}/lessons/${lessonId}`,
-          ).then((res) => {
+          ).then((res2) => {
             store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
           });
         });
