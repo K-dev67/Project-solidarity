@@ -6,11 +6,8 @@ import 'moment/locale/fr';
 import Moment from 'react-moment';
 
 import { sendMessage, syncMessage } from 'src/store/actions';
-import Loading from '../Loading';
-
-
-// == utils/axios
-// import getMessages from '../../utils/getMessages';
+// import Loading from '../Loading';
+import { Icon } from 'semantic-ui-react';
 
 // == style
 import './styles.scss';
@@ -18,35 +15,13 @@ import './styles.scss';
 
 const Chat = ({ lessonId }) => {
   console.log('lessonId In Chat', lessonId);
-  // scroll down non ok
-  document.getElementsByClassName('container-chat-main').scrollTop = document.getElementsByClassName('container-chat-main').scrollHeight;
-  // console.log('objectCHAT', document.getElementsByClassName('container-chat-main'));
+
   const dispatch = useDispatch();
   // useEffect(getMessages, []);
 
   const currentMessage = useSelector((state) => state.message);
   const { messages } = useSelector((state) => state);
 
-  //* try to add scroll down
-  // useEffect(() => {
-  //   window.scrollTo(1000, 1000);
-  // }, []);
-
-  //* className for author
-  // const classNameAuthor = 'chat-message';
-  // if (message.author_id === user.id) classNameAuthor = 'chat-message author';
-
-  //* try to add loader
-  // console.log('messages', messages);
-  // if (messages === undefined || messages === null) {
-  //   return null;
-  // } if (messages === {}) {
-  //   return null;
-  // }
-  // if (!messages) {
-  //   return <Loading />;
-  // }
-  // const messageJSX = () => {
   const messageJSX = messages.map((message) => (
     <li className="chat-message">
       <strong className="message-author">{message.nickname}</strong>
@@ -75,11 +50,20 @@ const Chat = ({ lessonId }) => {
               dispatch(syncMessage(evt.target.value));
             }}
           />
-          <button
+          {/* <button
             type="submit"
             className="chat-send-message_button"
           >
             Envoyer
+          </button> */}
+          <button
+            type="button"
+          >
+            <Icon
+              name="send"
+              className="chat-send-message_button"
+              type="submit"
+            />
           </button>
         </form>
       </div>
@@ -104,3 +88,28 @@ export default Chat;
 // const messageRoom = messages.messageInfo;
 
 // || messages === null
+
+//* à faire -----
+//* try to add scroll down
+// useEffect(() => {
+//   window.scrollTo(1000, 1000);
+// }, []);
+
+//* className for author
+// const classNameAuthor = 'chat-message';
+// if (message.author_id === user.id) classNameAuthor = 'chat-message author';
+
+//* try to add loader
+// console.log('messages', messages);
+// if (messages === undefined || messages === null) {
+//   return null;
+// } if (messages === {}) {
+//   return null;
+// }
+// if (!messages) {
+//   return <Loading />;
+// }
+// const messageJSX = () => {
+
+// document.getElementsByClassName('container-chat-main').scrollTop = document.getElementsByClassName('container-chat-main').scrollHeight;
+// console.log('objectCHAT', document.getElementsByClassName('container-chat-main'));

@@ -1,3 +1,7 @@
+//! -----------------------------
+//! Desktop
+//! -----------------------------
+
 // container de toute la leçon chatroom
 .room {
     min-height: 85vh;
@@ -11,9 +15,25 @@
     .room-modify-button {
         padding: 10px 0;
     }
+    .tchat {
+        // display: flex;
+        .container-room-user {
+            // padding-left: 1em;
+            .user-connected {
+                // display: flex;
+                // flex-direction: column;
+                .ui.image.label {
+                    // margin-top: 0.3em;
+                }
+            }
+        }
+    }
 }
 
 
+//! -----------------------------
+//! ---------modal----------------
+//! -----------------------------
 // == container in modal update lesson
 .container-update-lesson-form{
     padding: 3em;
@@ -63,16 +83,32 @@
     }
 }
 
-@media (max-width: 650px) {
+//! -----------------------------
+//! mobile
+//! -----------------------------
+
+@media (max-width: 700px) {
     .room {
         flex-direction: column;
+        .tchat {
+            display: flex;
+            .container-room-user {
+                padding-left: 1em;
+                .user-connected {
+                    display: flex;
+                    flex-direction: column;
+                    .ui.image.label {
+                        margin-top: 0.3em;
+                    }
+                }
+            }
+        }
     }
     .container-update-lesson-form{
-        // padding: 3em;
-        // display: flex;
-        // flex-direction: row;
+
         .update-lesson-form {
             flex-direction: column;
             align-items: center;
         }
-}}
+}
+}
