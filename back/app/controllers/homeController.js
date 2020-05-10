@@ -105,6 +105,8 @@ const homeController = {
                 return res.send('Nothing');
             }
             res.send(data.rows);
+            
+            
         });
     },
 

@@ -117,7 +117,8 @@ const authController = {
             console.log(req.body);
             await dataMapper.checkEmail(email, (error, data) => {
                  if (data.rowCount === 0) {
-                     return res.send("Cet email n'existe pas");
+                     console.log('Ceet email existe pas');
+                     return res.status(401).end();
                  }
                 const user = data.rows[0];
                 let testPass = "";

@@ -69,6 +69,7 @@ router.patch('/profiluser/:id', userController.changeProfile);
 router.patch('/profiluser/:id/changeEmail', userController.changeEmail);
 router.patch('/profiluser/:id/changePassword', userController.changePassword);
 
+
 // Route 404
 router.use( (req,res) => {res.status(404).send('404')} );
 
