@@ -10,8 +10,6 @@ const askController = require('./controllers/askController');
 const userController = require('./controllers/userController');
 const liveController = require('./controllers/liveController');
 const mailController = require('./controllers/mailController');
-const socketController = require('./controllers/socketController');
-const chatController = require('./controllers/chatController');
 // ESPACE DE REQUIRE POUR LES MIDDLEWARES
 
 // LES ROUTES

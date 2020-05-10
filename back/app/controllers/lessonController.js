@@ -389,7 +389,8 @@ const lessonController = {
                 res.send(error);
             }
             //console.log(data.rows);
-            res.send(data.rows);
+            const messageTime = data.rows;
+            res.send(messageTime);
         });
     },
 };
