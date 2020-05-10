@@ -6,11 +6,7 @@ import { Input } from 'semantic-ui-react';
 const InputSearchLesson = () => {
   const dispatch = useDispatch();
   const { inputNav, lessons } = useSelector((state) => state);
-  // == pour filtrer les leçons en fonction des touches du clavier
-  // pour filtrer les pokemons en fonction des touches du clavier..
-  // console.log('lessons', lessons);
   const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
-  // console.log('lessonFiltered', lessonFiltered);
 
   return (
     <Input

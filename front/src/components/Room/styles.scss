@@ -8,14 +8,14 @@
 //! --------------------------------------------
 
 .header-room {
-    margin: 0.3em 0.5em 0em 0.5em !important;
+    margin: 0.3em 0.3em 0em 0.3em !important;
     .label-category {
         margin: 0.3em 0 !important;
     }
 }
 
 //! --------------------------------------------
-//!                 TOUTE LA ROOM
+//!           ROOM en dessous des labels
 //! --------------------------------------------
 
 .room {
@@ -26,22 +26,26 @@
     align-items: center;
     justify-content: space-around;
     .container-update-room {
+        display: flex;
+        flex-direction: column;
         height: 100%;
         border: 1px solid #BDC3C7;
         border-radius: 5px;
         box-shadow: 10px 5px 5px #BDC3C7;
+        align-items: center;
+        padding: 0.3em;
+        .room-modify-button {
+            // padding: 10px 0;
+            padding: 0.5em 0 ;
+        }
     }
 
     .room--description {
-        padding: 0.5em;
-    }
-    .room-modify-button {
-        padding: 10px 0;
-    }
-    .room--description {
+
         border: 1px solid #BDC3C7;
         border-radius: 5px;
         box-shadow: 10px 5px 5px #BDC3C7;
+        padding: 0.5em;
     }
     //! -----------------------------------
     //!              tchat
@@ -92,6 +96,7 @@
         .container-update-room {
             width: 100%;
             display: flex;
+            flex-direction: row;
             align-items: center;
             margin-top: 0.5em;
             padding: 0.3em;
