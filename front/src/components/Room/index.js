@@ -16,6 +16,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON, LEAVE_ROOM } from '../../store/actions';
 
 // component
+import RoomDescription from './RoomDescription';
 import UpdateLessonModal from './UpdateLessonModal';
 import LabelCategory from './LabelCategory';
 import Chat from '../Chat';
@@ -104,39 +105,46 @@ const Room = ({ lesson }) => {
   //* ----------------------------------------------
 
   return (
-    <div className="room">
-      <Link
-        fluid
-        to="/lessons/"
-        onClick={() => {
-          dispatch({ type: LEAVE_ROOM });
-        }}
-      >
-        <Button
-          color="red"
+    <>
+      <header className="header-room">
+        <Link
           fluid
-        >Quitter le cours
-        </Button>
-      </Link>
+          to="/lessons/"
+          onClick={() => {
+            dispatch({ type: LEAVE_ROOM });
+          }}
+        >
+          <Button
+            color="red"
+            fluid
+          >Quitter le cours
+          </Button>
+        </Link>
+        <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
+      </header>
+      <div className="room">
 
-      <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
-      <div className="room--description">
-        <span className="room-number"># Cockpit numero {lesson.id}</span>
-        <h2 className="room-title">{lesson.title}</h2>
-        <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
+        {/* <div className="room--description">
+          <span className="room-number"># Cockpit numero {lesson.id}</span>
+          <h2 className="room-title">{lesson.title}</h2>
+          <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
+          </div>
+          <div className="room-level">niveau : {lesson.level}</div>
+          <div className="room-description">description : {lesson.description}</div>
+          <div className="room-plannified">le cours aura lieu le : <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment></div>
+        </div> */}
+        <RoomDescription lesson={lesson} />
+        <div className="buttons-update-room">
+          <div className="room-modify-button">{modifyButtonJSX}</div>
+          <div className="room-delete-button">{deleteButtonJSX}</div>
+          <div className="room-addCategory-select">{addCategoryJSX}</div>
         </div>
-        <div className="room-level">niveau : {lesson.level}</div>
-        <div className="room-description">description : {lesson.description}</div>
-        <div className="room-plannified">le cours aura lieu le : <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment></div>
-        <div className="room-modify-button">{modifyButtonJSX}</div>
-        <div className="room-delete-button">{deleteButtonJSX}</div>
-        <div className="room-addCategory-select">{addCategoryJSX}</div>
+        <div className="tchat">
+          <Chat lessonId={lesson.id} />
+          <RoomUsers />
+        </div>
       </div>
-      <div className="tchat">
-        <Chat lessonId={lesson.id} />
-        <RoomUsers />
-      </div>
-    </div>
+    </>
   );
 };
 
