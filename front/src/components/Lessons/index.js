@@ -40,12 +40,7 @@ const Lessons = () => {
     const handleClick = () => {
       // recup via une requete les id de la leçon et
       // crée un socket
-      console.log('lesson.id', lesson.id);
-      console.log('getLessonById before');
       getLessonById(lesson.id);
-      console.log('getLessonById after');
-
-      // useEffect(getMessages(lesson.id), []);
       getMessages(lesson.id);
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
@@ -53,10 +48,6 @@ const Lessons = () => {
       <Card
         key={lesson.id}
         className={classNameOwner}
-        // onClick={() => {
-        //   console.log('click');
-        //   // getLessonById(lesson.id);
-        // }}
       >
         <Card.Content>
           <Card.Header

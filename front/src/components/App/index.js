@@ -23,7 +23,7 @@ import Login from '../Login';
 import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
-import Lesson from '../Lesson';
+import Room from '../Room';
 // import Chat from '../Chat';
 import Loading from '../Loading';
 
@@ -62,7 +62,7 @@ const App = () => {
         exact
         path={`/lessons/${lesson.id}`}
       >
-        <Lesson lesson={lesson} />
+        <Room lesson={lesson} />
       </Route>
     ));
   };

@@ -1,29 +1,11 @@
-.container-chat-main {
-    height: 33.6vh;
-    // min-width: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    .chat-all-messages {
-        overflow-y: scroll;
-        .chat-message {
-            .date-message {
-                color: rgb(160, 159, 159);
-                font-size: 0.8em;
-            }
-            .message-author {
-                margin-right: 0.5em;
-            }
-            .message-content {
 
-            }
-        }
 
-    }
-    .container-input-submit {
 
-    }
-}
 
-// == chat socket
+
+
+
+
+
+
+

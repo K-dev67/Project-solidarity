@@ -15,27 +15,29 @@ import { Button, Icon } from 'semantic-ui-react';
 // == action
 import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON, LEAVE_ROOM } from '../../store/actions';
 
-// == fonction utils
-// import getLessonById from '../../utils/getLessonById';
-
 // component
 import UpdateLessonModal from './UpdateLessonModal';
 import LabelCategory from './LabelCategory';
-import Chatroom from '../Chat';
+import Chat from '../Chat';
 import RoomUsers from './RoomUsers';
 
 
 // == style
 import './styles.scss';
 
+//!---------------------------------------------------------------
+//!                   COMPONSANT ROOM
+//!---------------------------------------------------------------
 
-const Lesson = ({ lesson }) => {
+
+const Room = ({ lesson }) => {
   const dispatch = useDispatch();
   const { userId } = useSelector((state) => state);
 
-  // const { messages, user } = useSelector((state) => state);
 
-
+  //* -------------------------------------
+  //*       partie modifier le cours
+  //* -------------------------------------
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
   let addCategoryJSX = '';
@@ -59,9 +61,8 @@ const Lesson = ({ lesson }) => {
   }
   // == category
   const { register, handleSubmit, errors } = useForm();
-  // == get all categories to add category
+  // == get all categories from bdd to add category
   const categories = useSelector((state) => state.categories);
-  console.log('categories', categories);
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
   ));
@@ -76,8 +77,8 @@ const Lesson = ({ lesson }) => {
         categoryName,
       },
     });
-    // getLessonById(lesson.id);
   };
+  // == si le user est le teacher
   if (userId === lesson.teacher_id) {
     addCategoryJSX = (
       <div className="container-addCategory">
@@ -98,22 +99,30 @@ const Lesson = ({ lesson }) => {
       </div>
     );
   }
-
+  //* ---------------------------------------------
+  //*    END   partie modifier le cours
+  //* ----------------------------------------------
 
   return (
     <div className="room">
+      <Link
+        fluid
+        to="/lessons/"
+        onClick={() => {
+          dispatch({ type: LEAVE_ROOM });
+        }}
+      >
+        <Button
+          color="red"
+          fluid
+        >Quitter le cours
+        </Button>
+      </Link>
+
+      <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
       <div className="room--description">
-        <Link
-          to="/lessons/"
-          onClick={() => {
-            dispatch({ type: LEAVE_ROOM });
-          }}
-        >
-          <Icon size="large" name="chevron circle left" />
-        </Link>;
         <span className="room-number"># Cockpit numero {lesson.id}</span>
         <h2 className="room-title">{lesson.title}</h2>
-        <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
         <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
         </div>
         <div className="room-level">niveau : {lesson.level}</div>
@@ -124,15 +133,15 @@ const Lesson = ({ lesson }) => {
         <div className="room-addCategory-select">{addCategoryJSX}</div>
       </div>
       <div className="tchat">
-        <Chatroom lessonId={lesson.id} />
+        <Chat lessonId={lesson.id} />
         <RoomUsers />
       </div>
     </div>
   );
 };
 
-Lesson.propTypes = {
+Room.propTypes = {
   lesson: PropTypes.string.isRequired,
 };
 
-export default Lesson;
+export default Room;
