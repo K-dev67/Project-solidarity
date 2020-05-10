@@ -11,9 +11,6 @@ const UpdateTeacherComponent = ({ lesson }) => {
   const dispatch = useDispatch();
   const { userId } = useSelector((state) => state);
 
-  //* -------------------------------------
-  //*       partie modifier le cours
-  //* -------------------------------------
   let modifyButtonJSX = '';
   let deleteButtonJSX = '';
   let addCategoryJSX = '';
@@ -77,10 +74,6 @@ const UpdateTeacherComponent = ({ lesson }) => {
       </div>
     );
   }
-  //* ---------------------------------------------
-  //*    END   partie modifier le cours
-  //* ----------------------------------------------
-
 
   return (
     <>

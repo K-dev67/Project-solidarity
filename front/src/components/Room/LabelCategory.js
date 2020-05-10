@@ -50,7 +50,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
     );
   });
   return (
-    <div>
+    <div className="label-category">
       {categoryJSX}
     </div>
   );

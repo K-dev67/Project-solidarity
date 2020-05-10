@@ -44,8 +44,8 @@ const Room = ({ lesson }) => {
         <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
       </header>
       <div className="room">
-        <RoomDescription lesson={lesson} />
         <UpdateTeacherComponent lesson={lesson} />
+        <RoomDescription lesson={lesson} />
         <div className="tchat">
           <Chat lessonId={lesson.id} />
           <RoomUsers />

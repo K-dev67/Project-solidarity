@@ -1,104 +1,56 @@
-//? ----- TOUTE LA ROOM => "COCKPIT"
+//?-----------------------------------------------------
+//?--------------------DESKTOP--------------------------
+//?-----------------------------------------------------
+
 
 //! --------------------------------------------
-//! container de toute la ROOM  DESKTOP
+//!                 HEADER
+//! --------------------------------------------
+
+.header-room {
+    margin: 0.3em 0.5em 0em 0.5em !important;
+    .label-category {
+        margin: 0.3em 0 !important;
+    }
+}
+
+//! --------------------------------------------
+//!                 TOUTE LA ROOM
 //! --------------------------------------------
 
 .room {
-    margin: 0 0.5em;
+    // margin: 0 0.5em;
     min-height: 75vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    .container-update-room {
+        height: 100%;
+        border: 1px solid #BDC3C7;
+        border-radius: 5px;
+        box-shadow: 10px 5px 5px #BDC3C7;
+    }
+
     .room--description {
         padding: 0.5em;
     }
     .room-modify-button {
         padding: 10px 0;
     }
-    .tchat {
-        // display: flex;
-        .container-room-user {
-            // padding-left: 1em;
-            .user-connected {
-                // display: flex;
-                // flex-direction: column;
-                .ui.image.label {
-                    // margin-top: 0.3em;
-                }
-            }
-        }
-    }
     .room--description {
         border: 1px solid #BDC3C7;
         border-radius: 5px;
         box-shadow: 10px 5px 5px #BDC3C7;
     }
-}
-
-
-
-//! --------------------------------------------
-//!    MOBILE   :  toute la room => cockpit
-//! --------------------------------------------
-
-@media (max-width: 700px) {
-    .room {
-        flex-direction: column;
-
-
-        .tchat {
-
-            display: flex;
-            justify-content: space-between;
-            .container-chat-main {
-                width: 65%
-            }
-            .container-room-user {
-                // padding-left: 1em;
-                margin: 0.5em;
-                width: 35%;
-                .user-connected {
-                    display: flex;
-                    flex-direction: column;
-                    .ui.image.label {
-                        margin-top: 0.3em;
-                    }
-                }
-            }
-        }
-
-        .room--description {
-            width: 100%;
-
-        }
-    }
-
-    .container-update-lesson-form{
-
-        .update-lesson-form {
-            flex-direction: column;
-            align-items: center;
-        }
-}
-}
-
-
-
-//?-------------TCHAT-----WITH-CONNECTED-USER------------------
-//! -----------------------------------
-//!       Desktop  tchat
-//! -----------------------------------
-
-@media (min-width: 700px) {
+    //! -----------------------------------
+    //!              tchat
+    //! -----------------------------------
     .container-chat-main {
-        width: 40vh;
-        .chat-all-messages {
-            max-width: 39vh;
-        }
+        border: 1px solid #BDC3C7;
+        border-radius: 5px;
+        box-shadow: 10px 5px 5px #BDC3C7;
     }
-
     .container-input-submit {
         width: 100%;
         padding-top: 0.1em;
@@ -111,74 +63,132 @@
                 width: 20%;
             }
         }
-
+    }
+    //! -----------------------------------
+    //!           User connected
+    //! -----------------------------------
+    .container-room-user {
+        border: 1px solid #BDC3C7;
+        border-radius: 5px;
+        box-shadow: 10px 5px 5px #BDC3C7;
     }
 }
 
 
+//?-----------------------------------------------------
+//?--------------------MOBILE--------------------------
+//?-----------------------------------------------------
 
-//! ---------------------------------------------
-//!                mobile  tchat
-//! ---------------------------------------------
 
-.container-chat-main {
-    // background-color: rgb(201, 200, 200);
-    border: 1px solid #BDC3C7;
-    border-radius: 5px;
-    box-shadow: 10px 5px 5px #BDC3C7;
-    height: 33.6vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0.5em;
-    padding: 1em 0;
-    .chat-all-messages {
-        overflow-y: scroll;
-        min-height: 30vh;
-        // max-width: 30vh;
-        padding: 1em 3em 1em 0.3em;
-        .chat-message {
-            .date-message {
-                color: rgb(160, 159, 159);
-                font-size: 0.8em;
+@media (max-width: 700px) {
+    //! --------------------------------------------
+    //!           TOUTE LA ROOM  => mobile
+    //! --------------------------------------------
+    .room {
+        flex-direction: column;
+    //! ----------------------------------------------
+    //! ---------modifier son propre cours------------
+    //! ----------------------------------------------
+        .container-update-room {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-top: 0.5em;
+            padding: 0.3em;
+            justify-content: space-around;
+
+        }
+    //! ----------------------------------------------
+    //! ---------description room ------------
+    //! ----------------------------------------------
+
+
+        .room--description {
+            width: 100%;
+            margin-top: 0.3em;
+        }
+    //! ---------------------------------------------
+    //!                 tchat
+    //! ---------------------------------------------
+
+        .tchat {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .container-chat-main {
+                width: 65%;
+                height: 33.6vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                padding: 1em 0;
+                .chat-all-messages {
+                    overflow-y: scroll;
+                    min-height: 30vh;
+                    width: 100%;
+                    padding-left: 0.3em;
+                    padding-top: 0.3em;
+                    .chat-message {
+                        .date-message {
+                            color: rgb(160, 159, 159);
+                            font-size: 0.8em;
+                        }
+                        .message-author {
+                            margin-right: 0.5em;
+                        }
+                    }
+                }
+
+                .container-input-submit {
+                     width: 100%;
+                     input {
+                       font-size: 16px;
+                       height: 30px;
+                       flex: 1;
+                       border-radius: 5px;
+                       width: 80%;
+                     }
+                     button {
+                         height: 32px;
+                         border-radius: 5px;
+                     }
+                }
+
             }
-            .message-author {
-                margin-right: 0.5em;
+            .container-room-user {
+                margin-left: 0.8em;
+                width: 35%;
+                padding: 0 0.5em;
+                .user-connected {
+                    display: flex;
+                    flex-direction: column;
+                    .ui.image.label {
+                        margin-top: 0.3em;
+                    }
+                }
             }
         }
 
     }
-    .container-input-submit {
-        width: 100%;
-        input {
-            font-size: 16px;
-	        height: 30px;
-            flex: 1;
-            border-radius: 5px;
-            width: 80%;
-        }
-        button {
-            height: 32px;
-            border-radius: 5px;
+
+
+    //! ---------------------------------------------
+    //!                 MODAL -> mobile
+    //! ---------------------------------------------
+
+    .container-update-lesson-form{
+
+        .update-lesson-form {
+            flex-direction: column !important;
+
         }
     }
 }
 
 
-//! ----------------------------------------------
-//! ---------modifier son propre cours------------
-//! ----------------------------------------------
-.container-update-room {
-    border: 1px solid #BDC3C7;
-    border-radius: 5px;
-    box-shadow: 10px 5px 5px #BDC3C7;
-    display: flex;
-    align-items: center;
-    margin-top: 0.5em;
-}
 
-
+//? ----------RE ---- DESKTOP -------------------
 //! -----------------------------
 //! ---------modal----------------
 //! -----------------------------
