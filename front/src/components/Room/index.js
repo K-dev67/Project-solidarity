@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // == semantic
 import { Button } from 'semantic-ui-react';
@@ -20,10 +20,8 @@ import UpdateTeacherComponent from './UpdateTeacherComponent';
 // == style
 import './styles.scss';
 
-
 const Room = ({ lesson }) => {
   const dispatch = useDispatch();
-  // const { userId } = useSelector((state) => state);
 
   return (
     <>
