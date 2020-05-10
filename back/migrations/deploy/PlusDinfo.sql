@@ -77,7 +77,6 @@ INSERT INTO "category" ("name", "color", "description", "status") VALUES
 ('Bio-chimie', 'purple','des cours de Bio-chimie',1),
 ('Espagnol', 'pink','des cours en espagnol',1),
 ('Allemand', 'brown','des cours en Allemand',1),
-('Anglais', 'grey','Des cours en Anglais',1),
 ('Sciences-sociales', 'black','des cours de Poterie',1),
 ('Economie', 'black','des cours d économie',1),
 ('Yoga', 'red','des cours de yoga',1),
