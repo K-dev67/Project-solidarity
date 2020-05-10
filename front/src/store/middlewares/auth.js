@@ -24,7 +24,8 @@ export default (store) => (next) => (action) => {
         })
         .then((res) => {
           if (res.status === 200) {
-            // const user = res.data;
+          // const user = res.data;
+            console.log('res.status', res.status);
             sessionStorage.user = JSON.stringify(res.data);
             console.log('sessionStorage', sessionStorage);
             const user = JSON.parse(sessionStorage.getItem('user'));
@@ -32,7 +33,7 @@ export default (store) => (next) => (action) => {
             store.dispatch({ type: SET_USER, user });
             store.dispatch({ type: SET_USER_ID, payload: user.id });
             store.dispatch(enterHomePage(action.history));
-            // store.dispatch({ type: ENTER_CHAT });
+          // store.dispatch({ type: ENTER_CHAT });
           }
         })
         .catch((error) => {

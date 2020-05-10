@@ -23,32 +23,29 @@ import Login from '../Login';
 import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
-import Lesson from '../Lesson';
+import Room from '../Room';
 // import Chat from '../Chat';
 import Loading from '../Loading';
 
 // == Import style
 import './styles.scss';
 
-// == auto connect
-
 
 // == Composant
 const App = () => {
   //! test sessions mais bcp de bug à fixer
+  // == auto connect
   // const user = JSON.parse(sessionStorage.getItem('user'));
   // const dispatch = useDispatch();
   // if (user) {
   //   dispatch({ type: SET_USER, user });
   // }
-  // getLessons();
   const user = useSelector((state) => state.user);
 
   const lessons = useSelector((state) => state.lessons);
   useEffect(getTeachers, []);
   useEffect(getLessons, []);
   useEffect(getCategories, []);
-  // useEffect(getMessages, []);
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {
@@ -65,7 +62,7 @@ const App = () => {
         exact
         path={`/lessons/${lesson.id}`}
       >
-        <Lesson lesson={lesson} />
+        <Room lesson={lesson} />
       </Route>
     ));
   };

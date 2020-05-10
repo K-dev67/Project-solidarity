@@ -31,7 +31,7 @@ const authController = {
                 if (error) {
                     console.trace(error);
                     res.send(error);
-                } 
+                }
                 let errorsList = [];
                 const userMail = data.rowCount;
                 console.log('userMail', userMail)
@@ -117,6 +117,7 @@ const authController = {
             console.log(req.body);
             await dataMapper.checkEmail(email, (error, data) => {
                  if (data.rowCount === 0) {
+
                      console.log('Ceet email existe pas');
                      return res.status(401).end();
                  }
@@ -156,7 +157,7 @@ const authController = {
             console.log(error);
         }
     },
-    // '/forgetPassword' => Envoie un mail si il existe dans la BDD avec une passPhrase 
+    // '/forgetPassword' => Envoie un mail si il existe dans la BDD avec une passPhrase
     askEmail: async (req, res) => {
         try {
             const email = req.body.email;
@@ -189,7 +190,7 @@ const authController = {
             console.log(error);
         }
     },
-    // '/forgetPassword/:passPhrase' => Compare l'email entré et la passPhrase dans la BDD 
+    // '/forgetPassword/:passPhrase' => Compare l'email entré et la passPhrase dans la BDD
     // pour s'assuré que c'est bien le proprietaire de l'adresse email = le compte
     forgetPassword: async (req, res) => {
         try {

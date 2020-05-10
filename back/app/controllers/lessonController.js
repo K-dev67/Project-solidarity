@@ -383,7 +383,7 @@ const lessonController = {
     },
     showMessage: (req, res) => {
         const lessonId = req.params.id;
-        dataMapper.getOnlyRoomMessage(lessonId, (error, data) => {
+        dataMapper.getRoomMessage(lessonId, (error, data) => {
             if (error) {
                 console.trace(error);
                 res.send(error);

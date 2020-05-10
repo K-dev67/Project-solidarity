@@ -5,8 +5,9 @@ import { API_URL } from './constante';
 
 // == actions
 import { SET_LESSON_BY_ID } from '../store/actions';
+// == pour recup les categories de mes leçons
 
-const lessonIdRequest = `${API_URL}/lesson/`;
+const lessonIdRequest = `${API_URL}/lessons/`;
 
 const getLessonById = (lessonId) => {
   const promise = axios.get(
@@ -15,7 +16,8 @@ const getLessonById = (lessonId) => {
   promise.then((res) => {
     console.log('infoLessonById', res.data);
     store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
-  });
+  })
+    .catch((error) => console.trace(error));
 };
 
 export default getLessonById;
