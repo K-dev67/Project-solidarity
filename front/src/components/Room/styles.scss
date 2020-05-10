@@ -1,0 +1,222 @@
+//? ----- TOUTE LA ROOM => "COCKPIT"
+
+//! --------------------------------------------
+//! container de toute la ROOM  DESKTOP
+//! --------------------------------------------
+
+.room {
+    margin: 0 0.5em;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    .room--description {
+        padding: 0.5em;
+    }
+    .room-modify-button {
+        padding: 10px 0;
+    }
+    .tchat {
+        // display: flex;
+        .container-room-user {
+            // padding-left: 1em;
+            .user-connected {
+                // display: flex;
+                // flex-direction: column;
+                .ui.image.label {
+                    // margin-top: 0.3em;
+                }
+            }
+        }
+    }
+    .room--description {
+        border: 1px solid #BDC3C7;
+        border-radius: 5px;
+        box-shadow: 10px 5px 5px #BDC3C7;
+    }
+}
+
+
+
+//! --------------------------------------------
+//!    MOBILE   :  toute la room => cockpit
+//! --------------------------------------------
+
+@media (max-width: 700px) {
+    .room {
+        flex-direction: column;
+
+
+        .tchat {
+
+            display: flex;
+            justify-content: space-between;
+            .container-chat-main {
+                width: 65%
+            }
+            .container-room-user {
+                // padding-left: 1em;
+                margin: 0.5em;
+                width: 35%;
+                .user-connected {
+                    display: flex;
+                    flex-direction: column;
+                    .ui.image.label {
+                        margin-top: 0.3em;
+                    }
+                }
+            }
+        }
+
+        .room--description {
+            width: 100%;
+
+        }
+    }
+
+    .container-update-lesson-form{
+
+        .update-lesson-form {
+            flex-direction: column;
+            align-items: center;
+        }
+}
+}
+
+
+
+//?-------------TCHAT-----WITH-CONNECTED-USER------------------
+//! -----------------------------------
+//!       Desktop  tchat
+//! -----------------------------------
+
+@media (min-width: 700px) {
+    .container-chat-main {
+        width: 40vh;
+        .chat-all-messages {
+            max-width: 39vh;
+        }
+    }
+
+    .container-input-submit {
+        width: 100%;
+        padding-top: 0.1em;
+        form {
+            width: 100%;
+            input {
+                width: 80%;
+            }
+            button {
+                width: 20%;
+            }
+        }
+
+    }
+}
+
+
+
+//! ---------------------------------------------
+//!                mobile  tchat
+//! ---------------------------------------------
+
+.container-chat-main {
+    // background-color: rgb(201, 200, 200);
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px #BDC3C7;
+    height: 33.6vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.5em;
+    padding: 1em 0;
+    .chat-all-messages {
+        overflow-y: scroll;
+        min-height: 30vh;
+        // max-width: 30vh;
+        padding: 1em 3em 1em 0.3em;
+        .chat-message {
+            .date-message {
+                color: rgb(160, 159, 159);
+                font-size: 0.8em;
+            }
+            .message-author {
+                margin-right: 0.5em;
+            }
+        }
+
+    }
+    .container-input-submit {
+        width: 100%;
+        input {
+            font-size: 16px;
+	        height: 30px;
+            flex: 1;
+            border-radius: 5px;
+            width: 80%;
+        }
+        button {
+            height: 32px;
+            border-radius: 5px;
+        }
+    }
+}
+
+
+
+
+
+//! -----------------------------
+//! ---------modal----------------
+//! -----------------------------
+// == container in modal update lesson
+.container-update-lesson-form{
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+
+    .update-lesson-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .title-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .title {
+                input {
+                    height: 2em;
+                    width: 10em;
+                    border-radius: 0.5em;
+                }
+            }
+            .description {
+                textarea {
+                    width: 20em;
+                    height: 5em;
+                    border-radius: 0.5em;
+                }
+            }
+        }
+        .date-video-level {
+            input {
+                height: 2em;
+                width: 12em;
+                border-radius: 0.5em;
+            }
+        }
+    }
+
+    .submit-lesson-form {
+        padding-top: 2em;
+        display: flex;
+        justify-content: center;
+        input {
+            height: 2em;
+            width: 5em;
+        }
+    }
+}
