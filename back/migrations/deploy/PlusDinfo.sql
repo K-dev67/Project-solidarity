@@ -4,9 +4,9 @@ BEGIN;
 
 -- XXX Add DDLs here.
 INSERT INTO "user" ("nickname", "firstname", "lastname", "email", "avatar", "password", "role", "status") VALUES
-('Mic','Dupond', 'Frank', 'michel44.durand@gmail.com','https://robohash.org/michou?set=set2','sixOneNine','user','activé'),
-('Michto','Dupond', 'Romain', 'michel52.durand@gmail.com','https://robohash.org/michou?set=set1','sixOneNine','user','activé'),
-('Micholo','Dupond', 'Pierre', 'michel22.durand@gmail.com','https://robohash.org/michou?set=set3','sixOneNine','user','activé'),
+('Kirsten.Johnston','Kirsten', 'Johnston', 'Kirsten.Johnston56@yahoo.com','https://robohash.org/kirsten?set=set2','sixOneNine','user','activé'),
+('Sabrina_Zieme','Sabrina', 'Zieme', 'Sabrina83@hotmail.com','https://robohash.org/zieme?set=set1','sixOneNine','user','activé'),
+('Elizabeth.Stehr','Elizabeth', 'Stehr', 'michel22.durand@gmail.com','https://robohash.org/elizalapache?set=set3','sixOneNine','user','activé'),
 ('Camille.Breton20','Breton', 'Camille', 'michel133.durand@gmail.com','https://robohash.org/michou?set=set4','sixOneNine','user','activé'),
 ('Ambre_Morin91','Morin', 'Ambre', 'michel54.durand@gmail.com','https://robohash.org/michou?set=set1','sixOneNine','user','activé'),
 ('Louna.Roux','Roux', 'Louna', 'michel15.durand@gmail.com','https://robohash.org/guillaume?set=set1','sixOneNine','user','activé'),
@@ -58,30 +58,30 @@ INSERT INTO "ask" ("title", "description", "author_id","want_it", "level", "stat
 ('PAS POUR LIRE NON','Quand on veux se perfectionner',5,2,'hard','actif');
 
 INSERT INTO "message" ("author_id","lesson_id", "content", "status") VALUES
-(1,1,'blablabla','lue'),
-(2,2,'blablabla','non-lue'),
-(3,3,'blablabla','supprimé'),
-(4,4,'blablabla','modifié'),
-(5,5,'blablabla','lue');
+(1,1,'Bojour','lue'),
+(2,2,'Vous allez bien ? ','non-lue'),
+(3,3,'Hello','supprimé'),
+(4,4,'Salut','modifié'),
+(5,5,'ça va ?','lue');
 
 
 INSERT INTO "category" ("name", "color", "description", "status") VALUES
 
-('Pragmatique', null,'des cours de Pragmatique',1),
-('Histoire', null,'des cours d histoire',1),
-('JavaScript', null,'des cours de JavaScript',1),
-('Mathématiques', null,'des cours de mathématiques',1),
-('Biologie', null,'des cours de Biologie',1),
-('Analyse Complexe', null,'des cours de math',1),
-('Algèbre', null,'des cours d algèbre',1),
-('Bio-chimie', null,'des cours de Bio-chimie',1),
-('Espagnol', null,'des cours en espagnol',1),
-('Allemand', null,'des cours en Allemand',1),
-('Magie', null,'des cours de Magie',1),
-('Poterie', null,'des cours de Poterie',1),
-('Economie', null,'des cours d économie',1),
-('Yoga', null,'des cours de yoga',1),
-('Philosophie', null,'des cours de Philosophie',1);
+('Pragmatique', 'red','des cours de Pragmatique',1),
+('Histoire', 'orange','des cours d histoire',1),
+('JavaScript', 'yellow','des cours de JavaScript',1),
+('Mathématiques', 'olive','des cours de mathématiques',1),
+('Biologie', 'green','des cours de Biologie',1),
+('Analyse Complexe', 'blue','des cours de math',1),
+('Algèbre', 'violet','des cours d algèbre',1),
+('Bio-chimie', 'purple','des cours de Bio-chimie',1),
+('Espagnol', 'pink','des cours en espagnol',1),
+('Allemand', 'brown','des cours en Allemand',1),
+('Anglais', 'grey','Des cours en Anglais',1),
+('Sciences-sociales', 'black','des cours de Poterie',1),
+('Economie', 'black','des cours d économie',1),
+('Yoga', 'red','des cours de yoga',1),
+('Philosophie', 'blue','des cours de Philosophie',1);
 
 INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES
 (1,1),
