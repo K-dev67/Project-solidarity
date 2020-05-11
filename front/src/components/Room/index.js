@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // == semantic
 import { Button } from 'semantic-ui-react';
@@ -16,12 +16,21 @@ import LabelCategory from './LabelCategory';
 import Chat from '../Chat';
 import RoomUsers from './RoomUsers';
 import UpdateTeacherComponent from './UpdateTeacherComponent';
+import Video from '../VideoLive';
 
 // == style
 import './styles.scss';
 
 const Room = ({ lesson }) => {
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.userId);
+  let buttonSentence = 'Suivre le live';
+  if (userId === lesson.teacher_id) buttonSentence = 'Lancer le live';
+  const [askLive, setAskLive] = useState(false);
+  let videoLiveComponent = '';
+  if (askLive === true) {
+    videoLiveComponent = <Video lesson={lesson} />;
+  }
 
   return (
     <>
@@ -43,6 +52,12 @@ const Room = ({ lesson }) => {
       </header>
       <div className="room">
         <UpdateTeacherComponent lesson={lesson} />
+        <Button
+          color="red"
+          onClick={() => setAskLive(true)}
+        >{buttonSentence}
+        </Button>
+        {videoLiveComponent}
         <RoomDescription lesson={lesson} />
         <div className="tchat">
           <Chat lessonId={lesson.id} />
