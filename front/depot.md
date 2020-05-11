@@ -193,19 +193,13 @@ coté back
 
 
 
+```JS
+  const user = useSelector((state) => state.user);
 
 
+  if (!user) {
+    const userInfo = JSON.parse(sessionStorage.getItem('user'));
+    dispatch(getAuthentified(history, userInfo));
+  }
+```
 
-lessons: [{
-    id: 1,
-    title: 'La physique Chimie pour les Nul',
-    description: 'Une introduction a la physique-chimie',
-    level: 'easy',
-    teacher_id: 1,
-    plannified: null,
-    link_videos: null,
-    status: 'finis',
-    created_at: '2020-05-10T13:46:05.913Z',
-    updated_at: null,
-    like: 1,
-  }],

@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { Segment, Card } from 'semantic-ui-react';
+
 
 // == import component
-import { Container, Segment, Card } from 'semantic-ui-react';
 import ListTeachers from './teachersCard';
 
 
@@ -15,14 +16,12 @@ const Teachers = () => (
   <div className="teachers">
     <h2>Liste de nos Professeurs
     </h2>
-    <Segment>
-      <Card.Group
-        itemsPerRow={3}
-        stackable
-      >
-        <ListTeachers />
-      </Card.Group>
-    </Segment>
+    <Card.Group
+      itemsPerRow={3}
+      stackable
+    >
+      <ListTeachers />
+    </Card.Group>
   </div>
 );
 
