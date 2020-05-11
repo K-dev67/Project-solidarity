@@ -4,15 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // == action
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { SET_USER } from '../../store/actions';
+import { SET_USER, enterHomePage } from '../../store/actions';
 
 // == import Router
 
 // == utils/axios
-import getTeachers from '../../utils/getTeachers';
-import getLessons from '../../utils/getLessons';
-import getCategories from '../../utils/getCategories';
-import getMessages from '../../utils/getMessages';
+// import getTeachers from '../../utils/getTeachers';
+// import getLessons from '../../utils/getLessons';
+// import getCategories from '../../utils/getCategories';
+// import getMessages from '../../utils/getMessages';
 
 // == Import Component
 import Nav from '../Nav';
@@ -35,17 +35,20 @@ import './styles.scss';
 const App = () => {
   //! test sessions mais bcp de bug à fixer
   // == auto connect
-  // const user = JSON.parse(sessionStorage.getItem('user'));
-  // const dispatch = useDispatch();
-  // if (user) {
-  //   dispatch({ type: SET_USER, user });
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  const dispatch = useDispatch();
+
+  if (user) {
+    // dispatch(enterHomePage(history));
+    dispatch({ type: SET_USER, user });
+  }
+  // else if (!user) {
+  //   return <Redirect to="/" />;
   // }
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
 
   const lessons = useSelector((state) => state.lessons);
-  useEffect(getTeachers, []);
-  useEffect(getLessons, []);
-  useEffect(getCategories, []);
+
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {
