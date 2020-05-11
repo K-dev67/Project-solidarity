@@ -4,15 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // == action
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { SET_USER, enterHomePage } from '../../store/actions';
+import { SET_USER } from '../../store/actions';
 
 // == import Router
 
 // == utils/axios
-// import getTeachers from '../../utils/getTeachers';
-// import getLessons from '../../utils/getLessons';
-// import getCategories from '../../utils/getCategories';
-// import getMessages from '../../utils/getMessages';
 
 // == Import Component
 import Nav from '../Nav';
@@ -56,7 +52,10 @@ const App = () => {
       return <Loading />;
       // return null;
     }
-    if (user.email === undefined) {
+    // if (user.email === undefined) {
+    //   return <Redirect to="/login" />;
+    // }
+    if (!user) {
       return <Redirect to="/login" />;
     }
     return lessons.map((lesson) => (
@@ -87,7 +86,10 @@ const App = () => {
           exact
           path="/profiluser"
           render={() => {
-            if (user.email === undefined) {
+            // if (user.email === undefined) {
+            //   return <Redirect to="/login" />;
+            // }
+            if (!user) {
               return <Redirect to="/login" />;
             }
             return <ProfilUser />;
@@ -97,7 +99,10 @@ const App = () => {
           exact
           path="/lessons"
           render={() => {
-            if (user.email === undefined) {
+            // if (user.email === undefined) {
+            //   return <Redirect to="/login" />;
+            // }
+            if (!user) {
               return <Redirect to="/login" />;
             }
             return <Lessons />;
@@ -107,7 +112,10 @@ const App = () => {
           exact
           path="/teachers"
           render={() => {
-            if (user.email === undefined) {
+            // if (user.email === undefined) {
+            //   return <Redirect to="/login" />;
+            // }
+            if (!user) {
               return <Redirect to="/login" />;
             }
             return <Teachers />;
