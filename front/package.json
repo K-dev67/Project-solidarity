@@ -55,6 +55,7 @@
     "react": "*",
     "react-dom": "*",
     "react-hook-form": "^5.6.1",
+    "react-jitsi": "^1.0.2",
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router": "^5.1.2",

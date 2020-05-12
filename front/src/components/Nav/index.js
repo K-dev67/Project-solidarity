@@ -14,7 +14,7 @@ import solidarityLogo from '../../assets/img/logo.png';
 // == style
 import './styles.scss';
 // import { Input } from 'semantic-ui-react';
-import { RESET } from '../../store/actions';
+import { RESET, DISCONNECT } from '../../store/actions';
 
 // deconnexion JSX
 
@@ -30,6 +30,7 @@ const Nav = () => {
         style={linkStyle}
         onClick={() => {
           dispatch({ type: RESET });
+          dispatch({ type: DISCONNECT });
         }}
       >Déconnexion
       </a>

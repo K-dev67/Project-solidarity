@@ -14,10 +14,7 @@ import './styles.scss';
 
 
 const Chat = ({ lessonId }) => {
-  console.log('lessonId In Chat', lessonId);
-
   const dispatch = useDispatch();
-  // useEffect(getMessages, []);
 
   const currentMessage = useSelector((state) => state.message);
   const { messages } = useSelector((state) => state);

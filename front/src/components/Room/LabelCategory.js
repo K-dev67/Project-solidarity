@@ -42,7 +42,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
     return (
       <Label
         image
-        color="teal"
+        color={category.color}
       >
         {category.name}
         {iconJSX}
@@ -50,7 +50,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
     );
   });
   return (
-    <div>
+    <div className="label-category">
       {categoryJSX}
     </div>
   );
