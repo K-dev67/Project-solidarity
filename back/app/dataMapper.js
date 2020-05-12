@@ -115,6 +115,7 @@ const dataMapper = {
         db_connection.query(query, callback);
     },
     getRoomMessage: (lessonId, callback) => {
+
         const query = `SELECT "message".id, "author_id", "lesson_id", "content", "message"."status", "message".created_at, "user"."nickname" FROM "message"
         JOIN "user" ON author_id = "user".id WHERE "lesson_id" = $1`;
         const values = [lessonId]

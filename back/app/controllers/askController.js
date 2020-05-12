@@ -4,11 +4,12 @@ const askController = {
     // '/user/:id/ask' => Ajouté une question
     addAsk: async  (req, res) => {
         try {
+            // Recupere les infos du formulaire
             const askInfo = req.body;
             const authorId = req.params.id;
-
+            // Tableau d'erreur
             let errorsList = [];
-
+            // Je vérifie que ces champs ne sont pas vide
             if (!askInfo.title) {
                 errorsList.push("Il manque un titre");
             }
@@ -18,7 +19,8 @@ const askController = {
             if (!askInfo.level) {
                 errorsList.push("Vous n'avez pas indiqué la difficulté");
             }
-
+            // Si la liste d'erreur est vide Alors je créer une nouvelle question
+            // Avec les info du formulaire
             if (errorsList.length === 0) {
                 const newAsk = {
                     title: askInfo.title,
@@ -28,6 +30,7 @@ const askController = {
                     author_id: authorId,
                     want_it: 1
                 }
+                // Requete a la BDD => Je vérifie que le titre est unique
                 dataMapper.getAskByName(askInfo, (error, data) => {
                     if (error) {
                         console.log(error);
@@ -36,7 +39,7 @@ const askController = {
                     if (data.rowCount === 1) {
                         return res.send("Erreur Titre déja utilisé");
                     }
-                    //res.send('Votre demande est enregistré');
+                    // J'ajoute la question a la BDD
                     dataMapper.addAskOnDB(newAsk, (error, data) => {
                         if (error) {
                             console.log(error);
@@ -44,7 +47,6 @@ const askController = {
                         }
                         console.log(data)
                         if (data.rowCount === 1) {
-                            //res.send('Votre demande est enregistré');
                             dataMapper.getAskByName(askInfo, (error, data) => {
                                 if (error) {
                                     console.log(error);
