@@ -22,8 +22,13 @@ import './styles.scss';
 const CardProfil = () => {
   const user = useSelector((state) => state.user);
   const {
-    firstname, lastname, nickname, avatar, email, created_at,
+    avatar, email, created_at,
   } = user;
+  const {
+    firstname,
+    lastname,
+    username,
+  } = useSelector((state) => state);
   // const avataree = `https://robohash.org/${nickname}`;
   return (
     <div className="profilUser">
@@ -32,7 +37,7 @@ const CardProfil = () => {
         <Card.Content>
           <UpdateUserModal />
           <UpdatePasswordModal />
-          <Card.Header>{nickname}</Card.Header>
+          <Card.Header>{username}</Card.Header>
           <Card.Meta>
             <span className="date">a rejoint la plateforme il y a <Moment locale="fr" fromNow ago>{created_at}</Moment> </span>
           </Card.Meta>

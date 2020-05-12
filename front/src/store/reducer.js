@@ -23,6 +23,7 @@ import {
   // USER
   SET_USER,
   UPDATE_USER,
+  SET_UPDATE_USER,
   UPDATE_PASSWORD,
   SET_USER_ID,
   SET_ERROR_AUTH, // pour error auth
@@ -241,6 +242,14 @@ export default (state = initialState, action = {}) => {
     // == update user
     case UPDATE_USER: {
       const { userId } = state;
+      const newUser = {
+        username: state.username,
+        firstname: state.firstname,
+        lastname: state.lastname,
+        avatar: state.user.avatar,
+        mail: state.user.email,
+        userId,
+      };
       axios.patch(
         `${API_URL}/profiluser/${userId}`, {
           // gros objet avec les input de mon store
@@ -250,10 +259,24 @@ export default (state = initialState, action = {}) => {
           avatar: state.user.avatar,
         },
       ).then((res) => {
-        // console.log('response in UPDATEUSER', res.data);
-        store.dispatch({ type: SET_USER, user: res.data });
+        console.log('response in UPDATEUSER', res.data);
+
+        // store.dispatch({ type: SET_UPDATE_USER, payload: newUser });
+        // sessionStorage.user.nickname = JSON.stringify(state.username);
+        // sessionStorage.user.firstname = JSON.stringify(state.firstname);
+        // sessionStorage.user.lastname = JSON.stringify(state.lastname);
+        // sessionStorage.user.avatar = JSON.stringify(state.avatar);
       });
     }
+    // case SET_UPDATE_USER: {
+    //   return {
+    //     ...state,
+    //     username: action.payload.username,
+    //     firstname: action.payload.firstname,
+    //     lastname: action.payload.lastname,
+    //     avatar: action.payload.avatar,
+    //   };
+    // }
     case UPDATE_PASSWORD: {
       const { userId } = state;
       axios.patch(
@@ -262,8 +285,10 @@ export default (state = initialState, action = {}) => {
           newPassword: state.password,
         },
       ).then((res) => {
+        if (res.status === 200) {
+          store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+        }
         console.log('RES in update Pass', res.data);
-        store.dispatch({ type: DISCONNECT });
       })
         .catch((error) => console.trace(error));
     }

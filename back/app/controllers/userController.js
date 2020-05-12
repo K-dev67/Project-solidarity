@@ -133,7 +133,7 @@ const userController = {
                         console.trace(error);
                         res.send(error);
                     }
-                    res.send('Votre mot de passe a été modifié');
+                    res.status(200).send('Votre mot de passe a été modifié');
                 });
             });
         } catch (error) {
