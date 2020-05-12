@@ -173,13 +173,14 @@ export default (state = initialState, action = {}) => {
         password: '',
       };
     }
-    case SET_USER_ID: {
-      return {
-        ...state,
-        // userId: store.getState().user.id,
-        userId: action.payload,
-      };
-    }
+    // case SET_USER_ID: {
+    //   return {
+    //     ...state,
+    //     // userId: store.getState().user.id,
+    //     userId: action.payload,
+    //     // userId: action.user.id,
+    //   };
+    // }
     // == si auth non ok
     case SET_ERROR_AUTH: {
       return {

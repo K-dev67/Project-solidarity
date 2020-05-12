@@ -28,7 +28,7 @@ export default (store) => (next) => (action) => {
             const user = JSON.parse(sessionStorage.getItem('user'));
             // const userBdd = res.data;
             store.dispatch({ type: SET_USER, user });
-            store.dispatch({ type: SET_USER_ID, payload: user.id });
+            // store.dispatch({ type: SET_USER_ID, payload: user.id });
             store.dispatch(enterHomePage(action.history));
           }
         })

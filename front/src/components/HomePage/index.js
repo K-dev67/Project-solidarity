@@ -9,7 +9,7 @@ import UsersReviewsPresentation from './UsersReviewsPresentation';
 import AssetsPresentation from './AssetsPresentation';
 
 // import function
-// import getLessons from '../../utils/getLessons';
+import getLessons from '../../utils/getLessons';
 // import getTeachers from '../../utils/getTeachers';
 import getCategories from '../../utils/getCategories';
 
@@ -17,7 +17,7 @@ import getCategories from '../../utils/getCategories';
 import './styles.scss';
 
 const HomePage = () => {
-  // useEffect(getLessons, []);
+  useEffect(getLessons, []);
   // useEffect(getTeachers, []);
   useEffect(getCategories, []);
 

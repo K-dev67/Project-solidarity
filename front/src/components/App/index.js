@@ -30,13 +30,13 @@ import './styles.scss';
 // == Composant
 const App = () => {
   //! test sessions mais bcp de bug à fixer
-  // == auto connect
+
   const user = JSON.parse(sessionStorage.getItem('user'));
   // console.log('user', user);
   // const user_id = user.id;
   // console.log('user_id', user_id);
   const dispatch = useDispatch();
-
+  // == auto connect
   if (user) {
     // dispatch({ type: SET_USER_ID, payload: user_id });
     dispatch({ type: SET_USER, user });
