@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,7 +19,7 @@ import { Button, Form } from 'semantic-ui-react';
 
 const FormUpdatePassword = () => {
   const dispatch = useDispatch();
-
+  const [errorOldPassword, setErrorOldPassword] = useState('');
   const {
     password,
     passwordConfirmation,
@@ -31,6 +31,12 @@ const FormUpdatePassword = () => {
   const errorsList = [];
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!oldPassword) {
+      errorsList.push(
+        'Le mot de passe ne peut pas être vide',
+      );
+      setErrorOldPassword('Le mot de passe ne peut pas être vide');
+    }
     if (password.length < 8) {
       errorsList.push(
         'Le mot de passe doit contenir un minimum de 8 caractères',
@@ -57,7 +63,7 @@ const FormUpdatePassword = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-        //   error={errorPassword}
+          error={errorOldPassword}
           type="password"
           label="Old Password"
           placeholder="Old Password"
