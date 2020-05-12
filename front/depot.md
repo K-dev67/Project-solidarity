@@ -190,3 +190,16 @@ server​.​route​({
         });
 ```
 coté back
+
+
+
+```JS
+  const user = useSelector((state) => state.user);
+
+
+  if (!user) {
+    const userInfo = JSON.parse(sessionStorage.getItem('user'));
+    dispatch(getAuthentified(history, userInfo));
+  }
+```
+

@@ -45,6 +45,7 @@ import {
   MESSAGE_RECEIVED,
   SET_MESSAGES,
   SET_USERS_IN_ROOM,
+  DISCONNECT,
 } from './actions';
 import store from '.';
 
@@ -147,9 +148,13 @@ export default (state = initialState, action = {}) => {
     }
     // == une fois la réponse ok de la bdd pour l'inscription je reset le state
     case RESET: {
+      // sessionStorage.clear();
       return {
         ...initialState,
       };
+    }
+    case DISCONNECT: {
+      sessionStorage.clear();
     }
     // == si le auth ok
     case SET_USER: {

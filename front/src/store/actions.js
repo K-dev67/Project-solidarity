@@ -10,6 +10,7 @@ export const SYNC_PASSWORD = 'actions/SYNC_PASSWORD';
 export const SYNC_PASSWORD_CONFIRMATION = 'actions/SYNC_PASSWORD_CONFIRMATION';
 
 export const RESET = 'actions/RESET';
+export const DISCONNECT = 'actions/DISCONNECT';
 
 // == une fois la réponse ok de la bdd => reponse 200
 export const SET_USER = 'actions/SET_USER';
