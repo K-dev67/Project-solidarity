@@ -23,14 +23,16 @@ import InputSearchLesson from './InputSearchLesson';
 // == import from BDD
 import getLessonById from '../../utils/getLessonById';
 import getMessages from '../../utils/getMessages';
+import getLessons from '../../utils/getLessons';
 
 // == style
 import './styles.scss';
 
 
 const Lessons = () => {
-  const { lessons, lessonsFiltered, userId } = useSelector((state) => state);
   const dispatch = useDispatch();
+  useEffect(getLessons, []);
+  const { lessonsFiltered, userId } = useSelector((state) => state);
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
   let classNameOwner = '';
   // todo gerer la photo du prof avec lesson.teacher_id
@@ -91,6 +93,6 @@ const Lessons = () => {
     </div>
   );
 };
-
+// lessonsFiltered.length > 0 ? (<>{lessonsJSX}</>) : null
 
 export default Lessons;

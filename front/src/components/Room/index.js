@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -9,6 +9,10 @@ import { Button } from 'semantic-ui-react';
 
 // == action
 import { LEAVE_ROOM } from '../../store/actions';
+
+// == import utils/fetchInBdd
+
+import getCategories from '../../utils/getCategories';
 
 // component
 import RoomDescription from './RoomDescription';
@@ -23,6 +27,8 @@ import './styles.scss';
 
 const Room = ({ lesson }) => {
   const dispatch = useDispatch();
+  // useEffect()
+  useEffect(getCategories, []);
   const userId = useSelector((state) => state.userId);
   let buttonSentence = 'Suivre le live';
   if (userId === lesson.teacher_id) buttonSentence = 'Lancer le live';
