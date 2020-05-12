@@ -6,7 +6,6 @@ import {
   SET_ERROR_AUTH,
   SET_USER,
   SET_USER_ID,
-  ENTER_CHAT,
 } from 'src/store/actions';
 
 import { API_URL } from '../../utils/constante';
@@ -24,16 +23,13 @@ export default (store) => (next) => (action) => {
         })
         .then((res) => {
           if (res.status === 200) {
-          // const user = res.data;
-            console.log('res.status', res.status);
             sessionStorage.user = JSON.stringify(res.data);
-            console.log('sessionStorage', sessionStorage);
+            console.log('res.data', res.data);
             const user = JSON.parse(sessionStorage.getItem('user'));
-            console.log('userInAuth.js', user);
+            // const userBdd = res.data;
             store.dispatch({ type: SET_USER, user });
             store.dispatch({ type: SET_USER_ID, payload: user.id });
             store.dispatch(enterHomePage(action.history));
-          // store.dispatch({ type: ENTER_CHAT });
           }
         })
         .catch((error) => {

@@ -11,16 +11,12 @@ import store from '../../store';
 
 const listTeachers = () => {
   const dispatch = useDispatch();
-  // Après le premier rendu du composant
-  // UseEffect va déclencher une requête pour obtenir
-  // la liste des teachers
   useEffect(
     () => {
       axios
         .get(`${API_URL}/teacherList`)
         .then((res) => {
           dispatch({ type: SET_TEACHERS, payload: res.data });
-          // const teachers = res.data;
         })
         .catch((error) => console.trace(error));
     },
@@ -30,6 +26,8 @@ const listTeachers = () => {
   const teachers = useSelector((state) => state.teachers);
   // const urlAvataree = 'https://robohash.org/';
   let listTeachersJSX = '';
+
+
   if (!teachers) {
     return <Loading />;
   }
@@ -64,7 +62,7 @@ const listTeachers = () => {
   ));
 
   return (
-    <>{listTeachersJSX}</>
+    teachers.length > 0 ? (<>{listTeachersJSX}</>) : null
   );
 };
 

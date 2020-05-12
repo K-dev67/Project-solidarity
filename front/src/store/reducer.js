@@ -85,9 +85,9 @@ const initialState = {
   errorAuth: '',
   user: {},
   userId: '',
-  teachers: {},
+  teachers: [],
   lessonInfo: {},
-  lessons: {},
+  lessons: [],
   addLessonData: {},
   updateLessonData: {},
   categories: {},
@@ -242,14 +242,14 @@ export default (state = initialState, action = {}) => {
     // == update user
     case UPDATE_USER: {
       const { userId } = state;
-      const newUser = {
-        username: state.username,
-        firstname: state.firstname,
-        lastname: state.lastname,
-        avatar: state.user.avatar,
-        mail: state.user.email,
-        userId,
-      };
+      // const newUser = {
+      //   username: state.username,
+      //   firstname: state.firstname,
+      //   lastname: state.lastname,
+      //   avatar: state.user.avatar,
+      //   mail: state.user.email,
+      //   userId,
+      // };
       axios.patch(
         `${API_URL}/profiluser/${userId}`, {
           // gros objet avec les input de mon store
