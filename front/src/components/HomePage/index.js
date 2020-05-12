@@ -9,17 +9,16 @@ import UsersReviewsPresentation from './UsersReviewsPresentation';
 import AssetsPresentation from './AssetsPresentation';
 
 // import function
-import getLessons from '../../utils/getLessons';
-import getTeachers from '../../utils/getTeachers';
+// import getLessons from '../../utils/getLessons';
+// import getTeachers from '../../utils/getTeachers';
 import getCategories from '../../utils/getCategories';
 
 // == style
 import './styles.scss';
 
 const HomePage = () => {
-  console.log('hello');
-  useEffect(getLessons, []);
-  useEffect(getTeachers, []);
+  // useEffect(getLessons, []);
+  // useEffect(getTeachers, []);
   useEffect(getCategories, []);
 
   return (
