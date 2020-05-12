@@ -102,7 +102,7 @@ const userController = {
                             res.send(error);
                         }
                         sendMail.mailer(info.email);
-                        res.send('Votre email a été modifié');
+                        res.status(200).send('Votre email a été modifié');
                     });
                 });
             });

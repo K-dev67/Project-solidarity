@@ -2,18 +2,13 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-// == pour gérer ma "route" au submit du updateForm
-// import { useHistory } from 'react-router';
+// == pour la validation de l'email
+import EmailValidator from 'email-validator';
 
 import {
-//   SYNC_OLD_PASSWORD,
-//   SYNC_PASSWORD,
-//   SYNC_PASSWORD_CONFIRMATION,
-//   UPDATE_PASSWORD,
-//   SYNC_ERROR_PASSWORD,
-//   SYNC_ERROR_PASSWORD_CONFIRMATION,
-
-  // login,
+  SYNC_PASSWORD,
+  SYNC_MAIL,
+  UPDATE_MAIL,
   DISCONNECT,
   RESET,
 } from 'src/store/actions';
@@ -22,42 +17,32 @@ import {
 import { Button, Form } from 'semantic-ui-react';
 
 
-const FormUpdatePassword = () => {
-//   const dispatch = useDispatch();
-//   // const history = useHistory();
-//   const [errorOldPassword, setErrorOldPassword] = useState('');
-//   const {
-//     password,
-//     passwordConfirmation,
-//     oldPassword,
-//     errorPassword,
-//   } = useSelector((state) => state);
+const FormUpdateMail = () => {
+  const dispatch = useDispatch();
+  const [errorMail, setErrorMail] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
+  const {
+    password,
+    mail,
+  } = useSelector((state) => state);
 
   const errorsList = [];
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!oldPassword) {
-      errorsList.push(
-        'Le mot de passe ne peut pas être vide',
-      );
-      setErrorOldPassword('Le mot de passe ne peut pas être vide');
+    if (!EmailValidator.validate(mail)) {
+      errorsList.push("L'email n'est pas un email correct");
+      setErrorMail('L\'email n\'est pas un email correct');
     }
-    if (password.length < 8) {
-      errorsList.push(
-        'Le mot de passe doit contenir un minimum de 8 caractères',
-      );
-      dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
+    if (!mail) {
+      errorsList.push('Ce champ est requis');
+      setErrorMail('Ce champ est requis');
     }
-    // - mot de passe = confirmation
-    if (password !== passwordConfirmation) {
-      errorsList.push(
-        'Le mot de passe et la confirmation ne correspondent pas',
-      );
-      dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
+    if (!password) {
+      errorsList.push('Ce champ est requis');
+      setErrorPassword('Ce champ est requis');
     }
-    console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
-      dispatch({ type: UPDATE_PASSWORD });
+      dispatch({ type: UPDATE_MAIL });
       dispatch({ type: RESET });
       dispatch({ type: DISCONNECT });
     }
@@ -69,26 +54,28 @@ const FormUpdatePassword = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-        //   error={errorOldPassword}
-          type="password"
-          label="Old Password"
-          placeholder="Old Password"
-          name="oldPassword"
+          error={errorMail}
+          type="mail"
+          label="Mail"
+          placeholder="Mail"
+          name="newMail"
           onChange={(evt) => {
-            dispatch({ type: SYNC_OLD_PASSWORD, payload: evt.target.value });
+            setErrorMail('');
+            dispatch({ type: SYNC_MAIL, payload: evt.target.value });
           }}
-        //   value={oldPassword}
+          value={mail}
         />
         <Form.Input
-        //   error={errorPassword}
+          error={errorPassword}
           type="password"
-          label="New Password"
-          placeholder="New Password"
+          label="Password"
+          placeholder="Password"
           name="password"
           onChange={(evt) => {
+            setErrorPassword('');
             dispatch({ type: SYNC_PASSWORD, payload: evt.target.value });
           }}
-        //   value={password}
+          value={password}
         />
         <Button
           type="submit"
@@ -101,4 +88,4 @@ const FormUpdatePassword = () => {
   );
 };
 
-export default FormUpdatePassword;
+export default FormUpdateMail;

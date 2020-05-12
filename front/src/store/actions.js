@@ -21,6 +21,7 @@ export const SET_USER = 'actions/SET_USER';
 export const SET_USER_ID = 'actions/SET_USER_ID';
 export const UPDATE_USER = 'actions/UPDATE_USER';
 export const SET_UPDATE_USER = 'actions/SET_UPDATE_USER';
+export const UPDATE_MAIL = 'actions/UPDATE_MAIL';
 export const UPDATE_PASSWORD = 'actions/UPDATE_PASSWORD';
 // == if error authentification => response 401 de mon server
 export const SET_ERROR_AUTH = 'actions/SET_ERROR_AUTH';
