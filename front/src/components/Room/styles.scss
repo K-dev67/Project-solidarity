@@ -6,43 +6,35 @@
 //! --------------------------------------------
 //!           ROOM en dessous des labels
 //! --------------------------------------------
+@media (min-width: 768px) {
+    .room {
 
-.room {
+        .container-update-room {
 
-    .container-update-room {
+            .room-modify-button {
 
-        .room-modify-button {
-            // padding: 10px 0;
-            // padding: 0.5em 0 ;
+            }
+        }
+
+        .room--description {
+        }
+        //! -----------------------------------
+        //!              tchat
+        //! -----------------------------------
+        .container-chat-main {
+
+        }
+        .container-input-submit {
+
+        }
+        //! -----------------------------------
+        //!           User connected
+        //! -----------------------------------
+        .container-room-user {
         }
     }
 
-    .room--description {
-    }
-    //! -----------------------------------
-    //!              tchat
-    //! -----------------------------------
-    .container-chat-main {
 
-    }
-    .container-input-submit {
-        // width: 100%;
-        // padding-top: 0.5em;
-        // form {
-        //     width: 100%;
-        //     input {
-        //         width: 80%;
-        //     }
-        //     button {
-        //         width: 20%;
-        //     }
-        // }
-    }
-    //! -----------------------------------
-    //!           User connected
-    //! -----------------------------------
-    .container-room-user {
-    }
 }
 
 
@@ -50,8 +42,7 @@
 //?--------------------MOBILE--------------------------
 //?-----------------------------------------------------
 
-// changer 1700 par 700 ou 500
-@media (max-width: 3000px) {
+
     //! --------------------------------------------
     //!           TOUTE LA ROOM  => mobile
     //! --------------------------------------------
@@ -86,7 +77,7 @@
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
-            margin-top: 0.5em;
+            margin-bottom: 0.5em;
             padding: 0.3em;
         }
     //! ----------------------------------------------
@@ -96,7 +87,8 @@
 
         .room--description {
             width: 100%;
-            margin-top: 0.3em;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
             border: 1px solid #BDC3C7;
             border-radius: 5px;
             box-shadow: 10px 5px 5px #BDC3C7;
@@ -110,6 +102,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+            margin-bottom: 0.5em;
             .container-chat-main {
                 border: 1px solid #BDC3C7;
                 border-radius: 5px;
@@ -191,7 +184,7 @@
 
         }
     }
-}
+
 
 
 
