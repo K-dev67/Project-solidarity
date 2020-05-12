@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 // == semantic
 import { Button } from 'semantic-ui-react';
+import { API_URL } from '../../utils/constante';
 
 // == action
-import { LEAVE_ROOM } from '../../store/actions';
+import { LEAVE_ROOM, SET_LESSON_BY_ID } from '../../store/actions';
 
 // == import utils/fetchInBdd
 
@@ -24,10 +27,21 @@ import Video from '../VideoLive';
 
 // == style
 import './styles.scss';
+import store from '../../store';
 
 const Room = ({ lesson }) => {
   const dispatch = useDispatch();
-  // useEffect()
+  useEffect(
+    () => {
+      axios
+        .get(`${API_URL}/lessons/${lesson.id}`)
+        .then((res) => {
+          console.log('good for lessonId in Room');
+          store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
+        }).catch((error) => console.trace(error));
+    },
+    [],
+  );
   useEffect(getCategories, []);
   const userId = useSelector((state) => state.userId);
   let buttonSentence = 'Suivre le live';

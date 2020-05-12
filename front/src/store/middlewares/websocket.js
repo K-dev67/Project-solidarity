@@ -13,14 +13,11 @@ import { API_URL } from '../../utils/constante';
 let socket;
 
 export default (store) => (next) => (action) => {
-  console.log('socketMW');
   switch (action.type) {
     case ENTER_CHAT: {
-      console.log('enter CHAT');
       const user = JSON.parse(sessionStorage.getItem('user'));
       const lessonId = action.payload;
       socket = window.io(`${API_URL}`);
-
       // On se prépare le plus tôt possible à réceptionner des messages
       // Ici, on va traiter des messages de type 'send_message' =>
       // on va vouloir afficher le-dit message dans la liste des msg.
