@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-// == pour gérer ma "route" au submit du form
-import { useHistory } from 'react-router';
+// == pour gérer ma "route" au submit du updateForm
+// import { useHistory } from 'react-router';
 
 import {
   SYNC_OLD_PASSWORD,
@@ -12,13 +12,19 @@ import {
   UPDATE_PASSWORD,
   SYNC_ERROR_PASSWORD,
   SYNC_ERROR_PASSWORD_CONFIRMATION,
+
+  // login,
+  DISCONNECT,
+  RESET,
 } from 'src/store/actions';
 
 // == semantic form
 import { Button, Form } from 'semantic-ui-react';
 
+
 const FormUpdatePassword = () => {
   const dispatch = useDispatch();
+  // const history = useHistory();
   const [errorOldPassword, setErrorOldPassword] = useState('');
   const {
     password,
@@ -52,8 +58,9 @@ const FormUpdatePassword = () => {
     }
     console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
-      //   dispatch(signup(history));
       dispatch({ type: UPDATE_PASSWORD });
+      dispatch({ type: RESET });
+      dispatch({ type: DISCONNECT });
     }
   };
 
