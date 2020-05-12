@@ -8,6 +8,10 @@ export const SYNC_LASTNAME = 'actions/SYNC_LASTNAME';
 export const SYNC_MAIL = 'actions/SYNC_MAIL';
 export const SYNC_PASSWORD = 'actions/SYNC_PASSWORD';
 export const SYNC_PASSWORD_CONFIRMATION = 'actions/SYNC_PASSWORD_CONFIRMATION';
+export const SYNC_ERROR_PASSWORD = 'actions/SYNC_ERROR_PASSWORD';
+export const SYNC_ERROR_PASSWORD_CONFIRMATION = 'actions/SYNC_ERROR_PASSWORD_CONFIRMATION';
+
+export const SYNC_OLD_PASSWORD = 'actions/ SYNC_OLD_PASSWORD';
 
 export const RESET = 'actions/RESET';
 export const DISCONNECT = 'actions/DISCONNECT';
@@ -16,6 +20,7 @@ export const DISCONNECT = 'actions/DISCONNECT';
 export const SET_USER = 'actions/SET_USER';
 export const SET_USER_ID = 'actions/SET_USER_ID';
 export const UPDATE_USER = 'actions/UPDATE_USER';
+export const UPDATE_PASSWORD = 'actions/UPDATE_PASSWORD';
 // == if error authentification => response 401 de mon server
 export const SET_ERROR_AUTH = 'actions/SET_ERROR_AUTH';
 

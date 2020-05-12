@@ -14,11 +14,16 @@ import {
   SYNC_MAIL,
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
+  SYNC_ERROR_PASSWORD,
+  SYNC_ERROR_PASSWORD_CONFIRMATION,
+  // == update password
+  SYNC_OLD_PASSWORD,
   // pour reset le state
   RESET,
   // USER
   SET_USER,
   UPDATE_USER,
+  UPDATE_PASSWORD,
   SET_USER_ID,
   SET_ERROR_AUTH, // pour error auth
   // GET_TEACHERS,
@@ -72,6 +77,9 @@ const initialState = {
   mail: '',
   password: '',
   passwordConfirmation: '',
+  oldPassword: '',
+  errorPassword: '',
+  errorPasswordConfirmation: '',
   // == error authentification
   errorAuth: '',
   user: {},
@@ -146,6 +154,12 @@ export default (state = initialState, action = {}) => {
         passwordConfirmation: action.payload,
       };
     }
+    case SYNC_OLD_PASSWORD: {
+      return {
+        ...state,
+        oldPassword: action.payload,
+      };
+    }
     // == une fois la réponse ok de la bdd pour l'inscription je reset le state
     case RESET: {
       // sessionStorage.clear();
@@ -161,6 +175,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         user: action.user,
+        userId: action.user.id,
         username: action.user.nickname,
         firstname: action.user.firstname,
         lastname: action.user.lastname,
@@ -171,6 +186,7 @@ export default (state = initialState, action = {}) => {
     case SET_USER_ID: {
       return {
         ...state,
+        // userId: store.getState().user.id,
         userId: action.payload,
       };
     }
@@ -179,6 +195,18 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         errorAuth: 'Le mail ou le mot de passe est incorrect',
+      };
+    }
+    case SYNC_ERROR_PASSWORD: {
+      return {
+        ...state,
+        errorPassword: action.errorPassword,
+      };
+    }
+    case SYNC_ERROR_PASSWORD_CONFIRMATION: {
+      return {
+        ...state,
+        errorPasswordConfirmation: action.errorPasswordConfirmation,
       };
     }
     // == set teachers
@@ -198,8 +226,6 @@ export default (state = initialState, action = {}) => {
       };
     }
     case SET_LESSON_BY_ID: {
-      console.log('SETLESSONID');
-      console.log('payload', action.payload);
       return {
         ...state,
         lessonInfo: action.payload,
@@ -221,15 +247,25 @@ export default (state = initialState, action = {}) => {
           nickname: state.username,
           firstname: state.firstname,
           lastname: state.lastname,
-          // email: state.mail,
-          // password: state.password,
-          // confirmpassword: state.passwordConfirmation,
           avatar: state.user.avatar,
         },
       ).then((res) => {
         // console.log('response in UPDATEUSER', res.data);
         store.dispatch({ type: SET_USER, user: res.data });
       });
+    }
+    case UPDATE_PASSWORD: {
+      const { userId } = state;
+      axios.patch(
+        `${API_URL}/profiluser/${userId}/changePassword`, {
+          password: state.oldPassword,
+          newPassword: state.password,
+        },
+      ).then((res) => {
+        console.log('RES in update Pass', res.data);
+        store.dispatch({ type: DISCONNECT });
+      })
+        .catch((error) => console.trace(error));
     }
     // == add lesson data
     // == ce que j'envoi à la bdd
