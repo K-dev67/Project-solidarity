@@ -11,6 +11,7 @@ import {
   Card, Icon, Image, Button,
 } from 'semantic-ui-react';
 import UpdateUserModal from './UpdateUserModal';
+import UpdatePasswordModal from './UpdatePasswordModal';
 
 // component semanthic
 
@@ -30,6 +31,7 @@ const CardProfil = () => {
         <Image src={avatar} wrapped ui={false} />
         <Card.Content>
           <UpdateUserModal />
+          <UpdatePasswordModal />
           <Card.Header>{nickname}</Card.Header>
           <Card.Meta>
             <span className="date">a rejoint la plateforme il y a <Moment locale="fr" fromNow ago>{created_at}</Moment> </span>
