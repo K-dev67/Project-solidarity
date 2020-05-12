@@ -12,6 +12,7 @@ import {
 } from 'semantic-ui-react';
 import UpdateUserModal from './UpdateUserModal';
 import UpdatePasswordModal from './UpdatePasswordModal';
+import UpdateMailModal from './UpdateMailModal';
 
 // component semanthic
 
@@ -46,9 +47,11 @@ const CardProfil = () => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
+
+          <Icon name="user" />
+          {email}
           <a>
-            <Icon name="user" />
-            {email}
+            <UpdateMailModal />
           </a>
         </Card.Content>
       </Card>
