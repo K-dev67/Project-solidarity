@@ -79,7 +79,7 @@ const initialState = {
   lessons: [],
   addLessonData: {},
   updateLessonData: {},
-  categories: {},
+  categories: [],
   labelCategory: {},
   // gerer l'ouverture des modals
   messagePositif: false,
