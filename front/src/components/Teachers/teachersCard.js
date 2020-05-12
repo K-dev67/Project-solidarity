@@ -62,7 +62,7 @@ const listTeachers = () => {
   ));
 
   return (
-    teachers.length > 0 ? (<>{listTeachersJSX}</>) : null
+    teachers.length > 0 ? (<>{listTeachersJSX}</>) : <Loading />
   );
 };
 

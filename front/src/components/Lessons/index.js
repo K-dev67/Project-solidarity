@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 // == import component semantic
 import {
-  Segment, Card, Image, Icon, Button,
+  Segment, Card, Icon,
 } from 'semantic-ui-react';
 
 // == import action
@@ -19,6 +19,7 @@ import Moment from 'react-moment';
 // == component
 import AddLessonModal from './AddLessonModal';
 import InputSearchLesson from './InputSearchLesson';
+import Loading from '../Loading';
 
 // == import from BDD
 import getLessonById from '../../utils/getLessonById';
@@ -87,12 +88,11 @@ const Lessons = () => {
         <Card.Group
           itemsPerRow={3}
           stackable
-        >{lessonsJSX}
+        >{lessonsFiltered.length > 0 ? (<>{lessonsJSX}</>) : <Loading />}
         </Card.Group>
       </Segment>
     </div>
   );
 };
-// lessonsFiltered.length > 0 ? (<>{lessonsJSX}</>) : null
 
 export default Lessons;
