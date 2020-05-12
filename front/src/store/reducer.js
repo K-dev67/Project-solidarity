@@ -20,14 +20,11 @@ import {
   SYNC_OLD_PASSWORD,
   // pour reset le state
   RESET,
-  // USER
   SET_USER,
   UPDATE_USER,
-  SET_UPDATE_USER,
+  UPDATE_MAIL,
   UPDATE_PASSWORD,
-  SET_USER_ID,
   SET_ERROR_AUTH, // pour error auth
-  // GET_TEACHERS,
   SET_TEACHERS,
   // == LESSON
   SET_LESSONS,
@@ -102,7 +99,6 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         lessonsFiltered: [...action.payload],
-        // lessons: state.lessonsFiltered,
       };
     }
     // == form user
@@ -152,7 +148,6 @@ export default (state = initialState, action = {}) => {
     }
     // == une fois la réponse ok de la bdd pour l'inscription je reset le state
     case RESET: {
-      // sessionStorage.clear();
       return {
         ...initialState,
       };
@@ -173,14 +168,6 @@ export default (state = initialState, action = {}) => {
         password: '',
       };
     }
-    // case SET_USER_ID: {
-    //   return {
-    //     ...state,
-    //     // userId: store.getState().user.id,
-    //     userId: action.payload,
-    //     // userId: action.user.id,
-    //   };
-    // }
     // == si auth non ok
     case SET_ERROR_AUTH: {
       return {
@@ -213,7 +200,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         lessons: action.payload,
         lessonsFiltered: action.payload,
-        // lessonsFiltered: [...state.lessons, ...action.payload],
       };
     }
     case SET_LESSON_BY_ID: {
@@ -232,14 +218,6 @@ export default (state = initialState, action = {}) => {
     // == update user
     case UPDATE_USER: {
       const { userId } = state;
-      // const newUser = {
-      //   username: state.username,
-      //   firstname: state.firstname,
-      //   lastname: state.lastname,
-      //   avatar: state.user.avatar,
-      //   mail: state.user.email,
-      //   userId,
-      // };
       axios.patch(
         `${API_URL}/profiluser/${userId}`, {
           // gros objet avec les input de mon store
@@ -250,23 +228,8 @@ export default (state = initialState, action = {}) => {
         },
       ).then((res) => {
         console.log('response in UPDATEUSER', res.data);
-
-        // store.dispatch({ type: SET_UPDATE_USER, payload: newUser });
-        // sessionStorage.user.nickname = JSON.stringify(state.username);
-        // sessionStorage.user.firstname = JSON.stringify(state.firstname);
-        // sessionStorage.user.lastname = JSON.stringify(state.lastname);
-        // sessionStorage.user.avatar = JSON.stringify(state.avatar);
       });
     }
-    // case SET_UPDATE_USER: {
-    //   return {
-    //     ...state,
-    //     username: action.payload.username,
-    //     firstname: action.payload.firstname,
-    //     lastname: action.payload.lastname,
-    //     avatar: action.payload.avatar,
-    //   };
-    // }
     case UPDATE_PASSWORD: {
       const { userId } = state;
       axios.patch(
@@ -281,6 +244,20 @@ export default (state = initialState, action = {}) => {
         console.log('RES in update Pass', res.data);
       })
         .catch((error) => console.trace(error));
+    }
+    case UPDATE_MAIL: {
+      const { userId } = state;
+      axios.patch(
+        `${API_URL}/profiluser/${userId}/changeEmail`, {
+          email: state.mail,
+          password: state.password,
+        },
+      ).then((res) => {
+        if (res.status === 200) {
+          store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+          console.log('mail modifié avec succés');
+        }
+      }).catch((error) => console.trace(error));
     }
     // == add lesson data
     // == ce que j'envoi à la bdd
@@ -304,8 +281,6 @@ export default (state = initialState, action = {}) => {
         },
       ).then((res) => {
         console.log('response in ADDLESSON', res);
-
-        // store.dispatch({ type: GET_LESSON });
         getLesson();
         store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
@@ -336,7 +311,6 @@ export default (state = initialState, action = {}) => {
         console.log('response in UPDATELESSON', res);
         getLesson();
       }).catch((err) => console.trace(err));
-      // break;
       next(action);
     }
     case DELETE_LESSON: {
@@ -373,11 +347,9 @@ export default (state = initialState, action = {}) => {
         .delete(`${API_URL}/user/${userId}/lesson/${lessonId}/category/${categoryId}`)
         .then((res) => {
           console.log('resInDeleteCategory', res);
-          // getLesson();
-          // getLessonById(lessonId);
           axios.get(
             `${API_URL}/lessons/${lessonId}`,
-          ).then((res2) => {
+          ).then(() => {
             store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
           });
         });
