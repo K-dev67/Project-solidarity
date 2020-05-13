@@ -79,8 +79,8 @@ const UpdateTeacherComponent = ({ lesson }) => {
     <>
       <div className="container-update-room">
         <div className="room-modify-button">{modifyButtonJSX}</div>
-        <div className="room-delete-button">{deleteButtonJSX}</div>
         <div className="room-addCategory-select">{addCategoryJSX}</div>
+        <div className="room-delete-button">{deleteButtonJSX}</div>
       </div>
     </>
   );

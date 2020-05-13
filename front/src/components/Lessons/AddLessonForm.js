@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GET_LESSON_DATA, ADD_LESSON_IN_BDD } from 'src/store/actions';
 // == function
 // import getLessons from '../../utils/getLessons';
+import getCategories from '../../utils/getCategories';
 
 
 export default function AddLessonForm() {
   // == get all categories
+  useEffect(getCategories, []);
   const categories = useSelector((state) => state.categories);
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
