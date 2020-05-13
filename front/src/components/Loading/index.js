@@ -4,12 +4,14 @@ import {
 } from 'semantic-ui-react';
 
 const Loading = () => (
-  <Segment>
-    <Dimmer active>
-      <Loader />
-    </Dimmer>
-    <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
-  </Segment>
+  <Loader active inline="centered" />
+  // <Segment>
+  //   <Dimmer active inverted>
+  //     <Loader inline="centered" size="large">Loading</Loader>
+  //   </Dimmer>
+
+  //   <Image src="/images/wireframe/paragraph.png" />
+  // </Segment>
 );
 
 export default Loading;

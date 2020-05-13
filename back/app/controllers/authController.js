@@ -111,17 +111,18 @@ const authController = {
     // '/login' => Recupere et traite les information du formulaire de connection
     loginAction: async (req, res) => {
         try {
-            const { email, password } = req.body;
+            const { email, password  } = req.body;
             console.log('email', email);
             console.log('password', password);
             console.log(req.body);
             await dataMapper.checkEmail(email, (error, data) => {
                  if (data.rowCount === 0) {
 
-                     console.log('Ceet email existe pas');
+                     console.log('Cet email existe pas');
                      return res.status(401).end();
                  }
-                const user = data.rows[0];
+                let user = data.rows[0];
+                // user.cookies = req.cookies
                 let testPass = "";
                 if (user) {
                  testPass = bcrypt.compareSync(password, user.password);

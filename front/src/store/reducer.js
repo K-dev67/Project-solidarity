@@ -14,14 +14,17 @@ import {
   SYNC_MAIL,
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
+  SYNC_ERROR_PASSWORD,
+  SYNC_ERROR_PASSWORD_CONFIRMATION,
+  // == update password
+  SYNC_OLD_PASSWORD,
   // pour reset le state
   RESET,
-  // USER
   SET_USER,
   UPDATE_USER,
-  SET_USER_ID,
+  UPDATE_MAIL,
+  UPDATE_PASSWORD,
   SET_ERROR_AUTH, // pour error auth
-  // GET_TEACHERS,
   SET_TEACHERS,
   // == LESSON
   SET_LESSONS,
@@ -53,18 +56,7 @@ import store from '.';
 const initialState = {
   // == input du menu
   inputNav: '',
-  lessonsFiltered: [{
-    id: 1,
-    title: 'La physique Chimie pour les Nul',
-    description: 'Une introduction a la physique-chimie',
-    level: 'easy',
-    teacher_id: 1,
-    plannified: null,
-    link_videos: null,
-    status: 'finis',
-    created_at: '2020-05-02T13:20:28.574Z',
-    updated_at: null,
-  }],
+  lessonsFiltered: [],
   // form du signUp
   username: '',
   firstname: '',
@@ -72,16 +64,19 @@ const initialState = {
   mail: '',
   password: '',
   passwordConfirmation: '',
+  oldPassword: '',
+  errorPassword: '',
+  errorPasswordConfirmation: '',
   // == error authentification
   errorAuth: '',
   user: {},
   userId: '',
-  teachers: {},
+  teachers: [],
   lessonInfo: {},
-  lessons: {},
+  lessons: [],
   addLessonData: {},
   updateLessonData: {},
-  categories: {},
+  categories: [],
   labelCategory: {},
   // gerer l'ouverture des modals
   messagePositif: false,
@@ -104,7 +99,6 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         lessonsFiltered: [...action.payload],
-        // lessons: state.lessonsFiltered,
       };
     }
     // == form user
@@ -146,9 +140,14 @@ export default (state = initialState, action = {}) => {
         passwordConfirmation: action.payload,
       };
     }
+    case SYNC_OLD_PASSWORD: {
+      return {
+        ...state,
+        oldPassword: action.payload,
+      };
+    }
     // == une fois la réponse ok de la bdd pour l'inscription je reset le state
     case RESET: {
-      // sessionStorage.clear();
       return {
         ...initialState,
       };
@@ -161,6 +160,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         user: action.user,
+        userId: action.user.id,
         username: action.user.nickname,
         firstname: action.user.firstname,
         lastname: action.user.lastname,
@@ -168,17 +168,23 @@ export default (state = initialState, action = {}) => {
         password: '',
       };
     }
-    case SET_USER_ID: {
-      return {
-        ...state,
-        userId: action.payload,
-      };
-    }
     // == si auth non ok
     case SET_ERROR_AUTH: {
       return {
         ...state,
         errorAuth: 'Le mail ou le mot de passe est incorrect',
+      };
+    }
+    case SYNC_ERROR_PASSWORD: {
+      return {
+        ...state,
+        errorPassword: action.errorPassword,
+      };
+    }
+    case SYNC_ERROR_PASSWORD_CONFIRMATION: {
+      return {
+        ...state,
+        errorPasswordConfirmation: action.errorPasswordConfirmation,
       };
     }
     // == set teachers
@@ -194,12 +200,9 @@ export default (state = initialState, action = {}) => {
         ...state,
         lessons: action.payload,
         lessonsFiltered: action.payload,
-        // lessonsFiltered: [...state.lessons, ...action.payload],
       };
     }
     case SET_LESSON_BY_ID: {
-      console.log('SETLESSONID');
-      console.log('payload', action.payload);
       return {
         ...state,
         lessonInfo: action.payload,
@@ -221,15 +224,40 @@ export default (state = initialState, action = {}) => {
           nickname: state.username,
           firstname: state.firstname,
           lastname: state.lastname,
-          // email: state.mail,
-          // password: state.password,
-          // confirmpassword: state.passwordConfirmation,
           avatar: state.user.avatar,
         },
       ).then((res) => {
-        // console.log('response in UPDATEUSER', res.data);
-        store.dispatch({ type: SET_USER, user: res.data });
+        console.log('response in UPDATEUSER', res.data);
       });
+    }
+    case UPDATE_PASSWORD: {
+      const { userId } = state;
+      axios.patch(
+        `${API_URL}/profiluser/${userId}/changePassword`, {
+          password: state.oldPassword,
+          newPassword: state.password,
+        },
+      ).then((res) => {
+        if (res.status === 200) {
+          store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+        }
+        console.log('RES in update Pass', res.data);
+      })
+        .catch((error) => console.trace(error));
+    }
+    case UPDATE_MAIL: {
+      const { userId } = state;
+      axios.patch(
+        `${API_URL}/profiluser/${userId}/changeEmail`, {
+          email: state.mail,
+          password: state.password,
+        },
+      ).then((res) => {
+        if (res.status === 200) {
+          store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+          console.log('mail modifié avec succés');
+        }
+      }).catch((error) => console.trace(error));
     }
     // == add lesson data
     // == ce que j'envoi à la bdd
@@ -253,8 +281,6 @@ export default (state = initialState, action = {}) => {
         },
       ).then((res) => {
         console.log('response in ADDLESSON', res);
-
-        // store.dispatch({ type: GET_LESSON });
         getLesson();
         store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
@@ -285,7 +311,6 @@ export default (state = initialState, action = {}) => {
         console.log('response in UPDATELESSON', res);
         getLesson();
       }).catch((err) => console.trace(err));
-      // break;
       next(action);
     }
     case DELETE_LESSON: {
@@ -312,6 +337,7 @@ export default (state = initialState, action = {}) => {
           });
         });
       next(action);
+      // return;
     }
     case DELETE_CATEGORY_LABEL: {
       const { userId } = state;
@@ -321,11 +347,9 @@ export default (state = initialState, action = {}) => {
         .delete(`${API_URL}/user/${userId}/lesson/${lessonId}/category/${categoryId}`)
         .then((res) => {
           console.log('resInDeleteCategory', res);
-          // getLesson();
-          // getLessonById(lessonId);
           axios.get(
             `${API_URL}/lessons/${lessonId}`,
-          ).then((res2) => {
+          ).then(() => {
             store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
           });
         });

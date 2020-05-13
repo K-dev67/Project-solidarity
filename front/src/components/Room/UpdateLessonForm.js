@@ -16,7 +16,7 @@ const UpdateLessonForm = ({ lesson }) => {
     dispatch({ type: UPDATE_LESSON, payload: lesson.id });
     // console.log(data);
   };
-  console.log('error in UpdateLessonForm', errors);
+  const errorDivStyle = { color: 'red' };
 
   return (
 
@@ -27,19 +27,19 @@ const UpdateLessonForm = ({ lesson }) => {
             <div className="title">
               <p>Titre</p>
               <input type="text" placeholder={lesson.title} name="Titre" ref={register({ required: true, maxLength: 80 })} />
-              {errors.Titre && <div>Titre requis</div>}
+              {errors.Titre && <div style={errorDivStyle}>Titre requis</div>}
             </div>
             <div className="description">
               <p>Description</p>
               <textarea name="Description" placeholder={lesson.description} ref={register({ required: true, min: 0, maxLength: 300 })} />
-              {errors.Description && <div>Description requise</div>}
+              {errors.Description && <div style={errorDivStyle}>Description requise</div>}
             </div>
           </div>
           <div className="date-video-level">
             <div className="date">
               <p>Date et Heure</p>
               <input type="datetime-local" placeholder="Date" name="Date" ref={register({ required: true })} />
-              {errors.Date && <div>champ requis</div>}
+              {errors.Date && <div style={errorDivStyle}>champ requis</div>}
             </div>
             <div className="video">
               <p>Lien vidéo (facultatif)</p>
@@ -48,7 +48,7 @@ const UpdateLessonForm = ({ lesson }) => {
             <div className="level">
               <p>Niveau</p>
               <select name="Niveau" ref={register({ required: true })}>
-                {errors.Niveau && <div>champ requis</div>}
+                {errors.Niveau && <div style={errorDivStyle}>champ requis</div>}
                 <option value="easy">easy</option>
                 <option value=" normal"> normal</option>
                 <option value=" hard"> hard</option>

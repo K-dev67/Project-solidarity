@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // == pour gérer ma "route" au submit du form
@@ -16,6 +16,8 @@ import {
   SYNC_PASSWORD,
   SYNC_PASSWORD_CONFIRMATION,
   signup,
+  SYNC_ERROR_PASSWORD,
+  SYNC_ERROR_PASSWORD_CONFIRMATION,
 } from 'src/store/actions';
 
 // == semantic form
@@ -26,6 +28,11 @@ import './styles.scss';
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  // == traitement des erreurs en front via state local
+  const [errorUsername, setErrorUsername] = useState('');
+  const [errorFirstname, setErrorFirstname] = useState('');
+  const [errorLastname, setErrorLastname] = useState('');
+  const [errorMail, setErrorMail] = useState('');
   // == reducer
   const {
     username,
@@ -34,6 +41,8 @@ const SignUp = () => {
     mail,
     password,
     passwordConfirmation,
+    errorPassword,
+    errorPasswordConfirmation,
   } = useSelector((state) => state);
   // == history
   const history = useHistory();
@@ -45,34 +54,34 @@ const SignUp = () => {
 
     if (!username) {
       errorsList.push('Le username ne peut pas être vide');
-      // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });
+      setErrorUsername('Le pseudo ne peut pas être vide');
     }
     if (!firstname) {
       errorsList.push('Le prénom ne peut pas être vide');
-      // dispatch({ type: SYNC_ERROR_FIRSTNAME, errorFirstname: 'Please enter your first name' });
+      setErrorFirstname('Le Prénom ne peut pas être vide');
     }
     if (!lastname) {
       errorsList.push('Le nom ne peut pas être vide');
-      // dispatch({ type: SYNC_ERROR_LASTNAME, errorLastname: 'Please enter your last name' });
+      setErrorLastname('Le Nom de famille ne peut pas être vide');
     }
     // - adresse email au bon format
     if (!EmailValidator.validate(mail)) {
       errorsList.push("L'email n'est pas un email correct");
-      // dispatch({ type: SYNC_ERROR_MAIL, errorMail: 'The email adress is invalid' });
+      setErrorMail('L\'email n\'est pas un email correct');
     }
     // - longueur minimum du mot de passe (8 caractère minimum !)
     if (password.length < 8) {
       errorsList.push(
         'Le mot de passe doit contenir un minimum de 8 caractères',
       );
-      // dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
+      dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
     }
     // - mot de passe = confirmation
     if (password !== passwordConfirmation) {
       errorsList.push(
         'Le mot de passe et la confirmation ne correspondent pas',
       );
-      // dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
+      dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
     }
     console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
@@ -87,7 +96,7 @@ const SignUp = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-      // error={errorFirstname}
+          error={errorUsername}
           type="text"
           icon="user"
           iconPosition="left"
@@ -96,12 +105,13 @@ const SignUp = () => {
           placeholder="Username"
           name="username"
           onChange={(evt) => {
+            setErrorUsername('');
             dispatch({ type: SYNC_USERNAME, payload: evt.target.value });
           }}
           value={username}
         />
         <Form.Input
-      // error={errorFirstname}
+          error={errorFirstname}
           type="text"
           icon="user"
           iconPosition="left"
@@ -110,12 +120,13 @@ const SignUp = () => {
           placeholder="First name"
           name="firstname"
           onChange={(evt) => {
+            setErrorFirstname('');
             dispatch({ type: SYNC_FIRSTNAME, payload: evt.target.value });
           }}
           value={firstname}
         />
         <Form.Input
-      // error={errorLastname}
+          error={errorLastname}
       // fluid
           icon="user"
           iconPosition="left"
@@ -124,24 +135,26 @@ const SignUp = () => {
           placeholder="Last name"
           name="lastname"
           onChange={(evt) => {
+            setErrorLastname('');
             dispatch({ type: SYNC_LASTNAME, payload: evt.target.value });
           }}
           value={lastname}
         />
         <Form.Input
-      // error={errorMail}
+          error={errorMail}
       // fluid
           type="mail"
           label="Mail"
           placeholder="Mail"
           name="mail"
           onChange={(evt) => {
+            setErrorMail('');
             dispatch({ type: SYNC_MAIL, payload: evt.target.value });
           }}
           value={mail}
         />
         <Form.Input
-      // error={errorPassword}
+          error={errorPassword}
       // fluid
           type="password"
           label="Password"
@@ -153,7 +166,7 @@ const SignUp = () => {
           value={password}
         />
         <Form.Input
-      // error={errorPasswordConfirmation}
+          error={errorPasswordConfirmation}
       // fluid
           type="password"
           label="Password confirmation"
