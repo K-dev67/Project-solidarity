@@ -89,7 +89,7 @@ const Lessons = () => {
         {labelOwnerJSX}
         <Card.Content>
           <Card.Header
-            onClick={handleClick}
+          onClick={handleClick}
           >
             {labelJSX}
             <Link

@@ -9,6 +9,7 @@ import { MESSAGE_POSTIF_FALSE } from '../../store/actions';
 import AddLessonForm from './AddLessonForm';
 import MessagePositive from './MessagePositive';
 // == function getLessonFromBdd
+import background from '../../assets/img/Pattern_fond.png';
 
 // image background
 import background from '../../assets/img/Pattern_fond.png';
@@ -20,11 +21,12 @@ const AddLessonModal = () => {
   };
   const contentStyle = {
     backgroundImage: `url(${background})`,
+
   };
   return (
     <Modal trigger={<Button onClick={handleClick} fluid>Proposer un cours</Button>}>
-      <Modal.Header>Proposer un cours</Modal.Header>
-      <Modal.Content style={contentStyle}>
+      <Modal.Header style={contentStyle}>Proposer un cours</Modal.Header>
+      <Modal.Content>
         <MessagePositive />
         {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}
         <Modal.Description>

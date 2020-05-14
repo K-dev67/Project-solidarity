@@ -37,7 +37,7 @@ export default function AddLessonForm() {
           </div>
           <div className="description">
             <p>Description</p>
-            <textarea name="Description" ref={register({ required: true, min: 0, maxLength: 300 })} />
+            <textarea name="Description" placeholder="Description" ref={register({ required: true, min: 0, maxLength: 300 })} />
             {errors.Description && <div className="error-form">Description requise</div>}
           </div>
         </div>
