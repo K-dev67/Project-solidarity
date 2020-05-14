@@ -31,7 +31,7 @@ const AskLessons = () => {
       })
       .catch((error) => console.trace(error));
   },
-  []);
+  [askLessons]);
 
   let colorOwner = '';
   let iconPencil = '';
