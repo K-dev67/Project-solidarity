@@ -34,6 +34,8 @@ import {
   UPDATE_LESSON,
   DELETE_LESSON,
   SET_LESSON_BY_ID,
+  // == ASK LESSON
+  SET_ASK_LESSONS,
   // == ajout/remove catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   DELETE_CATEGORY_LABEL,
@@ -74,6 +76,7 @@ const initialState = {
   teachers: [],
   lessonInfo: {},
   lessons: [],
+  askLessons: [],
   addLessonData: {},
   updateLessonData: {},
   categories: [],
@@ -213,6 +216,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         categories: action.payload,
+      };
+    }
+    // == set ask lessons
+    case SET_ASK_LESSONS: {
+      return {
+        ...state,
+        askLessons: action.payload,
       };
     }
     // == update user
