@@ -50,9 +50,9 @@ const UpdateLessonForm = ({ lesson }) => {
               <select name="Niveau" ref={register({ required: true })}>
                 {errors.Niveau && <div style={errorDivStyle}>champ requis</div>}
                 <option value="easy">easy</option>
-                <option value=" normal"> normal</option>
-                <option value=" hard"> hard</option>
-                <option value=" expert"> expert</option>
+                <option value="normal">normal</option>
+                <option value="hard">hard</option>
+                <option value="expert">expert</option>
               </select>
             </div>
           </div>

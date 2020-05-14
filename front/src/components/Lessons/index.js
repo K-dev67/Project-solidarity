@@ -55,12 +55,8 @@ const Lessons = () => {
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
     // == label categories
-    let labelJSX = (
-      <Label as="a" color="gray" ribbon>
-        {lesson.level}
-      </Label>
-    );
-    if (lesson.level === 'easy' || lesson.level === 'Easy') {
+    let labelJSX = '';
+    if (lesson.level === 'easy') {
       labelJSX = (
         <Label as="a" color="green" ribbon>
           {lesson.level}
