@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon, Label } from 'semantic-ui-react';
-import { DELETE_CATEGORY_LABEL } from '../../store/actions';
+import axios from 'axios';
+import { DELETE_CATEGORY_LABEL, SET_LESSON_BY_ID } from '../../store/actions';
+import { API_URL } from '../../utils/constante';
 
 
 const LabelCategory = ({ lessonId, teacherId }) => {
@@ -28,12 +30,19 @@ const LabelCategory = ({ lessonId, teacherId }) => {
   //     .catch((error) => console.trace(error));
   // };
 
-  useEffect(() => {
-
-  });
-
 
   const { lessonInfo, userId } = useSelector((state) => state);
+  useEffect(
+    () => {
+      axios
+        .get(`${API_URL}/lessons/${lessonId}`)
+        .then((res) => {
+          console.log('good for lessonId in Room');
+          dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
+        }).catch((error) => console.trace(error));
+    },
+    [lessonInfo],
+  );
   const { categoryInfo } = lessonInfo;
   if (categoryInfo === undefined) {
     return null;
