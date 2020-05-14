@@ -43,7 +43,6 @@ io.on('connection', socket => {
     socket.join(user.room);
     console.log('Bienvenue dans le chat');
     socket.emit('message',formatMessage(botName, `Welcome to the Chat ! ${room}`));
-
     socket.broadcast
     .to(user.room)
     .emit(
