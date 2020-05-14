@@ -37,6 +37,7 @@ import {
   // == ASK LESSON
   SET_ASK_LESSONS,
   ADD_ASKLESSON_IN_BDD,
+  DELETE_ASK_LESSON,
   // == ajout/remove catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   DELETE_CATEGORY_LABEL,
@@ -243,6 +244,19 @@ export default (state = initialState, action = {}) => {
           });
         store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
+    }
+    case DELETE_ASK_LESSON: {
+      const { userId } = state;
+      axios
+        .delete(`${API_URL}/user/${userId}/ask/${action.payload}`)
+        .then((res) => {
+          console.log('res in Delete AskLesson', res);
+          axios.get(`${API_URL}/askList`)
+            .then((res2) => {
+              store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
+            });
+        })
+        .catch((error) => console.trace(error));
     }
     // == update user
     case UPDATE_USER: {

@@ -7,14 +7,14 @@ import './styles.scss';
 import axios from 'axios';
 // == semanthic
 import {
-  Segment, Card, Icon, Label, Image,
+  Segment, Card, Icon, Label,
 } from 'semantic-ui-react';
 // == cst
+import Moment from 'react-moment';
 import { API_URL } from '../../utils/constante';
-import { SET_ASK_LESSONS } from '../../store/actions';
+import { SET_ASK_LESSONS, DELETE_ASK_LESSON } from '../../store/actions';
 // react Moment
 import 'moment/locale/fr';
-import Moment from 'react-moment';
 
 // import component
 import AddAskLessonModal from './AskLessonModal';
@@ -32,12 +32,26 @@ const AskLessons = () => {
       .catch((error) => console.trace(error));
   },
   []);
-  // == composant ask lesson JSX
+
   let colorOwner = '';
+  let iconPencil = '';
+  let iconCross = '';
+  // == composant ask lesson JSX
   const askLessonsJSX = askLessons.map((askLesson) => {
+    // == pour différencier un proprio
     if (askLesson.author_id === userId) {
       colorOwner = 'teal';
+      iconPencil = (<Icon name="pencil" />);
+      iconCross = (<Icon name="close" />);
     }
+    // == pour delete une carte
+    const handleDelete = () => {
+      dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
+    };
+    const handleUpdate = () => {
+      console.log('clickk');
+      console.log('askLesson.id', askLesson.id);
+    };
     // == label levels
     let labelJSX = '';
     if (askLesson.level === 'easy') {
@@ -73,15 +87,12 @@ const AskLessons = () => {
         color={colorOwner}
         key={askLesson.id}
       >
-        {/* {labelOwnerJSX} */}
         <Card.Content>
           <Card.Header>
             {labelJSX}
-            {/* <Link
-              to={`/lessons/${lesson.id}`}
-            >{lesson.title}
-            </Link> */}
             {askLesson.title}
+            <div style={{ cursor: 'pointer' }} onClick={handleUpdate}>{iconPencil}</div>
+            <div style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
           </Card.Header>
           <Card.Meta>
             <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
