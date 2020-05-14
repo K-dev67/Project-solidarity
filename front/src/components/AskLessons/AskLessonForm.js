@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_ASKLESSON_DATA } from 'src/store/actions';
+import { ADD_ASKLESSON_IN_BDD } from 'src/store/actions';
 import getCategories from '../../utils/getCategories';
 // == actions
 
@@ -16,7 +16,7 @@ const AskLessonForm = () => {
   ));
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    dispatch({ type: ADD_ASKLESSON_DATA, payload: data });
+    dispatch({ type: ADD_ASKLESSON_IN_BDD, payload: data });
     // dispatch({ type: ADD_LESSON_IN_BDD });
     console.log(data);
   };

@@ -36,6 +36,7 @@ import {
   SET_LESSON_BY_ID,
   // == ASK LESSON
   SET_ASK_LESSONS,
+  ADD_ASKLESSON_IN_BDD,
   // == ajout/remove catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   DELETE_CATEGORY_LABEL,
@@ -224,6 +225,24 @@ export default (state = initialState, action = {}) => {
         ...state,
         askLessons: action.payload,
       };
+    }
+    case ADD_ASKLESSON_IN_BDD: {
+      const { userId } = state;
+      axios.post(
+        `${API_URL}/user/${userId}/ask`, {
+          title: action.payload.Titre,
+          description: action.payload.Description,
+          level: action.payload.Niveau,
+          category: action.payload.Catégorie,
+        },
+      ).then((res) => {
+        console.log('response in ADD_ASK_LESSON', res);
+        axios.get(`${API_URL}/askList`)
+          .then((res) => {
+            store.dispatch({ type: SET_ASK_LESSONS, payload: res.data });
+          });
+        store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+      });
     }
     // == update user
     case UPDATE_USER: {

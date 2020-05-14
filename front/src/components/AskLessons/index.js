@@ -23,15 +23,15 @@ import Loading from '../Loading';
 
 const AskLessons = () => {
   const dispatch = useDispatch();
-
+  const { askLessons, userId } = useSelector((state) => state);
   useEffect(() => {
     axios.get(`${API_URL}/askList`)
       .then((res) => {
         dispatch({ type: SET_ASK_LESSONS, payload: res.data });
-      });
+      })
+      .catch((error) => console.trace(error));
   },
   []);
-  const { askLessons, userId } = useSelector((state) => state);
   // == composant ask lesson JSX
   let labelOwnerJSX = '';
   const askLessonsJSX = askLessons.map((askLesson) => {
