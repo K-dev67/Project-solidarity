@@ -13,7 +13,7 @@ const RoomUsers = () => {
   ));
   return (
     <div className="container-room-user">
-      <h4>utilisateurs connectés</h4>
+      <h4>Utilisateurs connectés</h4>
       <div className="user-connected">{roomUsersJSX}</div>
     </div>
   );
