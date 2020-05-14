@@ -11,7 +11,6 @@ const UpdateLessonForm = ({ lesson }) => {
   const { register, handleSubmit, errors } = useForm();
   // == onSubmit de updateLesson (heure, titre etc.. )
   const onSubmit = (data) => {
-    console.log('click on UPDATE');
     dispatch({ type: GET_UPDATE_LESSON_DATA, payload: data });
     dispatch({ type: UPDATE_LESSON, payload: lesson.id });
     // console.log(data);
@@ -19,7 +18,6 @@ const UpdateLessonForm = ({ lesson }) => {
   const errorDivStyle = { color: 'red' };
 
   return (
-
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="container-update-lesson-form">
         <div className="update-lesson-form">

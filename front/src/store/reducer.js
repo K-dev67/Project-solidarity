@@ -34,6 +34,10 @@ import {
   UPDATE_LESSON,
   DELETE_LESSON,
   SET_LESSON_BY_ID,
+  // == ASK LESSON
+  SET_ASK_LESSONS,
+  ADD_ASKLESSON_IN_BDD,
+  DELETE_ASK_LESSON,
   // == ajout/remove catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   DELETE_CATEGORY_LABEL,
@@ -74,6 +78,7 @@ const initialState = {
   teachers: [],
   lessonInfo: {},
   lessons: [],
+  askLessons: [],
   addLessonData: {},
   updateLessonData: {},
   categories: [],
@@ -214,6 +219,45 @@ export default (state = initialState, action = {}) => {
         ...state,
         categories: action.payload,
       };
+    }
+    // == set ask lessons
+    case SET_ASK_LESSONS: {
+      return {
+        ...state,
+        askLessons: action.payload,
+      };
+    }
+    case ADD_ASKLESSON_IN_BDD: {
+      const { userId } = state;
+      axios.post(
+        `${API_URL}/user/${userId}/ask`, {
+          title: action.payload.Titre,
+          description: action.payload.Description,
+          level: action.payload.Niveau,
+          category: action.payload.Catégorie,
+        },
+      ).then((res) => {
+        console.log('response in ADD_ASK_LESSON', res);
+        axios.get(`${API_URL}/askList`)
+          .then((res2) => {
+            store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
+          });
+        store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+      });
+      next(action);
+    }
+    case DELETE_ASK_LESSON: {
+      const { userId } = state;
+      axios
+        .delete(`${API_URL}/user/${userId}/ask/${action.payload}`)
+        .then((res) => {
+          console.log('res in Delete AskLesson', res);
+          axios.get(`${API_URL}/askList`)
+            .then((res2) => {
+              store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
+            });
+        })
+        .catch((error) => console.trace(error));
     }
     // == update user
     case UPDATE_USER: {

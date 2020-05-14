@@ -59,6 +59,11 @@ export const GET_UPDATE_LESSON_DATA = 'actions/GET_UPDATE_LESSON_DATA';
 export const UPDATE_LESSON = 'actions/UPDATE_LESSON';
 export const DELETE_LESSON = 'actions/DELETE_LESSON';
 
+// == page ASK_LESSONS
+export const SET_ASK_LESSONS = 'actions/SET_ASK_LESSONS';
+export const ADD_ASKLESSON_IN_BDD = 'actions/ADD_ASKLESSON_DATA';
+export const DELETE_ASK_LESSON = 'actions/DELETE_ASK_LESSON';
+
 // == message positif
 export const MESSAGE_POSITIF_TRUE = 'actions/MESSAGE_POSITIF_TRUE';
 export const MESSAGE_POSTIF_FALSE = 'actions/MESSAGE_POSTIF_FALSE';

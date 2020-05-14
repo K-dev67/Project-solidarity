@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { SET_INPUT_NAV } from 'src/store/actions';
 
 // == import component semantic
 import {
@@ -32,19 +31,13 @@ const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
   const { lessonsFiltered, userId } = useSelector((state) => state);
-  let labelOwnerJSX = '';
+  let colorOwner = '';
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
-      labelOwnerJSX = (
-        <Image
-          fluid
-          label={{
-            as: 'a', color: 'red', corner: 'right', icon: 'savetest',
-          }}
-        />
-      );
+      colorOwner = 'teal';
     }
+
     const handleClick = () => {
       // recup via une requete les id de la leçon et
       // crée un socket
@@ -52,7 +45,7 @@ const Lessons = () => {
       getMessages(lesson.id);
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
-    // == label categories
+    // == label levels
     let labelJSX = '';
     if (lesson.level === 'easy') {
       labelJSX = (
@@ -85,11 +78,12 @@ const Lessons = () => {
     return (
       <Card
         key={lesson.id}
+        color={colorOwner}
       >
-        {labelOwnerJSX}
+        {/* {labelOwnerJSX} */}
         <Card.Content>
           <Card.Header
-          onClick={handleClick}
+            onClick={handleClick}
           >
             {labelJSX}
             <Link
@@ -101,7 +95,6 @@ const Lessons = () => {
             <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-            <p>{lesson.level}</p>
             <p>{lesson.description}</p>
           </Card.Description>
         </Card.Content>

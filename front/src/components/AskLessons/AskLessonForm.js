@@ -2,31 +2,25 @@ import React, { useEffect } from 'react';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-// == actions
-import { GET_LESSON_DATA, ADD_LESSON_IN_BDD } from 'src/store/actions';
-// == function
+import { ADD_ASKLESSON_IN_BDD } from 'src/store/actions';
 import getCategories from '../../utils/getCategories';
+// == actions
 
 
-export default function AddLessonForm() {
+const AskLessonForm = () => {
   const dispatch = useDispatch();
-  // == get all categories
   useEffect(getCategories, []);
   const categories = useSelector((state) => state.categories);
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
   ));
-
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    dispatch({ type: GET_LESSON_DATA, payload: data });
-    dispatch({ type: ADD_LESSON_IN_BDD });
-    // console.log(data);
+    dispatch({ type: ADD_ASKLESSON_IN_BDD, payload: data });
+    console.log(data);
   };
   console.log(errors);
-
   return (
-
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="add-lesson-form">
         <div className="title-description">
@@ -61,21 +55,14 @@ export default function AddLessonForm() {
               {optionCategoryJSX}
             </select>
           </div>
-          <div className="date">
-            <p>Date et Heure</p>
-            <input type="datetime-local" placeholder="Date" name="Date" ref={register} />
-            {errors.Date && <div className="error-form">Date et Heure requis</div>}
-          </div>
-          <div className="video-url">
-            <p>Lien vidéo (facultatif)</p>
-            <input type="text" placeholder="Video" name="Video" ref={register} />
-          </div>
         </div>
       </div>
       <div className="submit-add-lesson">
         <input type="submit" name="submitAddLesson" />
       </div>
     </form>
-
   );
-}
+};
+
+
+export default AskLessonForm;

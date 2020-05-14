@@ -31,15 +31,6 @@ const ModalExampleCloseIcon = () => {
       <Modal.Content className="modalContent">
         <FormUpdateUser />
       </Modal.Content>
-      {/* <Modal.Actions>
-    <Button color="red">
-      <Icon name="remove" /> No
-    </Button>
-    <Button color="green">
-      <Icon name="checkmark" /> Yes
-    </Button>
-  </Modal.Actions> */}
-      {/* <Icon name="pencil" size="large" corner="right" /> */}
     </Modal>
   );
 };

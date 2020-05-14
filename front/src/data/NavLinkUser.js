@@ -8,6 +8,10 @@ export default [
     label: 'Cours',
   },
   {
+    route: '/asklessons',
+    label: 'Demande de cours',
+  },
+  {
     route: '/teachers',
     label: 'Professeurs',
   },

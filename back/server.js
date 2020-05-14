@@ -31,21 +31,18 @@ app.get('/', (req, res) => {
    getRoomUsers
  } = require('./app/utils/users');
 
- const botName = 'El Boto'
+ const botName = 'Chris'
 
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room}) => {
 
     const userId = username.id;
-
     const user = userJoin(socket.id, username.nickname, userId, room);
-
     console.log('user', user);
 
     socket.join(user.room);
     console.log('Bienvenue dans le chat');
     socket.emit('message',formatMessage(botName, `Welcome to the Chat ! ${room}`));
-
     socket.broadcast
     .to(user.room)
     .emit(
