@@ -20,7 +20,7 @@ import ProfilUser from '../ProfilUser';
 import Lessons from '../Lessons';
 import Teachers from '../Teachers';
 import Room from '../Room';
-// import Chat from '../Chat';
+import AskLessons from '../AskLessons';
 import Loading from '../Loading';
 
 // == Import style
@@ -122,6 +122,16 @@ const App = () => {
               return <Redirect to="/login" />;
             }
             return <Teachers />;
+          }}
+        />
+        <Route
+          exact
+          path="/asklessons"
+          render={() => {
+            if (!user) {
+              return <Redirect to="/login" />;
+            }
+            return <AskLessons />;
           }}
         />
         <LessonComponent />

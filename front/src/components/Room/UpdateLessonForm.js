@@ -19,7 +19,6 @@ const UpdateLessonForm = ({ lesson }) => {
   const errorDivStyle = { color: 'red' };
 
   return (
-
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="container-update-lesson-form">
         <div className="update-lesson-form">

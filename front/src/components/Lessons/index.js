@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { SET_INPUT_NAV } from 'src/store/actions';
 
 // == import component semantic
 import {
@@ -52,7 +51,7 @@ const Lessons = () => {
       getMessages(lesson.id);
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
-    // == label categories
+    // == label levels
     let labelJSX = '';
     if (lesson.level === 'easy') {
       labelJSX = (
@@ -89,7 +88,7 @@ const Lessons = () => {
         {labelOwnerJSX}
         <Card.Content>
           <Card.Header
-          onClick={handleClick}
+            onClick={handleClick}
           >
             {labelJSX}
             <Link

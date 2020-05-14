@@ -12,7 +12,7 @@ import MessagePositive from './MessagePositive';
 import background from '../../assets/img/Pattern_fond.png';
 
 // image background
-import background from '../../assets/img/Pattern_fond.png';
+// import background from '../../assets/img/Pattern_fond.png';
 
 const AddLessonModal = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,6 @@ const AddLessonModal = () => {
   };
   const contentStyle = {
     backgroundImage: `url(${background})`,
-
   };
   return (
     <Modal trigger={<Button onClick={handleClick} fluid>Proposer un cours</Button>}>

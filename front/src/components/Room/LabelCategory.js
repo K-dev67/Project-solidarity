@@ -16,7 +16,6 @@ const LabelCategory = ({ lessonId, teacherId }) => {
       axios
         .get(`${API_URL}/lessons/${lessonId}`)
         .then((res) => {
-          console.log('good for lessonId in Room');
           dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
         }).catch((error) => console.trace(error));
     },
