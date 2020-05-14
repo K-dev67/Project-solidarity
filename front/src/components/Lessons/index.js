@@ -100,7 +100,6 @@ const Lessons = () => {
             <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-            <p>{lesson.level}</p>
             <p>{lesson.description}</p>
           </Card.Description>
         </Card.Content>

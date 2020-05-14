@@ -1,18 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  Button, Header, Image, Modal,
+  Button, Modal,
 } from 'semantic-ui-react';
 import { MESSAGE_POSTIF_FALSE } from '../../store/actions';
 
 // == component
 import AddLessonForm from './AddLessonForm';
 import MessagePositive from './MessagePositive';
-// == function getLessonFromBdd
+// == background
 import background from '../../assets/img/Pattern_fond.png';
-
-// image background
-// import background from '../../assets/img/Pattern_fond.png';
 
 const AddLessonModal = () => {
   const dispatch = useDispatch();

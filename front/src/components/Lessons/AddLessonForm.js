@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 // == actions
 import { GET_LESSON_DATA, ADD_LESSON_IN_BDD } from 'src/store/actions';
 // == function
-// import getLessons from '../../utils/getLessons';
 import getCategories from '../../utils/getCategories';
 
 
