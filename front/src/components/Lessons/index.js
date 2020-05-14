@@ -40,7 +40,7 @@ const Lessons = () => {
         <Image
           fluid
           label={{
-            as: 'a', color: 'red', corner: 'right', icon: 'save',
+            as: 'a', color: 'red', corner: 'right', icon: 'savetest',
           }}
         />
       );
