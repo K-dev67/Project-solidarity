@@ -28,7 +28,6 @@ import getLessons from '../../utils/getLessons';
 // == style
 import './styles.scss';
 
-
 const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
@@ -45,7 +44,6 @@ const Lessons = () => {
           label={{
             as: 'a', color: 'red', corner: 'right', icon: 'save',
           }}
-          // src="/images/wireframe/image.png"
         />
       );
     }
@@ -57,7 +55,11 @@ const Lessons = () => {
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
     // == label categories
-    let labelJSX = '';
+    let labelJSX = (
+      <Label as="a" color="gray" ribbon>
+        {lesson.level}
+      </Label>
+    );
     if (lesson.level === 'easy' || lesson.level === 'Easy') {
       labelJSX = (
         <Label as="a" color="green" ribbon>
@@ -89,7 +91,6 @@ const Lessons = () => {
     return (
       <Card
         key={lesson.id}
-        // className={classNameOwner}
       >
         {labelOwnerJSX}
         <Card.Content>
