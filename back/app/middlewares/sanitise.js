@@ -6,7 +6,5 @@ module.exports = (req, res, next) => {
     // je l'assainit !
     req.body[prop] = sanitizer.escape( req.body[prop] );
   }
-
-  // et picétou
   next();
 };
