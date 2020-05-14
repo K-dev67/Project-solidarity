@@ -244,6 +244,7 @@ export default (state = initialState, action = {}) => {
           });
         store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
+      next(action);
     }
     case DELETE_ASK_LESSON: {
       const { userId } = state;

@@ -48,9 +48,16 @@ const AskLessons = () => {
     const handleDelete = () => {
       dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
     };
+    // == pour update une carte
     const handleUpdate = () => {
       console.log('clickk');
       console.log('askLesson.id', askLesson.id);
+    };
+    // == pour like une carte
+    const handleLike = () => {
+      console.log('liké');
+      axios.get(`${API_URL}/user/${userId}/ask/${askLesson.id}/subscribe`)
+        .then((res) => console.log('res', res));
     };
     // == label levels
     let labelJSX = '';
@@ -108,6 +115,8 @@ const AskLessons = () => {
             <Icon name="calendar" />
             Proposer un cours
           </Link>
+          {/* <div><Icon /></div> */}
+          <div style={{ cursor: 'pointer' }} onClick={handleLike}>{askLesson.want_it}<Icon name="heart" color="teal" /></div>
         </Card.Content>
       </Card>
     );
