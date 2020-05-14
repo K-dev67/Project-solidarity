@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // react Moment
@@ -9,12 +9,16 @@ import { sendMessage, syncMessage } from 'src/store/actions';
 // import Loading from '../Loading';
 import { Icon } from 'semantic-ui-react';
 
+// == formatizer formater le texte
+import { Formatizer, Picker } from 'formatizer';
+
 // == style
 import './styles.scss';
 
 
 const Chat = ({ lessonId }) => {
   const dispatch = useDispatch();
+  const [hidden, setHidden] = useState(true);
 
   const currentMessage = useSelector((state) => state.message);
   const { messages } = useSelector((state) => state);
@@ -23,14 +27,14 @@ const Chat = ({ lessonId }) => {
     <li className="chat-message">
       <strong className="message-author">{message.nickname}</strong>
       <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
-      <p className="message-content">{message.content}</p>
+      <p className="message-content"><Formatizer>{message.content}</Formatizer></p>
     </li>
   ));
 
   return (
     <div className="container-chat-main">
       <ul className="chat-all-messages">{messageJSX}</ul>
-      <div className="container-input-submit">
+      <div className="">
         <form
           className="chat-send-message"
           onSubmit={(evt) => {
@@ -38,31 +42,35 @@ const Chat = ({ lessonId }) => {
             dispatch(sendMessage());
           }}
         >
-          <input
-            type="text"
-            className="chat-send-message_input"
-            placeholder="Votre message"
-            value={currentMessage}
-            onChange={(evt) => {
-              dispatch(syncMessage(evt.target.value));
-            }}
-          />
-          {/* <button
-            type="submit"
-            className="chat-send-message_button"
-          >
-            Envoyer
-          </button> */}
-          <button
-            type="button"
-          >
-            <Icon
-              name="send"
-              className="chat-send-message_button"
-              type="submit"
+          <div className="container-input-submit">
+            <input
+              type="text"
+              className="chat-send-message_input"
+              placeholder="Votre message"
+              value={currentMessage}
+              onChange={(evt) => {
+                dispatch(syncMessage(evt.target.value));
+              }}
             />
-          </button>
+
+            <div className="icone-smiley">
+              <Icon
+                name="meh"
+                className="smiley"
+                onClick={() => {
+                  console.log('j ai cliqué');
+                  setHidden(false);
+                  console.log(hidden);
+                }}
+              />
+            </div>
+
+            {/* </button> */}
+            {/* </div> */}
+            {/* <Picker onChange={(data) => console.log(data)} />; */}
+          </div>
         </form>
+
       </div>
     </div>
   );

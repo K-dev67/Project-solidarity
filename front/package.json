@@ -49,6 +49,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "email-validator": "^2.0.4",
+    "formatizer": "^1.5.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
     "prop-types": "*",

@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 
 // == import component semantic
 import {
-  Segment, Card, Icon,
+  Segment, Card, Icon, Label,
 } from 'semantic-ui-react';
 
 // == import action
 import { ENTER_CHAT } from '../../store/actions';
-
 
 // react Moment
 import 'moment/locale/fr';
@@ -56,6 +55,9 @@ const Lessons = () => {
           <Card.Header
             onClick={handleClick}
           >
+            <Label as="a" color="black" ribbon>
+              {lesson.level}
+            </Label>
             <Link
               to={`/lessons/${lesson.id}`}
             >{lesson.title}
@@ -67,7 +69,7 @@ const Lessons = () => {
           <Card.Description>
             <p>{classNameOwner}</p>
             <p>{lesson.description}</p>
-            <p>{lesson.level}</p>
+            {/* <p>{lesson.level}</p> */}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
@@ -96,3 +98,8 @@ const Lessons = () => {
 };
 
 export default Lessons;
+
+// easy => green
+// normal => bleu
+// hard => red
+// expert => black

@@ -7,7 +7,6 @@ const userController = {
     // '/profile/:id' => Affiche le profile du user correspondant a l'id
     showProfile: async (req, res) => {
         try {
-
             const userId = req.params.id;
             dataMapper.getUserId(userId, (error, data) => {
                 if (error) {
