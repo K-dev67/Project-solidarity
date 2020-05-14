@@ -27,7 +27,7 @@ const RoomDescription = ({ lesson }) => {
           <h2 className="room-title">{lesson.title}</h2>
           <LabelCategory lessonId={lesson.id} teacherId={lesson.teacher_id} />
           <span className="room-number"># Cockpit numero {lesson.id}</span>
-          <div className="room-created-date">Salon crée le : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
+          <div className="room-created-date"><bold>Salon crée le</bold> : <Moment format="D MMM YYYY" withTitle>{lesson.created_at}</Moment>
           </div>
           <div className="room-level">niveau : {lesson.level}</div>
           <div className="room-description">description : {lesson.description}</div>

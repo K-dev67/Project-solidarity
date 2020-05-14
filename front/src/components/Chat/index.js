@@ -55,7 +55,7 @@ const Chat = ({ lessonId }) => {
 
             <div className="icone-smiley">
               <Icon
-                name="meh"
+                name="plus square outline"
                 className="smiley"
                 onClick={() => {
                   console.log('j ai cliqué');

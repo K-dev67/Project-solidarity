@@ -60,7 +60,6 @@ const Room = ({ lesson }) => {
   const divStyleButton = {
     display: `${buttonDisplay}`,
   };
-
   return (
     <>
       <div className="room">

@@ -48,9 +48,9 @@ export default function AddLessonForm() {
               {errors.Niveau && <div className="error-form">Niveau requis</div>}
               <option value="">selectionner</option>
               <option value="easy">easy</option>
-              <option value=" normal"> normal</option>
-              <option value=" hard"> hard</option>
-              <option value=" expert"> expert</option>
+              <option value="normal">normal</option>
+              <option value="hard">hard</option>
+              <option value="expert">expert</option>
             </select>
           </div>
           <div className="category">
