@@ -1,8 +1,39 @@
+body {
+  height: 100vh;
+}
 .signup-form {
-    width: 400px;
-    margin: 3em auto;
+    width: 600px;
+    margin: 2em auto;
     text-align: center;
-    min-height: 85vh;
+    //@error: 70vh;
+    background: rgba(19, 37, 41, .8) !important;
+    box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+    padding: 4em;
+    padding-right: 4em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-radius: 1em;
+    border: 1px solid rgba(10, 180, 180, 1) !important;
+    .form {
+      .field{
+        margin: 0 !important;
+      }
+      .button {
+        border: 1px solid rgba(10, 180, 180, 1);
+        background: rgba(20, 20, 20, .6);
+        font-size: 18px;
+        color: white;
+        margin-top: 21px;
+        padding: 10px 50px;
+        cursor: pointer;
+        transition: .4s;
+        &:hover {
+          background: rgba(20, 20, 20, .8);
+          padding: 10px 80px;
+          color:white;
+        }
+      }
+    }
 }
 
 @media (max-width: 500px) {
