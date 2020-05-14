@@ -31,19 +31,13 @@ const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
   const { lessonsFiltered, userId } = useSelector((state) => state);
-  let labelOwnerJSX = '';
+  let colorOwner = '';
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
-      labelOwnerJSX = (
-        <Image
-          fluid
-          label={{
-            as: 'a', color: 'red', corner: 'right', icon: 'savetest',
-          }}
-        />
-      );
+      colorOwner = 'teal';
     }
+
     const handleClick = () => {
       // recup via une requete les id de la leçon et
       // crée un socket
@@ -84,8 +78,9 @@ const Lessons = () => {
     return (
       <Card
         key={lesson.id}
+        color={colorOwner}
       >
-        {labelOwnerJSX}
+        {/* {labelOwnerJSX} */}
         <Card.Content>
           <Card.Header
             onClick={handleClick}

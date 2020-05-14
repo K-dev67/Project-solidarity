@@ -238,8 +238,8 @@ export default (state = initialState, action = {}) => {
       ).then((res) => {
         console.log('response in ADD_ASK_LESSON', res);
         axios.get(`${API_URL}/askList`)
-          .then((res) => {
-            store.dispatch({ type: SET_ASK_LESSONS, payload: res.data });
+          .then((res2) => {
+            store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
           });
         store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });

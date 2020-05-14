@@ -33,18 +33,10 @@ const AskLessons = () => {
   },
   []);
   // == composant ask lesson JSX
-  let labelOwnerJSX = '';
+  let colorOwner = '';
   const askLessonsJSX = askLessons.map((askLesson) => {
-    console.log('asklesson', askLesson);
-    if (askLesson.teacher_id === userId) {
-      labelOwnerJSX = (
-        <Image
-          fluid
-          label={{
-            as: 'a', color: 'red', corner: 'right', icon: 'savetest',
-          }}
-        />
-      );
+    if (askLesson.author_id === userId) {
+      colorOwner = 'teal';
     }
     // == label levels
     let labelJSX = '';
@@ -78,9 +70,10 @@ const AskLessons = () => {
     }
     return (
       <Card
+        color={colorOwner}
         key={askLesson.id}
       >
-        {labelOwnerJSX}
+        {/* {labelOwnerJSX} */}
         <Card.Content>
           <Card.Header>
             {labelJSX}
@@ -91,7 +84,7 @@ const AskLessons = () => {
             {askLesson.title}
           </Card.Header>
           <Card.Meta>
-            <span className="date">La demande pour ce cours à été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
+            <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
             <p>{askLesson.description}</p>
