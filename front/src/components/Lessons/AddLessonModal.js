@@ -8,7 +8,7 @@ import { MESSAGE_POSTIF_FALSE } from '../../store/actions';
 // == component
 import AddLessonForm from './AddLessonForm';
 import MessagePositive from './MessagePositive';
-// == background
+
 import background from '../../assets/img/Pattern_fond.png';
 
 const AddLessonModal = () => {
@@ -22,7 +22,7 @@ const AddLessonModal = () => {
   return (
     <Modal trigger={<Button onClick={handleClick} fluid>Proposer un cours</Button>}>
       <Modal.Header style={contentStyle}>Proposer un cours</Modal.Header>
-      <Modal.Content>
+      <Modal.Content className="lessonContent">
         <MessagePositive />
         {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}
         <Modal.Description>

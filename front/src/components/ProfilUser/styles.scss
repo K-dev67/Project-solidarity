@@ -19,5 +19,101 @@
     .container-profil-page {
         height: 85vh;
     }
-
+}
+.modalContent {
+  background: rgba(19, 37, 41, .8) !important;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  max-height: 60vh !important;
+    button {
+      border: 1px solid rgba(10, 180, 180, 1) !important;
+        background: rgba(20, 20, 20, .6) !important;
+        font-size: 18px !important;
+        color: white !important;
+        margin-top: 20px !important;
+        padding: 10px 50px !important;
+        cursor: pointer !important;
+        transition: .4s !important;
+        &:hover {
+          background: rgba(20, 20, 20, .8) !important;
+          padding: 10px 80px !important;
+        }
+    }
+}
+.titleContent {
+  color: white;
+  background: none;
+  padding: 0;
+  .content {
+    color: white !important;
+    box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+    background: none !important;
+    //@extend: 1em;
+  }
+  .positive {
+    padding: 0;
+    margin: 0;
+    color: rgba(10, 180, 180, 1) !important;
+  }
+}
+.signup-form {
+  input {
+    margin: 15px 0;
+    font-size: 16px !important;
+    padding: 10px !important;
+    width: 250px !important;
+    border: 1px solid rgba(10, 180, 180, 1) !important;
+    //@debug: 1px solid white;
+    border-top: none !important;
+    border-left: none !important; 
+    border-right: none !important;
+    background: rgba(20, 20, 20, .2) !important;
+    color: white !important;
+    outline: none !important;
+    &:hover {
+    color: white !important;
+    background-color: black !important;
+    }
+  }
+}
+.passwordModal {
+  background: rgba(19, 37, 41, .8) !important;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  max-height: 60vh !important;
+    button {
+      border: 1px solid rgba(10, 180, 180, 1) !important;
+        background: rgba(20, 20, 20, .6) !important;
+        font-size: 18px !important;
+        color: white !important;
+        margin-top: 20px !important;
+        padding: 10px 50px !important;
+        cursor: pointer !important;
+        transition: .4s !important;
+        &:hover {
+          background: rgba(20, 20, 20, .8) !important;
+          padding: 10px 80px !important;
+        }
+    }
+}
+.passwordHeader {
+  color: white;
+  padding: 0;
+}
+.mailModal {
+  background: rgba(19, 37, 41, .8) !important;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  max-height: 60vh !important;
+    button {
+      border: 1px solid rgba(10, 180, 180, 1) !important;
+        background: rgba(20, 20, 20, .6) !important;
+        font-size: 18px !important;
+        color: white !important;
+        margin-top: 20px !important;
+        padding: 10px 50px !important;
+        cursor: pointer !important;
+        transition: .4s !important;
+        &:hover {
+          background: rgba(20, 20, 20, .8) !important;
+          padding: 10px 80px !important;
+        }
+    }
 }

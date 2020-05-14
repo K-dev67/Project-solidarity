@@ -10,7 +10,12 @@ import MessagePositive from './MessagePositive';
 
 // == component
 import FormUpdatePassword from './FormUpdatePassword';
+import background from '../../assets/img/Pattern_fond.png';
 
+const contentStyle = {
+  backgroundImage: `url(${background})`,
+
+};
 
 const UpdatePasswordModal = () => {
   const dispatch = useDispatch();
@@ -20,9 +25,9 @@ const UpdatePasswordModal = () => {
 
   return (
     <Modal trigger={<Button onClick={handleClick}>Changer votre mot de passe</Button>} closeIcon>
-      <Header icon="pencil" content="Modifier votre mot de passe" />
+      <Header style={contentStyle} className="passwordHeader" icon="pencil" /*content="Modifier votre mot de passe"*/>Modifier votre mot de passe</Header>
       <MessagePositive />
-      <Modal.Content>
+      <Modal.Content className="passwordModal">
         <FormUpdatePassword />
       </Modal.Content>
     </Modal>
