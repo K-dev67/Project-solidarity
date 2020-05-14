@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
+const sanitizeMiddleware = require('./app/middlewares/sanitise');
 
 
 const bodyParser = require('body-parser');
@@ -102,8 +103,9 @@ app.use((req, res, next) => {
     next();
   });
 
-
-app.use(express.urlencoded({extended:true}));
+  app.use(express.urlencoded({extended:true}));
+  // Req.body existe Du coup =>
+  app.use(sanitizeMiddleware);
 
 const router = require('./app/router');
 
