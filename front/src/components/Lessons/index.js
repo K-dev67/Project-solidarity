@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 // == import component semantic
 import {
-  Segment, Card, Icon, Label,
+  Segment, Card, Icon, Label, Image,
 } from 'semantic-ui-react';
 
 // == import action
@@ -34,11 +34,21 @@ const Lessons = () => {
   useEffect(getLessons, []);
   const { lessonsFiltered, userId } = useSelector((state) => state);
   // je souhaite ajouter une interaction si l'utilisateur est le teacher_id alors
-  let classNameOwner = '';
+  let labelOwnerJSX = '';
   // todo gerer la photo du prof avec lesson.teacher_id
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
-    if (lesson.teacher_id === userId) classNameOwner = 'card-owner';
+    if (lesson.teacher_id === userId) {
+      labelOwnerJSX = (
+        <Image
+          fluid
+          label={{
+            as: 'a', color: 'red', corner: 'right', icon: 'save',
+          }}
+          // src="/images/wireframe/image.png"
+        />
+      );
+    }
     const handleClick = () => {
       // recup via une requete les id de la leçon et
       // crée un socket
@@ -46,18 +56,47 @@ const Lessons = () => {
       getMessages(lesson.id);
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
+    // == label categories
+    let labelJSX = '';
+    if (lesson.level === 'easy' || lesson.level === 'Easy') {
+      labelJSX = (
+        <Label as="a" color="green" ribbon>
+          {lesson.level}
+        </Label>
+      );
+    }
+    else if (lesson.level === 'normal') {
+      labelJSX = (
+        <Label as="a" color="blue" ribbon>
+          {lesson.level}
+        </Label>
+      );
+    }
+    else if (lesson.level === 'hard') {
+      labelJSX = (
+        <Label as="a" color="red" ribbon>
+          {lesson.level}
+        </Label>
+      );
+    }
+    else if (lesson.level === 'expert') {
+      labelJSX = (
+        <Label as="a" color="black" ribbon>
+          {lesson.level}
+        </Label>
+      );
+    }
     return (
       <Card
         key={lesson.id}
-        className={classNameOwner}
+        // className={classNameOwner}
       >
+        {labelOwnerJSX}
         <Card.Content>
           <Card.Header
             onClick={handleClick}
           >
-            <Label as="a" color="black" ribbon>
-              {lesson.level}
-            </Label>
+            {labelJSX}
             <Link
               to={`/lessons/${lesson.id}`}
             >{lesson.title}
@@ -67,9 +106,8 @@ const Lessons = () => {
             <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-            <p>{classNameOwner}</p>
+            <p>{lesson.level}</p>
             <p>{lesson.description}</p>
-            {/* <p>{lesson.level}</p> */}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
