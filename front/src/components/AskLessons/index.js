@@ -1,16 +1,24 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 // == style
 import './styles.scss';
+// == axios
 import axios from 'axios';
+// == semanthic
 import {
   Segment, Card, Icon, Label, Image,
 } from 'semantic-ui-react';
+// == cst
 import { API_URL } from '../../utils/constante';
 import { SET_ASK_LESSONS } from '../../store/actions';
-import Loading from '../Loading';
+// react Moment
+import 'moment/locale/fr';
+import Moment from 'react-moment';
 
-// == import component semantic
+// import component
+import AddAskLessonModal from './AskLessonModal';
+import Loading from '../Loading';
 
 
 const AskLessons = () => {
@@ -80,31 +88,31 @@ const AskLessons = () => {
               to={`/lessons/${lesson.id}`}
             >{lesson.title}
             </Link> */}
+            {askLesson.title}
           </Card.Header>
           <Card.Meta>
-            {/* <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span> */}
+            <span className="date">La demande pour ce cours à été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-            <p>{askLesson.level}</p>
             <p>{askLesson.description}</p>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
+          <Link
+            to="lessons"
+          >
             <Icon name="calendar" />
-            {/* Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment> */}
-          </a>
+            Proposer un cours
+          </Link>
         </Card.Content>
       </Card>
     );
   });
   return (
     <div className="askLessons">
-      Faire une demande de cours
-
       <Segment>
-        {/* <AddLessonModal />
-        <InputSearchLesson /> */}
+        <AddAskLessonModal />
+        {/* <InputSearchLesson />  */}
         <Card.Group
           itemsPerRow={3}
           stackable

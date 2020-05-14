@@ -27,7 +27,7 @@ const AskLessonModal = () => {
         {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}
         <Modal.Description>
           {/* <Header>Default Profile Image</Header> */}
-          {/* <AskLessonForm /> */}
+          <AskLessonForm />
         </Modal.Description>
       </Modal.Content>
     </Modal>

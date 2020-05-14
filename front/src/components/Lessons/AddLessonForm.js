@@ -9,13 +9,14 @@ import getCategories from '../../utils/getCategories';
 
 
 export default function AddLessonForm() {
+  const dispatch = useDispatch();
   // == get all categories
   useEffect(getCategories, []);
   const categories = useSelector((state) => state.categories);
   const optionCategoryJSX = categories.map((categorie) => (
     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
   ));
-  const dispatch = useDispatch();
+
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     dispatch({ type: GET_LESSON_DATA, payload: data });
@@ -45,7 +46,7 @@ export default function AddLessonForm() {
             <p>Niveau</p>
             <select name="Niveau" ref={register({ required: true })}>
               {errors.Niveau && <div className="error-form">Niveau requis</div>}
-              <option value="">selectionner</option>
+              <option value="">niveaux</option>
               <option value="easy">easy</option>
               <option value="normal">normal</option>
               <option value="hard">hard</option>
@@ -56,6 +57,7 @@ export default function AddLessonForm() {
             <p>Categorie</p>
             <select name="Catégorie" ref={register({ required: true })}>
               {errors.Catégorie && <div>champ requis</div>}
+              <option value="">matières</option>
               {optionCategoryJSX}
             </select>
           </div>
