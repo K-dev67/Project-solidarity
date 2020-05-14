@@ -424,3 +424,83 @@
         }
     }
 }
+.room-modify-button .button {
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  background: rgba(20, 20, 20, .6) !important;
+  font-size: 18px !important;
+  color: white !important;
+  margin-top: 21px !important;
+  padding: 10px 25px !important;
+  cursor: pointer !important;
+  transition: .4s !important;
+  border-radius: 1em !important;
+  &:hover {
+    background: rgba(20, 20, 20, .8) !important;
+    padding: 10px 50px !important;
+    color:white !important;
+  }
+}
+.room-delete-button .button {
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  background: rgba(20, 20, 20, .6) !important;
+  font-size: 18px !important;
+  color: white !important;
+  margin-top: 21px !important;
+  padding: 10px 25px !important;
+  cursor: pointer !important;
+  transition: .4s !important;
+  border-radius: 1em !important;
+  &:hover {
+    background: rgba(20, 20, 20, .8) !important;
+    padding: 10px 50px !important;
+    color:white !important;
+  }
+}
+.container-addCategory select {
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  background: rgba(20, 20, 20, .6) !important;
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid rgba(10, 180, 180, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  //background: rgba(20, 20, 20, .2);
+  color: grey;
+  outline: none;
+  border-radius: 1em !important;
+  &:hover {
+    color: white !important;
+    background-color: black;
+  }
+}
+
+
+.container-addCategory input {
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  background: rgba(20, 20, 20, .6) !important;
+  font-size: 18px !important;
+  color: white !important;
+  margin-top: 21px !important;
+  padding: 10px 25px !important;
+  cursor: pointer !important;
+  transition: .4s !important;
+  border-radius: 1em !important;
+  &:hover {
+    background: rgba(20, 20, 20, .8) !important;
+    padding: 10px 50px !important;
+    color:white !important;
+  }
+}
+
+.container-addCategory p {
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  background: rgba(20, 20, 20, .6) !important;
+  font-size: 18px !important;
+  color: white !important;
+  margin-top: 21px !important;
+  padding: 10px 25px !important;
+  border-radius: 1em !important;
+}
