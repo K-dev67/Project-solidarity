@@ -51,9 +51,10 @@ const Lessons = () => {
         key={lesson.id}
         className={classNameOwner}
       >
-        <Card.Content>
+        <Card.Content
+        >
           <Card.Header
-            onClick={handleClick}
+          onClick={handleClick}
           >
             <Label as="a" color="black" ribbon>
               {lesson.level}
