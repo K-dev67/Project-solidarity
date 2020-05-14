@@ -9,7 +9,12 @@ import MessagePositive from './MessagePositive';
 
 // == component
 import FormUpdateMail from './FormUpdateMail';
+import background from '../../assets/img/Pattern_fond.png';
 
+const contentStyle = {
+  backgroundImage: `url(${background})`,
+
+};
 
 const UpdateMailModal = () => {
   const dispatch = useDispatch();
@@ -19,9 +24,9 @@ const UpdateMailModal = () => {
 
   return (
     <Modal trigger={<Icon className="penUpdateMail" name="pencil" onClick={handleClick} />} closeIcon>
-      <Header icon="pencil" content="Modifier votre mail" />
+      <Header style={contentStyle} icon="pencil" content="Modifier votre mail" />
       <MessagePositive />
-      <Modal.Content>
+      <Modal.Content className="mailModal">
         <FormUpdateMail />
       </Modal.Content>
     </Modal>
