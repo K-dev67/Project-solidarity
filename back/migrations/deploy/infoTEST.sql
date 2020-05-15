@@ -81,7 +81,11 @@ INSERT INTO "category" ("name", "color", "description", "status") VALUES
 ('Sciences-sociales', 'black','des cours de Poterie',1),
 ('Economie', 'black','des cours d économie',1),
 ('Yoga', 'red','des cours de yoga',1),
-('Philosophie', 'blue','des cours de Philosophie',1);
+('Philosophie', 'blue','des cours de Philosophie',1),
+('Physique', 'grey','Des cours de physique',1),
+('Informatique', 'black','des cours de pc',1),
+('Marketing', 'black','des cours de marketing',1),
+('Geographie', 'red','des cours de geo',1);
 
 INSERT INTO "lesson_has_category" ("lesson_id", "category_id") VALUES
 (1,1),
