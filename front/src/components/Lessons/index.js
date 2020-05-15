@@ -32,6 +32,9 @@ const Lessons = () => {
   useEffect(getLessons, []);
   const { lessonsFiltered, userId } = useSelector((state) => state);
   let colorOwner = '';
+  // faire apparaitre la première catégorie
+  // la caégorie principale du cours
+
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
@@ -80,7 +83,6 @@ const Lessons = () => {
         key={lesson.id}
         color={colorOwner}
       >
-        {/* {labelOwnerJSX} */}
         <Card.Content>
           <Card.Header
             onClick={handleClick}

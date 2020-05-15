@@ -9,8 +9,25 @@
     .input-topbar {
         margin: 0 0 10px 0 !important;
     }
+
+    .extra .content {
+        // display: flex !important;
+        // flex-direction: row !important;
+        // div {
+        //     display: inline;
+        //     margin-top: 1em !important;
+        // }
+    }
 }
 .addAskModal {
   background: rgba(19, 37, 41, .8) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
 }
+
+// @media (max-width: 768px) {
+//     .askLessons {
+//         div .stackable .cards {
+//             margin-top: 30px !important;
+//         }
+//     }
+// }

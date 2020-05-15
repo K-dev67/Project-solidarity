@@ -18,8 +18,9 @@ const AskLessonForm = () => {
   const onSubmit = (data) => {
     dispatch({ type: ADD_ASKLESSON_IN_BDD, payload: data });
     console.log(data);
+    console.log(errors);
   };
-  console.log(errors);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="add-lesson-form">

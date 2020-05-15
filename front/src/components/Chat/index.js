@@ -11,6 +11,7 @@ import { Icon } from 'semantic-ui-react';
 
 // == formatizer formater le texte
 import { Formatizer, Picker } from 'formatizer';
+// import getMessages from '../../utils/getMessages';
 
 // == style
 import './styles.scss';
@@ -18,11 +19,10 @@ import './styles.scss';
 
 const Chat = ({ lessonId }) => {
   const dispatch = useDispatch();
+  // useEffect(getMessages(lessonId), []);
   const [hidden, setHidden] = useState(true);
-
   const currentMessage = useSelector((state) => state.message);
   const { messages } = useSelector((state) => state);
-
   const messageJSX = messages.map((message) => (
     <li className="chat-message">
       <strong className="message-author">{message.nickname}</strong>
@@ -58,9 +58,7 @@ const Chat = ({ lessonId }) => {
                 name="plus square outline"
                 className="smiley"
                 onClick={() => {
-                  console.log('j ai cliqué');
                   setHidden(false);
-                  console.log(hidden);
                 }}
               />
             </div>

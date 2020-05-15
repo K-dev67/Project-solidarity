@@ -11,6 +11,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
   const dispatch = useDispatch();
 
   const { lessonInfo, userId } = useSelector((state) => state);
+  const { categoryInfo } = lessonInfo;
   useEffect(
     () => {
       axios
@@ -19,9 +20,9 @@ const LabelCategory = ({ lessonId, teacherId }) => {
           dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
         }).catch((error) => console.trace(error));
     },
-    [lessonInfo],
+    [],
   );
-  const { categoryInfo } = lessonInfo;
+
   if (categoryInfo === undefined) {
     return null;
   }
