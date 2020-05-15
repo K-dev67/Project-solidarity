@@ -239,9 +239,10 @@
             .descri-user {
                 display: flex;
                 justify-content: space-between;
+                flex-wrap: wrap;
                 .room-descri {
                     padding: 1em;
-                    width: 50%;
+                    width: 33%;
                     h2 {
                         text-transform: uppercase;
                     }
@@ -249,11 +250,19 @@
                         margin-bottom: 0.5em;
                     }
                 }
+                .title-box {
+                  width: 100%;
+                }
                 .container-room-user {
                     // background-color: #175757;
                     text-align: right;
                     padding: 1em;
-                    width: 50%
+                    width: 33%
+                }
+                .category-level {
+                  width: 30%;
+                  text-align: center;
+                  padding: 1em;
                 }
             }
 
@@ -419,8 +428,19 @@
         display: flex;
         justify-content: center;
         input {
-            height: 2em;
-            width: 5em;
+          border-radius: 0.5em !important;
+          border: 1px solid rgba(10, 180, 180, 1) !important;
+          background: rgba(20, 20, 20, .6) !important;
+          font-size: 18px !important;
+          color: white !important;
+          margin-top: 20px !important;
+          padding: 10px 50px !important;
+          cursor: pointer !important;
+          transition: .4s !important;
+          &:hover {
+            background: rgba(20, 20, 20, .8) !important;
+            padding: 10px 80px !important;
+          }
         }
     }
 }
@@ -473,7 +493,7 @@
   border-radius: 1em !important;
   &:hover {
     color: white !important;
-    background-color: black;
+    background: rgba(19, 37, 41, .8) !important;
   }
 }
 
@@ -494,13 +514,75 @@
     color:white !important;
   }
 }
-
-.container-addCategory p {
-  border: 1px solid rgba(10, 180, 180, 1) !important;
-  background: rgba(20, 20, 20, .6) !important;
-  font-size: 18px !important;
-  color: white !important;
-  margin-top: 21px !important;
-  padding: 10px 25px !important;
-  border-radius: 1em !important;
+.update-lesson-content {
+  background: rgba(19, 37, 41, .8) !important;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  .description {
+    .header {
+      padding: 1em 2em;
+      background: rgba(19, 37, 41, .8) !important;
+      box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+      border: 1px solid rgba(10, 180, 180, 1) !important;
+      border-radius: 0.5em !important;
+    }
+    form {
+      .update-lesson-form {
+        input {
+          margin: 15px 0;
+          font-size: 16px;
+          padding: 10px;
+          width: 250px;
+          border: 1px solid rgba(10, 180, 180, 1);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          background: rgba(20, 20, 20, .2);
+          color: white;
+          outline: none;
+          &:hover {
+            color: white !important;
+            background: rgba(19, 37, 41, .8) !important;
+          }
+        }
+        textarea {
+          margin: 15px 0;
+          font-size: 16px;
+          padding: 10px;
+          width: 250px;
+          border: 1px solid rgba(10, 180, 180, 1);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          background: rgba(20, 20, 20, .2);
+          color: white;
+          outline: none;
+          &:hover {
+            color: white !important;
+            background: rgba(19, 37, 41, .8) !important;
+          }
+        }
+        select {
+          border-radius: 0.5em;
+          margin: 15px 0;
+          font-size: 16px;
+          padding: 10px;
+          width: 250px;
+          border: 1px solid rgba(10, 180, 180, 1);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          background: rgba(20, 20, 20, .2);
+          color: white;
+          outline: none;
+          &:hover {
+            color: white !important;
+            background: rgba(19, 37, 41, .8) !important;
+          }
+        }
+        p {
+          display: none;
+        }
+      }
+    }
+  }
 }

@@ -60,7 +60,7 @@
                 outline: none;
                 &:hover {
                   color: white !important;
-                  background-color: black;
+                  background: rgba(19, 37, 41, .8) !important;
                 }
             }
             p {
@@ -87,7 +87,7 @@
                 outline: none;
                 &:hover {
                   color: white !important;
-                  background-color: black;
+                  background: rgba(19, 37, 41, .8) !important;
                 }
             }
             p {
@@ -114,7 +114,7 @@
             outline: none;
             &:hover {
               color: white !important;
-              background-color: black;
+              background: rgba(19, 37, 41, .8) !important;
             }
         }
         p {
@@ -122,20 +122,20 @@
         }
         select {
           margin: 15px 0;
-                font-size: 16px;
-                padding: 10px;
-                width: 250px;
-                border: 1px solid rgba(10, 180, 180, 1);
-                border-top: none;
-                border-left: none;
-                border-right: none;
-                background: rgba(20, 20, 20, .2);
-                color: grey;
-                outline: none;
-                &:hover {
-                  color: white !important;
-                  background-color: black;
-                }
+          font-size: 16px;
+          padding: 10px;
+          width: 250px;
+          border: 1px solid rgba(10, 180, 180, 1);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          background: rgba(20, 20, 20, .2);
+          color: grey;
+          outline: none;
+          &:hover {
+            color: white !important;
+            background: rgba(19, 37, 41, .8) !important;
+          }
         }
     }
 }

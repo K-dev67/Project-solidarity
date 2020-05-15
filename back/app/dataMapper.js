@@ -34,7 +34,7 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     getLessonList: (callback) => {
-        const query = 'SELECT * FROM "lesson"';
+        const query = 'SELECT * FROM "lesson" ORDER BY "like" DESC';
         db_connection.query(query, callback);
     },
     getNextLessonList: (callback) => {
@@ -90,7 +90,7 @@ const dataMapper = {
 //? /// \\\ ASK      ///\\\
 
     getAskList: (callback) => {
-        const query = 'SELECT * FROM "ask"';
+        const query = 'SELECT * FROM "ask" ORDER BY want_it DESC';
         db_connection.query(query, callback);
     },
     checkAskId: (askId, userId, callback) => {

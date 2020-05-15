@@ -22,7 +22,7 @@ const AskLessonModal = () => {
   return (
     <Modal trigger={<Button onClick={handleClick} fluid>Faire une demande de cours</Button>}>
       <Modal.Header style={contentStyle}>Faire une demande de cours</Modal.Header>
-      <Modal.Content>
+      <Modal.Content className="addAskModal">
         <MessagePositive />
         {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}
         <Modal.Description>
