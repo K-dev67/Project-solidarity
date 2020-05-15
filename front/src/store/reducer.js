@@ -380,13 +380,6 @@ export default (state = initialState, action = {}) => {
           name: categoryName,
         })
         .then((res) => {
-          // console.log(res);
-          // const promise = axios.get(
-          //   `${API_URL}/lessons/${lessonId}`,
-          // );
-          // promise.then((res2) => {
-          //   store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
-          // });
           axios
             .get(`${API_URL}/categoryList/${lessonId}`)
             .then((res2) => {
@@ -404,11 +397,6 @@ export default (state = initialState, action = {}) => {
         .delete(`${API_URL}/user/${userId}/lesson/${lessonId}/category/${categoryId}`)
         .then((res) => {
           console.log('resInDeleteCategory', res);
-          // axios.get(
-          //   `${API_URL}/lessons/${lessonId}`,
-          // ).then(() => {
-          //   store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
-          // });
           axios
             .get(`${API_URL}/categoryList/${lessonId}`)
             .then((res2) => {

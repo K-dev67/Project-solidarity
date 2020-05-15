@@ -10,7 +10,6 @@ import { API_URL } from '../../utils/constante';
 
 const LabelCategory = ({ lessonId, teacherId }) => {
   const dispatch = useDispatch();
-  //! ----- > test category
   const { categoryByLesson } = useSelector((state) => state);
   useEffect(
     () => {
@@ -23,11 +22,8 @@ const LabelCategory = ({ lessonId, teacherId }) => {
     [],
   );
 
-  console.log('categoryByLesson', categoryByLesson);
-  //!
 
   const { userId } = useSelector((state) => state);
-  // const { categoryInfo } = lessonInfo;
   useEffect(
     () => {
       axios
@@ -39,13 +35,9 @@ const LabelCategory = ({ lessonId, teacherId }) => {
     [],
   );
 
-  // if (categoryInfo === undefined) {
-  //   return null;
-  // }
   if (categoryByLesson === undefined) {
     return null;
   }
-  // console.log('categoryInfo', categoryInfo);
   const categoryJSX = categoryByLesson.map((category) => {
     // == fct pour qui réagit au handleClick
     const handleClick = (e) => {
