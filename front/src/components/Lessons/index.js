@@ -33,7 +33,7 @@ const Lessons = () => {
   const { lessonsFiltered, userId } = useSelector((state) => state);
   let colorOwner = '';
   // faire apparaitre la première catégorie
-  // la caégorie principale du cours
+  // la catégorie principale du cours
 
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {

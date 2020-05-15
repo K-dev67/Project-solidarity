@@ -33,6 +33,8 @@ const Chat = ({ lessonId }) => {
 
   return (
     <div className="container-chat-main">
+      {/* <Picker style={styleEmoji} onChange={(data) => console.log(data)} /> */}
+
       <ul className="chat-all-messages">{messageJSX}</ul>
       <div className="">
         <form
@@ -61,6 +63,7 @@ const Chat = ({ lessonId }) => {
                   setHidden(false);
                 }}
               />
+
             </div>
 
             {/* </button> */}

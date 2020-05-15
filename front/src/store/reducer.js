@@ -44,6 +44,7 @@ import {
   // == add new lesson in lesson list
   GET_LESSON,
   SET_CATEGORIES,
+  SET_CATEGORY_BY_LESSONID,
   // message positif
   MESSAGE_POSITIF_TRUE,
   MESSAGE_POSTIF_FALSE,
@@ -82,6 +83,7 @@ const initialState = {
   addLessonData: {},
   updateLessonData: {},
   categories: [],
+  categoryByLesson: [],
   labelCategory: {},
   // gerer l'ouverture des modals
   messagePositif: false,
@@ -218,6 +220,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         categories: action.payload,
+      };
+    }
+    case SET_CATEGORY_BY_LESSONID: {
+      return {
+        ...state,
+        categoryByLesson: action.payload,
       };
     }
     // == set ask lessons
@@ -372,13 +380,11 @@ export default (state = initialState, action = {}) => {
           name: categoryName,
         })
         .then((res) => {
-          console.log(res);
-          const promise = axios.get(
-            `${API_URL}/lessons/${lessonId}`,
-          );
-          promise.then((res2) => {
-            store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
-          });
+          axios
+            .get(`${API_URL}/categoryList/${lessonId}`)
+            .then((res2) => {
+              store.dispatch({ type: SET_CATEGORY_BY_LESSONID, payload: res2.data });
+            }).catch((error) => console.trace(error));
         });
       next(action);
       // return;
@@ -391,11 +397,11 @@ export default (state = initialState, action = {}) => {
         .delete(`${API_URL}/user/${userId}/lesson/${lessonId}/category/${categoryId}`)
         .then((res) => {
           console.log('resInDeleteCategory', res);
-          axios.get(
-            `${API_URL}/lessons/${lessonId}`,
-          ).then(() => {
-            store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
-          });
+          axios
+            .get(`${API_URL}/categoryList/${lessonId}`)
+            .then((res2) => {
+              store.dispatch({ type: SET_CATEGORY_BY_LESSONID, payload: res2.data });
+            }).catch((error) => console.trace(error));
         });
     }
     case MESSAGE_POSITIF_TRUE: {

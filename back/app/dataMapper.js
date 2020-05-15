@@ -44,7 +44,7 @@ const dataMapper = {
         FROM "lesson"
         JOIN lesson_has_category ON lesson.id = lesson_id
         JOIN category ON category_id = category.id
-        ORDER BY "like" DESC`
+        ORDER BY "like" DESC`;
         db_connection.query(query, callback);
     },
     getNextLessonList: (callback) => {
