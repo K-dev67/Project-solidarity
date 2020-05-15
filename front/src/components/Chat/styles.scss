@@ -23,6 +23,10 @@
           padding: 0.5em;
           padding-right: 1em;
           border-radius: 0.6em;
+          div {
+          border: none!important;           
+          background: none !important;
+          }
         }
       }
       .date-message {
