@@ -33,6 +33,7 @@ router.post('/lessonList', homeController.showLessonByCategory);
 router.get('/askList', homeController.showAsk);
 router.post('/askList', homeController.showAskByCategory);
 router.get('/categoryList', homeController.showAllCategory);
+router.get('/categoryList/:id', homeController.getThisCategory);
 //router.post('/search', homeController.searchFilter);
 
 // LES ROUTES CONCERNANT LESSON
