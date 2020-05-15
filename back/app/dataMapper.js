@@ -34,7 +34,16 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     getLessonList: (callback) => {
-        const query = 'SELECT * FROM "lesson" ORDER BY "like" DESC';
+        const query = `SELECT DISTINCT ON ("lesson"."id", "lesson"."like")
+        "lesson"."id", "lesson"."like",
+        "lesson".title, "lesson".description,
+        "lesson".teacher_id, "lesson".plannified,
+        "lesson"."level",
+        category.picture
+        FROM "lesson"
+        JOIN lesson_has_category ON lesson.id = lesson_id
+        JOIN category ON category_id = category.id
+        ORDER BY "like" DESC`;
         db_connection.query(query, callback);
     },
     getNextLessonList: (callback) => {
