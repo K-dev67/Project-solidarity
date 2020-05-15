@@ -3,15 +3,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon, Label } from 'semantic-ui-react';
 import axios from 'axios';
-import { DELETE_CATEGORY_LABEL, SET_LESSON_BY_ID } from '../../store/actions';
+import Loading from '../Loading';
+import { DELETE_CATEGORY_LABEL, SET_LESSON_BY_ID, SET_CATEGORY_BY_LESSONID } from '../../store/actions';
 import { API_URL } from '../../utils/constante';
 
 
 const LabelCategory = ({ lessonId, teacherId }) => {
   const dispatch = useDispatch();
+  //! ----- > test category
+  const { categoryByLesson } = useSelector((state) => state);
+  useEffect(
+    () => {
+      axios
+        .get(`${API_URL}/categoryList/${lessonId}`)
+        .then((res) => {
+          dispatch({ type: SET_CATEGORY_BY_LESSONID, payload: res.data });
+        }).catch((error) => console.trace(error));
+    },
+    [],
+  );
 
-  const { lessonInfo, userId } = useSelector((state) => state);
-  const { categoryInfo } = lessonInfo;
+  console.log('categoryByLesson', categoryByLesson);
+  //!
+
+  const { userId } = useSelector((state) => state);
+  // const { categoryInfo } = lessonInfo;
   useEffect(
     () => {
       axios
@@ -23,11 +39,14 @@ const LabelCategory = ({ lessonId, teacherId }) => {
     [],
   );
 
-  if (categoryInfo === undefined) {
+  // if (categoryInfo === undefined) {
+  //   return null;
+  // }
+  if (categoryByLesson === undefined) {
     return null;
   }
-  console.log('categoryInfo', categoryInfo);
-  const categoryJSX = categoryInfo.map((category) => {
+  // console.log('categoryInfo', categoryInfo);
+  const categoryJSX = categoryByLesson.map((category) => {
     // == fct pour qui réagit au handleClick
     const handleClick = (e) => {
       const categoryId = e.target.getAttribute('data-key');
@@ -64,7 +83,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
   });
   return (
     <div className="label-category">
-      {categoryJSX}
+      {categoryByLesson.length > 0 ? (<>{categoryJSX}</>) : <Loading />}
     </div>
   );
 };
