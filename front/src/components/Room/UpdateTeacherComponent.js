@@ -60,14 +60,14 @@ const UpdateTeacherComponent = ({ lesson }) => {
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <p>Ajouter une catégorie</p>
+              
               <select name="Catégorie" ref={register}>
                 <option value="">select</option>
                 {optionCategoryJSX}
               </select>
             </div>
             <div>
-              <input type="submit" name="submitCategory" />
+              <input type="submit" name="submitCategory"/>
             </div>
           </form>
         </div>
@@ -91,3 +91,4 @@ UpdateTeacherComponent.propTypes = {
 };
 
 export default UpdateTeacherComponent;
+//<p>Ajouter une catégorie</p>
