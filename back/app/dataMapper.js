@@ -34,7 +34,8 @@ const dataMapper = {
         db_connection.query(query, values, callback);
     },
     getLessonList: (callback) => {
-        const query = `SELECT DISTINCT ON ("lesson"."id", "lesson"."like")
+        const query = //'SELECT * FROM "lesson" ORDER BY "like" DESC';
+        `SELECT DISTINCT ON ("lesson"."id", "lesson"."like")
         "lesson"."id", "lesson"."like",
         "lesson".title, "lesson".description,
         "lesson".teacher_id, "lesson".plannified,
