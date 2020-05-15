@@ -45,7 +45,7 @@ CREATE TABLE "ask"(
     "title" TEXT NOT NULL UNIQUE,
     "description" TEXT NOT NULL,
     "author_id" INT NOT NULL,
-    "want_it" INT NOT  NULL,
+    "want_it" INT NOT  NULL DEFAULT 0,
     "level" TEXT NOT NULL, -- DOMAINE A CREER 'easy' 'normal' 'hard' 'expert'
     "status" TEXT NOT NULL, -- DOMAINE A CREER - actif / inactif
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
