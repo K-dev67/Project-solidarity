@@ -38,7 +38,7 @@ const dataMapper = {
         "lesson"."id", "lesson"."like",
         "lesson".title, "lesson".description,
         "lesson".teacher_id, "lesson".plannified,
-        "lesson"."like",
+        "lesson"."level",
         category.picture
         FROM "lesson"
         JOIN lesson_has_category ON lesson.id = lesson_id
