@@ -1,3 +1,37 @@
+.container-chat-main {
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  .chat-all-messages {
+    background: rgba(19, 37, 41, .8) !important;
+    box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+    .chat-message {        
+      padding-bottom: 0.5em;
+      
+      //flex-wrap: wrap;
+      .message-author {
+        //border-bottom: 1px solid rgba(10, 180, 180, 1) !important;
+        padding: 1.5em;
+        margin-bottom: 1em;
+      }
+      .message-content {
+        margin-left: 1em;
+        padding-top: 0.7em;
+        div {
+          border: 1px solid rgba(10, 180, 180, 1) !important;
+          background: rgba(97, 121, 121, 0.2) !important;
+          position: relative;
+          padding-top: 1em;
+          padding: 0.5em;
+          padding-right: 1em;
+          border-radius: 0.6em;
+        }
+      }
+      .date-message {
+        //color: black !important;
+        display: none;
+      }
+    }
+  }
+}
 // css file for picker
 
 .emoji-mart,

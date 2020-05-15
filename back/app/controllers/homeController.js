@@ -109,7 +109,20 @@ const homeController = {
             
         });
     },
-    
+    getThisCategory: (req, res) => {
+        const lessonId = req.params.id;
+        dataMapper.getCategoryLesson(lessonId, (error, data) => {
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            if (data.rowCount === 0){
+                res.send('Pas de category');
+            }
+            const lessonCategory = data.rows;
+            res.send(lessonCategory);
+        });
+    },
 };
 
 module.exports = homeController;
