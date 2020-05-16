@@ -23,13 +23,12 @@
   background: rgba(19, 37, 41, 1) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
   .positive {
-   
     background: rgba(19, 37, 41, 1) !important;
-    //box-shadow: none;
     border: none;
     .header {
       padding: 0;
       background: none !important;
+      box-shadow: none !important;
     }
   }
 }
