@@ -39,6 +39,7 @@
     p {
       display: inline;
       flex-wrap: wrap;
+      color: white !important;
     }
     color: black !important;
     flex-wrap: wrap;
@@ -50,5 +51,71 @@
   }
 }
 .ask-card {
-  background: white !important;
+  transition: 0.4s;
+  border-radius: 0.5em !important;
+  margin-left: 1em !important;
+  background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+  padding: 0.5em !important;
+  .for-ask-border {
+    
+    .header {
+      font-size: 1.5em;
+      color: white;
+      font-weight: bold;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      padding-left: 0.5em;
+      a {
+        //padding-left: -1.5em !important;
+        margin-left: 0.4em;
+      }
+    }
+    .meta {
+      display: none !important;
+    }
+    .description {
+      background: rgba(19, 37, 41, 0.9) !important;
+      box-shadow: inset 3px 10px 20px 5px rgba(0, 0, 0, .8) !important;
+      font-size: 1.1em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      padding-left: 1em;
+      min-height: 15vh;
+      color: white !important;
+    }
+    .extra {
+      background: rgba(19, 37, 41, 1) !important;
+      box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+      color: white;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      padding-left: 0.5em;
+      font-size: 1.1em;
+    }
+  }
+  &:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  .btn-ask-lesson {
+    margin-bottom: 0.5em !important;
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+    background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+    color: white !important;
+    border: 1px solid rgba(10, 180, 180, 1) !important;
+    height: 5vh !important;
+    width: 30% !important;
+    cursor: pointer !important;
+    transition: 0.5s !important;
+    &:hover {
+      //background: rgba(20, 20, 20, 1) !important;
+      width: 40% !important;
+    }
+  }
 }

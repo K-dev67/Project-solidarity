@@ -20,11 +20,14 @@ import 'moment/locale/fr';
 import AddAskLessonModal from './AskLessonModal';
 import UpdateAskLessonModal from './UpdateAskLessonModal';
 import Loading from '../Loading';
-
+import background from '../../assets/img/Pattern_fond.png';
 
 const AskLessons = () => {
   const dispatch = useDispatch();
   const { askLessons, userId } = useSelector((state) => state);
+  const contentStyle = {
+    backgroundImage: `url(${background})`,
+  };
   useEffect(() => {
     axios.get(`${API_URL}/askList`)
       .then((res) => {
@@ -98,39 +101,43 @@ const AskLessons = () => {
         color={colorOwner}
         key={askLesson.id}
       >
-        <Card.Content>
-          <Card.Header>
-            {labelJSX}
-            {askLesson.title}
+        <div className="for-ask-border">
+          <Card.Content>
+            <Card.Header style={contentStyle}>
+              {labelJSX}
+              {askLesson.title}
 
-          </Card.Header>
-          <Card.Meta>
-            <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
-          </Card.Meta>
-          <Card.Description>
-            <p>{askLesson.description}</p>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="link-ask-div">
-            <Link
-              to="lessons"
-            >
-              <Icon name="calendar" />
-              Proposer un cours
-            </Link>
-          </div>
-          <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
-          <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
-          <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
-        </Card.Content>
+            </Card.Header>
+            <Card.Meta>
+              <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
+            </Card.Meta>
+            <Card.Description>
+              <p>{askLesson.description}</p>
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <div className="link-ask-div">
+              <Link
+                to="lessons"
+              >
+                <Icon name="calendar" />
+                Proposer un cours
+              </Link>
+            </div>
+            <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
+            <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
+            <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
+          </Card.Content>
+        </div>
       </Card>
     );
   });
   return (
     <div className="askLessons">
       <Segment>
+      <div className="btn-container">
         <AddAskLessonModal />
+        </div>
         {/* <InputSearchLesson />  */}
         <Card.Group
           itemsPerRow={3}

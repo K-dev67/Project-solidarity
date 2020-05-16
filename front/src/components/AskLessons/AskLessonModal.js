@@ -20,7 +20,8 @@ const AskLessonModal = () => {
     backgroundImage: `url(${background})`,
   };
   return (
-    <Modal trigger={<Button onClick={handleClick} fluid>Faire une demande de cours</Button>}>
+
+  <Modal trigger={<Button className="btn-ask-lesson" onClick={handleClick} fluid>Faire une demande de cours</Button>}>
       <Modal.Header style={contentStyle}>Faire une demande de cours</Modal.Header>
       <Modal.Content className="addAskModal">
         <MessagePositive />
