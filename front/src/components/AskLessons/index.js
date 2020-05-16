@@ -18,6 +18,7 @@ import 'moment/locale/fr';
 
 // import component
 import AddAskLessonModal from './AskLessonModal';
+import UpdateAskLessonModal from './UpdateAskLessonModal';
 import Loading from '../Loading';
 
 
@@ -41,7 +42,9 @@ const AskLessons = () => {
     // == pour différencier un proprio
     if (askLesson.author_id === userId) {
       colorOwner = 'teal';
-      iconPencil = (<Icon name="pencil" />);
+      // cet icone stylo me renvoit la modal updateAskLesson
+      iconPencil = (<UpdateAskLessonModal askLesson={askLesson} />
+      );
       iconCross = (<Icon name="close" />);
     }
     // == pour delete une carte
@@ -49,10 +52,10 @@ const AskLessons = () => {
       dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
     };
     // == pour update une carte
-    const handleUpdate = () => {
-      console.log('clickk');
-      console.log('askLesson.id', askLesson.id);
-    };
+    // const handleUpdate = () => {
+    //   console.log('clickk');
+    //   console.log('askLesson.id', askLesson.id);
+    // };
     // == pour like une carte
     const handleLike = () => {
       console.log('liké');
@@ -98,7 +101,7 @@ const AskLessons = () => {
           <Card.Header>
             {labelJSX}
             {askLesson.title}
-            
+
           </Card.Header>
           <Card.Meta>
             <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
@@ -116,9 +119,8 @@ const AskLessons = () => {
               Proposer un cours
             </Link>
           </div>
-          {/* <div><Icon /></div> */}
-          <div className="pencil-ask-card" style={{ cursor: 'pointer' }} onClick={handleUpdate}>{iconPencil}</div>
-            <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
+          <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
+          <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
           <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
         </Card.Content>
       </Card>
