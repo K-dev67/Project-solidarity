@@ -5,12 +5,11 @@ import { DELETE_ASK_LESSON } from '../../store/actions';
 
 
 const ConfirmDelete = ({ askLesson }) => {
+  const dispatch = useDispatch();
   console.log('confirm delete');
   const handleDelete = () => {
-    const dispatch = useDispatch();
     dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
   };
-  //   state = { open: false };
   const [open, setOpen] = useState(false);
 
   return (

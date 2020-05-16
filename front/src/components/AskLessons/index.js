@@ -11,6 +11,8 @@ import {
 } from 'semantic-ui-react';
 // == cst
 import Moment from 'react-moment';
+// ant
+import { Popconfirm } from 'antd';
 import { API_URL } from '../../utils/constante';
 import { SET_ASK_LESSONS, DELETE_ASK_LESSON } from '../../store/actions';
 // react Moment
@@ -19,7 +21,7 @@ import 'moment/locale/fr';
 // import component
 import AddAskLessonModal from './AskLessonModal';
 import UpdateAskLessonModal from './UpdateAskLessonModal';
-import ConfirmDelete from './ConfirmDelete';
+// import ConfirmDelete from './ConfirmDelete';
 import Loading from '../Loading';
 
 
@@ -37,28 +39,33 @@ const AskLessons = () => {
 
   let colorOwner = '';
   let iconPencil = '';
-  let iconCross = '';
+  // let iconCross = '';
   let confirmDelete = '';
   // == composant ask lesson JSX
   const askLessonsJSX = askLessons.map((askLesson) => {
     // == pour différencier un proprio
     if (askLesson.author_id === userId) {
+      // == pour delete une carte
+      const handleDelete = () => {
+        dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
+      };
       colorOwner = 'teal';
       // cet icone stylo me renvoit la modal updateAskLesson
-      iconPencil = (<UpdateAskLessonModal askLesson={askLesson} />
+      iconPencil = (<a href="#"><UpdateAskLessonModal askLesson={askLesson} /></a>
       );
-      iconCross = (<><Icon name="close" /></>);
-      confirmDelete = (<ConfirmDelete askLesson={askLesson} />);
+      // iconCross = (<><Icon name="close" /></>);
+      confirmDelete = (
+        <Popconfirm
+          title="Confirmez-vous la suppression ?"
+          okText="Oui"
+          cancelText="Non"
+          onConfirm={handleDelete}
+        >
+          <a href="#"><Icon name="close" /></a>
+        </Popconfirm>
+      );
     }
-    // == pour delete une carte
-    const handleDelete = () => {
-      dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
-    };
-    // == pour update une carte
-    // const handleUpdate = () => {
-    //   console.log('clickk');
-    //   console.log('askLesson.id', askLesson.id);
-    // };
+
     // == pour like une carte
     const handleLike = () => {
       console.log('liké');
@@ -125,7 +132,16 @@ const AskLessons = () => {
           </div>
           <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
           {/* {confirmDelete} */}
-          <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
+          {/* <Popconfirm
+            title="Confirmez-vous la suppression ?"
+            onConfirm={() => onDelete(record.key)}
+            okText="Oui"
+            cancelText="Non"
+          >
+            <a>Supprimer</a>
+          </Popconfirm> */}
+          {confirmDelete}
+          {/* <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div> */}
           <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
         </Card.Content>
       </Card>
