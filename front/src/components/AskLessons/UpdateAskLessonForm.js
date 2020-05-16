@@ -2,18 +2,14 @@ import React, { useEffect } from 'react';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+// == actions
 import { UPDATE_ASKLESSON_IN_BDD } from 'src/store/actions';
 import getCategories from '../../utils/getCategories';
-// == actions
 
 
 const UpdateAskLessonForm = ({ askLesson }) => {
   const dispatch = useDispatch();
   useEffect(getCategories, []);
-  //   const categories = useSelector((state) => state.categories);
-  //   const optionCategoryJSX = categories.map((categorie) => (
-  //     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
-  //   ));
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     dispatch({ type: UPDATE_ASKLESSON_IN_BDD, payload: data, askLessonId: askLesson.id });
@@ -41,7 +37,7 @@ const UpdateAskLessonForm = ({ askLesson }) => {
             <p>Niveau</p>
             <select name="Niveau" ref={register({ required: true })}>
               {errors.Niveau && <div className="error-form">Niveau requis</div>}
-              {/* <option value="">niveaux</option> */}
+
               <p>{askLesson.level}</p>
               <option value="">Niveau</option>
               <option value="easy">easy</option>
@@ -50,14 +46,6 @@ const UpdateAskLessonForm = ({ askLesson }) => {
               <option value="expert">expert</option>
             </select>
           </div>
-          {/* <div className="category">
-            <p>Categorie</p>
-            <select name="Catégorie" ref={register({ required: true })}>
-              {errors.Catégorie && <div>champ requis</div>}
-              <option value="">matières</option>
-              {optionCategoryJSX}
-            </select>
-          </div> */}
         </div>
       </div>
       <div className="submit-add-lesson">
