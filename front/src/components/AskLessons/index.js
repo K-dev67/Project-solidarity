@@ -19,6 +19,7 @@ import 'moment/locale/fr';
 // import component
 import AddAskLessonModal from './AskLessonModal';
 import UpdateAskLessonModal from './UpdateAskLessonModal';
+import ConfirmDelete from './ConfirmDelete';
 import Loading from '../Loading';
 
 
@@ -37,6 +38,7 @@ const AskLessons = () => {
   let colorOwner = '';
   let iconPencil = '';
   let iconCross = '';
+  let confirmDelete = '';
   // == composant ask lesson JSX
   const askLessonsJSX = askLessons.map((askLesson) => {
     // == pour différencier un proprio
@@ -45,7 +47,8 @@ const AskLessons = () => {
       // cet icone stylo me renvoit la modal updateAskLesson
       iconPencil = (<UpdateAskLessonModal askLesson={askLesson} />
       );
-      iconCross = (<Icon name="close" />);
+      iconCross = (<><Icon name="close" /></>);
+      confirmDelete = (<ConfirmDelete askLesson={askLesson} />);
     }
     // == pour delete une carte
     const handleDelete = () => {
@@ -121,6 +124,7 @@ const AskLessons = () => {
             </Link>
           </div>
           <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
+          {/* {confirmDelete} */}
           <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
           <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
         </Card.Content>

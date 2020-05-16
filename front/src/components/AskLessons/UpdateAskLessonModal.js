@@ -29,8 +29,6 @@ const UpdateAskLessonModal = ({ askLesson }) => {
       <Modal.Content className="addAskModal" image>
         <MessagePositive />
         <Modal.Description>
-          {/* <Header>Cours prévu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment></Header> */}
-          {/* <UpdateLessonForm lesson={lesson} /> */}
           <UpdateAskLessonForm askLesson={askLesson} />
         </Modal.Description>
       </Modal.Content>
