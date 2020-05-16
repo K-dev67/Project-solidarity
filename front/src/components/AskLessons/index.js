@@ -91,6 +91,7 @@ const AskLessons = () => {
     }
     return (
       <Card
+        className="ask-card"
         color={colorOwner}
         key={askLesson.id}
       >
