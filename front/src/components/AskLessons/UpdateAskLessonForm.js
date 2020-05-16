@@ -16,7 +16,7 @@ const UpdateAskLessonForm = ({ askLesson }) => {
   //   ));
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    dispatch({ type: UPDATE_ASKLESSON_IN_BDD, payload: data });
+    dispatch({ type: UPDATE_ASKLESSON_IN_BDD, payload: data, askLessonId: askLesson.id });
     console.log(data);
     console.log(errors);
   };

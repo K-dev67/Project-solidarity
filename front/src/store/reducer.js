@@ -1,5 +1,6 @@
 /* eslint-disable no-fallthrough */
 import axios from 'axios';
+import { CommentActions } from 'semantic-ui-react';
 import getLesson from '../utils/getLessons';
 import getLessonById from '../utils/getLessons';
 import { API_URL } from '../utils/constante';
@@ -269,7 +270,16 @@ export default (state = initialState, action = {}) => {
         .catch((error) => console.trace(error));
     }
     case UPDATE_ASKLESSON_IN_BDD: {
-
+      const { userId } = state;
+      console.log('action.payload', action.payload);
+      axios
+        .patch(`/user/${userId}/ask/${action.askLessonId}`, {
+          // title: action.payload.
+          title: action.payload.Titre,
+          description: action.payload.Description,
+          level: action.payload.Niveau,
+        })
+        .then((res) => console.log('res in updateAskLesson', res));
     }
     // == update user
     case UPDATE_USER: {
