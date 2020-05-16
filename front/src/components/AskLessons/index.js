@@ -98,8 +98,7 @@ const AskLessons = () => {
           <Card.Header>
             {labelJSX}
             {askLesson.title}
-            <div style={{ cursor: 'pointer' }} onClick={handleUpdate}>{iconPencil}</div>
-            <div style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
+            
           </Card.Header>
           <Card.Meta>
             <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
@@ -109,14 +108,18 @@ const AskLessons = () => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link
-            to="lessons"
-          >
-            <Icon name="calendar" />
-            Proposer un cours
-          </Link>
+          <div className="link-ask-div">
+            <Link
+              to="lessons"
+            >
+              <Icon name="calendar" />
+              Proposer un cours
+            </Link>
+          </div>
           {/* <div><Icon /></div> */}
-          <div style={{ cursor: 'pointer' }} onClick={handleLike}>{askLesson.want_it}<Icon name="heart" color="teal" /></div>
+          <div className="pencil-ask-card" style={{ cursor: 'pointer' }} onClick={handleUpdate}>{iconPencil}</div>
+            <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div>
+          <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
         </Card.Content>
       </Card>
     );

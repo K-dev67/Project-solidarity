@@ -14,7 +14,7 @@
   // == modal add lesson
 
     .modal .lessonContent {
-      background: rgba(19, 37, 41, .8) !important;
+      background: rgba(19, 37, 41, 1) !important;
       box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
       .message {
         padding: 0;
@@ -147,6 +147,7 @@
     input {
         /*height: 2em;
         width: 5em;*/
+        border-radius: 0.4em;
         border: 1px solid rgba(10, 180, 180, 1);
         background: rgba(20, 20, 20, .6);
         font-size: 18px;

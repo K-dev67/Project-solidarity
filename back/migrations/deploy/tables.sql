@@ -52,6 +52,7 @@ CREATE TABLE "ask"(
     "updated_at" TIMESTAMP
 );
 
+
 CREATE TABLE "category"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" TEXT NOT NULL UNIQUE,
