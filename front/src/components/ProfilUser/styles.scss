@@ -56,6 +56,7 @@
   }
 }
 .signup-form {
+  text-align: center;
   border: none !important;
   background: none !important;
   box-shadow: none !important;
@@ -78,6 +79,13 @@
     color: white !important;
     background: rgba(19, 37, 41, .8) !important;
     }
+  }
+  .field label {
+    color: white !important;
+    text-align: center !important;
+  }
+  .field::before {
+    align-content: center;
   }
 }
 .passwordModal {
