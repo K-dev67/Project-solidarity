@@ -394,6 +394,7 @@ export default (state = initialState, action = {}) => {
           console.log('res in Delete Lesson', res);
           getLesson();
         });
+      next(action);
     }
     case ADD_CATEGORY_ON_LESSON: {
       const { userId, lessonId, categoryName } = action.payload;

@@ -50,10 +50,10 @@ const AskLessons = () => {
         dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
       };
       colorOwner = 'teal';
-      // cet icone stylo me renvoit la modal updateAskLesson
+
       iconPencil = (<a href="#"><UpdateAskLessonModal askLesson={askLesson} /></a>
       );
-      // iconCross = (<><Icon name="close" /></>);
+
       confirmDelete = (
         <Popconfirm
           title="Confirmez-vous la suppression ?"
@@ -131,17 +131,7 @@ const AskLessons = () => {
             </Link>
           </div>
           <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
-          {/* {confirmDelete} */}
-          {/* <Popconfirm
-            title="Confirmez-vous la suppression ?"
-            onConfirm={() => onDelete(record.key)}
-            okText="Oui"
-            cancelText="Non"
-          >
-            <a>Supprimer</a>
-          </Popconfirm> */}
           {confirmDelete}
-          {/* <div className="croix-ask-card" style={{ cursor: 'pointer' }} onClick={handleDelete}>{iconCross}</div> */}
           <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
         </Card.Content>
       </Card>
