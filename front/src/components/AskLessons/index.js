@@ -29,13 +29,14 @@ const AskLessons = () => {
   const dispatch = useDispatch();
   const { askLessons, userId } = useSelector((state) => state);
   useEffect(() => {
+    console.log('hello');
     axios.get(`${API_URL}/askList`)
       .then((res) => {
         dispatch({ type: SET_ASK_LESSONS, payload: res.data });
       })
       .catch((error) => console.trace(error));
   },
-  [askLessons]);
+  []);
 
   let colorOwner = '';
   let iconPencil = '';
@@ -132,7 +133,7 @@ const AskLessons = () => {
           </div>
           <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
           {confirmDelete}
-          <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></div>
+          <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><a><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></a></div>
         </Card.Content>
       </Card>
     );

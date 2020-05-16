@@ -276,7 +276,6 @@ export default (state = initialState, action = {}) => {
       console.log('action.askLessonId', action.askLessonId);
       axios
         .patch(`${API_URL}/user/${userId}/ask/${action.askLessonId}`, {
-          // title: action.payload.
           title: action.payload.Titre,
           description: action.payload.Description,
           level: action.payload.Niveau,
@@ -285,6 +284,11 @@ export default (state = initialState, action = {}) => {
           console.log('res in updateAskLesson', res);
           if (res.status === 200) {
             store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+            axios.get(`${API_URL}/askList`)
+              .then((res2) => {
+                store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
+              })
+              .catch((error) => console.trace(error));
           }
         });
       next(action);

@@ -42,6 +42,10 @@ const Lessons = () => {
     if (lesson.teacher_id === userId) {
       colorOwner = 'teal';
     }
+    // pour s'inscrire à un cours
+    const handleSubscribe = () => {
+
+    };
 
     const handleClick = () => {
       // recup via une requete les id de la leçon et
@@ -104,10 +108,13 @@ const Lessons = () => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
-            <Icon name="calendar" />
-            Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
-          </a>
+
+          <Icon name="calendar" />
+          Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
+          <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}>
+            <a>{lesson.like}<Icon name="bell outline" size="large" /></a>
+          </div>
+
         </Card.Content>
       </Card>
     );
@@ -134,3 +141,5 @@ export default Lessons;
 // normal => bleu
 // hard => red
 // expert => black
+
+// <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}><a><p /><Icon name="heart" color="teal" /></a></div>;
