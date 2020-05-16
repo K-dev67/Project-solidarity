@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+// == axios
+import axios from 'axios';
+import { API_URL } from '../../utils/constante';
 import { Link } from 'react-router-dom';
 
 // == import component semantic
@@ -42,6 +45,20 @@ const Lessons = () => {
     if (lesson.teacher_id === userId) {
       colorOwner = 'teal';
     }
+    // pour s'inscrire à un cours
+    const handleSubscribe = () => {
+      console.log('subscribe');
+      axios.get(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
+        .then((res) => {
+          console.log('res', res);
+          getLessons();
+        });
+      axios.get(`${API_URL}/user/${userId}/lesson/${lesson.id}/like`)
+        .then((res) => {
+          console.log('res', res);
+          getLessons();
+        });
+    };
 
     const handleClick = () => {
       // recup via une requete les id de la leçon et
@@ -104,10 +121,13 @@ const Lessons = () => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
-            <Icon name="calendar" />
-            Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
-          </a>
+
+          <Icon name="calendar" />
+          Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
+          <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}>
+            <a>{lesson.like}<Icon name="bell outline" size="large" /></a>
+          </div>
+
         </Card.Content>
       </Card>
     );
@@ -134,3 +154,5 @@ export default Lessons;
 // normal => bleu
 // hard => red
 // expert => black
+
+// <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}><a><p /><Icon name="heart" color="teal" /></a></div>;

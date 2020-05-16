@@ -20,14 +20,11 @@ const AskLessonModal = () => {
     backgroundImage: `url(${background})`,
   };
   return (
-
   <Modal trigger={<Button className="btn-ask-lesson" onClick={handleClick} fluid>Faire une demande de cours</Button>}>
       <Modal.Header style={contentStyle}>Faire une demande de cours</Modal.Header>
       <Modal.Content className="addAskModal">
         <MessagePositive />
-        {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}
         <Modal.Description>
-          {/* <Header>Default Profile Image</Header> */}
           <AskLessonForm />
         </Modal.Description>
       </Modal.Content>

@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import { Button } from 'semantic-ui-react';
+// ant
+import { Popconfirm } from 'antd';
 import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON } from '../../store/actions';
 import UpdateLessonModal from './UpdateLessonModal';
+
 
 const UpdateTeacherComponent = ({ lesson }) => {
   const dispatch = useDispatch();
@@ -17,17 +20,23 @@ const UpdateTeacherComponent = ({ lesson }) => {
   if (userId === lesson.teacher_id) modifyButtonJSX = <UpdateLessonModal lesson={lesson} />;
   if (userId === lesson.teacher_id) {
     deleteButtonJSX = (
-      <Button
-        onClick={() => {
-          dispatch({
-            type: DELETE_LESSON,
-            payload: {
-              userId,
-              lessonId: lesson.id,
-            },
-          });
-        }}
-      >Supprimer votre cours
+      <Button>
+        <Popconfirm
+          title="Confirmez-vous la suppression ?"
+          okText="Oui"
+          cancelText="Non"
+          onConfirm={() => {
+            dispatch({
+              type: DELETE_LESSON,
+              payload: {
+                userId,
+                lessonId: lesson.id,
+              },
+            });
+          }}
+        >
+          Supprimer votre cours
+        </Popconfirm>
       </Button>
     );
   }

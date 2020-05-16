@@ -17,6 +17,8 @@ import store from 'src/store';
 
 // == Import Semantic UI React
 import 'semantic-ui-css/semantic.min.css';
+import 'antd/dist/antd.css';
+
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
