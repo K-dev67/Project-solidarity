@@ -16,7 +16,7 @@ const ImageCategory = ({ picture }) => (
   <>
     {/* <Image src={`/src/assets/img/category/${lesson.picture}.png`} size="medium" bordered /> */}
     {/* <Image src="./src/assets/img/category/Geographie.png" size="medium" bordered /> */}
-    <Image src={maths} size="medium" bordered />
+    <Image src={geographie} size="medium" bordered />
   </>
 );
 
