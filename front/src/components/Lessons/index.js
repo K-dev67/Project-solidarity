@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+// == axios
+import axios from 'axios';
+import { API_URL } from '../../utils/constante';
 import { Link } from 'react-router-dom';
 
 // == import component semantic
@@ -44,7 +47,17 @@ const Lessons = () => {
     }
     // pour s'inscrire à un cours
     const handleSubscribe = () => {
-
+      console.log('subscribe');
+      axios.get(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
+        .then((res) => {
+          console.log('res', res);
+          getLessons();
+        });
+      axios.get(`${API_URL}/user/${userId}/lesson/${lesson.id}/like`)
+        .then((res) => {
+          console.log('res', res);
+          getLessons();
+        });
     };
 
     const handleClick = () => {

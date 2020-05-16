@@ -71,7 +71,14 @@ const AskLessons = () => {
     const handleLike = () => {
       console.log('liké');
       axios.get(`${API_URL}/user/${userId}/ask/${askLesson.id}/subscribe`)
-        .then((res) => console.log('res', res));
+        .then((res) => {
+          console.log('res', res);
+          axios.get(`${API_URL}/askList`)
+            .then((res) => {
+              dispatch({ type: SET_ASK_LESSONS, payload: res.data });
+            })
+            .catch((error) => console.trace(error));
+        });
     };
     // == label levels
     let labelJSX = '';
