@@ -268,18 +268,26 @@ export default (state = initialState, action = {}) => {
             });
         })
         .catch((error) => console.trace(error));
+      next(action);
     }
     case UPDATE_ASKLESSON_IN_BDD: {
       const { userId } = state;
       console.log('action.payload', action.payload);
+      console.log('action.askLessonId', action.askLessonId);
       axios
-        .patch(`/user/${userId}/ask/${action.askLessonId}`, {
+        .patch(`${API_URL}/user/${userId}/ask/${action.askLessonId}`, {
           // title: action.payload.
           title: action.payload.Titre,
           description: action.payload.Description,
           level: action.payload.Niveau,
         })
-        .then((res) => console.log('res in updateAskLesson', res));
+        .then((res) => {
+          console.log('res in updateAskLesson', res);
+          if (res.status === 200) {
+            store.dispatch({ type: MESSAGE_POSITIF_TRUE });
+          }
+        });
+      next(action);
     }
     // == update user
     case UPDATE_USER: {
