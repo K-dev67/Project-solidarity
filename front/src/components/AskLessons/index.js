@@ -23,11 +23,14 @@ import AddAskLessonModal from './AskLessonModal';
 import UpdateAskLessonModal from './UpdateAskLessonModal';
 // import ConfirmDelete from './ConfirmDelete';
 import Loading from '../Loading';
-
+import background from '../../assets/img/Pattern_fond.png';
 
 const AskLessons = () => {
   const dispatch = useDispatch();
   const { askLessons, userId } = useSelector((state) => state);
+  const contentStyle = {
+    backgroundImage: `url(${background})`,
+  };
   useEffect(() => {
     console.log('hello');
     axios.get(`${API_URL}/askList`)
@@ -116,10 +119,12 @@ const AskLessons = () => {
         color={colorOwner}
         key={askLesson.id}
       >
-        <Card.Content>
-          <Card.Header>
-            {labelJSX}
-            {askLesson.title}
+        <div className="for-ask-border">
+          <Card.Content>
+            <Card.Header style={contentStyle}>
+              {labelJSX}
+              {askLesson.title}
+
 
           </Card.Header>
           <Card.Meta>
@@ -148,7 +153,9 @@ const AskLessons = () => {
   return (
     <div className="askLessons">
       <Segment>
+      <div className="btn-container">
         <AddAskLessonModal />
+        </div>
         {/* <InputSearchLesson />  */}
         <Card.Group
           itemsPerRow={3}
