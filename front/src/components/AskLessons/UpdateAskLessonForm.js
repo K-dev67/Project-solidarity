@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // == react hook form
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-// import { ADD_ASKLESSON_IN_BDD } from 'src/store/actions';
+import { UPDATE_ASKLESSON_IN_BDD } from 'src/store/actions';
 import getCategories from '../../utils/getCategories';
 // == actions
 
@@ -10,13 +10,13 @@ import getCategories from '../../utils/getCategories';
 const UpdateAskLessonForm = ({ askLesson }) => {
   const dispatch = useDispatch();
   useEffect(getCategories, []);
-  const categories = useSelector((state) => state.categories);
-  const optionCategoryJSX = categories.map((categorie) => (
-    <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
-  ));
+  //   const categories = useSelector((state) => state.categories);
+  //   const optionCategoryJSX = categories.map((categorie) => (
+  //     <option key={categorie.id} value={categorie.name}>{categorie.name}</option>
+  //   ));
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    // dispatch({ type: ADD_ASKLESSON_IN_BDD, payload: data });
+    dispatch({ type: UPDATE_ASKLESSON_IN_BDD, payload: data });
     console.log(data);
     console.log(errors);
   };
@@ -42,21 +42,22 @@ const UpdateAskLessonForm = ({ askLesson }) => {
             <select name="Niveau" ref={register({ required: true })}>
               {errors.Niveau && <div className="error-form">Niveau requis</div>}
               {/* <option value="">niveaux</option> */}
-              <option value={askLesson.level}>{askLesson.level}</option>
+              <p>{askLesson.level}</p>
+              <option value="">Niveau</option>
               <option value="easy">easy</option>
               <option value="normal">normal</option>
               <option value="hard">hard</option>
               <option value="expert">expert</option>
             </select>
           </div>
-          <div className="category">
+          {/* <div className="category">
             <p>Categorie</p>
             <select name="Catégorie" ref={register({ required: true })}>
               {errors.Catégorie && <div>champ requis</div>}
               <option value="">matières</option>
               {optionCategoryJSX}
             </select>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="submit-add-lesson">

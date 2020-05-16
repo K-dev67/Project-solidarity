@@ -38,6 +38,7 @@ import {
   SET_ASK_LESSONS,
   ADD_ASKLESSON_IN_BDD,
   DELETE_ASK_LESSON,
+  UPDATE_ASKLESSON_IN_BDD,
   // == ajout/remove catégorie sur leçon
   ADD_CATEGORY_ON_LESSON,
   DELETE_CATEGORY_LABEL,
@@ -266,6 +267,9 @@ export default (state = initialState, action = {}) => {
             });
         })
         .catch((error) => console.trace(error));
+    }
+    case UPDATE_ASKLESSON_IN_BDD: {
+
     }
     // == update user
     case UPDATE_USER: {
