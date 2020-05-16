@@ -20,10 +20,57 @@
     }
 }
 .addAskModal {
-  background: rgba(19, 37, 41, .8) !important;
+  background: rgba(19, 37, 41, 1) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  .positive {
+   
+    background: rgba(19, 37, 41, 1) !important;
+    //box-shadow: none;
+    border: none;
+    .header {
+      padding: 0;
+      background: none !important;
+    }
+  }
 }
-
+.extra {
+  display: flex;
+  //height: 3vh;
+  .link-ask-div {
+    width: 70%;
+    flex-wrap: wrap;
+  }
+  /*a {
+    margin-right: 15vh;
+  }*/
+  .pencil-ask-card {
+    //margin-left: 3em;
+    //display:inline;
+    width: 6%;
+    flex-wrap: wrap;
+  }
+  .croix-ask-card {
+    //margin-left: 3em;
+    //display:inline;
+    width: 8%;
+    flex-wrap: wrap;
+    text-align: right;
+  }
+  .ask-heart {
+    p {
+      display: inline;
+      flex-wrap: wrap;
+    }
+    color: black !important;
+    flex-wrap: wrap;
+    text-align: right;
+    width: 16%;
+    //padding-left: 16em;
+    .icon::before {
+      color: red;
+    }
+  }
+}
 // @media (max-width: 768px) {
 //     .askLessons {
 //         div .stackable .cards {
