@@ -17,12 +17,14 @@ import Moment from 'react-moment';
 // == component
 import AddLessonModal from './AddLessonModal';
 import InputSearchLesson from './InputSearchLesson';
+import ImageCategory from './ImageCategory';
 import Loading from '../Loading';
 
 // == import from BDD
 import getLessonById from '../../utils/getLessonById';
 import getMessages from '../../utils/getMessages';
 import getLessons from '../../utils/getLessons';
+
 
 // == style
 import './styles.scss';
@@ -83,6 +85,7 @@ const Lessons = () => {
         key={lesson.id}
         color={colorOwner}
       >
+        <ImageCategory picture={lesson.picture} />
         <Card.Content>
           <Card.Header
             onClick={handleClick}
