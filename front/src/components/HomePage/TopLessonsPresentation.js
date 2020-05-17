@@ -22,8 +22,8 @@ const TopLessonsPresentation = () => {
         {/* <div className="TopLessonsPresentation_container_card" /> */}
         {TopCours}
       </div>
-      <Link to="/lessons">
-        <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
+      <Link to="/asklessons">
+        <button className="button AssetsPresentation_button" type="button">Voir la liste des demandes de cours</button>
       </Link>
     </div>
   );
