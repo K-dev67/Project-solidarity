@@ -3,21 +3,25 @@ import React from 'react';
 // == style
 import './styles.scss';
 
+// == import image
+import presentationRoom from '../../assets/img/presentation_room.png';
+import presentationLessons from '../../assets/img/presentation_lessons.png';
+
 const HowItWorksPresentation = () => (
   <div className="HowItWorksPresentation_container">
     <h2>Comment ça fonctionne ?</h2>
     <div className="HowItWorksPresentation_main">
       <div className="HowItWorksPresentation_content">
-        <img src={img1} />
+        <img src={presentationRoom} alt="presentation_room_pictures" />
         <p>
-          Le professeur propose un cours à une date et une heure qui l'interesse
+          Le professeur propose un cours à une date et une heure qui lui convient. Dans chaque salle, l'enseignant peut partager son écran, utiliser son micro et/ou activer sa camera.
         </p>
       </div>
       <div className="HowItWorksPresentation_content">
         <p>
-          L'étudiant s'inscrit au cours et revient à l'heure souahité pour suivre le cours
+          L'étudiant s'inscrit au cours et revient à l'heure souhaité pour suivre le cours.  Chaque salle possède son propre "Chat" permettant aux élèves d'échanger avec le professeur.
         </p>
-        <img src={img2} />
+        <img src={presentationLessons} alt="presentation_lessons_pictures" />
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ const AssetsPresentation = () => (
       </div>
       <div className="AssetsPresentation_card">
         <h3>Bénevolat</h3>
-        <p>Assister à des cours ou en donner, tout est gratuit...</p>
+        <p>Assister à des cours ou en proposer, tout est gratuit...</p>
       </div>
     </div>
 
@@ -26,12 +26,6 @@ const AssetsPresentation = () => (
       </Link>
     </div>
   </div>
-
-  // <div className="button-assets-presentation">
-  //   <Link to="/lessons">
-  //     <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
-  //   </Link>
-  // </div>
 
 );
 
