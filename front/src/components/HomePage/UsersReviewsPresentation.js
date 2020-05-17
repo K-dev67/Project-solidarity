@@ -14,7 +14,7 @@ const UsersReviewsPresentation = () => {
   ));
   return (
     <div className="UsersReviewsPresentation_container">
-      <h2>Ce que disent nos utlisateurs</h2>
+      <h2>Ce que disent nos utilisateurs</h2>
       <div className="UsersReviewsPresentation_container_card">
         {lesAvis}
       </div>

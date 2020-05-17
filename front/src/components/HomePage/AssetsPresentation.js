@@ -27,12 +27,6 @@ const AssetsPresentation = () => (
     </div>
   </div>
 
-  // <div className="button-assets-presentation">
-  //   <Link to="/lessons">
-  //     <button className="button AssetsPresentation_button" type="button">Voir la liste des cours</button>
-  //   </Link>
-  // </div>
-
 );
 
 export default AssetsPresentation;
