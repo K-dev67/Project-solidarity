@@ -24,3 +24,10 @@ const InputSearchLesson = () => {
 };
 
 export default InputSearchLesson;
+
+// test redux thunk
+// dispatch({ type: SET_INPUT_NAV, payload: evt.target.value })
+// .then(() => {
+//   const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
+//   dispatch({ type: SET_FILTERED_LESSONS, payload: lessonFiltered });
+// });
