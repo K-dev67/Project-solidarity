@@ -6,7 +6,10 @@ import { Input } from 'semantic-ui-react';
 const InputSearchLesson = () => {
   const dispatch = useDispatch();
   const { inputNav, lessons } = useSelector((state) => state);
-  const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
+  // const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
+  // test => gérer les maj
+  const lessonFiltered = lessons.filter((lesson) => lesson.title.toLowerCase().indexOf(inputNav.toLowerCase()) !== -1);
+
 
   return (
     <Input
