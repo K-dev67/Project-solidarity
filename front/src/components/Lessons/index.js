@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import {
   Segment, Card, Icon, Label, Image,
 } from 'semantic-ui-react';
+import { Popconfirm } from 'antd';
 
 // == import action
 import { ENTER_CHAT } from '../../store/actions';
@@ -28,13 +29,13 @@ import getLessonById from '../../utils/getLessonById';
 import getMessages from '../../utils/getMessages';
 import getLessons from '../../utils/getLessons';
 
-
 // == style
 import './styles.scss';
 
 const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
+
   const { lessonsFiltered, userId } = useSelector((state) => state);
   let colorOwner = '';
   // faire apparaitre la première catégorie
@@ -59,6 +60,18 @@ const Lessons = () => {
           getLessons();
         });
     };
+
+    // pop confirm pour subscribe à un cours
+    const confirmSubscribe = (
+      <Popconfirm
+        title="S'abonner à ce cours ?"
+        okText="Oui"
+        cancelText="Non"
+        onConfirm={handleSubscribe}
+      >
+        <a href="#"><Icon name="bell outline" size="large" /></a>
+      </Popconfirm>
+    );
 
     const handleClick = () => {
       // recup via une requete les id de la leçon et
@@ -121,13 +134,12 @@ const Lessons = () => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-
           <Icon name="calendar" />
           Le cours aura lieu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
-          <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}>
-            <a>{lesson.like}<Icon name="bell outline" size="large" /></a>
+          <div className="lesson-bell" style={{ cursor: 'pointer' }}>
+            <a>{lesson.like}</a>
+            {confirmSubscribe}
           </div>
-
         </Card.Content>
       </Card>
     );
