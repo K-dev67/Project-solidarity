@@ -32,18 +32,17 @@ const CardProfil = () => {
   } = useSelector((state) => state);
   // const avataree = `https://robohash.org/${nickname}`;
   return (
-    <div className="profilUser">
+    <div className="profil-user">
       <Card>
-        <Image src={avatar} wrapped ui={false} />
         <Card.Content>
-          <UpdateUserModal />
-          <UpdatePasswordModal />
           <Card.Header>{username}</Card.Header>
+          <Image src={avatar} wrapped ui={false} />
           <Card.Meta>
             <span className="date">a rejoint la plateforme il y a <Moment locale="fr" fromNow ago>{created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-            {firstname} {lastname} est un musicien vivant à Paris.
+          <UpdateUserModal />
+          <UpdatePasswordModal />
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

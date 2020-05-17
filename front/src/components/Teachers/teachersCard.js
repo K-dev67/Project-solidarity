@@ -8,7 +8,6 @@ import { SET_TEACHERS } from '../../store/actions';
 import Loading from '../Loading';
 import store from '../../store';
 
-
 const listTeachers = () => {
   const dispatch = useDispatch();
   useEffect(
@@ -34,31 +33,34 @@ const listTeachers = () => {
 
 
   listTeachersJSX = teachers.map((teacher) => (
-    <Card
-      key={teacher.id}
-    >
-      <Image
-        src={teacher.avatar}
-        wrapped
-        ui={false}
-      />
-      <Card.Content>
-        <Card.Header>{teacher.nickname}</Card.Header>
-        <Card.Meta>
-          <span className="date">Joined in 2015</span>
-        </Card.Meta>
-        <Card.Description>
-          {teacher.firstname} {teacher.lastname} is a musician living in Nashville.
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        {/* <a>
-          <Icon name="user" />
-          22 Friends
-        </a> */}
-        {teacher.email}
-      </Card.Content>
-    </Card>
+    <div className="teacher-div-border">
+      <Card
+        key={teacher.id}
+      >
+        
+        <Card.Content>
+          <Card.Header>{teacher.nickname}</Card.Header>
+          <Image
+          src={teacher.avatar}
+          wrapped
+          ui={false}
+        />
+          <Card.Meta>
+            <span className="date">Joined in 2015</span>
+          </Card.Meta>
+          <Card.Description>
+            {teacher.firstname} {teacher.lastname} is a musician living in Nashville.
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          {/* <a>
+            <Icon name="user" />
+            22 Friends
+          </a> */}
+          {teacher.email}
+        </Card.Content>
+      </Card>
+    </div>
   ));
 
   return (

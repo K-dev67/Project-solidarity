@@ -23,11 +23,14 @@ import AddAskLessonModal from './AskLessonModal';
 import UpdateAskLessonModal from './UpdateAskLessonModal';
 // import ConfirmDelete from './ConfirmDelete';
 import Loading from '../Loading';
-
+import background from '../../assets/img/Pattern_fond.png';
 
 const AskLessons = () => {
   const dispatch = useDispatch();
   const { askLessons, userId } = useSelector((state) => state);
+  const contentStyle = {
+    backgroundImage: `url(${background})`,
+  };
   useEffect(() => {
     console.log('hello');
     axios.get(`${API_URL}/askList`)
@@ -116,8 +119,9 @@ const AskLessons = () => {
         color={colorOwner}
         key={askLesson.id}
       >
+        <div className="for-ask-border">
         <Card.Content>
-          <Card.Header>
+          <Card.Header style={contentStyle}>
             {labelJSX}
             {askLesson.title}
 
@@ -142,6 +146,7 @@ const AskLessons = () => {
           {confirmDelete}
           <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><a><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></a></div>
         </Card.Content>
+        </div>
       </Card>
     );
   });
