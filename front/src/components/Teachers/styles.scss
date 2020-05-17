@@ -11,4 +11,70 @@
     // .card {
     //     height: 100px;
     // }
+    .three {
+      display: flex;
+      justify-content: space-around;
+    }
 }
+.teacher-div-border {
+  transition: 0.4s;
+  border-radius: 0.5em !important;
+  justify-content: center;
+  //margin-left: 1em !important;
+  background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+  padding: 0.5em !important;
+  margin: 2% !important;
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+
+    .card {
+      //background: black !important;
+
+      background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+      .image {
+        width: 250px !important;
+        img {
+          width: 250px !important;
+        }
+      }
+      .header {
+        font-size: 1.1em !important;
+        color: white !important;
+        font-weight: bold !important;
+        padding-top: 0.5 !important;
+        padding-bottom: 0.5 !important;
+        padding-left: 0.5 !important;
+        a {
+          //padding-left: -1.5em !important;
+          margin-left: 0.4em !important;
+        }
+      }
+      .meta {
+        display: none !important;
+      }
+      .description {
+        background: rgba(19, 37, 41, 0.9) !important;
+        box-shadow: inset 3px 10px 20px 5px rgba(0, 0, 0, .8) !important;
+        font-size: 1.1em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        padding-left: 1em;
+        min-height: 15vh;
+        color: white !important;
+      }
+      .extra {
+        background: rgba(19, 37, 41, 1) !important;
+        box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+        color: white;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        padding-left: 0.5em;
+        font-size: 1.1em;
+      }
+    }
+    &:hover {
+      transform: scale(0.9, 0.9);
+      
+    }
+}
+

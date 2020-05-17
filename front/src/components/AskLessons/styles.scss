@@ -53,21 +53,22 @@
 .ask-card {
   transition: 0.4s;
   border-radius: 0.5em !important;
-  margin-left: 1em !important;
+  //margin-left: 1em !important;
   background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
   padding: 0.5em !important;
+  margin: 1em !important;
   .for-ask-border {
     
     .header {
-      font-size: 1.5em;
-      color: white;
-      font-weight: bold;
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
-      padding-left: 0.5em;
+      font-size: 1.1em !important;
+      color: white !important;
+      font-weight: bold !important;
+      padding-top: 0.5em !important;
+      padding-bottom: 0.5em !important;
+      padding-left: 0.5em !important;
       a {
         //padding-left: -1.5em !important;
-        margin-left: 0.4em;
+        margin-left: 0.4em !important;
       }
     }
     .meta {
