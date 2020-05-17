@@ -120,32 +120,32 @@ const AskLessons = () => {
         key={askLesson.id}
       >
         <div className="for-ask-border">
-        <Card.Content>
-          <Card.Header style={contentStyle}>
-            {labelJSX}
-            {askLesson.title}
+          <Card.Content>
+            <Card.Header style={contentStyle}>
+              {labelJSX}
+              {askLesson.title}
 
-          </Card.Header>
-          <Card.Meta>
-            <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
-          </Card.Meta>
-          <Card.Description>
-            <p>{askLesson.description}</p>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="link-ask-div">
-            <Link
-              to="lessons"
-            >
-              <Icon name="calendar" />
-              Proposer un cours
-            </Link>
-          </div>
-          <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
-          {confirmDelete}
-          <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><a><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></a></div>
-        </Card.Content>
+            </Card.Header>
+            <Card.Meta>
+              <span className="date">La demande pour ce cours a été faite il y a  <Moment locale="fr" fromNow ago>{askLesson.created_at}</Moment> </span>
+            </Card.Meta>
+            <Card.Description>
+              <p>{askLesson.description}</p>
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <div className="link-ask-div">
+              <Link
+                to="lessons"
+              >
+                <Icon name="calendar" />
+                Proposer un cours
+              </Link>
+            </div>
+            <div className="pencil-ask-card" style={{ cursor: 'pointer' }}>{iconPencil}</div>
+            {confirmDelete}
+            <div className="ask-heart" style={{ cursor: 'pointer' }} onClick={handleLike}><a><p>{askLesson.want_it}</p><Icon name="heart" color="teal" /></a></div>
+          </Card.Content>
         </div>
       </Card>
     );

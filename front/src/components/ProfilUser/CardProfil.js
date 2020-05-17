@@ -41,8 +41,8 @@ const CardProfil = () => {
             <span className="date">a rejoint la plateforme il y a <Moment locale="fr" fromNow ago>{created_at}</Moment> </span>
           </Card.Meta>
           <Card.Description>
-          <UpdateUserModal />
-          <UpdatePasswordModal />
+            <UpdateUserModal />
+            <UpdatePasswordModal />
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
