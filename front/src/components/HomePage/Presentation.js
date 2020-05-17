@@ -7,7 +7,7 @@ const Presentation = () => (
   <div className="container_presentation">
     <div className="container_presentation_main">
       <h1>Cours Gratuit en Live</h1>
-      <p>Bienvenue sur le projet Solidarity, ce site est basé sur le partage des connaissances, chacun peut enseigner ou tout simplement assister a un cour qu'il apprecie. Enjoy ;-)</p>
+      <p>Bienvenue sur la plateforme Solidarity. Ce site est basé sur le partage des connaissances, chacun(e) peut enseigner et/ou assister à un cours qu'il souhaite. Enjoy ;-)</p>
     </div>
     <div className="container_presentation_image">
       <img src={image} />
