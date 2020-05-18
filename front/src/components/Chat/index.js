@@ -72,13 +72,11 @@ const Chat = ({ lessonId }) => {
               />
 
             </div>
-
             {/* </button> */}
             {/* </div> */}
-            {/* <Picker onChange={(data) => console.log(data)} />; */}
+            {/* <Picker onChange={(data) => console.log(data)} /> */}
           </div>
         </form>
-
       </div>
     </div>
   );
