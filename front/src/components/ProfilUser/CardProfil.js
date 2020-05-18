@@ -22,13 +22,18 @@ import './styles.scss';
 
 const CardProfil = () => {
   const user = useSelector((state) => state.user);
+  // const {
+  //   avatar, email, created_at,
+  // } = user;
   const {
-    avatar, email, created_at,
+    created_at,
   } = user;
   const {
     firstname,
     lastname,
     username,
+    email,
+    avatar,
   } = useSelector((state) => state);
   // const avataree = `https://robohash.org/${nickname}`;
   return (
