@@ -34,7 +34,6 @@ router.get('/askList', homeController.showAsk);
 router.post('/askList', homeController.showAskByCategory);
 router.get('/categoryList', homeController.showAllCategory);
 router.get('/categoryList/:id', homeController.getThisCategory);
-//router.post('/search', homeController.searchFilter);
 
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
@@ -56,14 +55,9 @@ router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAs
 router.get('/liveLesson', liveController.showAllLiveLesson);
 router.get('/liveLesson/:id', liveController.showThisLiveLesson);
 router.get('/calendar', liveController.showCalendar);
-
-// A voir avec antho => modif le 5/18/ Aprem
-router.get('/user/:id/lesson/:Id/subscribe', liveController.subscribeLesson);
-router.delete('/user/:id/lesson/:Id/subscribe', liveController.unsubLesson);
-router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
-router.delete('/user/:id/ask/:Id/subscribe', liveController.unsubAsk);
-router.get('/user/:id/lesson/:Id/like', liveController.likeLesson);
-router.delete('/user/:id/lesson/:Id/like', liveController.dislikeLesson);
+router.patch('/user/:id/lesson/:Id/subscribe', liveController.subscribeLesson);
+router.patch('/user/:id/ask/:Id/like', liveController.likeAsk);
+router.patch('/user/:id/lesson/:Id/like', liveController.likeLesson);
 
 // LES ROUTES CONCERNANT LES USER
 router.get('/profile/:id', userController.showProfile);
