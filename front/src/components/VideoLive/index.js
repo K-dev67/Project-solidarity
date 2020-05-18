@@ -10,11 +10,10 @@ const handleAPI = (JitsiMeetAPI) => {
 
 
 const Video = ({ lesson }) => {
-  console.log('lesson', lesson);
   const userId = useSelector((state) => state.userId);
   const user = useSelector((state) => state.user);
   // == interface config
-  let inferfaceConfig = { TOOLBAR_BUTTONS: ['videoquality', 'fullscreen', 'raisehand'] };
+  let inferfaceConfig = { TOOLBAR_BUTTONS: ['videoquality', 'fullscreen', 'raisehand', 'hangup'] };
   if (userId === lesson.teacher_id) {
     inferfaceConfig = {
       TOOLBAR_BUTTONS: [
@@ -27,7 +26,7 @@ const Video = ({ lesson }) => {
         'hangup',
         'profile',
         'info',
-        'chat',
+        // 'chat',
         'recording',
         'livestreaming',
         'etherpad',
