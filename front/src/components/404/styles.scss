@@ -1,19 +1,25 @@
-.quatre {
+.container-404 {
     min-height: calc(100vh - 64px - 50px);
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-        height: 500px;
-        width: auto;
+    flex-direction: column;
+    .quatre {
+        img {
+            height: 500px;
+            width: auto;
+        }
+        .source_img {
+            text-align: center;
+        }
     }
 }
 
+
 @media (max-width: 519px) {
-    .quatre {
+    .container-404 {
         min-height: calc(100vh - 156px - 50px);
     }
-
 }
 
 @media (max-width: 460px) {
@@ -22,5 +28,4 @@
             height: 300px
         }
     }
-
 }

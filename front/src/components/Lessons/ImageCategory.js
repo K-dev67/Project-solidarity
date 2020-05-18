@@ -9,7 +9,7 @@ import {
 import geographie from '../../assets/img/category/Geographie.png';
 import informatique from '../../assets/img/category/Informatique.png';
 import marketing from '../../assets/img/category/Marketing.png';
-import maths from '../../assets/img/category/Maths.png';
+import mathematiques from '../../assets/img/category/Mathematiques.png';
 import physique from '../../assets/img/category/Physique.png';
 
 const ImageCategory = ({ picture }) => (
