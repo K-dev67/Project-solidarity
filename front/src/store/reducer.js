@@ -22,6 +22,7 @@ import {
   // pour reset le state
   RESET,
   SET_USER,
+  SET_USER_TOKEN,
   UPDATE_USER,
   UPDATE_MAIL,
   UPDATE_PASSWORD,
@@ -65,6 +66,7 @@ const initialState = {
   inputNav: '',
   lessonsFiltered: [],
   // form du signUp
+  userToken: '',
   username: '',
   firstname: '',
   lastname: '',
@@ -175,6 +177,12 @@ export default (state = initialState, action = {}) => {
         lastname: action.user.lastname,
         mail: action.user.email,
         password: '',
+      };
+    }
+    case SET_USER_TOKEN: {
+      return {
+        ...state,
+        userToken: action.payload,
       };
     }
     // == si auth non ok

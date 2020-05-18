@@ -21,10 +21,24 @@ import { RESET, DISCONNECT } from '../../store/actions';
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state);
+  // const { user } = useSelector((state) => state);
+  const userToken = JSON.parse(sessionStorage.getItem('userToken'));
   let deconnexionJSX = '';
   const linkStyle = { cursor: 'pointer' };
-  if (user.email !== undefined) {
+  // if (user.email !== undefined) {
+  //   deconnexionJSX = (
+  //     <a
+  //       style={linkStyle}
+  //       onClick={() => {
+  //         dispatch({ type: RESET });
+  //         dispatch({ type: DISCONNECT });
+  //       }}
+  //     >Déconnexion
+  //     </a>
+  //   );
+  // }
+  //! test token
+  if (userToken) {
     deconnexionJSX = (
       <a
         style={linkStyle}
@@ -37,8 +51,21 @@ const Nav = () => {
     );
   }
   // ma navLink change en fonction de si un user est connecté ou non
+  // let navLink = navLinkVisitor;
+  // if (user.email !== undefined) navLink = navLinkUser;
+  // const navLinkJsx = navLink.map((r) => (
+  //   <NavLink
+  //     exact
+  //     key={r.label}
+  //     to={r.route}
+  //     activeClassName="menu-link--active"
+  //   >
+  //     {r.label}
+  //   </NavLink>
+  // ));
+  //! test token
   let navLink = navLinkVisitor;
-  if (user.email !== undefined) navLink = navLinkUser;
+  if (userToken) navLink = navLinkUser;
   const navLinkJsx = navLink.map((r) => (
     <NavLink
       exact

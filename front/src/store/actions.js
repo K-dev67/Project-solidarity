@@ -19,6 +19,7 @@ export const DISCONNECT = 'actions/DISCONNECT';
 // == une fois la réponse ok de la bdd => reponse 200
 export const SET_USER = 'actions/SET_USER';
 export const SET_USER_ID = 'actions/SET_USER_ID';
+export const SET_USER_TOKEN = 'actions/SET_USER_TOKEN';
 export const UPDATE_USER = 'actions/UPDATE_USER';
 export const SET_UPDATE_USER = 'actions/SET_UPDATE_USER';
 export const UPDATE_MAIL = 'actions/UPDATE_MAIL';
