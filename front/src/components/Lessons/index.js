@@ -35,6 +35,8 @@ import './styles.scss';
 const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
+  //! test close socket
+  dispatch({ type: LEAVE_ROOM });
 
   const { lessonsFiltered, userId } = useSelector((state) => state);
   let colorOwner = '';
@@ -78,7 +80,6 @@ const Lessons = () => {
       // crée un socket
       getLessonById(lesson.id);
       getMessages(lesson.id);
-      // dispatch({ type: LEAVE_ROOM });
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
     // == label levels

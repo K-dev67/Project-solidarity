@@ -60,7 +60,9 @@ export default (store) => (next) => (action) => {
     }
     case LEAVE_ROOM: {
       console.log('leave_room');
-      socket.close();
+      // socket.close();
+      //! test socket.close
+      if (socket) socket.close();
       next(action);
       return;
     }

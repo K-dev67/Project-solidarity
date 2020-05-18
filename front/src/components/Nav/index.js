@@ -25,18 +25,6 @@ const Nav = () => {
   const userToken = JSON.parse(sessionStorage.getItem('userToken'));
   let deconnexionJSX = '';
   const linkStyle = { cursor: 'pointer' };
-  // if (user.email !== undefined) {
-  //   deconnexionJSX = (
-  //     <a
-  //       style={linkStyle}
-  //       onClick={() => {
-  //         dispatch({ type: RESET });
-  //         dispatch({ type: DISCONNECT });
-  //       }}
-  //     >Déconnexion
-  //     </a>
-  //   );
-  // }
   //! test token
   if (userToken) {
     deconnexionJSX = (
@@ -50,19 +38,6 @@ const Nav = () => {
       </a>
     );
   }
-  // ma navLink change en fonction de si un user est connecté ou non
-  // let navLink = navLinkVisitor;
-  // if (user.email !== undefined) navLink = navLinkUser;
-  // const navLinkJsx = navLink.map((r) => (
-  //   <NavLink
-  //     exact
-  //     key={r.label}
-  //     to={r.route}
-  //     activeClassName="menu-link--active"
-  //   >
-  //     {r.label}
-  //   </NavLink>
-  // ));
   //! test token
   let navLink = navLinkVisitor;
   if (userToken) navLink = navLinkUser;
@@ -81,7 +56,6 @@ const Nav = () => {
   return (
     <header className="topbar">
       <NavLink exact to="/">
-        {/* <h1>Solidarity</h1> */}
         <div className="container-logo">
           <img
             alt="our_logo"
