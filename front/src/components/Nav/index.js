@@ -1,12 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // == Router
 import { NavLink } from 'react-router-dom';
 // == fichier data en js comportant les routes et les labels..
-// import { SET_INPUT_NAV } from 'src/store/actions';
+
+// == antd
+import { Popconfirm } from 'antd';
 import navLinkVisitor from '../../data/navLinkVisitor';
 import navLinkUser from '../../data/NavLinkUser';
+
 
 // logo
 import solidarityLogo from '../../assets/img/logo.png';
@@ -28,14 +31,20 @@ const Nav = () => {
   //! test token
   if (userToken) {
     deconnexionJSX = (
-      <a
-        style={linkStyle}
-        onClick={() => {
+      <Popconfirm
+        title="Déconnexion ?"
+        okText="Oui"
+        cancelText="Non"
+        onConfirm={() => {
           dispatch({ type: RESET });
           dispatch({ type: DISCONNECT });
         }}
-      >Déconnexion
-      </a>
+      >
+        <a
+          style={linkStyle}
+        >Déconnexion
+        </a>
+      </Popconfirm>
     );
   }
   //! test token
