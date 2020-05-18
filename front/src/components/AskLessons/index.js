@@ -32,7 +32,6 @@ const AskLessons = () => {
     backgroundImage: `url(${background})`,
   };
   useEffect(() => {
-    console.log('hello');
     axios.get(`${API_URL}/askList`)
       .then((res) => {
         dispatch({ type: SET_ASK_LESSONS, payload: res.data });
@@ -43,7 +42,6 @@ const AskLessons = () => {
 
   let colorOwner = '';
   let iconPencil = '';
-  // let iconCross = '';
   let confirmDelete = '';
   // == composant ask lesson JSX
   const askLessonsJSX = askLessons.map((askLesson) => {
@@ -75,7 +73,6 @@ const AskLessons = () => {
       console.log('liké');
       axios.get(`${API_URL}/user/${userId}/ask/${askLesson.id}/subscribe`)
         .then((res) => {
-          console.log('res', res);
           axios.get(`${API_URL}/askList`)
             .then((res) => {
               dispatch({ type: SET_ASK_LESSONS, payload: res.data });

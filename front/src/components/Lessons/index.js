@@ -113,9 +113,12 @@ const Lessons = () => {
       );
     }
     return (
-      <div className="card-lesson-list">
+      <div
+        className="card-lesson-list"
+        key={lesson.id}
+      >
         <Card
-          key={lesson.id}
+
           color={colorOwner}
         >
           <Card.Content>

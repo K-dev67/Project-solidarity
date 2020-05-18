@@ -33,18 +33,18 @@ const listTeachers = () => {
 
 
   listTeachersJSX = teachers.map((teacher) => (
-    <div className="teacher-div-border">
-      <Card
-        key={teacher.id}
-      >
-        
+    <div
+      className="teacher-div-border"
+      key={teacher.id}
+    >
+      <Card>
         <Card.Content>
           <Card.Header>{teacher.nickname}</Card.Header>
           <Image
-          src={teacher.avatar}
-          wrapped
-          ui={false}
-        />
+            src={teacher.avatar}
+            wrapped
+            ui={false}
+          />
           <Card.Meta>
             <span className="date">Joined in 2015</span>
           </Card.Meta>

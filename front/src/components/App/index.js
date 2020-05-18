@@ -1,10 +1,10 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // == action
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { SET_USER, SET_USER_TOKEN } from '../../store/actions';
+import { SET_USER_TOKEN } from '../../store/actions';
 import getUserData from '../../utils/getUserData';
 
 // == import Router
@@ -37,8 +37,6 @@ const App = () => {
   if (userToken) {
     const myId = user.id;
     getUserData(myId);
-    console.log('myId', myId);
-    // dispatch({ type: SET_USER, user });
     dispatch({ type: SET_USER_TOKEN, payload: userToken });
   }
 
@@ -53,15 +51,13 @@ const App = () => {
       return <Redirect to="/login" />;
     }
     return lessons.map((lesson) => (
-      <Switch>
-        <Route
-          key={lesson.id}
-          exact
-          path={`/lessons/${lesson.id}`}
-        >
-          <Room lesson={lesson} />
-        </Route>
-      </Switch>
+      <Route
+        key={lesson.id}
+        exact
+        path={`/lessons/${lesson.id}`}
+      >
+        <Room lesson={lesson} />
+      </Route>
     ));
   };
 
@@ -120,8 +116,6 @@ const App = () => {
         />
         <LessonComponent />
         <Route>404</Route>
-
-
       </Switch>
       <Footer />
     </div>

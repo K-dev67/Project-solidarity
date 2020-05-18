@@ -32,7 +32,10 @@ const Chat = ({ lessonId }) => {
   ));
 
   return (
-    <div className="container-chat-main">
+    <div
+      className="container-chat-main"
+      key={lessonId}
+    >
       {/* <Picker style={styleEmoji} onChange={(data) => console.log(data)} /> */}
 
       <ul className="chat-all-messages">{messageJSX}</ul>

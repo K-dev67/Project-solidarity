@@ -3,10 +3,7 @@ import { useDispatch } from 'react-redux';
 import {
   Modal, Icon,
 } from 'semantic-ui-react';
-// import Moment from 'react-moment';
-// import UpdateLessonForm from './UpdateLessonForm';
-// react Moment
-// import 'moment/locale/fr';
+
 import { MESSAGE_POSTIF_FALSE } from '../../store/actions';
 
 import background from '../../assets/img/Pattern_fond.png';
