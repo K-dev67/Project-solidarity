@@ -18,13 +18,17 @@ import './styles.scss';
 
 
 const Chat = ({ lessonId }) => {
+  let key = 1;
   const dispatch = useDispatch();
   // useEffect(getMessages(lessonId), []);
   const [hidden, setHidden] = useState(true);
   const currentMessage = useSelector((state) => state.message);
   const { messages } = useSelector((state) => state);
   const messageJSX = messages.map((message) => (
-    <li className="chat-message">
+    <li
+      className="chat-message"
+      key={key++}
+    >
       <strong className="message-author">{message.nickname}</strong>
       <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
       <p className="message-content"><Formatizer>{message.content}</Formatizer></p>
@@ -32,7 +36,10 @@ const Chat = ({ lessonId }) => {
   ));
 
   return (
-    <div className="container-chat-main">
+    <div
+      className="container-chat-main"
+      key={lessonId}
+    >
       {/* <Picker style={styleEmoji} onChange={(data) => console.log(data)} /> */}
 
       <ul className="chat-all-messages">{messageJSX}</ul>
@@ -65,13 +72,11 @@ const Chat = ({ lessonId }) => {
               />
 
             </div>
-
             {/* </button> */}
             {/* </div> */}
-            {/* <Picker onChange={(data) => console.log(data)} />; */}
+            {/* <Picker onChange={(data) => console.log(data)} /> */}
           </div>
         </form>
-
       </div>
     </div>
   );

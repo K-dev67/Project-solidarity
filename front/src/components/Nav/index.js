@@ -1,12 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // == Router
 import { NavLink } from 'react-router-dom';
 // == fichier data en js comportant les routes et les labels..
-// import { SET_INPUT_NAV } from 'src/store/actions';
+
+// == antd
+import { Popconfirm } from 'antd';
 import navLinkVisitor from '../../data/navLinkVisitor';
 import navLinkUser from '../../data/NavLinkUser';
+
 
 // logo
 import solidarityLogo from '../../assets/img/logo.png';
@@ -25,44 +28,25 @@ const Nav = () => {
   const userToken = JSON.parse(sessionStorage.getItem('userToken'));
   let deconnexionJSX = '';
   const linkStyle = { cursor: 'pointer' };
-  // if (user.email !== undefined) {
-  //   deconnexionJSX = (
-  //     <a
-  //       style={linkStyle}
-  //       onClick={() => {
-  //         dispatch({ type: RESET });
-  //         dispatch({ type: DISCONNECT });
-  //       }}
-  //     >Déconnexion
-  //     </a>
-  //   );
-  // }
   //! test token
   if (userToken) {
     deconnexionJSX = (
-      <a
-        style={linkStyle}
-        onClick={() => {
+      <Popconfirm
+        title="Déconnexion ?"
+        okText="Oui"
+        cancelText="Non"
+        onConfirm={() => {
           dispatch({ type: RESET });
           dispatch({ type: DISCONNECT });
         }}
-      >Déconnexion
-      </a>
+      >
+        <a
+          style={linkStyle}
+        >Déconnexion
+        </a>
+      </Popconfirm>
     );
   }
-  // ma navLink change en fonction de si un user est connecté ou non
-  // let navLink = navLinkVisitor;
-  // if (user.email !== undefined) navLink = navLinkUser;
-  // const navLinkJsx = navLink.map((r) => (
-  //   <NavLink
-  //     exact
-  //     key={r.label}
-  //     to={r.route}
-  //     activeClassName="menu-link--active"
-  //   >
-  //     {r.label}
-  //   </NavLink>
-  // ));
   //! test token
   let navLink = navLinkVisitor;
   if (userToken) navLink = navLinkUser;
@@ -81,7 +65,6 @@ const Nav = () => {
   return (
     <header className="topbar">
       <NavLink exact to="/">
-        {/* <h1>Solidarity</h1> */}
         <div className="container-logo">
           <img
             alt="our_logo"

@@ -11,7 +11,9 @@ import { MESSAGE_POSTIF_FALSE } from '../../store/actions';
 // == component
 import FormUpdateUser from './FormUpdateUser';
 import MessagePositive from './MessagePositive';
+
 import background from '../../assets/img/Pattern_fond.png';
+
 const contentStyle = {
   backgroundImage: `url(${background})`,
 
@@ -25,8 +27,8 @@ const ModalExampleCloseIcon = () => {
   // je souhaite changer un boolean en fonction de l'ouverture ou la fermeture de la modale
   // eslint-disable-next-line react/jsx-boolean-value
   return (
-    <Modal  trigger={<Button onClick={handleClick}>Modifier votre profil</Button>} closeIcon>
-      <Header style={contentStyle} icon="pencil" /*content="Modifier votre profil"*/ className="titleContent">Modifier Votre profil</Header>
+    <Modal trigger={<Button onClick={handleClick}>Modifier votre profil</Button>} closeIcon>
+      <Header style={contentStyle} icon="pencil" className="titleContent">Modifier Votre profil</Header>
       <MessagePositive />
       <Modal.Content className="modalContent">
         <FormUpdateUser />

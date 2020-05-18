@@ -15,7 +15,11 @@ let socket;
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case ENTER_CHAT: {
-      const user = JSON.parse(sessionStorage.getItem('user'));
+      //!
+      // const user = JSON.parse(sessionStorage.getItem('user'));
+      const { user } = store.getState();
+      //!
+      // const { username } = store.getState();
       const lessonId = action.payload;
       socket = window.io(`${API_URL}`);
       // On se prépare le plus tôt possible à réceptionner des messages
@@ -24,6 +28,7 @@ export default (store) => (next) => (action) => {
       //! test
       socket.emit('joinRoom', {
         username: user,
+        // username,
         room: lessonId,
       });
       //!--
@@ -47,20 +52,17 @@ export default (store) => (next) => (action) => {
       console.log('Envoi du message au serveur central');
       // const { user } = store.getState();
       const { message } = store.getState();
-      console.log('message', message);
       socket.emit('chatMessage', {
-        // authorId: userId,
-        // firstname: user.firstname,
         content: message,
-        // message,
-        // created_at: moment(),
       });
       // next(action);
       return;
     }
     case LEAVE_ROOM: {
       console.log('leave_room');
-      socket.close();
+      // socket.close();
+      //! test socket.close
+      if (socket) socket.close();
       next(action);
       return;
     }

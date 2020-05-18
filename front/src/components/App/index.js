@@ -1,10 +1,11 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // == action
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { SET_USER, SET_USER_TOKEN } from '../../store/actions';
+import { SET_USER_TOKEN } from '../../store/actions';
+import getUserData from '../../utils/getUserData';
 
 // == import Router
 
@@ -34,32 +35,27 @@ const App = () => {
   const dispatch = useDispatch();
   // == auto connect
   if (userToken) {
-    // dispatch({ type: SET_USER, user });
+    const myId = user.id;
+    getUserData(myId);
     dispatch({ type: SET_USER_TOKEN, payload: userToken });
   }
 
   const lessons = useSelector((state) => state.lessons);
 
   // == Lesson component
-  const LessonComponent = () => {
-    if (!lessons) {
-      return <Loading />;
-    }
-    if (!userToken) {
-      return <Redirect to="/login" />;
-    }
-    return lessons.map((lesson) => (
-      <Switch>
-        <Route
-          key={lesson.id}
-          exact
-          path={`/lessons/${lesson.id}`}
-        >
-          <Room lesson={lesson} />
-        </Route>
-      </Switch>
-    ));
-  };
+  // const LessonComponent = () => lessons.map((lesson) => (
+  //   <Route
+  //     key={lesson.id}
+  //     exact
+  //     path={`/lessons/${lesson.id}`}
+  //     render={() => {
+  //       if (!userToken) {
+  //         return <Redirect to="/login" />;
+  //       }
+  //       return <Room lesson={lesson} />;
+  //     }}
+  //   />
+  // ));
 
   return (
     <div className="app">
@@ -114,10 +110,20 @@ const App = () => {
             return <AskLessons />;
           }}
         />
-        <LessonComponent />
+        {lessons.map((lesson) => (
+          <Route
+            key={lesson.id}
+            exact
+            path={`/lessons/${lesson.id}`}
+            render={() => {
+              if (!userToken) {
+                return <Redirect to="/login" />;
+              }
+              return <Room lesson={lesson} />;
+            }}
+          />
+        ))}
         <Route>404</Route>
-
-
       </Switch>
       <Footer />
     </div>

@@ -6,7 +6,11 @@ const RoomUsers = () => {
   const { roomUsers } = useSelector((state) => state);
   const avatarSrc = 'https://robohash.org/';
   const roomUsersJSX = roomUsers.map((user) => (
-    <Label as="a" image>
+    <Label
+      as="a"
+      image
+      key={user.username}
+    >
       <img src={avatarSrc + user.id} />
       {user.username}
     </Label>

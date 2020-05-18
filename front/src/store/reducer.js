@@ -20,8 +20,10 @@ import {
   // == update password
   SYNC_OLD_PASSWORD,
   // pour reset le state
+  //!
+  SET_USER_DATA,
   RESET,
-  SET_USER,
+  // SET_USER,
   SET_USER_TOKEN,
   UPDATE_USER,
   UPDATE_MAIL,
@@ -167,15 +169,30 @@ export default (state = initialState, action = {}) => {
       sessionStorage.clear();
     }
     // == si le auth ok
-    case SET_USER: {
+    // case SET_USER: {
+    //   return {
+    //     ...state,
+    //     user: action.user,
+    //     userId: action.user.id,
+    //     username: action.user.nickname,
+    //     firstname: action.user.firstname,
+    //     lastname: action.user.lastname,
+    //     mail: action.user.email,
+    //     password: '',
+    //   };
+    // }
+    //!
+    case SET_USER_DATA: {
+      console.log('action.payload', action.payload[0].id);
       return {
         ...state,
-        user: action.user,
-        userId: action.user.id,
-        username: action.user.nickname,
-        firstname: action.user.firstname,
-        lastname: action.user.lastname,
-        mail: action.user.email,
+        user: action.payload[0],
+        userId: action.payload[0].id,
+        username: action.payload[0].nickname,
+        firstname: action.payload[0].firstname,
+        lastname: action.payload[0].lastname,
+        mail: action.payload[0].email,
+        avatar: action.payload[0].avatar,
         password: '',
       };
     }

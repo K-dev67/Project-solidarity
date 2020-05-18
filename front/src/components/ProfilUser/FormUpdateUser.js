@@ -8,8 +8,8 @@ import {
   SYNC_FIRSTNAME,
   SYNC_LASTNAME,
   UPDATE_USER,
-  DISCONNECT,
-  RESET,
+  // DISCONNECT,
+  // RESET,
 } from 'src/store/actions';
 
 // == semantic form
@@ -49,8 +49,8 @@ const FormUpdateUser = () => {
     console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
       dispatch({ type: UPDATE_USER });
-      dispatch({ type: RESET });
-      dispatch({ type: DISCONNECT });
+      // dispatch({ type: RESET });
+      // dispatch({ type: DISCONNECT });
     }
   };
   // == Fin handleSubmit ---------------

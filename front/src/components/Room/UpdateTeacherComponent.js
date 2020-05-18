@@ -6,7 +6,11 @@ import { useForm } from 'react-hook-form';
 import { Button } from 'semantic-ui-react';
 // ant
 import { Popconfirm } from 'antd';
-import { DELETE_LESSON, ADD_CATEGORY_ON_LESSON } from '../../store/actions';
+import {
+  DELETE_LESSON,
+  ADD_CATEGORY_ON_LESSON,
+  // MESSAGE_POSITIF_TRUE,
+} from '../../store/actions';
 import UpdateLessonModal from './UpdateLessonModal';
 
 
@@ -26,6 +30,7 @@ const UpdateTeacherComponent = ({ lesson }) => {
           okText="Oui"
           cancelText="Non"
           onConfirm={() => {
+            // dispatch({ type: MESSAGE_POSITIF_TRUE });
             dispatch({
               type: DELETE_LESSON,
               payload: {
