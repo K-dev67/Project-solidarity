@@ -29,37 +29,23 @@ import './styles.scss';
 
 // == Composant
 const App = () => {
-  //! test sessions mais bcp de bug à fixer
-
   const user = JSON.parse(sessionStorage.getItem('user'));
-  // console.log('user', user);
-  // const user_id = user.id;
-  // console.log('user_id', user_id);
+  const userToken = JSON.parse(sessionStorage.getItem('userToken'));
   const dispatch = useDispatch();
   // == auto connect
-  if (user) {
-    // dispatch({ type: SET_USER_ID, payload: user_id });
-    dispatch({ type: SET_USER, user });
-    dispatch({ type: SET_USER_TOKEN, payload: user.token });
+  if (userToken) {
+    // dispatch({ type: SET_USER, user });
+    dispatch({ type: SET_USER_TOKEN, payload: userToken });
   }
-  // else if (!user) {
-  //   return <Redirect to="/" />;
-  // }
-  // const user = useSelector((state) => state.user);
 
   const lessons = useSelector((state) => state.lessons);
 
   // == Lesson component
   const LessonComponent = () => {
     if (!lessons) {
-      // on peut ajouter une condition d'attente
       return <Loading />;
-      // return null;
     }
-    // if (user.email === undefined) {
-    //   return <Redirect to="/login" />;
-    // }
-    if (!user) {
+    if (!userToken) {
       return <Redirect to="/login" />;
     }
     return lessons.map((lesson) => (
@@ -90,10 +76,7 @@ const App = () => {
           exact
           path="/profiluser"
           render={() => {
-            // if (user.email === undefined) {
-            //   return <Redirect to="/login" />;
-            // }
-            if (!user) {
+            if (!userToken) {
               return <Redirect to="/login" />;
             }
             return <ProfilUser />;
@@ -103,10 +86,7 @@ const App = () => {
           exact
           path="/lessons"
           render={() => {
-            // if (user.email === undefined) {
-            //   return <Redirect to="/login" />;
-            // }
-            if (!user) {
+            if (!userToken) {
               return <Redirect to="/login" />;
             }
             return <Lessons />;
@@ -116,10 +96,7 @@ const App = () => {
           exact
           path="/teachers"
           render={() => {
-            // if (user.email === undefined) {
-            //   return <Redirect to="/login" />;
-            // }
-            if (!user) {
+            if (!userToken) {
               return <Redirect to="/login" />;
             }
             return <Teachers />;
@@ -129,7 +106,7 @@ const App = () => {
           exact
           path="/asklessons"
           render={() => {
-            if (!user) {
+            if (!userToken) {
               return <Redirect to="/login" />;
             }
             return <AskLessons />;

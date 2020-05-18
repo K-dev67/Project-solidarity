@@ -26,11 +26,11 @@ export default (store) => (next) => (action) => {
           if (res.status === 200) {
             sessionStorage.user = JSON.stringify(res.data);
             console.log('res.data', res.data);
+            sessionStorage.userToken = JSON.stringify(res.data.token);
             const user = JSON.parse(sessionStorage.getItem('user'));
-            // const userBdd = res.data;
+            const userToken = JSON.parse(sessionStorage.getItem('userToken'));
             store.dispatch({ type: SET_USER, user });
-            store.dispatch({ type: SET_USER_TOKEN, payload: user.token });
-            // store.dispatch({ type: SET_USER_ID, payload: user.id });
+            store.dispatch({ type: SET_USER_TOKEN, payload: userToken });
             store.dispatch(enterHomePage(action.history));
           }
         })
