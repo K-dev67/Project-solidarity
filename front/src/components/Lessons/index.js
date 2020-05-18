@@ -118,7 +118,6 @@ const Lessons = () => {
         key={lesson.id}
       >
         <Card
-
           color={colorOwner}
         >
           <Card.Content>
