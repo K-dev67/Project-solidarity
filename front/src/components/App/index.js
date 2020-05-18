@@ -49,13 +49,15 @@ const App = () => {
       return <Redirect to="/login" />;
     }
     return lessons.map((lesson) => (
-      <Route
-        key={lesson.id}
-        exact
-        path={`/lessons/${lesson.id}`}
-      >
-        <Room lesson={lesson} />
-      </Route>
+      <Switch>
+        <Route
+          key={lesson.id}
+          exact
+          path={`/lessons/${lesson.id}`}
+        >
+          <Room lesson={lesson} />
+        </Route>
+      </Switch>
     ));
   };
 
@@ -114,6 +116,8 @@ const App = () => {
         />
         <LessonComponent />
         <Route>404</Route>
+
+
       </Switch>
       <Footer />
     </div>
