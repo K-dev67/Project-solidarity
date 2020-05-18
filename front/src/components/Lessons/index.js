@@ -111,37 +111,40 @@ const Lessons = () => {
       );
     }
     return (
+      <div className="card-lesson-list">
       <Card
-        key={lesson.id}
-        color={colorOwner}
-      >
-        <ImageCategory picture={lesson.picture} />
-        <Card.Content>
-          <Card.Header
-            onClick={handleClick}
-          >
-            {labelJSX}
-            <Link
-              to={`/lessons/${lesson.id}`}
-            >{lesson.title}
-            </Link>
-          </Card.Header>
-          <Card.Meta>
-            <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
-          </Card.Meta>
-          <Card.Description>
-            <p>{lesson.description}</p>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <Icon name="calendar" />
-          Le cours aura lieu le  <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
-          <div className="lesson-bell" style={{ cursor: 'pointer' }}>
-            <a>{lesson.like}</a>
-            {confirmSubscribe}
-          </div>
-        </Card.Content>
-      </Card>
+          key={lesson.id}
+          color={colorOwner}
+        >
+          
+          <Card.Content>
+            <Card.Header
+              onClick={handleClick}
+            >
+              <ImageCategory picture={lesson.picture} /> 
+              {labelJSX}
+              <Link
+                to={`/lessons/${lesson.id}`}
+                >{lesson.title}
+              </Link>
+            </Card.Header>
+            <Card.Meta>
+              <span className="date">leçon crée il y a <Moment locale="fr" fromNow ago>{lesson.created_at}</Moment> </span>
+            </Card.Meta>
+            <Card.Description>
+              <p>{lesson.description}</p>
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Icon name="calendar" />
+            Le cours aura lieu le  <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
+            <div className="lesson-bell" style={{ cursor: 'pointer' }}>
+              <a>{lesson.like}</a>
+              {confirmSubscribe}
+            </div>
+          </Card.Content>
+        </Card>
+      </div>
     );
   });
 
