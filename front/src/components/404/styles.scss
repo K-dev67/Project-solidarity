@@ -1,0 +1,26 @@
+.quatre {
+    min-height: calc(100vh - 64px - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 500px;
+        width: auto;
+    }
+}
+
+@media (max-width: 519px) {
+    .quatre {
+        min-height: calc(100vh - 156px - 50px);
+    }
+
+}
+
+@media (max-width: 460px) {
+    .quatre {
+        img {
+            height: 300px
+        }
+    }
+
+}
