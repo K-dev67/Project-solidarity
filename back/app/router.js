@@ -56,6 +56,8 @@ router.delete('/user/:id/ask/:Id/category/:ID', askController.deleteCategoryToAs
 router.get('/liveLesson', liveController.showAllLiveLesson);
 router.get('/liveLesson/:id', liveController.showThisLiveLesson);
 router.get('/calendar', liveController.showCalendar);
+
+// A voir avec antho => modif le 5/18/ Aprem
 router.get('/user/:id/lesson/:Id/subscribe', liveController.subscribeLesson);
 router.delete('/user/:id/lesson/:Id/subscribe', liveController.unsubLesson);
 router.get('/user/:id/ask/:Id/subscribe', liveController.subscribeAsk);
