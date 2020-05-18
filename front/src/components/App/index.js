@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // == action
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { SET_USER, SET_USER_TOKEN } from '../../store/actions';
+import getUserData from '../../utils/getUserData';
 
 // == import Router
 
@@ -34,6 +35,9 @@ const App = () => {
   const dispatch = useDispatch();
   // == auto connect
   if (userToken) {
+    const myId = user.id;
+    getUserData(myId);
+    console.log('myId', myId);
     // dispatch({ type: SET_USER, user });
     dispatch({ type: SET_USER_TOKEN, payload: userToken });
   }
