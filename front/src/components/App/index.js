@@ -43,23 +43,19 @@ const App = () => {
   const lessons = useSelector((state) => state.lessons);
 
   // == Lesson component
-  const LessonComponent = () => {
-    // if (!lessons) {
-    //   return <Loading />;
-    // }
-    if (!userToken) {
-      return <Redirect to="/login" />;
-    }
-    return lessons.map((lesson) => (
-      <Route
-        key={lesson.id}
-        exact
-        path={`/lessons/${lesson.id}`}
-      >
-        <Room lesson={lesson} />
-      </Route>
-    ));
-  };
+  // const LessonComponent = () => lessons.map((lesson) => (
+  //   <Route
+  //     key={lesson.id}
+  //     exact
+  //     path={`/lessons/${lesson.id}`}
+  //     render={() => {
+  //       if (!userToken) {
+  //         return <Redirect to="/login" />;
+  //       }
+  //       return <Room lesson={lesson} />;
+  //     }}
+  //   />
+  // ));
 
   return (
     <div className="app">
@@ -114,7 +110,19 @@ const App = () => {
             return <AskLessons />;
           }}
         />
-        <LessonComponent />
+        {lessons.map((lesson) => (
+          <Route
+            key={lesson.id}
+            exact
+            path={`/lessons/${lesson.id}`}
+            render={() => {
+              if (!userToken) {
+                return <Redirect to="/login" />;
+              }
+              return <Room lesson={lesson} />;
+            }}
+          />
+        ))}
         <Route>404</Route>
       </Switch>
       <Footer />
