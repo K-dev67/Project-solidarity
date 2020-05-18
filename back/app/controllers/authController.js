@@ -2,6 +2,7 @@ const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
 const mail = require('../middlewares/mailer');
+const jwtUtils = require('../utils/jwt.utils');
 
 const authController = {
 
@@ -129,6 +130,11 @@ const authController = {
                 }
                 if (user && testPass) {
                     console.log('<< 200 OK', user);
+                    //! test token --------------------
+                    console.log('user.id :>> ', user.id);
+                    user.token = jwtUtils.generateTokenForUser(user);
+                    console.log('use after toke', user)
+                    //! fin test token ----------------
                     req.session.user = user;
                     res.send(user);
                   } else {
