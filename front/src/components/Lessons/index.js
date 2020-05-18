@@ -12,7 +12,7 @@ import {
 import { Popconfirm } from 'antd';
 
 // == import action
-import { ENTER_CHAT } from '../../store/actions';
+import { ENTER_CHAT, LEAVE_ROOM } from '../../store/actions';
 
 // react Moment
 import 'moment/locale/fr';
@@ -78,6 +78,7 @@ const Lessons = () => {
       // crée un socket
       getLessonById(lesson.id);
       getMessages(lesson.id);
+      // dispatch({ type: LEAVE_ROOM });
       dispatch({ type: ENTER_CHAT, payload: lesson.id });
     };
     // == label levels
@@ -112,20 +113,19 @@ const Lessons = () => {
     }
     return (
       <div className="card-lesson-list">
-      <Card
+        <Card
           key={lesson.id}
           color={colorOwner}
         >
-          
           <Card.Content>
             <Card.Header
               onClick={handleClick}
             >
-              <ImageCategory picture={lesson.picture} /> 
+              <ImageCategory picture={lesson.picture} />
               {labelJSX}
               <Link
                 to={`/lessons/${lesson.id}`}
-                >{lesson.title}
+              >{lesson.title}
               </Link>
             </Card.Header>
             <Card.Meta>
