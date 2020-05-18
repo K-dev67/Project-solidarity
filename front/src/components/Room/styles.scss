@@ -198,7 +198,15 @@
 //     }
 
 
-
+#root {
+  min-height: 100% !important;
+  .app {
+    min-height: 100vh !important;
+    .footer {
+      //position: relative !important;
+    }
+  }
+}
 
 
 
@@ -209,7 +217,7 @@
     background-color: rgb(0, 109, 109);
     color: white;
     overflow: hidden;
-    height: 85vh;
+    height: calc(100vh -114px ) !important;
     // == le live stream + le bloc description
     .container-live-description {
         width: 75%;
@@ -223,7 +231,7 @@
             background-color: rgb(2, 87, 87);
             // box-shadow: inset 0 0 25px teal;
             // height: 90%;
-            height: 78vh;
+            height: 79vh;
             margin-left: 0.5em;
             // == bouton "lancer le stream"
             button {
@@ -256,7 +264,11 @@
                 .title-box {
                   width: 100%;
                  //border: 1px solid rgba(10, 180, 180, 1) !important;
-                  height: 7vh;
+                  height: 8vh;
+                  h2 {
+                    color: white !important;
+
+                  }
                   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
                   //background: rgba(19, 37, 41, .4) !important;
                   background: linear-gradient(to bottom, #00999f 0%, rgba(19, 37, 41, .4) 80%, rgba(19, 37, 41, .4) 100%);
@@ -303,7 +315,7 @@
     // == bloc chat
     .tchat {
         background-color: rgb(1, 134, 134);
-        height: 100%;
+        height: calc(100vh - 50px -64px) !important;
         width: 25%;
         //position: fixed;
         .container-chat-main {
@@ -312,7 +324,7 @@
 
             .chat-all-messages {
                 overflow-y: scroll;
-                 height: 92%;
+                 height: 91%;
                  padding-left: 0.4em;
                  padding-top: 0.3em;
                  .chat-message {
