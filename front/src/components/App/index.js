@@ -44,9 +44,9 @@ const App = () => {
 
   // == Lesson component
   const LessonComponent = () => {
-    if (!lessons) {
-      return <Loading />;
-    }
+    // if (!lessons) {
+    //   return <Loading />;
+    // }
     if (!userToken) {
       return <Redirect to="/login" />;
     }
