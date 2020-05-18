@@ -5,7 +5,8 @@ import {
   enterHomePage,
   SET_ERROR_AUTH,
   SET_USER,
-  SET_USER_ID,
+  // SET_USER_ID,
+  SET_USER_TOKEN,
 } from 'src/store/actions';
 
 import { API_URL } from '../../utils/constante';
@@ -28,6 +29,7 @@ export default (store) => (next) => (action) => {
             const user = JSON.parse(sessionStorage.getItem('user'));
             // const userBdd = res.data;
             store.dispatch({ type: SET_USER, user });
+            store.dispatch({ type: SET_USER_TOKEN, payload: user.token });
             // store.dispatch({ type: SET_USER_ID, payload: user.id });
             store.dispatch(enterHomePage(action.history));
           }

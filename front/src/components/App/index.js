@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // == action
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { SET_USER, SET_USER_ID } from '../../store/actions';
+import { SET_USER, SET_USER_TOKEN } from '../../store/actions';
 
 // == import Router
 
@@ -40,6 +40,7 @@ const App = () => {
   if (user) {
     // dispatch({ type: SET_USER_ID, payload: user_id });
     dispatch({ type: SET_USER, user });
+    dispatch({ type: SET_USER_TOKEN, payload: user.token });
   }
   // else if (!user) {
   //   return <Redirect to="/" />;
