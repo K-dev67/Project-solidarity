@@ -67,6 +67,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
       <Label
         image
         color={category.color}
+        key={category.name}
       >
         {category.name}
         {iconJSX}
