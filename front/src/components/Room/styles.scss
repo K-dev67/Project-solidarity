@@ -291,17 +291,11 @@
             }
 
             .container-update-room {
-                // border: 0.5px solid white;
-                //box-shadow: inset 0 0 25px teal;
                 padding: 1em 0;
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
-                //background-color: #175757;
                 margin-bottom: 0.5em;
-                //background: rgba(42, 60, 65, ) !important;
-                //background: rgba(20, 20, 20, .6) !important;
-                //box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
                 .room-addCategory-select {
                     form {
                         display: flex;
@@ -321,7 +315,9 @@
         .container-chat-main {
             height: 100%;
             //padding-left: 0.7em;
-
+          div {
+            max-height: 9%;
+          }
             .chat-all-messages {
                 overflow-y: scroll;
                  height: 91%;
@@ -350,59 +346,49 @@
             }
         }
     }
-    .container-input-submit {
-        display: flex;
-            input {
-                background-color: #175757;
-                color: white;
-                height: 4.8em;
-                width: 80%;
-                border-top: 1px solid white;
-                border-bottom: none;
-                border-left: none;
-                border-right: none;
-                padding-left: 1em;
-                padding-top: 1.5em;
-                padding-bottom: 2.3em;
-                //box-shadow: inset 0px 5px 15px 10px teal;
-                //@extend: 15px 15px 15px 0 teal;
-            }
-            input::placeholder{
-                color: white;
-                //padding-bottom: 1em;
-            }
-            .icone-smiley {
+    .chat-send-message {
+      height: 100%;
+      .container-input-submit {
+          display: flex;
+          height: 100%;
+              input {
+                  background-color: #175757;
+                  color: white;
+                  
+                  width: 85%;
+                  border-top: 1px solid white;
+                  border-bottom: none;
+                  border-left: none;
+                  border-right: none;
+                  padding-left: 1.1em;
+                  padding-top: 1em;
+                  padding-bottom: 1.2em;
+              }
+              input::placeholder{
+                  color: white;
+              }
+              .icone-smiley {
 
-                display: inline;
-                //width: 15%;
-                border-top: 1px solid white;
-                border-bottom: none;
-                border-left: none;
-                border-right: 1px solid #175757;
-                padding-left: 1em;
-                padding-top: 1.2em;
-                padding-bottom: 2em;
-                padding-right: 3em;
-                background-color: #175757;
-                //box-shadow: inset 0px -5px 15px 15px teal;
-                .smiley {
-                    // width: 20%;
-                    //@debug: 2.8em;
-                    font-size: 2em;
-                    background-color: #175757;
-                    color: white;
-                    //padding-left: 1em;
-                    padding-left: 0.5em;
-                    //padding-bottom: 2.5em;
-                }
-                .smiley:hover {
-                    color: grey;
-                }
-            }
-
-        }
+                  display: flex;
+                  width: 15%;
+                  border-top: 1px solid white;
+                  border-bottom: none;
+                  border-left: none;
+                  border-right: 1px solid #175757;
+                  background-color: #175757;
+                  .smiley {
+                      font-size: 2em;
+                      background-color: #175757;
+                      color: white;
+                      padding-top: 0.2em;
+                  }
+                  .smiley:hover {
+                      color: grey;
+                  }
+              }
+      }
+          }
     }
-// }
 
 
 
