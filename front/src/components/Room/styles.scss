@@ -231,7 +231,7 @@
             background-color: rgb(2, 87, 87);
             // box-shadow: inset 0 0 25px teal;
             // height: 90%;
-            height: 79vh;
+            min-height: 79vh !important;
             margin-left: 0.5em;
             // == bouton "lancer le stream"
             button {
