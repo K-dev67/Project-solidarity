@@ -21,7 +21,7 @@ import Moment from 'react-moment';
 // == component
 import AddLessonModal from './AddLessonModal';
 import InputSearchLesson from './InputSearchLesson';
-import ImageCategory from './ImageCategory';
+// import ImageCategory from './ImageCategory';
 import Loading from '../Loading';
 
 // == import from BDD
