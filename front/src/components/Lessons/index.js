@@ -40,12 +40,15 @@ const Lessons = () => {
 
   const { lessonsFiltered, userId } = useSelector((state) => state);
   let colorOwner = '';
+  // let styleOwner = '';
   // faire apparaitre la première catégorie
   // la catégorie principale du cours
 
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
+      // colorOwner = 'background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;';
+      // styleOwner = 'background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;';
       colorOwner = 'teal';
     }
     // pour s'inscrire à un cours
@@ -124,7 +127,7 @@ const Lessons = () => {
             <Card.Header
               onClick={handleClick}
             >
-              <ImageCategory picture={lesson.picture} />
+              {/* <ImageCategory picture={lesson.picture} /> */}
               {labelJSX}
               <Link
                 to={`/lessons/${lesson.id}`}
