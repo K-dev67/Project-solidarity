@@ -7,6 +7,9 @@ import { useHistory } from 'react-router';
 // == pour la validation de l'email
 import EmailValidator from 'email-validator';
 
+// == import pour la valid du mdp
+import passwordValidator from 'password-validator';
+
 // == import actions
 import {
   SYNC_USERNAME,
@@ -26,8 +29,29 @@ import { Button, Form } from 'semantic-ui-react';
 // == style
 import './styles.scss';
 
+//! password validator
+// Create a schema
+const schema = new passwordValidator();
+// Add properties to it
+schema
+  .is().min(8) // Minimum length 8
+  .is().max(100) // Maximum length 100
+  .has()
+  .uppercase() // Must have uppercase letters
+  .has()
+  .lowercase() // Must have lowercase letters
+  .has()
+  .digits() // Must have digits
+  .has()
+  .not()
+  .spaces() // Should not have spaces
+  .has()
+  .symbols(); // Must have special caractère
+//! -----------------
+
 const SignUp = () => {
   const dispatch = useDispatch();
+
   // == traitement des erreurs en front via state local
   const [errorUsername, setErrorUsername] = useState('');
   const [errorFirstname, setErrorFirstname] = useState('');
@@ -70,12 +94,13 @@ const SignUp = () => {
       setErrorMail('L\'email n\'est pas un email correct');
     }
     // - longueur minimum du mot de passe (8 caractère minimum !)
-    if (password.length < 8) {
+    if (!schema.validate(password)) {
       errorsList.push(
-        'Le mot de passe doit contenir un minimum de 8 caractères',
+        'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule et un caractère spécial',
       );
-      dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
+      dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule, une minuscule et un caractère spécial' });
     }
+    console.log(schema.validate(password));
     // - mot de passe = confirmation
     if (password !== passwordConfirmation) {
       errorsList.push(
@@ -89,94 +114,93 @@ const SignUp = () => {
     }
   };
   // == Fin handleSubmit ---------------
-
   return (
     <div className="first-signup-form">
       <Form
         onSubmit={handleSubmit}
       >
-          <Form.Input
-            error={errorUsername}
-            type="text"
-            icon="user"
-            iconPosition="left"
+        <Form.Input
+          error={errorUsername}
+          type="text"
+          icon="user"
+          iconPosition="left"
         // fluid
-            label="Username"
-            placeholder="Username"
-            name="username"
-            onChange={(evt) => {
-              setErrorUsername('');
-              dispatch({ type: SYNC_USERNAME, payload: evt.target.value });
-            }}
-            value={username}
-          />
-          <Form.Input
-            error={errorFirstname}
-            type="text"
-            icon="user"
-            iconPosition="left"
+          label="Username"
+          placeholder="Username"
+          name="username"
+          onChange={(evt) => {
+            setErrorUsername('');
+            dispatch({ type: SYNC_USERNAME, payload: evt.target.value });
+          }}
+          value={username}
+        />
+        <Form.Input
+          error={errorFirstname}
+          type="text"
+          icon="user"
+          iconPosition="left"
         // fluid
-            label="First name"
-            placeholder="First name"
-            name="firstname"
-            onChange={(evt) => {
-              setErrorFirstname('');
-              dispatch({ type: SYNC_FIRSTNAME, payload: evt.target.value });
-            }}
-            value={firstname}
-          />
-          <Form.Input
-            error={errorLastname}
+          label="First name"
+          placeholder="First name"
+          name="firstname"
+          onChange={(evt) => {
+            setErrorFirstname('');
+            dispatch({ type: SYNC_FIRSTNAME, payload: evt.target.value });
+          }}
+          value={firstname}
+        />
+        <Form.Input
+          error={errorLastname}
         // fluid
-            icon="user"
-            iconPosition="left"
-            type="text"
-            label="Last name"
-            placeholder="Last name"
-            name="lastname"
-            onChange={(evt) => {
-              setErrorLastname('');
-              dispatch({ type: SYNC_LASTNAME, payload: evt.target.value });
-            }}
-            value={lastname}
-          />
-          <Form.Input
-            error={errorMail}
+          icon="user"
+          iconPosition="left"
+          type="text"
+          label="Last name"
+          placeholder="Last name"
+          name="lastname"
+          onChange={(evt) => {
+            setErrorLastname('');
+            dispatch({ type: SYNC_LASTNAME, payload: evt.target.value });
+          }}
+          value={lastname}
+        />
+        <Form.Input
+          error={errorMail}
         // fluid
-            type="mail"
-            label="Mail"
-            placeholder="Mail"
-            name="mail"
-            onChange={(evt) => {
-              setErrorMail('');
-              dispatch({ type: SYNC_MAIL, payload: evt.target.value });
-            }}
-            value={mail}
-          />
-          <Form.Input
-            error={errorPassword}
+          type="mail"
+          label="Mail"
+          placeholder="Mail"
+          name="mail"
+          onChange={(evt) => {
+            setErrorMail('');
+            dispatch({ type: SYNC_MAIL, payload: evt.target.value });
+          }}
+          value={mail}
+        />
+        <Form.Input
+          error={errorPassword}
         // fluid
-            type="password"
-            label="Password"
-            placeholder="Password"
-            name="password"
-            onChange={(evt) => {
-              dispatch({ type: SYNC_PASSWORD, payload: evt.target.value });
-            }}
-            value={password}
-          />
-          <Form.Input
-            error={errorPasswordConfirmation}
+          type="password"
+          label="Password"
+          placeholder="Password"
+          name="password"
+          onChange={(evt) => {
+            dispatch({ type: SYNC_PASSWORD, payload: evt.target.value });
+          }}
+          value={password}
+        />
+        <Form.Input
+          error={errorPasswordConfirmation}
         // fluid
-            type="password"
-            label="Password confirmation"
-            placeholder="Password confirmation"
-            name="passwordConfirmation"
-            onChange={(evt) => {
-              dispatch({ type: SYNC_PASSWORD_CONFIRMATION, payload: evt.target.value });
-            }}
-            value={passwordConfirmation}
-          />
+          type="password"
+          label="Password confirmation"
+          placeholder="Password confirmation"
+          name="passwordConfirmation"
+          onChange={(evt) => {
+            dispatch({ type: SYNC_PASSWORD_CONFIRMATION, payload: evt.target.value });
+          }}
+          value={passwordConfirmation}
+        />
         {/* <Form.Field>
     <Checkbox label="I agree to the Terms and Conditions" />
   </Form.Field> */}
