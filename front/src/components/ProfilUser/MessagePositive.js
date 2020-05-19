@@ -7,7 +7,7 @@ const MessagePositive = () => {
 
   console.log('message');
   return (
-    <Message positive hidden={!messagePositif}>
+    <Message className="update-user-modal" positive hidden={!messagePositif}>
       <Message.Header>Votre modification a été enregistré</Message.Header>
       {/* <p>
           Go to your <b>special offers</b> page to see now.
