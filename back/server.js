@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
    getRoomUsers
  } = require('./app/utils/users');
 
- const botName = 'Chris'
+ const botName = 'Robot'
 
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room}) => {
