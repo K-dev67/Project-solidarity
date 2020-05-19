@@ -213,15 +213,17 @@
       }
 }
 .update-user-modal {
-  display: block !important;
     background: rgba(19, 37, 41, 1) !important;
-    border: none;
+    border: 1px solid white;
     max-height: 5vh !important;
     width: 100% !important;
     margin: 0 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
   .header {
       padding: 0;
       background: none !important;
       box-shadow: none !important;
+      -webkit-box-shadow: none !important;
   }
 }
