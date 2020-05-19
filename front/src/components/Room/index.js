@@ -18,7 +18,6 @@ import getCategories from '../../utils/getCategories';
 
 // component
 import RoomDescription from './RoomDescription';
-// import ConfirmDeleteMessageLesson from './ConfirmDeleteMessageLesson';
 
 import Chat from '../Chat';
 
@@ -67,7 +66,6 @@ const Room = ({ lesson }) => {
         className="room"
         key={lesson.id}
       >
-        {/* <ConfirmDeleteMessageLesson /> */}
         <div className="container-live-description">
           <div className="live-stream" style={divStyleStream}>
             {videoLiveComponent}
