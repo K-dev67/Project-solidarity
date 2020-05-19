@@ -68,14 +68,14 @@ const AskLessons = () => {
       );
     }
 
-    // == pour like une carte
+    // == pour like une askLesson
     const handleLike = () => {
       console.log('liké');
-      axios.get(`${API_URL}/user/${userId}/ask/${askLesson.id}/subscribe`)
+      axios.patch(`${API_URL}/user/${userId}/ask/${askLesson.id}/like`)
         .then((res) => {
           axios.get(`${API_URL}/askList`)
-            .then((res) => {
-              dispatch({ type: SET_ASK_LESSONS, payload: res.data });
+            .then((res2) => {
+              dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
             })
             .catch((error) => console.trace(error));
         });

@@ -22,8 +22,7 @@ import Lessons from '../Lessons';
 import Teachers from '../Teachers';
 import Room from '../Room';
 import AskLessons from '../AskLessons';
-import Loading from '../Loading';
-
+import QuatreCentQuatre from '../404';
 // == Import style
 import './styles.scss';
 
@@ -123,7 +122,7 @@ const App = () => {
             }}
           />
         ))}
-        <Route>404</Route>
+        <Route><QuatreCentQuatre /></Route>
       </Switch>
       <Footer />
     </div>
