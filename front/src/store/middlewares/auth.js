@@ -25,7 +25,6 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           if (res.status === 200) {
             sessionStorage.user = JSON.stringify(res.data);
-            console.log('res.data', res.data);
             sessionStorage.userToken = JSON.stringify(res.data.token);
             const user = JSON.parse(sessionStorage.getItem('user'));
             const userToken = JSON.parse(sessionStorage.getItem('userToken'));

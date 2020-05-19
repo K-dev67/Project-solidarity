@@ -53,15 +53,12 @@ const Lessons = () => {
     }
     // pour s'inscrire à un cours
     const handleSubscribe = () => {
-      console.log('subscribe');
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
         .then((res) => {
-          console.log('res', res);
           getLessons();
         });
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/like`)
         .then((res) => {
-          console.log('res', res);
           getLessons();
         });
     };
