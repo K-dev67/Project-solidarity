@@ -10,9 +10,13 @@
 .addAskModal {
   background: rgba(19, 37, 41, 1) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  flex-direction: column !important;
   .positive {
+    display: block !important;
     background: rgba(19, 37, 41, 1) !important;
     border: none;
+    max-height: 5vh !important;
+    width: 100% !important;
     .header {
       padding: 0;
       background: none !important;
