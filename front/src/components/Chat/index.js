@@ -12,6 +12,9 @@ import { Icon } from 'semantic-ui-react';
 // == formatizer formater le texte
 import { Formatizer, Picker } from 'formatizer';
 // import getMessages from '../../utils/getMessages';
+// == auto scroll
+import AutoScroll from '@brianmcallister/react-auto-scroll';
+
 
 // == style
 import './styles.scss';
@@ -41,8 +44,9 @@ const Chat = ({ lessonId }) => {
       key={lessonId}
     >
       {/* <Picker style={styleEmoji} onChange={(data) => console.log(data)} /> */}
-
-      <ul className="chat-all-messages">{messageJSX}</ul>
+      <ul className="chat-all-messages">
+        <AutoScroll>{messageJSX}</AutoScroll>
+      </ul>
       <div className="">
         <form
           className="chat-send-message"
