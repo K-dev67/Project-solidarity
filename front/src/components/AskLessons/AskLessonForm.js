@@ -39,21 +39,21 @@ const AskLessonForm = () => {
           <div className="level">
             <p>Niveau</p>
             <select name="Niveau" ref={register({ required: true })}>
-              {errors.Niveau && <div className="error-form">Niveau requis</div>}
               <option value="">niveaux</option>
               <option value="easy">easy</option>
               <option value="normal">normal</option>
               <option value="hard">hard</option>
               <option value="expert">expert</option>
             </select>
+            {errors.Niveau && <div className="error-form">Niveau requis</div>}
           </div>
           <div className="category">
             <p>Categorie</p>
             <select name="Catégorie" ref={register({ required: true })}>
-              {errors.Catégorie && <div>champ requis</div>}
               <option value="">matières</option>
               {optionCategoryJSX}
             </select>
+            {errors.Catégorie && <div className="error-form">champ requis</div>}
           </div>
         </div>
       </div>

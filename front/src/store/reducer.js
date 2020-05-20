@@ -38,6 +38,7 @@ import {
   UPDATE_LESSON,
   DELETE_LESSON,
   SET_LESSON_BY_ID,
+  // SET_RELATION_USER_SUBSCRIBE,
   // == ASK LESSON
   SET_ASK_LESSONS,
   ADD_ASKLESSON_IN_BDD,
@@ -85,6 +86,7 @@ const initialState = {
   teachers: [],
   lessonInfo: {},
   lessons: [],
+  // relationUserSubscribe: [],
   askLessons: [],
   addLessonData: {},
   updateLessonData: {},
@@ -429,6 +431,12 @@ export default (state = initialState, action = {}) => {
       next(action);
       // return;
     }
+    // case SET_RELATION_USER_SUBSCRIBE: {
+    //   return {
+    //     ...state,
+    //     relationUserSubscribe: action.payload,
+    //   };
+    // }
     case DELETE_CATEGORY_LABEL: {
       const { userId } = state;
       let { categoryId, lessonId } = action.payload;

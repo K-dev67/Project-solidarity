@@ -28,6 +28,7 @@ import Loading from '../Loading';
 import getLessonById from '../../utils/getLessonById';
 import getMessages from '../../utils/getMessages';
 import getLessons from '../../utils/getLessons';
+// import getRelationSubscribe from '../../utils/getRelationUserSubscribe';
 
 // == style
 import './styles.scss';
@@ -35,38 +36,39 @@ import './styles.scss';
 const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
+  // useEffect(getRelationSubscribe, []);
   //! test close socket
   dispatch({ type: LEAVE_ROOM });
 
   const { lessonsFiltered, userId } = useSelector((state) => state);
-  let colorOwner = '';
-  // let styleOwner = '';
-  // faire apparaitre la première catégorie
-  // la catégorie principale du cours
+  let classCardLesson = 'card-lesson-list';
+
 
   if (lessonsFiltered === undefined) return null;
+  // console.log('relationUserSubscribe', relationUserSubscribe);
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
-      // colorOwner = 'background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;';
-      // styleOwner = 'background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;';
-      colorOwner = 'teal';
+      classCardLesson = 'card-lesson-list card-lesson-list--owner';
     }
+    else classCardLesson = 'card-lesson-list';
     // pour s'inscrire à un cours
     const handleSubscribe = () => {
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
-        .then((res) => {
+        .then(() => {
           getLessons();
         });
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/like`)
-        .then((res) => {
+        .then(() => {
           getLessons();
         });
     };
 
     // pop confirm pour subscribe à un cours
-    const confirmSubscribe = (
+    let confirmSubscribe = '';
+
+    confirmSubscribe = (
       <Popconfirm
-        title="S'abonner à ce cours ?"
+        title="Confirmez ?"
         okText="Oui"
         cancelText="Non"
         onConfirm={handleSubscribe}
@@ -114,12 +116,10 @@ const Lessons = () => {
     }
     return (
       <div
-        className="card-lesson-list"
+        className={classCardLesson}
         key={lesson.id}
       >
-        <Card
-          color={colorOwner}
-        >
+        <Card>
           <Card.Content>
             <Card.Header
               onClick={handleClick}
@@ -167,10 +167,3 @@ const Lessons = () => {
 };
 
 export default Lessons;
-
-// easy => green
-// normal => bleu
-// hard => red
-// expert => black
-
-// <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}><a><p /><Icon name="heart" color="teal" /></a></div>;

@@ -11,7 +11,9 @@
         //border-bottom: 1px solid rgba(10, 180, 180, 1) !important;
         padding: 1.5em;
         margin-bottom: 1em;
+
       }
+
       .message-content {
         margin-left: 1em;
         padding-top: 0.7em;
@@ -24,7 +26,7 @@
           padding-right: 1em;
           border-radius: 0.6em;
           div {
-          border: none!important;           
+          border: none!important;
           background: none !important;
           }
         }
@@ -34,6 +36,15 @@
         display: none;
       }
     }
+    // pour différencier les auteurs des messages
+    // .owner {
+      //   color: red !important;
+      // }
+      .robot {
+        font-style: italic;
+        font-weight: 300;
+        color: rgb(170, 168, 168);
+      }
   }
 }
 

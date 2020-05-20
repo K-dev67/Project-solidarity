@@ -26,17 +26,29 @@ const Chat = ({ lessonId }) => {
   // useEffect(getMessages(lessonId), []);
   const [hidden, setHidden] = useState(true);
   const currentMessage = useSelector((state) => state.message);
+  const userId = useSelector((state) => state.userId);
   const { messages } = useSelector((state) => state);
-  const messageJSX = messages.map((message) => (
-    <li
-      className="chat-message"
-      key={key++}
-    >
-      <strong className="message-author">{message.nickname}</strong>
-      <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
-      <p className="message-content"><Formatizer>{message.content}</Formatizer></p>
-    </li>
-  ));
+  const messageJSX = messages.map((message) => {
+    console.log('bjr');
+    let classAuthor = '';
+    if (message.nickname === 'Robot') {
+      classAuthor = 'chat-message robot';
+    }
+    else if (message.author_id === userId) {
+      classAuthor = 'chat-message owner';
+    }
+    else classAuthor = 'chat-message';
+    return (
+      <li
+        className={classAuthor}
+        key={key++}
+      >
+        <strong className="message-author">{message.nickname}</strong>
+        <em className="date-message"><Moment format="D MMM YYYY HH:mm" withTitle>{message.created_at}</Moment></em>
+        <p className="message-content"><Formatizer>{message.content}</Formatizer></p>
+      </li>
+    );
+  });
 
   return (
     <div
