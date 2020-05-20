@@ -39,7 +39,7 @@ const Lessons = () => {
   dispatch({ type: LEAVE_ROOM });
 
   const { lessonsFiltered, userId } = useSelector((state) => state);
-  let colorOwner = '';
+  let classCardLesson = 'card-lesson-list';
   // let styleOwner = '';
   // faire apparaitre la première catégorie
   // la catégorie principale du cours
@@ -47,10 +47,9 @@ const Lessons = () => {
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
-      // colorOwner = 'background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;';
-      // styleOwner = 'background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;';
-      colorOwner = 'teal';
+      classCardLesson = 'card-lesson-list card-lesson-list--owner';
     }
+    else classCardLesson = 'card-lesson-list';
     // pour s'inscrire à un cours
     const handleSubscribe = () => {
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
@@ -114,12 +113,10 @@ const Lessons = () => {
     }
     return (
       <div
-        className="card-lesson-list"
+        className={classCardLesson}
         key={lesson.id}
       >
-        <Card
-          color={colorOwner}
-        >
+        <Card>
           <Card.Content>
             <Card.Header
               onClick={handleClick}

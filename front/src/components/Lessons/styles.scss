@@ -196,8 +196,7 @@
           //display: block !important;
           justify-content: center !important;
           //margin-left: 1em !important;
-          //background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;
-          background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+          background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%);
           padding: 0.5em !important;
           margin: 2% !important;
           //box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22);
@@ -281,6 +280,9 @@
                 transform: scale(0.9, 0.9);
 
               }
+        }
+        .card-lesson-list--owner {
+          background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;
         }
       }
    }
