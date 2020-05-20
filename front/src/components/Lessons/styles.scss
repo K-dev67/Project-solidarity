@@ -242,9 +242,12 @@
               padding-top: 1em !important;
               height: 30vh;
               overflow-y: scroll;
-              scrollbar-color: red !important;
+
               color: white !important;
               border-radius: 0.2em;
+            }
+            .description::-webkit-scrollbar-thumb {
+              background-color: #F5F5F5;
             }
             .extra {
               background: rgba(19, 37, 41, 1) !important;
