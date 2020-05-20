@@ -190,6 +190,15 @@ const dataMapper = {
         const values = [userId, askId];
         db_connection.query(query, values, callback);
     },
+    getRelAsk: (callback) => {
+        const query = 'SELECT * FROM "user_subscribe_ask"';
+        db_connection.query(query, callback);
+    },
+    getRelLesson: (callback) => {
+        const query = 'SELECT * FROM "user_subscribe_lesson"';
+        db_connection.query(query, callback);
+    },
+
 
 //!  /// \\\  ****** ///\\\
 //!  /// \\\  UPDATE ///\\\

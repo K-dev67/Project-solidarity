@@ -17,7 +17,7 @@ const TopLessonsPresentation = () => {
   ));
   return (
     <div className="TopLessonsContainer">
-      <h2>Cours les mieux notés</h2>
+      <h2>Nos Remerciements</h2>
       <div className="TopLessonsPresentation_container">
         {/* <div className="TopLessonsPresentation_container_card" /> */}
         {TopCours}

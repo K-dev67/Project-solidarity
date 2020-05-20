@@ -178,9 +178,11 @@
       .button {
         height: 5vh !important;
         width: 40% !important;
+        padding-right: 0.5em !important;
         flex-wrap: wrap;
       }
       .input-topbar {
+        padding-left: 0.5em !important;
         height: 5vh !important;
         width: 40% !important;
         flex-wrap: wrap;

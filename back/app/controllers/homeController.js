@@ -123,6 +123,32 @@ const homeController = {
             res.send(lessonCategory);
         });
     },
+    getRelationAsk: (req, res) => {
+        dataMapper.getRelAsk((error, data) => {
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            if (data.rowCount === 0){
+                res.send('Pas de relation');
+            }
+            const askRelation = data.rows;
+            res.send(askRelation);
+        });
+    },
+    getRelationLesson: (req, res) => {
+        dataMapper.getRelLesson((error, data) => {
+            if (error) {
+                console.trace(error);
+                res.send(error);
+            }
+            if (data.rowCount === 0){
+                res.send('Pas de relation');
+            }
+            const lessonRelation = data.rows;
+            res.send(lessonRelation);
+        });
+    },
 };
 
 module.exports = homeController;
