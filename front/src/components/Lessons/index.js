@@ -143,7 +143,7 @@ const Lessons = () => {
           </Card.Content>
           <Card.Content extra>
             <Icon name="calendar" />
-            Le cours aura lieu le  <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
+            <p>Le cours aura lieu le </p> <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment>
             <div className="lesson-bell" style={{ cursor: 'pointer' }}>
               <a>{lesson.like}</a>
               {confirmSubscribe}
