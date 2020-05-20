@@ -45,11 +45,11 @@ const Chat = ({ lessonId }) => {
     >
       {/* <Picker style={styleEmoji} onChange={(data) => console.log(data)} /> */}
       <ul className="chat-all-messages">
-        <AutoScroll>
+        <AutoScroll className="auto-first-div">
           {messageJSX}
         </AutoScroll>
       </ul>
-      <div className="">
+      <div className="text-chat">
         <form
           className="chat-send-message"
           onSubmit={(evt) => {

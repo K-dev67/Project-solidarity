@@ -312,14 +312,22 @@
         background-color: rgb(1, 134, 134);
         height: calc(100vh - 50px -64px) !important;
         width: 25%;
+        overflow-y: hidden !important;
         //position: fixed;
         .container-chat-main {
             //height: 100%;
             //padding-left: 0.7em;
             min-height: calc(100vh -50px -64px -7vh) !important;
             max-height: calc(100vh -50px -64px -7vh) !important;
-          div {
+            
+          .text-chat {
             height: 7vh !important;
+          }
+          .auto-first-div {
+            height: calc(100vh -50px -64px -7vh -27px) !important;
+            .react-auto-scroll__scroll-container {
+              height: calc(100vh -50px -64px -7vh -27px) !important;
+            }
           }
             .chat-all-messages {
               min-height: calc(100vh -50px -64px -7vh) !important;
