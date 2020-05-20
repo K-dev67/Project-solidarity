@@ -40,18 +40,20 @@ const AskLessons = () => {
   },
   []);
 
-  let colorOwner = '';
+  // const colorOwner = '';
   let iconPencil = '';
   let confirmDelete = '';
+  let classAskCardOwner = 'ask-card';
   // == composant ask lesson JSX
   const askLessonsJSX = askLessons.map((askLesson) => {
     // == pour différencier un proprio
     if (askLesson.author_id === userId) {
+      // == class de bordure de carte
+      classAskCardOwner = 'ask-card ask-card--owner';
       // == pour delete une carte
       const handleDelete = () => {
         dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
       };
-      colorOwner = 'teal';
 
       iconPencil = (<a href="#"><UpdateAskLessonModal askLesson={askLesson} /></a>
       );
@@ -66,6 +68,11 @@ const AskLessons = () => {
           <a href="#"><Icon name="close" /></a>
         </Popconfirm>
       );
+    }
+    else {
+      iconPencil = '';
+      confirmDelete = '';
+      classAskCardOwner = 'ask-card';
     }
 
     // == pour like une askLesson
@@ -111,8 +118,8 @@ const AskLessons = () => {
     }
     return (
       <Card
-        className="ask-card"
-        color={colorOwner}
+        className={classAskCardOwner}
+        // color={colorOwner}
         key={askLesson.id}
       >
         <div className="for-ask-border">

@@ -44,30 +44,30 @@ export default function AddLessonForm() {
           <div className="level">
             <p>Niveau</p>
             <select name="Niveau" ref={register({ required: true })}>
-              {errors.Niveau && <div className="error-form">Niveau requis</div>}
               <option value="">niveaux</option>
               <option value="easy">easy</option>
               <option value="normal">normal</option>
               <option value="hard">hard</option>
               <option value="expert">expert</option>
             </select>
+            {errors.Niveau && <div className="error-form">Niveau requis</div>}
           </div>
           <div className="category">
             <p>Categorie</p>
             <select name="Catégorie" ref={register({ required: true })}>
-              {errors.Catégorie && <div>champ requis</div>}
               <option value="">matières</option>
               {optionCategoryJSX}
             </select>
+            {errors.Catégorie && <div className="error-form">matière requise</div>}
           </div>
           <div className="date">
             <p>Date et Heure</p>
-            <input type="datetime-local" placeholder="Date" name="Date" ref={register} />
-            {errors.Date && <div className="error-form">Date et Heure requis</div>}
+            <input type="datetime-local" placeholder="Date" name="Date" ref={register({ required: true })} />
+            {errors.Date && <div className="error-form">Date et Heure requise</div>}
           </div>
           <div className="video-url">
             <p>Lien vidéo (facultatif)</p>
-            <input type="text" placeholder="Video" name="Video" ref={register} />
+            <input type="text" placeholder="Video facultatif" name="Video" ref={register} />
           </div>
         </div>
       </div>
