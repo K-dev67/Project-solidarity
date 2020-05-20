@@ -36,7 +36,7 @@ import './styles.scss';
 const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
-  useEffect(getRelationSubscribe, []);
+  // useEffect(getRelationSubscribe, []);
   //! test close socket
   dispatch({ type: LEAVE_ROOM });
 
@@ -45,6 +45,7 @@ const Lessons = () => {
 
 
   if (lessonsFiltered === undefined) return null;
+  // console.log('relationUserSubscribe', relationUserSubscribe);
   const lessonsJSX = lessonsFiltered.map((lesson) => {
     if (lesson.teacher_id === userId) {
       classCardLesson = 'card-lesson-list card-lesson-list--owner';
@@ -53,17 +54,19 @@ const Lessons = () => {
     // pour s'inscrire à un cours
     const handleSubscribe = () => {
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
-        .then((res) => {
+        .then(() => {
           getLessons();
         });
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/like`)
-        .then((res) => {
+        .then(() => {
           getLessons();
         });
     };
 
     // pop confirm pour subscribe à un cours
-    const confirmSubscribe = (
+    let confirmSubscribe = '';
+
+    confirmSubscribe = (
       <Popconfirm
         title="S'abonner à ce cours ?"
         okText="Oui"
