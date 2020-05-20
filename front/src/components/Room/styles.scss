@@ -231,7 +231,8 @@
             background-color: rgb(2, 87, 87);
             // box-shadow: inset 0 0 25px teal;
             // height: 90%;
-            min-height: 79vh !important;
+            min-height: calc(100vh -50px -64px -7vh) !important;
+            max-height: calc(100vh -50px -64px -7vh) !important;
             margin-left: 0.5em;
             // == bouton "lancer le stream"
             button {
@@ -313,16 +314,21 @@
         width: 25%;
         //position: fixed;
         .container-chat-main {
-            height: 100%;
+            //height: 100%;
             //padding-left: 0.7em;
+            min-height: calc(100vh -50px -64px -7vh) !important;
+            max-height: calc(100vh -50px -64px -7vh) !important;
           div {
-            max-height: 9%;
+            height: 7vh !important;
           }
             .chat-all-messages {
+              min-height: calc(100vh -50px -64px -7vh) !important;
+              max-height: calc(100vh -50px -64px -7vh) !important;
                 overflow-y: scroll;
-                 height: 91%;
+                 //height: 82vh !important;
                  padding-left: 0.4em;
                  padding-top: 0.3em;
+                 margin-bottom: 0 !important;
                  .chat-message {
                     .date-message {
                         color: rgb(218, 216, 216);

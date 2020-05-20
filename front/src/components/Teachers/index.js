@@ -14,7 +14,7 @@ import './styles.scss';
 
 const Teachers = () => (
   <div className="teachers">
-    <h2>Liste de nos Professeurs
+    <h2 className="title-teacher-list">Liste de nos Professeurs
     </h2>
     <Card.Group
       itemsPerRow={3}
