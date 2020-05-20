@@ -54,7 +54,6 @@ const AskLessons = () => {
       const handleDelete = () => {
         dispatch({ type: DELETE_ASK_LESSON, payload: askLesson.id });
       };
-      // colorOwner = 'teal';
 
       iconPencil = (<a href="#"><UpdateAskLessonModal askLesson={askLesson} /></a>
       );
