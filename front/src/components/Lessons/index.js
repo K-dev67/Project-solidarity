@@ -28,7 +28,7 @@ import Loading from '../Loading';
 import getLessonById from '../../utils/getLessonById';
 import getMessages from '../../utils/getMessages';
 import getLessons from '../../utils/getLessons';
-import getRelationSubscribe from '../../utils/getRelationUserSubscribe';
+// import getRelationSubscribe from '../../utils/getRelationUserSubscribe';
 
 // == style
 import './styles.scss';
@@ -68,7 +68,7 @@ const Lessons = () => {
 
     confirmSubscribe = (
       <Popconfirm
-        title="S'abonner à ce cours ?"
+        title="Confirmez ?"
         okText="Oui"
         cancelText="Non"
         onConfirm={handleSubscribe}
