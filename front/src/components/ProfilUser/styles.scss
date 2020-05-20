@@ -24,6 +24,8 @@
   background: rgba(19, 37, 41, 1) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
   max-height: 60vh !important;
+  padding-top: 3em !important;
+  margin-top: unset !important;
     button {
       border: 1px solid rgba(10, 180, 180, 1) !important;
         background: rgba(20, 20, 20, .6) !important;
@@ -213,17 +215,19 @@
       }
 }
 .update-user-modal {
-    background: rgba(19, 37, 41, 1) !important;
-    border: 1px solid white;
+    border-radius: unset !important;
+    margin: unset !important;
     max-height: 5vh !important;
     width: 100% !important;
-    margin: 0 !important;
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
+    background: rgba(19, 37, 41, 1) !important;
   .header {
-      padding: 0;
-      background: none !important;
-      box-shadow: none !important;
-      -webkit-box-shadow: none !important;
+    border: 1px solid rgba(10, 180, 180, 1) !important;
+    padding: 1em !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-radius: 0.5em;
   }
 }
