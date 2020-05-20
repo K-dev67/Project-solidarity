@@ -21,7 +21,7 @@ import Moment from 'react-moment';
 // == component
 import AddLessonModal from './AddLessonModal';
 import InputSearchLesson from './InputSearchLesson';
-import ImageCategory from './ImageCategory';
+// import ImageCategory from './ImageCategory';
 import Loading from '../Loading';
 
 // == import from BDD
@@ -53,15 +53,12 @@ const Lessons = () => {
     }
     // pour s'inscrire à un cours
     const handleSubscribe = () => {
-      console.log('subscribe');
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/subscribe`)
         .then((res) => {
-          console.log('res', res);
           getLessons();
         });
       axios.patch(`${API_URL}/user/${userId}/lesson/${lesson.id}/like`)
         .then((res) => {
-          console.log('res', res);
           getLessons();
         });
     };

@@ -36,7 +36,6 @@ const Room = ({ lesson }) => {
       axios
         .get(`${API_URL}/lessons/${lesson.id}`)
         .then((res) => {
-          console.log('good for lessonId in Room');
           store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
         }).catch((error) => console.trace(error));
     },

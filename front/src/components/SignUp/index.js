@@ -100,7 +100,6 @@ const SignUp = () => {
       );
       dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule, une minuscule et un caractère spécial' });
     }
-    console.log(schema.validate(password));
     // - mot de passe = confirmation
     if (password !== passwordConfirmation) {
       errorsList.push(
@@ -108,7 +107,7 @@ const SignUp = () => {
       );
       dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
     }
-    console.log('errorsList', errorsList);
+    // console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
       dispatch(signup(history));
     }

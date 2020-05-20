@@ -14,7 +14,6 @@ const getMessages = (lessonId) => {
   );
   promise.then((res) => {
     const messages = res.data;
-    console.log('messagesInAXIOSSSSS', messages);
     store.dispatch({ type: SET_MESSAGES, payload: messages });
   });
 };

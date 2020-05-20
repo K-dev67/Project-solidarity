@@ -183,7 +183,6 @@ export default (state = initialState, action = {}) => {
     // }
     //!
     case SET_USER_DATA: {
-      console.log('action.payload', action.payload[0].id);
       return {
         ...state,
         user: action.payload[0],
@@ -272,7 +271,6 @@ export default (state = initialState, action = {}) => {
           category: action.payload.Catégorie,
         },
       ).then((res) => {
-        console.log('response in ADD_ASK_LESSON', res);
         axios.get(`${API_URL}/askList`)
           .then((res2) => {
             store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
@@ -286,7 +284,6 @@ export default (state = initialState, action = {}) => {
       axios
         .delete(`${API_URL}/user/${userId}/ask/${action.payload}`)
         .then((res) => {
-          console.log('res in Delete AskLesson', res);
           axios.get(`${API_URL}/askList`)
             .then((res2) => {
               store.dispatch({ type: SET_ASK_LESSONS, payload: res2.data });
@@ -297,8 +294,6 @@ export default (state = initialState, action = {}) => {
     }
     case UPDATE_ASKLESSON_IN_BDD: {
       const { userId } = state;
-      console.log('action.payload', action.payload);
-      console.log('action.askLessonId', action.askLessonId);
       axios
         .patch(`${API_URL}/user/${userId}/ask/${action.askLessonId}`, {
           title: action.payload.Titre,
@@ -306,7 +301,6 @@ export default (state = initialState, action = {}) => {
           level: action.payload.Niveau,
         })
         .then((res) => {
-          console.log('res in updateAskLesson', res);
           if (res.status === 200) {
             store.dispatch({ type: MESSAGE_POSITIF_TRUE });
             axios.get(`${API_URL}/askList`)
@@ -330,7 +324,6 @@ export default (state = initialState, action = {}) => {
           avatar: state.user.avatar,
         },
       ).then((res) => {
-        console.log('response in UPDATEUSER', res.data);
       });
     }
     case UPDATE_PASSWORD: {
@@ -344,7 +337,6 @@ export default (state = initialState, action = {}) => {
         if (res.status === 200) {
           store.dispatch({ type: MESSAGE_POSITIF_TRUE });
         }
-        console.log('RES in update Pass', res.data);
       })
         .catch((error) => console.trace(error));
     }
@@ -358,7 +350,6 @@ export default (state = initialState, action = {}) => {
       ).then((res) => {
         if (res.status === 200) {
           store.dispatch({ type: MESSAGE_POSITIF_TRUE });
-          console.log('mail modifié avec succés');
         }
       }).catch((error) => console.trace(error));
     }
@@ -383,7 +374,6 @@ export default (state = initialState, action = {}) => {
           category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in ADDLESSON', res);
         getLesson();
         store.dispatch({ type: MESSAGE_POSITIF_TRUE });
       });
@@ -411,7 +401,6 @@ export default (state = initialState, action = {}) => {
           // category: state.addLessonData.Catégorie,
         },
       ).then((res) => {
-        console.log('response in UPDATELESSON', res);
         getLesson();
       }).catch((err) => console.trace(err));
       next(action);
@@ -420,7 +409,6 @@ export default (state = initialState, action = {}) => {
       const { userId, lessonId } = action.payload;
       axios.delete(`${API_URL}/user/${userId}/lesson/${lessonId}`)
         .then((res) => {
-          console.log('res in Delete Lesson', res);
           getLesson();
         });
       next(action);
@@ -448,7 +436,6 @@ export default (state = initialState, action = {}) => {
       axios
         .delete(`${API_URL}/user/${userId}/lesson/${lessonId}/category/${categoryId}`)
         .then((res) => {
-          console.log('resInDeleteCategory', res);
           axios
             .get(`${API_URL}/categoryList/${lessonId}`)
             .then((res2) => {

@@ -1,10 +1,8 @@
 require('dotenv').config();
 
-
 const express = require('express');
 const session = require('express-session');
 const sanitizeMiddleware = require('./app/middlewares/sanitise');
-
 
 const bodyParser = require('body-parser');
 
@@ -55,8 +53,6 @@ io.on('connection', socket => {
       users: getRoomUsers(user.room)
     });
   });
-
-
 
   socket.on('chatMessage', msg => {
     console.log('msg', msg)

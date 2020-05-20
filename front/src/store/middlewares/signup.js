@@ -4,11 +4,13 @@ import {
   SET_FORM, RESET, enterLoginPage,
 } from 'src/store/actions';
 
+import { API_URL } from '../../utils/constante';
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case SET_FORM: {
       axios
-        .post('http://localhost:8888/signup', {
+        .post(`${API_URL}/signup`, {
           pseudo: store.getState().username,
           firstname: store.getState().firstname,
           lastname: store.getState().lastname,

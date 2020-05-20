@@ -70,7 +70,6 @@ const AskLessons = () => {
 
     // == pour like une askLesson
     const handleLike = () => {
-      console.log('liké');
       axios.patch(`${API_URL}/user/${userId}/ask/${askLesson.id}/like`)
         .then((res) => {
           axios.get(`${API_URL}/askList`)

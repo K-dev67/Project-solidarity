@@ -4,8 +4,6 @@ import { Message } from 'semantic-ui-react';
 
 const MessagePositive = () => {
   const { messagePositif } = useSelector((state) => state);
-
-  console.log('message');
   return (
     <Message className="update-user-modal" positive hidden={!messagePositif}>
       <Message.Header>Votre modification a été enregistré</Message.Header>

@@ -46,7 +46,7 @@ const FormUpdateUser = () => {
       errorsList.push('Le nom ne peut pas être vide');
       setErrorLastname('Le Nom de famille ne peut pas être vide');
     }
-    console.log('errorsList', errorsList);
+    // console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
       dispatch({ type: UPDATE_USER });
       // dispatch({ type: RESET });
