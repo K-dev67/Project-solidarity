@@ -36,7 +36,7 @@ body {
       }
       .field label {
         //display: none !important;
-        color: white !important;
+        color: rgba(10, 180, 180, 1) !important;
       }
       .button {
         border: 1px solid rgba(10, 180, 180, 1);
@@ -55,11 +55,18 @@ body {
       }
     }
 }
+@media (max-width: 900px) {
+  .first-signup-form {
+      //margin: 1em !important;
+      min-width: 70% !important;
+      min-height: 75vh;
+  }
 
-@media (max-width: 500px) {
-    .signup-form {
-        margin: 1em auto;
-        width: 90%;
+}
+@media (max-width: 600px) {
+    .first-signup-form {
+        margin: 1em !important;
+        min-width: 90% !important;
         min-height: 75vh;
     }
 
