@@ -1,20 +1,18 @@
 
-import axios from 'axios';
-import store from '../store/index';
+// import axios from 'axios';
+// import store from '../store/index';
 
-import { API_URL } from './constante';
+// import { API_URL } from './constante';
 
-// == actions
-// import { SET_CATEGORIES } from '../store/actions';
+// // == actions
+// import { SET_RELATION_USER_SUBSCRIBE } from '../store/actions';
 
 
-const getRelationSubscribe = () => {
-  const promise = axios.get(`${API_URL}/relationLesson`);
-  promise.then((res) => {
-    console.log(res.data);
-    // const categories = res.data;
-    // store.dispatch({ type: SET_CATEGORIES, payload: categories });
-  });
-};
+// const getRelationSubscribe = () => {
+//   const promise = axios.get(`${API_URL}/relationLesson`);
+//   promise.then((res) => {
+//     store.dispatch({ type: SET_RELATION_USER_SUBSCRIBE, payload: res.data });
+//   });
+// };
 
-export default getRelationSubscribe;
+// export default getRelationSubscribe;
