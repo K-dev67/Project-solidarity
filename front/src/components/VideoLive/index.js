@@ -53,7 +53,6 @@ const Video = ({ lesson }) => {
 
   return (
     <>
-      {/* <h2>My First Meeting!</h2> */}
       <Jitsi
         displayName={user.nickname}
         onAPILoad={handleAPI}

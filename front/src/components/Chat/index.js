@@ -49,7 +49,7 @@ const Chat = ({ lessonId }) => {
           {messageJSX}
         </AutoScroll>
       </ul>
-      <div className="">
+      <div className="input-text-chat">
         <form
           className="chat-send-message"
           onSubmit={(evt) => {
