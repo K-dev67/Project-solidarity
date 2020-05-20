@@ -52,9 +52,9 @@ const LabelCategory = ({ lessonId, teacherId }) => {
       });
     };
     // == icone de la croix pour remove category
-    let iconJSX = '';
+    let iconDeleteJSX = '';
     if (userId === teacherId) {
-      iconJSX = (
+      iconDeleteJSX = (
         <Icon
           onClick={handleClick}
           name="delete"
@@ -70,7 +70,7 @@ const LabelCategory = ({ lessonId, teacherId }) => {
         key={category.name}
       >
         {category.name}
-        {iconJSX}
+        {iconDeleteJSX}
       </Label>
     );
   });

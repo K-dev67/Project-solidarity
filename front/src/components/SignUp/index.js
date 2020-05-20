@@ -96,7 +96,7 @@ const SignUp = () => {
     // - longueur minimum du mot de passe (8 caractère minimum !)
     if (!schema.validate(password)) {
       errorsList.push(
-        'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule et un caractère spécial',
+        'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule, une minuscule et un caractère spécial',
       );
       dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule, une minuscule et un caractère spécial' });
     }

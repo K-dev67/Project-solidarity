@@ -18,8 +18,31 @@ import {
   RESET,
 } from 'src/store/actions';
 
+// == import pour la valid du mdp
+import passwordValidator from 'password-validator'; // Must have special caractère
+//! -----------------
+
 // == semantic form
 import { Button, Form } from 'semantic-ui-react';
+
+//! password validator
+// Create a schema
+const schema = new passwordValidator();
+// Add properties to it
+schema
+  .is().min(8) // Minimum length 8
+  .is().max(100) // Maximum length 100
+  .has()
+  .uppercase() // Must have uppercase letters
+  .has()
+  .lowercase() // Must have lowercase letters
+  .has()
+  .digits() // Must have digits
+  .has()
+  .not()
+  .spaces() // Should not have spaces
+  .has()
+  .symbols();
 
 
 const FormUpdatePassword = () => {
@@ -43,11 +66,11 @@ const FormUpdatePassword = () => {
       );
       setErrorOldPassword('Le mot de passe ne peut pas être vide');
     }
-    if (password.length < 8) {
+    if (!schema.validate(password)) {
       errorsList.push(
-        'Le mot de passe doit contenir un minimum de 8 caractères',
+        'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule, une minuscule et un caractère spécial',
       );
-      dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères' });
+      dispatch({ type: SYNC_ERROR_PASSWORD, errorPassword: 'Le mot de passe doit contenir un minimum de 8 caractères, une majuscule, une minuscule et un caractère spécial' });
     }
     // - mot de passe = confirmation
     if (password !== passwordConfirmation) {
