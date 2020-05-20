@@ -44,15 +44,12 @@ const Chat = ({ lessonId }) => {
       key={lessonId}
     >
       {/* <Picker style={styleEmoji} onChange={(data) => console.log(data)} /> */}
-
       <ul className="chat-all-messages">
         <AutoScroll>
           {messageJSX}
         </AutoScroll>
       </ul>
-
-
-      <div className="">
+      <div className="input-text-chat">
         <form
           className="chat-send-message"
           onSubmit={(evt) => {
