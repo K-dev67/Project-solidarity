@@ -28,6 +28,7 @@ import Loading from '../Loading';
 import getLessonById from '../../utils/getLessonById';
 import getMessages from '../../utils/getMessages';
 import getLessons from '../../utils/getLessons';
+import getRelationSubscribe from '../../utils/getRelationUserSubscribe';
 
 // == style
 import './styles.scss';
@@ -35,14 +36,13 @@ import './styles.scss';
 const Lessons = () => {
   const dispatch = useDispatch();
   useEffect(getLessons, []);
+  useEffect(getRelationSubscribe, []);
   //! test close socket
   dispatch({ type: LEAVE_ROOM });
 
   const { lessonsFiltered, userId } = useSelector((state) => state);
   let classCardLesson = 'card-lesson-list';
-  // let styleOwner = '';
-  // faire apparaitre la première catégorie
-  // la catégorie principale du cours
+
 
   if (lessonsFiltered === undefined) return null;
   const lessonsJSX = lessonsFiltered.map((lesson) => {
@@ -164,10 +164,3 @@ const Lessons = () => {
 };
 
 export default Lessons;
-
-// easy => green
-// normal => bleu
-// hard => red
-// expert => black
-
-// <div className="lesson-bell" style={{ cursor: 'pointer' }} onClick={handleSubscribe}><a><p /><Icon name="heart" color="teal" /></a></div>;
