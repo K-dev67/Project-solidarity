@@ -56,7 +56,7 @@ const FormUpdatePassword = () => {
       );
       dispatch({ type: SYNC_ERROR_PASSWORD_CONFIRMATION, errorPasswordConfirmation: 'Le mot de passe et la confirmation ne correspondent pas' });
     }
-    console.log('errorsList', errorsList);
+    // console.log('errorsList', errorsList);
     if (errorsList.length === 0) {
       dispatch({ type: UPDATE_PASSWORD });
       dispatch({ type: RESET });

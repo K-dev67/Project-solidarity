@@ -21,9 +21,8 @@ export default function AddLessonForm() {
   const onSubmit = (data) => {
     dispatch({ type: GET_LESSON_DATA, payload: data });
     dispatch({ type: ADD_LESSON_IN_BDD });
-    // console.log(data);
   };
-  console.log(errors);
+  // console.log(errors);
 
   return (
 

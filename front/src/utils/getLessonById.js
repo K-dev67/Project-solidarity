@@ -14,7 +14,6 @@ const getLessonById = (lessonId) => {
     lessonIdRequest + lessonId,
   );
   promise.then((res) => {
-    console.log('infoLessonById', res.data);
     store.dispatch({ type: SET_LESSON_BY_ID, payload: res.data });
   })
     .catch((error) => console.trace(error));

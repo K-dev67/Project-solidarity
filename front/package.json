@@ -47,6 +47,7 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "@brianmcallister/react-auto-scroll": "^1.0.5",
     "antd": "^4.2.3",
     "axios": "^0.19.2",
     "email-validator": "^2.0.4",

@@ -33,23 +33,23 @@ export default (store) => (next) => (action) => {
       });
       //!--
       socket.on('message', (message) => {
-        console.log('message reçu :', message);
+        // console.log('message reçu :', message);
         store.dispatch({ type: MESSAGE_RECEIVED, message });
       });
 
       socket.on('roomUsers', ({ room, users }) => {
-        console.log('room', room);
-        console.log('users', users);
+        // console.log('room', room);
+        // console.log('users', users);
         store.dispatch({ type: SET_USERS_IN_ROOM, payload: users });
       });
 
-      console.log(socket);
+      // console.log(socket);
       next(action);
       return;
     }
 
     case SEND_MESSAGE: {
-      console.log('Envoi du message au serveur central');
+      // console.log('Envoi du message au serveur central');
       // const { user } = store.getState();
       const { message } = store.getState();
       socket.emit('chatMessage', {
@@ -59,7 +59,7 @@ export default (store) => (next) => (action) => {
       return;
     }
     case LEAVE_ROOM: {
-      console.log('leave_room');
+      // console.log('leave_room');
       // socket.close();
       //! test socket.close
       if (socket) socket.close();
