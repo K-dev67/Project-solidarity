@@ -605,3 +605,18 @@
     }
   }
 }
+@media (max-width: 700px) {
+  .room {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow-y: scroll!important;
+    .container-live-description {
+      width: 100% !important;
+      overflow-y: hidden !important;
+    }
+    .tchat {
+      
+    }
+  }
+
+}

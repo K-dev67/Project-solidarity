@@ -34,6 +34,10 @@ router.get('/askList', homeController.showAsk);
 router.post('/askList', homeController.showAskByCategory);
 router.get('/categoryList', homeController.showAllCategory);
 router.get('/categoryList/:id', homeController.getThisCategory);
+router.get('/relationAsk', homeController.getRelationAsk);
+router.get('/relationLesson', homeController.getRelationLesson);
+
+
 
 // LES ROUTES CONCERNANT LESSON
 router.post('/user/:id/lesson', lessonController.addLesson);
