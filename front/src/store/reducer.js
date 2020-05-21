@@ -6,7 +6,7 @@ import getLessonById from '../utils/getLessons';
 import { API_URL } from '../utils/constante';
 import {
   // == input navBar
-  SET_INPUT_NAV,
+  // SET_INPUT_NAV,
   SET_FILTERED_LESSONS,
   // == signUp Page
   SYNC_USERNAME,
@@ -104,12 +104,12 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     // == Input Nav
-    case SET_INPUT_NAV: {
-      return {
-        ...state,
-        inputNav: action.payload,
-      };
-    }
+    // case SET_INPUT_NAV: {
+    //   return {
+    //     ...state,
+    //     inputNav: action.payload,
+    //   };
+    // }
     case SET_FILTERED_LESSONS: {
       return {
         ...state,

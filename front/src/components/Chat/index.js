@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 
 import { sendMessage, syncMessage } from 'src/store/actions';
 // import Loading from '../Loading';
-import { Icon } from 'semantic-ui-react';
+// import { Icon } from 'semantic-ui-react';
 
 // == formatizer formater le texte
 import { Formatizer, Picker } from 'formatizer';
@@ -24,10 +24,10 @@ const Chat = ({ lessonId }) => {
   let key = 1;
   const dispatch = useDispatch();
   // useEffect(getMessages(lessonId), []);
-  const [hidden, setHidden] = useState(true);
+  // const [hidden, setHidden] = useState(true);
   const currentMessage = useSelector((state) => state.message);
-  const userId = useSelector((state) => state.userId);
-  const { messages } = useSelector((state) => state);
+  // const userId = useSelector((state) => state.userId);
+  const { messages, userId } = useSelector((state) => state);
   const messageJSX = messages.map((message) => {
     console.log('bjr');
     let classAuthor = '';
@@ -80,16 +80,6 @@ const Chat = ({ lessonId }) => {
               }}
             />
 
-            {/*<div className="icone-smiley">
-              <Icon
-                name="plus square outline"
-                className="smiley"
-                onClick={() => {
-                  setHidden(false);
-                }}
-              />
-
-            </div>*/}
             {/* </button> */}
             {/* </div> */}
             {/* <Picker onChange={(data) => console.log(data)} /> */}

@@ -7,10 +7,11 @@ body {
     text-align: center;
     background: rgba(19, 37, 41, 1) !important;
     box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
-    padding: 4em;
-    padding-right: 4em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    // padding: 4em;
+    // padding-right: 4em;
+    // padding-top: 2em;
+    // padding-bottom: 2em;
+    padding: 2em 4em;
     border-radius: 1em;
     border: 1px solid rgba(10, 180, 180, 1) !important;
     input {
@@ -68,6 +69,7 @@ body {
         margin: 1em !important;
         min-width: 90% !important;
         min-height: 75vh;
+        padding: 2em 2em;
     }
 
 }
