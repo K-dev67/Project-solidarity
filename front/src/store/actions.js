@@ -1,5 +1,5 @@
 // == input de la navBar
-export const SET_INPUT_NAV = 'actions/SET_INPUT_NAV';
+// export const SET_INPUT_NAV = 'actions/SET_INPUT_NAV';
 export const SET_FILTERED_LESSONS = 'actions/SET_FILTERED_LESSONS';
 // == sync userForm in signUp
 export const SYNC_USERNAME = 'actions/SYNC_USERNAME';
