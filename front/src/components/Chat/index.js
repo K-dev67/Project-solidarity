@@ -66,7 +66,9 @@ const Chat = ({ lessonId }) => {
           className="chat-send-message"
           onSubmit={(evt) => {
             evt.preventDefault();
-            dispatch(sendMessage());
+            if (currentMessage.trim() !== '') {
+              dispatch(sendMessage());
+            }
           }}
         >
           <div className="container-input-submit">
@@ -79,7 +81,6 @@ const Chat = ({ lessonId }) => {
                 dispatch(syncMessage(evt.target.value));
               }}
             />
-
             {/* </button> */}
             {/* </div> */}
             {/* <Picker onChange={(data) => console.log(data)} /> */}

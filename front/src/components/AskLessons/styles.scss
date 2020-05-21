@@ -98,9 +98,16 @@
       padding-top: 1em;
       padding-bottom: 1em;
       padding-left: 1em;
+
       height: 15vh;
       overflow-y: scroll;
+
       color: white !important;
+      height: 15vh;
+      overflow-y: scroll;
+    }
+    .description::-webkit-scrollbar-thumb {
+      background-color: #F5F5F5;
     }
     .description::-webkit-scrollbar-thumb {
       background-color: #F5F5F5;
