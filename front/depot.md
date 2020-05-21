@@ -214,7 +214,6 @@ import slugify from 'slugify';
   //! -------------------------
 
 
-
 {lessons.map((lesson) =>
           // const slugTitle = slugify(lesson.title).toLowerCase();
           (

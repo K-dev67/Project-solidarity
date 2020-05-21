@@ -2,9 +2,9 @@
     min-height: 85vh;
     .segment {
       .cards {
-        display: flex;
+        /*display: flex;
         justify-content: center;
-        width: unset !important;
+        width: unset !important;*/
 
       }
     }
@@ -72,8 +72,10 @@
   // background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
   padding: 0.5em !important;
   margin: 1em !important;
+  //min-height: 30vh;
   .for-ask-border {
-
+    height: 100% !important;
+    border-radius: 0.5em !important;
     .header {
       font-size: 1.1em !important;
       color: white !important;
@@ -96,9 +98,16 @@
       padding-top: 1em;
       padding-bottom: 1em;
       padding-left: 1em;
+
+      height: 15vh;
+      overflow-y: scroll;
+
       color: white !important;
       height: 15vh;
       overflow-y: scroll;
+    }
+    .description::-webkit-scrollbar-thumb {
+      background-color: #F5F5F5;
     }
     .description::-webkit-scrollbar-thumb {
       background-color: #F5F5F5;
@@ -124,6 +133,7 @@
 .btn-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 1em !important;
   .btn-ask-lesson {
     margin-bottom: 0.5em !important;
     box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
@@ -141,23 +151,18 @@
     }
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .askLessons {
     .segment {
       .cards {
-        .ask-card {
-          display: flex !important;
-          flex-wrap: wrap !important;
-          width: 40% !important;
-        }
+        display: inline !important;
       }
     }
   }
   .btn-container {
-    margin-bottom: 1em !important;
-      .btn-ask-lesson {
-          width: 80% !important;
-      }
+    .btn-ask-lesson {
+      width: 80% !important;
+    }
   }
 }
 
