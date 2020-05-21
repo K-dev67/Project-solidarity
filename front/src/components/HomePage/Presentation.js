@@ -11,16 +11,15 @@ const Presentation = () => {
   return (
     <div className="container_presentation">
       <div className="container_presentation_main">
-        <h1>Cours Gratuit en Live</h1>
-        <p>Bienvenue sur la plateforme Solidarity. Ce site est basé sur le partage des connaissances, chacun(e) peut enseigner et/ou assister à un cours qu'il souhaite. Enjoy ;-)</p>
+        <h1>Cours en ligne</h1>
+        <p>Bienvenue sur la plateforme Solidarity. Ce site est basé sur le partage de connaissances, chacun(e) peut enseigner et/ou assister au cours qu'il souhaite. Amusez-vous !</p>
       </div>
       <div className="container_presentation_image">
-        <img src={image_elearning} alt="image_elearning" />
+        <img src={image} alt="image_elearning" />
       </div>
     </div>
   );
 };
-
 
 export default Presentation;
 
