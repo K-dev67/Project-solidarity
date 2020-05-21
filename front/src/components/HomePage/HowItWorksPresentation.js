@@ -3,6 +3,8 @@ import React from 'react';
 // == style
 import './styles.scss';
 
+import { Link } from 'react-router-dom';
+
 // == import image
 import presentationRoom from '../../assets/img/presentation_room.png';
 import presentationLessons from '../../assets/img/presentation_lessons.png';
@@ -31,6 +33,11 @@ const HowItWorksPresentation = () => (
         </div>
         <img src={presentationLessons} alt="presentation_lessons_pictures" />
       </div>
+    </div>
+    <div className="howItWorksPresentation_button">
+      <Link to="/asklessons">
+        <button className="button" type="button">Voir la liste des demandes de cours</button>
+      </Link>
     </div>
   </div>
 );
