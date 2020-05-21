@@ -57,6 +57,9 @@ io.on('connection', socket => {
   socket.on('chatMessage', msg => {
     console.log('msg', msg)
     const user = getCurrentUser(socket.id);
+    if (user.room == null || user.room == undefined) {
+      return res.send('RoomError');
+    }
     io.to(user.room).emit('message', formatMessage(user.username, msg.content));
     console.log('msg.content', msg.content);
         dataMapper.putMsgOnDb(msg.content, user.userId, user.room, (error, data) => {
