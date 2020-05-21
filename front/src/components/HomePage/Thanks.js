@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 // == style
 import './styles.scss';
 
@@ -22,9 +22,7 @@ const TopLessonsPresentation = () => {
         {/* <div className="TopLessonsPresentation_container_card" /> */}
         {TopCours}
       </div>
-      <Link to="/asklessons">
-        <button className="button AssetsPresentation_button" type="button">Voir la liste des demandes de cours</button>
-      </Link>
+
     </div>
   );
 };
@@ -33,28 +31,22 @@ const TopLessonsPresentation = () => {
 
 const fauxCours = [
   {
-    id: 1, title: 'Javascript', description: 'Introduction à Javascript ES6', teacher_id: 'Anthony', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyalOicjSEpYodgWxemjYhuBZ3GeSuEGbRZzVWJoWXVPbXqPHH&usqp=CAU',
+    id: 1, title: 'Javascript', description: 'Comment troller tout le monde ', teacher_id: 'Chris', teacher_avatar: 'https://avatars0.githubusercontent.com/u/58256586?s=400&u=10e402802a9db67779493f3a583636264f9f253e&v=4',
   },
   {
-    id: 2, title: 'React', description: 'Cours complet sur React/Redux', teacher_id: 'J-D', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU',
+    id: 2, title: 'React', description: 'Cours complet sur React/Redux', teacher_id: 'J-D', teacher_avatar: 'https://avatars1.githubusercontent.com/u/106689?s=400&v=4',
   },
   {
-    id: 3, title: 'Data/SQL', description: 'Cours Data en javascript', teacher_id: 'Kevin', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSKbRH4Jh9B0D6CXyNByqqfuoKXwcbYsSkHoFwp6fsHabi1cygm&usqp=CAU',
+    id: 3, title: 'Data/SQL', description: 'Cours Data en javascript', teacher_id: 'Jean data', teacher_avatar: 'https://avatars3.githubusercontent.com/u/24793294?s=400&u=346c2626f282cb7e57a7bf8af85ed1b5efa5a39b&v=4',
   },
   {
-    id: 4, title: 'Les divisions', description: 'Cours de mathématiques sur les divisions', teacher_id: 'Jean data', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT8wvd_Id1I40Xzuse5dBaTpypBpfFAHp0y5ruHFnNlOKhkCEic&usqp=CAU',
+    id: 4, title: 'NodeJS', description: 'cours technologie Node JS', teacher_id: 'Simon', teacher_avatar: 'https://avatars3.githubusercontent.com/u/17979025?s=400&u=31d33f15eedfe0a2f314821ef5b40e4c89083c89&v=4',
   },
   {
-    id: 5, title: 'NodeJS', description: 'cours technologie Node JS', teacher_id: 'Simon', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU',
+    id: 5, title: 'Francais', description: 'cours revisions francais grammaire', teacher_id: 'Alexis', teacher_avatar: 'https://avatars0.githubusercontent.com/u/44369725?s=400&u=c6e97ab73bd72f21c1100de3499356bb5341cf2f&v=4',
   },
   {
-    id: 6, title: 'Francais', description: 'cours revisions francais grammaire', teacher_id: 'Alexis', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU',
-  },
-  {
-    id: 7, title: 'Html/Css/Javascript', description: 'Revision les bases du Web', teacher_id: 'Tony', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRThBSUZ1GFF_lB9loNha1PS-wPB4mOTfij9AfhgnPuVBqm5pAP&usqp=CAU',
-  },
-  {
-    id: 8, title: 'Troll', description: 'Comment troller tout le monde ', teacher_id: 'Chris', teacher_avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU',
+    id: 6, title: 'Html/Css/Javascript', description: 'Revision les bases du Web', teacher_id: 'Tony', teacher_avatar: 'https://avatars0.githubusercontent.com/u/45205102?s=400&u=a06a2740f8ff48e5bf94daffc8abac84a794d2c7&v=4',
   },
 ];
 
