@@ -12,7 +12,7 @@ import navLinkUser from '../../data/NavLinkUser';
 
 
 // logo
-import solidarityLogo from '../../assets/img/logo.png';
+import solidarityLogo from '../../assets/img/logo2.png';
 
 // == style
 import './styles.scss';
