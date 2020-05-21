@@ -26,6 +26,16 @@ import QuatreCentQuatre from '../404';
 // == Import style
 import './styles.scss';
 
+// == slugify
+// import slugify from 'slugify';
+//! -----slugify-------------
+// if (lessons === []) return null;
+// lessons.map((lesson) => {
+//   const slugTitle = slugify(lesson.title).toLowerCase();
+//   return console.log('slugTitle', slugTitle);
+// });
+//! -------------------------
+
 
 // == Composant
 const App = () => {
@@ -40,21 +50,6 @@ const App = () => {
   }
 
   const lessons = useSelector((state) => state.lessons);
-
-  // == Lesson component
-  // const LessonComponent = () => lessons.map((lesson) => (
-  //   <Route
-  //     key={lesson.id}
-  //     exact
-  //     path={`/lessons/${lesson.id}`}
-  //     render={() => {
-  //       if (!userToken) {
-  //         return <Redirect to="/login" />;
-  //       }
-  //       return <Room lesson={lesson} />;
-  //     }}
-  //   />
-  // ));
 
   return (
     <div className="app">
