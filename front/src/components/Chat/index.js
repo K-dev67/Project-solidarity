@@ -80,7 +80,7 @@ const Chat = ({ lessonId }) => {
               }}
             />
 
-            <div className="icone-smiley">
+            {/*<div className="icone-smiley">
               <Icon
                 name="plus square outline"
                 className="smiley"
@@ -89,7 +89,7 @@ const Chat = ({ lessonId }) => {
                 }}
               />
 
-            </div>
+            </div>*/}
             {/* </button> */}
             {/* </div> */}
             {/* <Picker onChange={(data) => console.log(data)} /> */}

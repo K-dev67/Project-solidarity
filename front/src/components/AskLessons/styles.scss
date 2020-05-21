@@ -138,6 +138,17 @@
   }
 }
 @media (max-width: 768px) {
+  .askLessons {
+    .segment {
+      .cards {
+        .ask-card {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          width: 40% !important;
+        }
+      }
+    }
+  }
   .btn-container {
     margin-bottom: 1em !important;
       .btn-ask-lesson {

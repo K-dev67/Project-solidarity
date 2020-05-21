@@ -78,11 +78,11 @@ const Room = ({ lesson }) => {
             >{buttonSentence}
             </Button>
           </div>
-          <RoomDescription lesson={lesson} />
         </div>
         <div className="tchat">
           <Chat lessonId={lesson.id} />
         </div>
+        <RoomDescription lesson={lesson} />
       </div>
     </>
   );
