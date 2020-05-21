@@ -6,7 +6,7 @@ import './styles.scss';
 const UsersReviewsPresentation = () => {
   const userReviews = [
     {
-      id: 1, avis: "'J'ai vraiment apprecié ce site. Très ergonomique, facile et pratique'", avatar: 'https://dreambuilders.dk/wp-content/uploads/2015/03/myAvatar-61.png', name: 'Anthony', status: 'Scrum master',
+      id: 1, avis: "' LINKEDIN PHOTO etc J'ai vraiment apprecié ce site. Très ergonomique, facile et pratique'", avatar: 'https://dreambuilders.dk/wp-content/uploads/2015/03/myAvatar-61.png', name: 'Anthony', status: 'Scrum master',
     },
     {
       id: 2, avis: "'J'ai participé à un cour c'est vraiment génial merci beaucoup'", avatar: 'https://i.pinimg.com/originals/4b/5d/19/4b5d1954fbb5b6bad18f0ac25c4ab3c3.png', name: 'Kevin', status: 'Lead dev back',
