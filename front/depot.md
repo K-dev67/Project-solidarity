@@ -203,3 +203,32 @@ coté back
   }
 ```
 
+// == slugify
+import slugify from 'slugify';
+  //! -----slugify-------------
+  if (lessons === []) return null;
+  lessons.map((lesson) => {
+    const slugTitle = slugify(lesson.title).toLowerCase();
+    return console.log('slugTitle', slugTitle);
+  });
+  //! -------------------------
+
+
+
+{lessons.map((lesson) =>
+          // const slugTitle = slugify(lesson.title).toLowerCase();
+          (
+            <Route
+              key={lesson.id}
+              exact
+              path={`/lessons/${lesson.id}`}
+              // path={`/lessons/${slugify(lesson.title).toLowerCase()}`}
+              render={() => {
+                if (!userToken) {
+                  return <Redirect to="/login" />;
+                }
+                return <Room lesson={lesson} />;
+              }}
+            />
+          ))}
+
