@@ -31,7 +31,7 @@
 }
 
 
-// Component AssetsPresentation
+//!----------------- AssetsPresentation -----------------
 .container-assets-presentation {
   display: flex;
   flex-direction: column;
@@ -72,8 +72,11 @@
   }
 }
 
-// == button
+//!----------------- -------------- -----------------
 
+
+
+//!------------ button -------------------------
 .button{
     background-color: teal;
     padding: 10px 20px;
@@ -84,8 +87,53 @@
 .button:hover{
     background-color: #015555;
 }
+//!------------ --------------- -------------------
 
-// Component TeacherPresentation
+
+
+
+//! ----------  HowItWorksPresentation ---------------
+.howItWorksPresentation {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      text-align: center;
+    }
+  }
+  &_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  &_content {
+    width: 80%;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    &_description {
+      margin: 0 2em;
+    }
+    img {
+      width: 40%;
+      height: auto;
+      border-radius: 3px;
+    }
+  }
+  &_button {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+//! ----------  --------------------------- ---------------
+
+
+
+//! ----------- TeacherPresentation ---------------------
 .teacherPresentation {
 
   &_main{
@@ -126,7 +174,9 @@
   }
 }
 
+//! ----------- ---------------------- ---------------------
 
+//! à faire --------
 // Component TopLessonsPresentation
 
 .TopLessonsContainer {
@@ -184,43 +234,7 @@ padding:2% 5%;
   margin-top: 1em;
 }
 
-// Component HowItWorksPresentation
-//! antho
-.howItWorksPresentation {
-  &_container {
-    display: flex;
-    flex-direction: column;
-    h2 {
-      text-align: center;
-    }
-  }
-  &_main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // justify-content: center;
-    // p {
-    //   margin: 0 2em;
-    // }
 
-  }
-  &_content {
-    width: 80%;
-    padding: 1em 2em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    &_description {
-      margin: 0 2em;
-    }
-    img {
-      width: 40%;
-      height: auto;
-      border-radius: 3px;
-    }
-  }
-}
 
 
 
@@ -283,7 +297,7 @@ border-radius: 50%;
   justify-content: space-around;
   width: 30%;
   padding: 5px;
-  box-shadow: 10px 5px 5px #BDC3C7;
+  box-shadow: 5px 2px 2px #BDC3C7;
   border-radius: 5px;
 }
 .UsersReviewsPresentation_card p{
