@@ -27,7 +27,7 @@ const UpdateAskLessonForm = ({ askLesson }) => {
           </div>
           <div className="description">
             <p>Description</p>
-            <textarea name="Description" placeholder={askLesson.description} ref={register({ required: true, min: 0, maxLength: 300 })} />
+            <textarea name="Description" placeholder={askLesson.description} ref={register({ required: true, min: 0, maxLength: 1000 })} />
             {errors.Description && <div className="error-form">Description requise</div>}
           </div>
         </div>
