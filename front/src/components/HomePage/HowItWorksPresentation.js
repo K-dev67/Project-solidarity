@@ -9,18 +9,26 @@ import presentationLessons from '../../assets/img/presentation_lessons.png';
 
 const HowItWorksPresentation = () => (
   <div className="howItWorksPresentation_container">
-    <h2>Comment ça fonctionne ?</h2>
+    <h2>Comment fonctionne Solidarity</h2>
     <div className="howItWorksPresentation_main">
       <div className="howItWorksPresentation_content">
+
         <img src={presentationRoom} alt="presentation_room_pictures" />
-        <p>
-          Le professeur propose un cours à une date et une heure qui lui convient. Dans chaque salle, l'enseignant peut partager son écran, utiliser son micro et/ou activer sa camera.
-        </p>
+        <div className="howItWorksPresentation_content_description">
+          <h3>Trouver votre professeur</h3>
+          <p>
+            Le professeur propose un cours à une date et une heure qui lui convient. Dans chaque salle, l'enseignant peut partager son écran, utiliser son micro et/ou activer sa camera.
+          </p>
+        </div>
+
       </div>
       <div className="howItWorksPresentation_content">
-        <p>
-          L'étudiant s'inscrit au cours et revient à l'heure souhaité pour suivre le cours.  Chaque salle possède son propre "Chat" permettant aux élèves d'échanger avec le professeur.
-        </p>
+        <div className="howItWorksPresentation_content_description">
+          <h3>Apprenez dans nos classes</h3>
+          <p>
+            L'étudiant s'inscrit au cours et revient à l'heure souhaité pour suivre le cours.  Chaque salle possède son propre "Chat" permettant aux élèves d'échanger avec le professeur.
+          </p>
+        </div>
         <img src={presentationLessons} alt="presentation_lessons_pictures" />
       </div>
     </div>
