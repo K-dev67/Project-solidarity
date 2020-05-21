@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // import components
 import Presentation from './Presentation';
 import TeacherPresentation from './TeacherPresentation';
-import TopLessonsPresentation from './TopLessonsPresentation';
+import Thanks from './Thanks';
 import HowItWorksPresentation from './HowItWorksPresentation';
 import UsersReviewsPresentation from './UsersReviewsPresentation';
 import AssetsPresentation from './AssetsPresentation';
@@ -25,9 +25,9 @@ const HomePage = () => {
     <div className="homePage">
       <Presentation />
       <AssetsPresentation />
-      <TeacherPresentation />
-      <TopLessonsPresentation />
       <HowItWorksPresentation />
+      <TeacherPresentation />
+      <Thanks />
       <UsersReviewsPresentation />
     </div>
   );
