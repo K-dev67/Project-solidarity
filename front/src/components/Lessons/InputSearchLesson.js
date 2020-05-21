@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { SET_INPUT_NAV, SET_FILTERED_LESSONS } from 'src/store/actions';
+import { SET_FILTERED_LESSONS } from 'src/store/actions';
 import { Input } from 'semantic-ui-react';
 
 const InputSearchLesson = () => {
   const dispatch = useDispatch();
-  const { inputNav, lessons } = useSelector((state) => state);
+  const { lessons } = useSelector((state) => state);
   // const lessonFiltered = lessons.filter((lesson) => lesson.title.indexOf(inputNav) !== -1);
   // test => gérer les maj
-  const lessonFiltered = lessons.filter((lesson) => lesson.title.toLowerCase().indexOf(inputNav.toLowerCase()) !== -1);
+
+  const [value, setValue] = useState('');
+
+  // useEffect(lessonFiltered, [inputNav]);
 
 
   return (
@@ -18,10 +21,12 @@ const InputSearchLesson = () => {
       icon="search"
       placeholder="rechercher un cours"
       onChange={(evt) => {
-        dispatch({ type: SET_INPUT_NAV, payload: evt.target.value });
+        setValue(evt.target.value);
+        // dispatch({ type: SET_INPUT_NAV, payload: evt.target.value });
+        const lessonFiltered = lessons.filter((lesson) => lesson.title.toLowerCase().indexOf(value.toLowerCase()) !== -1);
         dispatch({ type: SET_FILTERED_LESSONS, payload: lessonFiltered });
       }}
-      value={inputNav}
+      value={value}
     />
   );
 };
