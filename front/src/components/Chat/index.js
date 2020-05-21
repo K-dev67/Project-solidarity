@@ -79,15 +79,7 @@ const Chat = ({ lessonId }) => {
                 dispatch(syncMessage(evt.target.value));
               }}
             />
-            <div className="icone-smiley">
-              {/* <Icon
-                name="plus square outline"
-                className="smiley"
-                onClick={() => {
-                  setHidden(false);
-                }}
-              /> */}
-            </div>
+
             {/* </button> */}
             {/* </div> */}
             {/* <Picker onChange={(data) => console.log(data)} /> */}
