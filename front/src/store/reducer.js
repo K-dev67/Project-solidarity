@@ -77,10 +77,9 @@ const initialState = {
   password: '',
   passwordConfirmation: '',
   oldPassword: '',
-  errorPassword: '',
-  errorPasswordConfirmation: '',
+  // errorPassword: '',
+  // errorPasswordConfirmation: '',
   // == error authentification
-  errorAuth: '',
   user: {},
   userId: '',
   teachers: [],
