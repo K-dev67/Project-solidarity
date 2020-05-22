@@ -12,9 +12,13 @@
 .room {
   display: flex;
   flex-wrap: wrap !important;
-  background-color: rgb(0, 109, 109);
+  //background-color: rgb(0, 109, 109);
+  //background: #1E2837 !important;
+  background: #29374A !important;
   color: white;
   overflow: scroll !important;
+  scrollbar-color: #121922!important;
+  overflow-x: hidden !important;
   height: calc(100vh -114px ) !important;
   .container-live-description {
     width: 75% !important;
@@ -23,7 +27,7 @@
     max-height: calc(100vh -50px -64px -8vh) !important;
     .live-stream {
       display: grid;
-      background-color: rgb(2, 87, 87);
+      //background-color: rgb(2, 87, 87);
       min-height: calc(100vh -50px -64px -8vh) !important;
       max-height: calc(100vh -50px -64px -8vh) !important;
       margin-left: 0.5em;
@@ -39,13 +43,33 @@
     position: relative !important;
     margin-left: 0.5em;
     width: calc(75% -7px) !important;
-    background: rgba(19, 37, 41, .8) !important;
-    border: 1px solid rgba(10, 180, 180, 1) !important;
+    //background: rgba(19, 37, 41, .8) !important;
+    //border: 1px solid rgba(10, 180, 180, 1) !important;
+    .container-update-room {
+      .room-modify-button {
+        background: #1E2837 !important;
+        border-radius: 0.4em !important;
+        padding: 1em !important;
+        
+      }
+      .room-addCategory-select {
+        background: #1E2837 !important;
+        border-radius: 0.4em !important;
+        padding: 1em !important;
+      }
+      .room-delete-button {
+        background: #1E2837 !important;
+        border-radius: 0.4em !important;
+        padding: 1em !important;
+      }
+    }
     .descri-user {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       .room-descri {
+        background: #1E2837 !important;
+        border-radius: 0.4em !important;
         padding: 1em;
         width: 33%;
         h2 {
@@ -55,10 +79,23 @@
             margin-bottom: 0.5em;
         }
       }
+      .category-level {
+          background: #1E2837 !important;
+          border-radius: 0.4em !important;
+      }
+      .container-room-user {
+        border-radius: 0.4em !important;
+          background: #1E2837 !important;
+      }
+      
+    
       .title-box {
         width: 100%;
         height: 8vh;
-        background: linear-gradient(to bottom, #00999f 0%, rgba(19, 37, 41, .4) 80%, rgba(19, 37, 41, .4) 100%);
+        background: #29374A !important;
+        box-shadow: inset 0 0 50px 4px rgba(255,255,255, 0.1);
+        margin-bottom: 1em !important;
+        //background: linear-gradient(to bottom, #00999f 0%, rgba(19, 37, 41, .4) 80%, rgba(19, 37, 41, .4) 100%);
         h2 {
           color: white !important;
         }
@@ -94,7 +131,8 @@
     }
   }
   .tchat {
-    background-color: rgb(1, 134, 134);
+    //background-color: rgb(1, 134, 134);
+    background: #29374A !important;
     height: calc(100vh - 50px -64px) !important;
     width: 25%;
     overflow-y: hidden !important;
@@ -103,6 +141,8 @@
     .container-chat-main {       
       min-height: calc(100vh -50px -64px -7vh) !important;
       max-height: calc(100vh -50px -64px -7vh) !important;
+      background: #29374A !important;
+      border: none !important;
       .text-chat {
         height: 7vh !important;
       }
@@ -115,11 +155,14 @@
       .chat-all-messages {
         min-height: calc(100vh -50px -64px -7vh) !important;
         max-height: calc(100vh -50px -64px -7vh) !important;
+        background: #29374A !important;
         overflow-y: hidden !important;
         padding-left: 0.4em;
         padding-top: 0.3em;
         margin-bottom: 0 !important;
         .chat-message {
+          display: flex !important;
+          flex-wrap: wrap !important;
           .date-message {
             color: rgb(218, 216, 216);
             font-size: 0.8em;
@@ -128,14 +171,16 @@
           .message-author {
             color: rgb(6, 224, 224);
             font-size: 1.3em;
-            padding-right: 0.5em;
+            //padding-right: 0.5em;
             padding-left: 0.4em;
           }
           .message-content {
             font-weight: 400;
-            padding-left: 1em;
-            padding-right: 1em;
-            padding-bottom: 0.5em;
+            word-wrap: break-word;
+            //padding-left: 0.2em;
+            //margin-right: 0.2em !important;
+            //padding-right: 1em;
+            //padding-bottom: 0.5em;
           }
         }
       }
@@ -151,10 +196,11 @@
       display: flex;
       height: 100%;
       input {
-        background-color: #175757;
-        color: white;
+        //background-color: #175757;
+        background: #121922 !important;
+        color: grey;
         width: 100%;
-        border-top: 1px solid white;
+        border-top: 1px solid grey;
         border-bottom: none;
         border-left: none;
         border-right: none;
@@ -218,79 +264,91 @@
       cursor: pointer !important;
       transition: .4s !important;
       &:hover {
-        background: rgba(20, 20, 20, .8) !important;
-        padding: 10px 80px !important;
+        box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+        z-index: 500;
       }
     }
   }
 }
 .room-modify-button .button {
-  border: 1px solid rgba(10, 180, 180, 1) !important;
-  background: rgba(20, 20, 20, .6) !important;
+  //border: 1px solid rgba(10, 180, 180, 1) !important;
+  //background: rgba(20, 20, 20, .6) !important;
+  background: #29374A !important;
   font-size: 18px !important;
   color: white !important;
-  margin-top: 21px !important;
+  //margin-top: 21px !important;
   padding: 10px 25px !important;
   cursor: pointer !important;
   transition: .4s !important;
-  border-radius: 1em !important;
+  border-radius: 0.4em !important;
   &:hover {
-    background: rgba(20, 20, 20, .8) !important;
-    padding: 10px 50px !important;
-    color:white !important;
+    box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+    z-index: 500;
   }
 }
 .room-delete-button .button {
-  border: 1px solid rgba(10, 180, 180, 1) !important;
-  background: rgba(20, 20, 20, .6) !important;
+  //border: 1px solid rgba(10, 180, 180, 1) !important;
+  //background: rgba(20, 20, 20, .6) !important;
+  background: #29374A !important;
   font-size: 18px !important;
   color: white !important;
-  margin-top: 21px !important;
+  //margin-top: 21px !important;
   padding: 10px 25px !important;
   cursor: pointer !important;
   transition: .4s !important;
-  border-radius: 1em !important;
+  border-radius: 0.4em !important;
   &:hover {
-    background: rgba(20, 20, 20, .8) !important;
-    padding: 10px 50px !important;
-    color:white !important;
+    box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+    z-index: 500;
   }
 }
 .container-addCategory select {
-  border: 1px solid rgba(10, 180, 180, 1) !important;
-  background: rgba(20, 20, 20, .6) !important;
-  margin: 15px 0;
+  //border: 1px solid rgba(10, 180, 180, 1) !important;
+  //background: rgba(20, 20, 20, .6) !important;
+  background: #29374A !important;
+  margin-bottom: 15px !important;
   font-size: 16px;
   padding: 10px;
   width: 250px;
-  border: 1px solid rgba(10, 180, 180, 1);
+  border: 1px solid #d4d4d5;
   border-top: none;
   border-left: none;
   border-right: none;
   color: grey;
   outline: none;
-  border-radius: 1em !important;
+  border-radius: 0.4em !important;
   &:hover {
-    color: white !important;
-    background: rgba(19, 37, 41, .8) !important;
+    box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+    z-index: 500;
   }
 }
 
 
 .container-addCategory input {
-  border: 1px solid rgba(10, 180, 180, 1) !important;
-  background: rgba(20, 20, 20, .6) !important;
+  //border: 1px solid rgba(10, 180, 180, 1) !important;
+  //background: rgba(20, 20, 20, .6) !important;
+  //width: 90% !important;
+  background: #29374A !important;
   font-size: 18px !important;
   color: white !important;
-  margin-top: 21px !important;
+  //margin-top: 21px !important;
   padding: 10px 25px !important;
   cursor: pointer !important;
   transition: .4s !important;
-  border-radius: 1em !important;
+  border-radius: 0.4em !important;
   &:hover {
-    background: rgba(20, 20, 20, .8) !important;
-    padding: 10px 50px !important;
-    color:white !important;
+    box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+    z-index: 500;
+  }
+}
+.leave-button {
+  background: #1E2837 !important;
+  font-size: 18px !important;
+  color: white !important;
+  margin-bottom: 1em !important;
+  &:hover {
+    box-shadow:  0px 0px 4px 4px red !important;
+    z-index: 500;
   }
 }
 .update-lesson-content {

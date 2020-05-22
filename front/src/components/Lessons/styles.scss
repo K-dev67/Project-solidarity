@@ -5,9 +5,10 @@
 
 .lessons {
     min-height: 85vh;
-    // .card-owner:hover {
-    //     border-color: red !important;
-    // }
+    background: #212C3D !important;
+    .segment {
+      background: #212C3D !important;
+    }
     .ui .button {
         margin: 0 0 10px 0 !important;
     }
@@ -175,17 +176,40 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      border: hidden !important;
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
       .button {
+        background: #29374A !important;
+        color: white !important;
+        font-weight: bold !important;
         height: 5vh !important;
         width: 40% !important;
         padding-right: 0.5em !important;
         flex-wrap: wrap;
+        &:hover {
+          box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+          z-index: 500;
+        }
       }
       .input-topbar {
         padding-left: 0.5em !important;
         height: 5vh !important;
         width: 40% !important;
         flex-wrap: wrap;
+        input {
+          background: #29374A !important;
+          &::placeholder {
+            color: white !important;
+          }
+          &:hover {
+            box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+            //z-index: 500;
+          }
+        }
+        .search {
+          color: white !important;
+        }
       }
       .cards {
         display: flex;
@@ -194,8 +218,9 @@
           border-radius: 0.5em !important;
           display: flex !important;
           justify-content: center !important;
+          background: #29374A !important;
           //margin-left: 1em !important;
-          background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%);
+          //background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%);
           padding: 0.5em !important;
           margin: 2% !important;
           //box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22);
@@ -203,11 +228,15 @@
           transition: 0.4s;
           //width: 25% !important;
           .card {
+            border: none !important;
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
             //background: black !important;
             //border: 1px solid red !important;
             display: flex !important;
             justify-content: center !important;
-            background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+            background: #29374A !important;
+            //background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
             .image {
               width: 250px !important;
               img {
@@ -215,6 +244,7 @@
               }
             }
             .header {
+              background: #29374A !important;
               font-size: 1.5em !important;
               color: white !important;
               font-weight: bold !important;
@@ -231,11 +261,12 @@
               display: none !important;
             }
             .description {
+              background: #1E2837 !important;
               display: flex;
               flex-wrap: wrap;
               justify-content: center;
-              background: rgba(19, 37, 41, 0.9) !important;
-              box-shadow: inset 3px 10px 20px 5px rgba(0, 0, 0, .8) !important;
+              //background: rgba(19, 37, 41, 0.9) !important;
+              //box-shadow: inset 3px 10px 20px 5px rgba(0, 0, 0, .8) !important;
               font-size: 1.5em;
               padding-right: 1em !important;
               padding-left: 1em !important;
@@ -250,8 +281,9 @@
               background-color: #F5F5F5;
             }
             .extra {
-              background: rgba(19, 37, 41, 1) !important;
-              box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+              //background: rgba(19, 37, 41, 1) !important;
+              //box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+              background: #29374A !important;
               color: white !important;
               padding-top: 0.5em;
               padding-bottom: 0.5em;
@@ -276,12 +308,15 @@
             }
           }
               &:hover {
-                transform: scale(1.05);
-
+                //border: 1px solid #00838d;
+                box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+                z-index: 500;
               }
         }
         .card-lesson-list--owner {
-          background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;
+          box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5 !important;
+          -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5 !important;
+          //background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;
         }
       }
    }
