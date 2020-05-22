@@ -13,7 +13,7 @@ import calendarImage from '../../assets/img/calendarImage.jpg';
 
 const HowItWorksPresentation = () => (
   <div className="howItWorksPresentation-container">
-    <h2>Comment fonctionne Solidarity</h2>
+    <h2 className="howItWorksPresentation-title">Comment fonctionne Solidarity</h2>
     <div className="howItWorksPresentation-contents">
 
       <div className="howItWorksPresentation-contents-bloc">

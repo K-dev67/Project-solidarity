@@ -57,7 +57,7 @@ const UsersReviewsPresentation = () => {
   });
   return (
     <>
-      <div>
+      <div className="ourTeam">
         <h3 className="title-ourTeam">Notre équipe</h3>
         <div className="ourTeam-container">
           {ourTeamJsx}
