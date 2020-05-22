@@ -1,82 +1,82 @@
-// Component presentation
 .homePage {
-
-  .TopLessonsContainer{
-    margin-top: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    h2{
-      font-size: 2em;
-      font-weight: bold;
-    }
-  }
+  color: #2A3E55;
 }
 
-.container_presentation{
+.container_presentation {
     display: flex;
     justify-content: space-around;
-    width: 80%;
-    margin:50px auto 100px ;
-}
-.container_presentation_main{
+    margin: 3em  10% ;
+    &_main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      flex-basis: 70%;
+      padding: 20px 20px;
+      h1 {
+        font-size: 2.8em;
+      }
+      p {
+        font-size: 1.5em;
+      }
+   }
+   &_image {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-basis: 70%;
-    padding: 20px 20px;
-
-}
-.container_presentation_main h1{
-  font-size: 2.8em;
-}
-.container_presentation_main p{
-  font-size: 1.5em;
-  color: #BDC3C7;
-}
-.container_presentation_image{
-  display: flex;
-  justify-content: center;
-  padding: 20px 20px;
-}
-.container_presentation_image img{
-  width: 80%;
+    justify-content: center;
+     padding: 1em 0;
+     img {
+      width: 80%;
   border-radius: 5px;
-  // box-shadow: 10px 5px 5px #BDC3C7;
+     }
+   }
 }
 
-// Component AssetsPresentation
+
+//!----------------- AssetsPresentation -----------------
 .container-assets-presentation {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 5em 10%;
 
-  .AssetsPresentation_main{
+  .assetsPresentation {
     // margin: 30px 20%;
-    width: 75%;
-    height: 200px;
+  &_main {
+    color: #2A3E55;
+    background-color: #F3F3F3;
+    // width: 75%;
+    // height: 200px;
+    padding: 2em 0;
     border: 1px solid #BDC3C7;
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    box-shadow: 10px 5px 5px #BDC3C7;
-    margin-bottom: 1em;
+    align-items: baseline;
+    // box-shadow: 10px 5px 5px #BDC3C7;
+    margin-bottom: 3em;
   }
-}
-
-.AssetsPresentation_card{
+  &_card {
     width: 25%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
-}
-.AssetsPresentation_card p{
-    color: #BDC3C7;
+    .icon {
+      margin-bottom: 0.5em;
+    }
+    h3 {
+      font-weight: 900;
+    }
+  }
+  }
 }
 
+//!----------------- -------------- -----------------
+
+
+
+//!------------ button -------------------------
 .button{
     background-color: teal;
     padding: 10px 20px;
@@ -87,45 +87,192 @@
 .button:hover{
     background-color: #015555;
 }
+//!------------ --------------- -------------------
 
-// Component TeacherPresentation
-.TeacherPresentation_main{
-    margin: 120px 10%;
+
+
+
+//! ----------  HowItWorksPresentation ---------------
+.howItWorksPresentation {
+  &-title {
+    font-weight: bold;
+  }
+  &-container {
+    margin: 3em 10%;
+    // padding: 3em 5em;
+    border-top: 1px solid #BDC3C7;
+    border-bottom: 1px solid #BDC3C7;
+    display: flex;
+    flex-direction: column;
+    padding: 3em 0;
+    h2 {
+      text-align: center;
+      padding-bottom: 2em;
+    }
+  }
+  &-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-bloc {
+      padding-top: 2em;
+      display: flex;
+      justify-content: space-evenly;
+      &-image {
+        img {
+          height: 11em;
+          width: auto;
+          border-radius: 3px;
+        }
+        width: 40%;
+      }
+
+      &-icon {
+        width: 10%;
+      }
+      &-description {
+        display: flex;
+        flex-direction: column;
+
+        width: 40%;
+        // padding: ;
+      }
+      .text-align-right {
+        text-align: right;
+      }
+    }
+
+  }
+
+
+  &_button {
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+//! ----------  --------------------------- ---------------
+
+
+
+//! ----------- TeacherPresentation ---------------------
+.teacherPresentation {
+
+  &_main{
+    border: 1px solid #BDC3C7;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+    margin: 50px 10%;
+    padding: 2em 0;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-.TeacherPresentation_main h2{
-  font-size: 2em;
-}
-.TeacherPresentation_main button{
-  margin-top: 30px;
-}
-.TeacherPresentation_card{
+    h2 {
+      font-size: 2em;
+    }
+    button {
+      margin-top: 30px;
+    }
+  }
+  &_cards {
     margin-top: 20px;
     width: 100%;
    display: flex;
    justify-content: space-evenly;
-}
-.TeacherPresentation_card img{
-width: 60px;
-border-radius: 50%;
-}
-.OneCard{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.OneCard p{
-  color: #BDC3C7;
+   .cardTeacher{
+      // border: 1px #BDC3C7 solid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 5px;
+      padding: 1em;
+      img {
+         height: 10em;
+         width: auto;
+         border-radius: 50%;
+         margin-bottom: 1em;
+         border-top: 1px solid #BDC3C7;
+      }
+   }
+  }
 }
 
+//! ----------- ---------------------- ---------------------
+
+
+
+//! ------ our team --------
+.ourTeam {
+  .title-ourTeam {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  .ourTeam-container {
+    display: flex;
+    justify-content: space-around;
+    .ourTeam-user {
+      border: 1px solid #BDC3C7;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      &-avatar {
+        img {
+          height: 20em;
+          width: auto;
+        }
+      }
+      &-presentation {
+        padding: 1em;
+        &-name {
+          font-weight: bold;
+          font-size: 1.5em;
+        }
+        &-title {
+          p {
+            margin: 0;
+            font-size: 1.1em;
+          }
+        }
+        &-social {
+          margin-top: 1em;
+          display: flex;
+        }
+        .logo-bifrost {
+          padding-left: 0.2em;
+          height: 2em;
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+//! ------ -------- --------
+
+
+//!  thanks --------
 // Component TopLessonsPresentation
 
+.TopLessonsContainer {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2{
+    font-size: 2em;
+    font-weight: bold;
+  }
+}
+
 .TopLessonsPresentation_container{
+  background-color: #F3F3F3;
   border: 1px solid #BDC3C7;
   border-radius: 5px;
-  box-shadow: 10px 5px 5px #BDC3C7;
+  // box-shadow: 10px 5px 5px #BDC3C7;
   width: 80%;
   height: 40%;
   margin: 0 auto;
@@ -165,101 +312,25 @@ padding:2% 5%;
   margin-top: 1em;
 }
 
-// Component HowItWorksPresentation
-//! antho
-.howItWorksPresentation {
-  &_container {
-    display: flex;
-    flex-direction: column;
-    h2 {
-      text-align: center;
-    }
-  }
-  &_main {
-    img {
-      width: 45%;
-      height: auto;
-    }
-  }
-}
 
-
-
-
-// .HowItWorksPresentation_container{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   margin-top: 8%;
-// }
-// .HowItWorksPresentation_main{
-//   display: flex;
-// justify-content: space-between;
-// // width: 60%;
-
-// }
-// .HowItWorksPresentation_content{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   // width: 300px;
-// }
-// .HowItWorksPresentation_content img{
-//   width:60%;
-//   border-radius: 5px;
-//   box-shadow: 10px 5px 5px #BDC3C7;
-// }
-// .HowItWorksPresentation_content p{
-//   color:#BDC3C7 ;
-//   text-align: center;
-//   margin: 20px 0;
-// }
-// .HowItWorksPresentation_container h2{
-//   font-size: 2em;
-// margin-bottom: 2%;
-// }
-
-// Component UsersReviewsPresentation
-.UsersReviewsPresentation_container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 8%;
-  margin-bottom: 3%;
-}
-.UsersReviewsPresentation_container_card{
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-}
-.UsersReviewsPresentation_card img{
-width:100px;
-border-radius: 50%;
-}
-.UsersReviewsPresentation_card{
-  border: 1px solid #BDC3C7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  width: 30%;
-  padding: 5px;
-  box-shadow: 10px 5px 5px #BDC3C7;
-  border-radius: 5px;
-}
-.UsersReviewsPresentation_card p{
-  color:#BDC3C7 ;
-  text-align: center;
-  margin: 15px 0;
-}
-.UsersReviewsPresentation_container h2{
-  font-size: 2em;
-margin-bottom: 2%;
-}
+//!-----
 
 // reprise antho
 // 1100 px
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
+  .container_presentation {
+    flex-direction: column;
+    margin: 0 auto;
+
+    &_main {
+      text-align: center;
+    }
+    &_image {
+      img {
+        width: 80%;
+      }
+    }
+  }
       .HowItWorksPresentation_main {
         flex-direction: column;
         align-items: center;
@@ -273,19 +344,7 @@ margin-bottom: 2%;
 //! ipad => 768px
 @media (max-width: 768px) {
 
-  .container_presentation {
-    flex-direction: column;
-    margin: 0 auto;
 
-    &_main {
-      text-align: center;
-    }
-    &_image {
-      img {
-        width: 100%;
-      }
-    }
-  }
 
   .container-assets-presentation {
     display: flex;

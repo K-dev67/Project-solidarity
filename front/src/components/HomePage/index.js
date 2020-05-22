@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 
 // import components
 import Presentation from './Presentation';
-import TeacherPresentation from './TeacherPresentation';
-import TopLessonsPresentation from './TopLessonsPresentation';
-import HowItWorksPresentation from './HowItWorksPresentation';
-import UsersReviewsPresentation from './UsersReviewsPresentation';
 import AssetsPresentation from './AssetsPresentation';
+import HowItWorksPresentation from './HowItWorksPresentation';
+import TeacherPresentation from './TeacherPresentation';
+import OurTeam from './OurTeam';
+import Thanks from './Thanks';
+
 
 // import function
 import getLessons from '../../utils/getLessons';
@@ -25,10 +26,10 @@ const HomePage = () => {
     <div className="homePage">
       <Presentation />
       <AssetsPresentation />
-      <TeacherPresentation />
-      <TopLessonsPresentation />
       <HowItWorksPresentation />
-      <UsersReviewsPresentation />
+      <TeacherPresentation />
+      <OurTeam />
+      <Thanks />
     </div>
   );
 };

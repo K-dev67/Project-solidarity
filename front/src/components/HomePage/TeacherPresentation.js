@@ -13,9 +13,9 @@ const TeacherPresentation = () => {
   useEffect(getTeachers, []);
   const teachers = useSelector((state) => state.teachers);
   let sliceTeachers = [];
-  if (teachers.length > 0) sliceTeachers = teachers.slice(4, 8);
+  if (teachers.length > 0) sliceTeachers = teachers.slice(2, 6);
   const teachersJSX = sliceTeachers.map((t) => (
-    <div key={t.id} className="OneCard">
+    <div key={t.id} className="cardTeacher">
       <img src={t.avatar} alt="avatar_teacher" />
       <h4>{t.lastname}</h4>
       {/* <p>{prof.matter}</p> */}
@@ -24,17 +24,17 @@ const TeacherPresentation = () => {
 
 
   return (
-    <div className="TeacherPresentation_main">
-      <h2>Apprenez ou proposez un cours en ligne</h2>
-      <div className="TeacherPresentation_card">
+    <div className="teacherPresentation_main">
+      <h2>Apprenez avec nos professeurs en ligne</h2>
+      <div className="teacherPresentation_cards">
         {teachersJSX.length > 0 ? (<>{teachersJSX}</>) : <Loading />}
 
       </div>
       <Link to="/teachers">
         <button
-          className="button AssetsPresentation_button"
+          className="button assetsPresentation_button"
           type="button"
-        >Voir la liste des profs
+        >Voir la liste des professeurs
         </button>
       </Link>
     </div>
