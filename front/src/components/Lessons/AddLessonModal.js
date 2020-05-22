@@ -9,19 +9,15 @@ import { MESSAGE_POSTIF_FALSE } from '../../store/actions';
 import AddLessonForm from './AddLessonForm';
 import MessagePositive from './MessagePositive';
 
-import background from '../../assets/img/Pattern_fond.png';
 
 const AddLessonModal = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch({ type: MESSAGE_POSTIF_FALSE });
   };
-  const contentStyle = {
-    backgroundImage: `url(${background})`,
-  };
   return (
     <Modal trigger={<Button onClick={handleClick} fluid>Proposer un cours</Button>}>
-      <Modal.Header style={contentStyle}>Proposer un cours</Modal.Header>
+      <Modal.Header>Proposer un cours</Modal.Header>
       <Modal.Content className="lessonContent">
         <MessagePositive />
         {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}

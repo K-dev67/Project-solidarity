@@ -22,13 +22,14 @@
     }
 }
 .modalContent {
-  background: rgba(19, 37, 41, 1) !important;
+  //background: rgba(19, 37, 41, 1) !important;
+  background: #1E2837 !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
   max-height: 60vh !important;
   padding-top: 3em !important;
   margin-top: unset !important;
     button {
-      border: 1px solid rgba(10, 180, 180, 1) !important;
+        //border: 1px solid rgba(10, 180, 180, 1) !important;
         background: rgba(20, 20, 20, .6) !important;
         font-size: 18px !important;
         color: white !important;
@@ -37,8 +38,8 @@
         cursor: pointer !important;
         transition: .4s !important;
         &:hover {
-          background: rgba(20, 20, 20, .8) !important;
-          padding: 10px 80px !important;
+          box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+          z-index: 500;
         }
     }
 }
@@ -63,6 +64,7 @@
   border: none !important;
   background: none !important;
   box-shadow: none !important;
+  //background: #1E2837 !important;
   //background: rgba(20, 20, 20, 0) !important;
   //background: #0F1F36 !important;
   input {
@@ -70,17 +72,18 @@
     font-size: 16px !important;
     padding: 10px !important;
     width: 250px !important;
-    border: 1px solid rgba(10, 180, 180, 1) !important;
+    border: 1px solid #d4d4d5 !important;
     //@debug: 1px solid white;
     border-top: none !important;
     border-left: none !important; 
     border-right: none !important;
-    background: rgba(20, 20, 20, .2) !important;
+    background: #29374A !important;
+    //background: rgba(20, 20, 20, .2) !important;
     color: white !important;
     outline: none !important;
     &:hover {
     color: white !important;
-    background: rgba(19, 37, 41, .8) !important;
+    background: #121922 !important;
     }
   }
   .field label {
@@ -90,14 +93,21 @@
   .field::before {
     align-content: center;
   }
+  button {
+    background: #29374A !important;
+  }
+
 }
 .passwordModal {
-  background: rgba(19, 37, 41, 1) !important;
+  //background: rgba(19, 37, 41, 1) !important;
+  background: #1E2837 !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, 0.5) !important;
   max-height: 60vh !important;
     button {
-      border: 1px solid rgba(10, 180, 180, 1) !important;
-        background: rgba(20, 20, 20, .6) !important;
+      //border: 1px solid rgba(10, 180, 180, 1) !important;
+        //background: rgba(20, 20, 20, .6) !important;
+        //background: #121922 !important;
+        background: #29374A !important;
         font-size: 18px !important;
         color: white !important;
         margin-top: 20px !important;
@@ -105,8 +115,8 @@
         cursor: pointer !important;
         transition: .4s !important;
         &:hover {
-          background: rgba(20, 20, 20, .8) !important;
-          padding: 10px 80px !important;
+          box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+          z-index: 500;
         }
     }
 }
@@ -115,12 +125,13 @@
   padding: 0;
 }
 .mailModal {
-  background: rgba(19, 37, 41, 1) !important;
+  //background: rgba(19, 37, 41, 1) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+  background: #1E2837 !important;
   max-height: 60vh !important;
     button {
-      border: 1px solid rgba(10, 180, 180, 1) !important;
-        background: rgba(20, 20, 20, .6) !important;
+      //border: 1px solid rgba(10, 180, 180, 1) !important;
+      background: #29374A !important;
         font-size: 18px !important;
         color: white !important;
         margin-top: 20px !important;
@@ -128,8 +139,8 @@
         cursor: pointer !important;
         transition: .4s !important;
         &:hover {
-          background: rgba(20, 20, 20, .8) !important;
-          padding: 10px 80px !important;
+          box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+          z-index: 500;
         }
     }
 }
