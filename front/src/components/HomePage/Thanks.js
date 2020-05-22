@@ -31,7 +31,7 @@ const Thanks = () => {
     },
   ];
   const thanksJSX = teacherThanks.map((thank) => (
-    <div key={thank.id} className="topLessonsPresentation_Card">
+    <div key={thank.id} className="thanks-cards">
       <div className="image-teacher">
         <img src={thank.teacher_avatar} alt="avatar_oclock_teacher" />
       </div>

@@ -38,7 +38,7 @@ const HowItWorksPresentation = () => (
 
       <div className="howItWorksPresentation-contents-bloc">
 
-        <div className="howItWorksPresentation-contents-bloc-description text-align-right">
+        <div className="howItWorksPresentation-contents-bloc-description">
           <h3>Trouvez votre horaire</h3>
           <p>
             Le professeur propose un cours à une date et une heure qui lui convient.
@@ -89,15 +89,3 @@ const img1 = 'https://static.lexpress.fr/medias_11575/w_1831%2Ch_1024%2Cc_crop%2
 const img2 = 'https://www.aksis.fr/wp-content/uploads/2018/11/Aksis-Evolutis-accompagnement-carri%C3%A8re-de-vos-collaborateurs-1024x576.jpg';
 
 export default HowItWorksPresentation;
-
-{ /* <div className="howItWorksPresentation_content">
-<div className="howItWorksPresentation_content">
-  <h3>Apprenez dans nos classes</h3>
-  <p>
-    L'étudiant s'inscrit au cours et revient à l'heure souhaité pour suivre le cours.
-    Chaque salle possède son propre "Chat" permettant aux élèves d'échanger avec le professeur.
-  </p>
-</div>
-<img src={presentationRoom} alt="presentation_lessons_pictures" />
-</div>
-</div> */ }
