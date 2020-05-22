@@ -3,31 +3,67 @@ import React from 'react';
 // == style
 import './styles.scss';
 
+import { Icon } from 'semantic-ui-react';
+
+import bifrostLogo from '../../assets/img/bifrost.png';
+
 const UsersReviewsPresentation = () => {
-  const userReviews = [
+  const ourTeam = [
     {
-      id: 1, avis: "' LINKEDIN PHOTO GITHUB etc J'ai vraiment apprecié ce site. Très ergonomique, facile et pratique'", avatar: 'https://dreambuilders.dk/wp-content/uploads/2015/03/myAvatar-61.png', name: 'Anthony', status: 'Scrum master',
+      id: 1,
+      name: 'Anthony de Cuyper',
+      avatar: 'https://anthonydecuyper.fr/cv_flex/image/IMG_3959.jpg',
+      title: 'Product Owner,',
+      title2: ' Lead Front Developper',
+      github: 'https://github.com/decuyperanthony',
+      linkedin: 'https://www.linkedin.com/in/anthony-de-cuyper/',
     },
     {
-      id: 2, avis: "' LINKEDIN PHOTO GITHUB J'ai participé à un cour c'est vraiment génial merci beaucoup'", avatar: 'https://i.pinimg.com/originals/4b/5d/19/4b5d1954fbb5b6bad18f0ac25c4ab3c3.png', name: 'Kevin', status: 'Lead dev back',
+      id: 2,
+      name: 'Kevin Storck',
+      avatar: 'https://avatars0.githubusercontent.com/u/58621132?s=400&v=4',
+      title: 'Technical Referent,',
+      title2: 'Lead Back Developper',
+      github: 'https://github.com/K-dev67',
+      linkedin: 'https://www.linkedin.com/in/kevin-storck/',
     },
   ];
-
-  const lesAvis = userReviews.map((Oneavis) => (
-    <div key={Oneavis.id} className="UsersReviewsPresentation_card">
-      <img src={Oneavis.avatar} alt="avatar_user-review" />
-      <p>{Oneavis.avis}</p>
-      <h4>{Oneavis.name}</h4>
-      <p>{Oneavis.status}</p>
-    </div>
-  ));
-  return (
-    <div className="UsersReviewsPresentation_container">
-      <h2>Notre equipe</h2>
-      <div className="UsersReviewsPresentation_container_card">
-        {lesAvis}
+  const ourTeamJsx = ourTeam.map((dev) => {
+    console.log('dev');
+    return (
+      <div
+        key={dev.id}
+        className="ourTeam-user"
+      >
+        <div className="ourTeam-user-avatar">
+          <img src={dev.avatar} alt="developer" />
+        </div>
+        <div className="ourTeam-user-presentation">
+          <h4 className="ourTeam-user-presentation-name">
+            {dev.name}
+          </h4>
+          <div className="ourTeam-user-presentation-title">
+            <p>{dev.title}</p>
+            <p>{dev.title2}</p>
+          </div>
+          <div className="ourTeam-user-presentation-social">
+            <div><a href={dev.github} target="_blank"><Icon name="linkedin" size="big" /></a></div>
+            <div><a href={dev.linkedin} target="_blank"><Icon name="github" size="big" /></a></div>
+            <div><a href="https://oclock.io/" target="_blank"><img src={bifrostLogo} className="logo-bifrost" alt="logoBifrost" /></a></div>
+          </div>
+        </div>
       </div>
-    </div>
+    );
+  });
+  return (
+    <>
+      <div>
+        <h3 className="title-ourTeam">Notre équipe</h3>
+        <div className="ourTeam-container">
+          {ourTeamJsx}
+        </div>
+      </div>
+    </>
   );
 };
 

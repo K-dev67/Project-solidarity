@@ -14,7 +14,7 @@ const AssetsPresentation = () => (
       </div>
       <div className="assetsPresentation_card">
         <Icon name="desktop" size="big" />
-        <h3>Salles de cours interactives</h3>
+        <h3>Classes interactives</h3>
         <p>Salles de cours facile à utliser et complète</p>
       </div>
       <div className="assetsPresentation_card">
