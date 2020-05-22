@@ -78,14 +78,14 @@
 
 //!------------ button -------------------------
 .button{
-    background-color: teal;
+    background-color: #29374A;
     padding: 10px 20px;
     border: none;
     border-radius: 3px;
     color: white;
 }
 .button:hover{
-    background-color: #015555;
+    background-color: rgb(78, 91, 109);
 }
 //!------------ --------------- -------------------
 
@@ -136,6 +136,9 @@
         flex-direction: column;
 
         width: 40%;
+        h3 {
+          font-weight: 900;
+        }
         // padding: ;
       }
       .text-align-right {
@@ -171,6 +174,7 @@
     flex-direction: column;
     h2 {
       font-size: 2em;
+      font-weight: bold;
     }
     button {
       margin-top: 30px;
@@ -257,40 +261,35 @@
 //!  thanks --------
 // Component TopLessonsPresentation
 
-.TopLessonsContainer {
-  margin-top: 10%;
+.thanksContainer {
+  margin-top: 4em;
+  margin-bottom: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  h2{
+  h2 {
     font-size: 2em;
     font-weight: bold;
   }
+  .thanks-main {
+    background-color: #F3F3F3;
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    width: 80%;
+    height: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    // padding-bottom: 5%;
+  }
 }
 
-.TopLessonsPresentation_container{
-  background-color: #F3F3F3;
-  border: 1px solid #BDC3C7;
-  border-radius: 5px;
-  // box-shadow: 10px 5px 5px #BDC3C7;
-  width: 80%;
-  height: 40%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding-bottom: 5%;
-}
-.TopLessonsPresentation_container_card{
-  display: flex;
- width: 100%;
-
-}
-.TopLessonsPresentation_Card p{
+.topLessonsPresentation_Card p{
 color: #BDC3C7;
 text-align: center;
 }
-.TopLessonsPresentation_Card{
+.topLessonsPresentation_Card{
 flex-basis:25% ;
 display: flex;
 flex-direction: column;
@@ -301,21 +300,21 @@ padding:2% 5%;
     flex-direction: column;
      h4 {
        text-align: center;
+       font-weight: bold;
        margin: 10px !important;
      }
   }
 }
-.TopLessonsPresentation_Card img{
+.topLessonsPresentation_Card img{
   width: 100%;
 }
-.TopLessonsContainer button{
+.topLessonsContainer button{
   margin-top: 1em;
 }
 
 
 //!-----
 
-// reprise antho
 // 1100 px
 @media (max-width: 1050px) {
   .container_presentation {
@@ -324,6 +323,7 @@ padding:2% 5%;
 
     &_main {
       text-align: center;
+      margin: 0 5em;
     }
     &_image {
       img {
@@ -331,72 +331,74 @@ padding:2% 5%;
       }
     }
   }
-      .HowItWorksPresentation_main {
-        flex-direction: column;
-        align-items: center;
-      }
-      // user advise
-      .UsersReviewsPresentation_container_card {
-        width: 75%;
-      }
+      // .HowItWorksPresentation_main {
+      //   flex-direction: column;
+      //   align-items: center;
+      // }
+      // // user advise
+      // .UsersReviewsPresentation_container_card {
+      //   width: 75%;
+      // }
 }
 
 //! ipad => 768px
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
-
-
-  .container-assets-presentation {
-    display: flex;
-    // width: 80% !important;
-    .AssetsPresentation_main {
-      display: flex;
-      // align-items: center;
-      justify-content: space-around;
-      width: 80% !important;
-    }
-    .AssetsPresentation_card{
-      width: 30%;
-    }
+  .howItWorksPresentation-contents-bloc {
+    flex-direction: row;
   }
 
-  // == teacher list
-  .TeacherPresentation_main {
-    margin: 80px 10%;
-    h2 {
-      text-align: center;
-    }
-    .TeacherPresentation_card {
-      // width: 80%;
-      .OneCard {
-        width: 24%;
-      }
-    }
+  // .container-assets-presentation {
+  //   display: flex;
+  //   // width: 80% !important;
+  //   .AssetsPresentation_main {
+  //     display: flex;
+  //     // align-items: center;
+  //     justify-content: space-around;
+  //     width: 80% !important;
+  //   }
+  //   .AssetsPresentation_card{
+  //     width: 30%;
+  //   }
+  // }
 
-  }
+  // // == teacher list
+  // .TeacherPresentation_main {
+  //   margin: 80px 10%;
+  //   h2 {
+  //     text-align: center;
+  //   }
+  //   .TeacherPresentation_card {
+  //     // width: 80%;
+  //     .OneCard {
+  //       width: 24%;
+  //     }
+  //   }
+
+  // }
 
 
-  .TopLessonsPresentation_container {
-    flex-direction: column;
-    .TopLessonsPresentation_container_card {
-      .TopLessonsPresentation_Card {
+  // .TopLessonsPresentation_container {
+  //   flex-direction: column;
+  //   .TopLessonsPresentation_container_card {
+  //     .TopLessonsPresentation_Card {
 
-      }
-    }
-  }
+  //     }
+  //   }
+  // }
 
-  .HowItWorksPresentation_content img {
-    // width: 680px;
-  }
+  // .HowItWorksPresentation_content img {
+  //   // width: 680px;
+  // }
 
-  .UsersReviewsPresentation_container_card {
-    flex-direction: column;
-    align-items: center;
-    .UsersReviewsPresentation_card {
-      width: 70%;
-      margin: 1em;
-    }
-  }
+  // .UsersReviewsPresentation_container_card {
+  //   flex-direction: column;
+  //   align-items: center;
+  //   .UsersReviewsPresentation_card {
+  //     width: 70%;
+  //     margin: 1em;
+  //   }
+  // }
 
 }
 

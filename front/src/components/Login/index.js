@@ -34,7 +34,7 @@ const Login = () => {
           }}
         >
           <Form.Input
-            error={errorAuth}
+            error={(errorAuth) || null}
             type="mail"
             icon="user"
             iconPosition="left"
@@ -46,7 +46,7 @@ const Login = () => {
             value={mail}
           />
           <Form.Input
-            error={errorAuth}
+            error={(errorAuth) || null}
             type="password"
             icon="user"
             iconPosition="left"

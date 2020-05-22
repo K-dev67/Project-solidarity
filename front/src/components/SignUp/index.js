@@ -53,10 +53,10 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   // == traitement des erreurs en front via state local
-  const [errorUsername, setErrorUsername] = useState('');
-  const [errorFirstname, setErrorFirstname] = useState('');
-  const [errorLastname, setErrorLastname] = useState('');
-  const [errorMail, setErrorMail] = useState('');
+  const [errorUsername, setErrorUsername] = useState(false);
+  const [errorFirstname, setErrorFirstname] = useState(false);
+  const [errorLastname, setErrorLastname] = useState(false);
+  const [errorMail, setErrorMail] = useState(false);
   // == reducer
   const {
     username,
@@ -119,7 +119,7 @@ const SignUp = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-          error={errorUsername}
+          error={(errorUsername) || null}
           type="text"
           icon="user"
           iconPosition="left"
@@ -134,7 +134,7 @@ const SignUp = () => {
           value={username}
         />
         <Form.Input
-          error={errorFirstname}
+          error={(errorFirstname) || null}
           type="text"
           icon="user"
           iconPosition="left"
@@ -149,7 +149,7 @@ const SignUp = () => {
           value={firstname}
         />
         <Form.Input
-          error={errorLastname}
+          error={(errorLastname) || null}
         // fluid
           icon="user"
           iconPosition="left"
@@ -164,7 +164,7 @@ const SignUp = () => {
           value={lastname}
         />
         <Form.Input
-          error={errorMail}
+          error={(errorMail) || null}
         // fluid
           type="mail"
           label="Mail"
@@ -177,7 +177,7 @@ const SignUp = () => {
           value={mail}
         />
         <Form.Input
-          error={errorPassword}
+          error={(errorPassword) || null}
         // fluid
           type="password"
           label="Password"
@@ -189,7 +189,7 @@ const SignUp = () => {
           value={password}
         />
         <Form.Input
-          error={errorPasswordConfirmation}
+          error={(errorPasswordConfirmation) || null}
         // fluid
           type="password"
           label="Password confirmation"

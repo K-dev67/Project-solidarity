@@ -47,8 +47,8 @@ const UsersReviewsPresentation = () => {
             <p>{dev.title2}</p>
           </div>
           <div className="ourTeam-user-presentation-social">
-            <div><a href={dev.github} target="_blank"><Icon name="linkedin" size="big" /></a></div>
-            <div><a href={dev.linkedin} target="_blank"><Icon name="github" size="big" /></a></div>
+            <div><a href={dev.linkedin} target="_blank"><Icon name="linkedin" size="big" /></a></div>
+            <div><a href={dev.github} target="_blank"><Icon name="github" size="big" /></a></div>
             <div><a href="https://oclock.io/" target="_blank"><img src={bifrostLogo} className="logo-bifrost" alt="logoBifrost" /></a></div>
           </div>
         </div>

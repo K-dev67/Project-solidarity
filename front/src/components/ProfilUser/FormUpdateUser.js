@@ -61,7 +61,7 @@ const FormUpdateUser = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-          error={errorUsername}
+          error={(errorUsername) || null}
           type="text"
           icon="user"
           iconPosition="left"
@@ -76,7 +76,7 @@ const FormUpdateUser = () => {
           value={username}
         />
         <Form.Input
-          error={errorFirstname}
+          error={(errorFirstname) || null}
           type="text"
           icon="user"
           iconPosition="left"
@@ -91,7 +91,7 @@ const FormUpdateUser = () => {
           value={firstname}
         />
         <Form.Input
-          error={errorLastname}
+          error={(errorLastname) || null}
       // fluid
           icon="user"
           iconPosition="left"
