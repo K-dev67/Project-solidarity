@@ -9,10 +9,29 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000;
 const app = express();
 
-const Server = require('http').Server;
 const socket = require('socket.io');
 
-const server = Server(app);
+let server;
+if(process.env.NODE_ENV === 'production') {
+  const https = require('https');
+  const fs = require('fs');
+
+  const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/solidarity.website/privkey.pem', 'utf8'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/solidarity.website/fullchain.pem', 'utf8')
+  };
+
+
+  // Create HTTPs server.
+  server = https.createServer(options, app);
+  const io = socket(server);
+}
+else {
+  const Server = require('http').Server;
+  server = Server(app);
+
+}
+
 const io = socket(server);
 
 app.get('/', (req, res) => {
