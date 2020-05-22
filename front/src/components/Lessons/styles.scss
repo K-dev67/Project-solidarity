@@ -175,6 +175,9 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      border: hidden !important;
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
       .button {
         height: 5vh !important;
         width: 40% !important;

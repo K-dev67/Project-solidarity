@@ -1,10 +1,7 @@
-.askLessons {
+/*.askLessons {
     min-height: 85vh;
     .segment {
       .cards {
-        /*display: flex;
-        justify-content: center;
-        width: unset !important;*/
 
       }
     }
@@ -164,5 +161,186 @@
       width: 80% !important;
     }
   }
+}
+*/
+/*-------------------------------------------------------------*/
+.app {
+}
+.askLessons {
+  min-height: 85vh;
+  background: #212C3D !important;
+  .segment {
+    background: #212C3D !important;
+    .cards {
+      background: #212C3D !important;
+      /*display: flex;
+      justify-content: center;
+      width: unset !important;*/
+      .btn-container {
+        background: #212C3D !important;
+      }
+    }
+  }
+  .ui .button {
+      margin: 0 0 10px 0 !important;
+  }
+  .input-topbar {
+      margin: 0 0 10px 0 !important;
+  }
+}
+.addAskModal {
+background: rgba(19, 37, 41, 1) !important;
+box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+flex-direction: column !important;
+.positive {
+  // display: block !important;
+  background: rgba(19, 37, 41, 1) !important;
+  border: none;
+  max-height: 5vh !important;
+  width: 100% !important;
+  .header {
+    padding: 0;
+    background: none !important;
+    box-shadow: none !important;
+  }
+}
+}
+.extra {
+display: flex;
+.link-ask-div {
+  width: 70%;
+  flex-wrap: wrap;
+}
+.pencil-ask-card {
+  width: 6%;
+  flex-wrap: wrap;
+}
+.croix-ask-card {
+  width: 8%;
+  flex-wrap: wrap;
+  text-align: right;
+}
+.ask-heart {
+  p {
+    display: inline;
+    flex-wrap: wrap;
+    color: white !important;
+  }
+  color: black !important;
+  flex-wrap: wrap;
+  text-align: right;
+  width: 16%;
+  .icon::before {
+    color: red;
+  }
+}
+}
+.ask-card--owner {
+background: linear-gradient(0deg,  rgba(252,194,69,1) 10%, rgba(199,24,0,1) 100%) !important;
+}
+.ask-card {
+transition: 0.4s;
+border-radius: 0.5em !important;
+background: #29374A !important;
+//margin-left: 1em !important;
+// background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+padding: 0.5em !important;
+margin: 1em !important;
+border: none !important;
+//min-height: 30vh;
+.for-ask-border {
+  height: 100% !important;
+  border-radius: 0.5em !important;
+  .header {
+    background: #29374A !important;
+    font-size: 1.1em !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+    padding-left: 0.5em !important;
+    a {
+      //padding-left: -1.5em !important;
+      margin-left: 0.4em !important;
+    }
+  }
+  .meta {
+    display: none !important;
+  }
+  .description {
+    //background: rgba(19, 37, 41, 0.9) !important;
+    background: #1E2837 !important;
+    //box-shadow: inset 3px 10px 20px 5px rgba(0, 0, 0, .8) !important;
+    font-size: 1.1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+
+    height: 15vh;
+    overflow-y: scroll;
+
+    color: white !important;
+    height: 15vh;
+    overflow-y: scroll;
+  }
+  .description::-webkit-scrollbar-thumb {
+    background-color: #F5F5F5;
+  }
+  .description::-webkit-scrollbar-thumb {
+    background-color: #F5F5F5;
+  }
+  .extra {
+    //background: rgba(19, 37, 41, 1) !important;
+    //box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    font-size: 1.1em;
+    background: #29374A !important;
+  }
+}
+    &:hover {
+        border: 1px solid #00838d;
+        box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+        z-index: 500;
+    }
+
+}
+
+.btn-container {
+display: flex;
+justify-content: center;
+margin-bottom: 1em !important;
+.btn-ask-lesson {
+  margin-bottom: 0.5em !important;
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
+  -5px -5px 30px 15px rgba(0,0,0,0.22);
+  background: linear-gradient(0deg, rgba(19, 37, 41, 1) 10%, rgba(10, 180, 180, 1) 100%) !important;
+  color: white !important;
+  border: 1px solid rgba(10, 180, 180, 1) !important;
+  height: 5vh !important;
+  width: 30% !important;
+  cursor: pointer !important;
+  transition: 0.5s !important;
+  &:hover {
+    //background: rgba(20, 20, 20, 1) !important;
+    width: 40% !important;
+  }
+}
+}
+@media (max-width: 700px) {
+.askLessons {
+  .segment {
+    .cards {
+      display: inline !important;
+    }
+  }
+}
+.btn-container {
+  .btn-ask-lesson {
+    width: 80% !important;
+  }
+}
 }
 
