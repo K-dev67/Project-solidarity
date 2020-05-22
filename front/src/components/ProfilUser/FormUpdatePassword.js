@@ -93,7 +93,7 @@ const FormUpdatePassword = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-          error={errorOldPassword}
+          error={(errorOldPassword) || null}
           type="password"
           label="Old Password"
           placeholder="Old Password"
@@ -104,7 +104,7 @@ const FormUpdatePassword = () => {
           value={oldPassword}
         />
         <Form.Input
-          error={errorPassword}
+          error={(errorPassword) || null}
           type="password"
           label="New Password"
           placeholder="New Password"
@@ -115,7 +115,7 @@ const FormUpdatePassword = () => {
           value={password}
         />
         <Form.Input
-          error={errorPasswordConfirmation}
+          error={(errorPasswordConfirmation) || null}
           type="password"
           label="Password confirmation"
           placeholder="Password confirmation"

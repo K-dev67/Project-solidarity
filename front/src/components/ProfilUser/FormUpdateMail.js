@@ -54,7 +54,7 @@ const FormUpdateMail = () => {
         onSubmit={handleSubmit}
       >
         <Form.Input
-          error={errorMail}
+          error={(errorMail) || null}
           type="mail"
           label="Mail"
           placeholder="Mail"
@@ -66,7 +66,7 @@ const FormUpdateMail = () => {
           value={mail}
         />
         <Form.Input
-          error={errorPassword}
+          error={(errorPassword) || null}
           type="password"
           label="Password"
           placeholder="Password"
