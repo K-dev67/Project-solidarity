@@ -47,7 +47,7 @@ const RoomDescription = ({ lesson }) => {
           dispatch({ type: LEAVE_ROOM });
         }}
       >
-        <Button
+        <Button className="leave-button"
           color="red"
           fluid
         >Quitter le cours
