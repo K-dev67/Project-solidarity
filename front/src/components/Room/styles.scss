@@ -138,11 +138,13 @@
     overflow-y: hidden !important;
     position: absolute !important;
     right: 0 !important;
+    border-top: 1px solid black !important;
     .container-chat-main {       
       min-height: calc(100vh -50px -64px -7vh) !important;
       max-height: calc(100vh -50px -64px -7vh) !important;
       background: #29374A !important;
       border: none !important;
+      border-top: 1px solid #29374A;
       .text-chat {
         height: 7vh !important;
       }
@@ -161,6 +163,7 @@
         padding-top: 0.3em;
         margin-bottom: 0 !important;
         .chat-message {
+          margin-top: 1em !important;
           display: flex !important;
           flex-wrap: wrap !important;
           .date-message {
@@ -169,14 +172,21 @@
             padding-left: 0.4em;
           }
           .message-author {
-            color: rgb(6, 224, 224);
+            color: #909090;
             font-size: 1.3em;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
             //padding-right: 0.5em;
             padding-left: 0.4em;
           }
           .message-content {
             font-weight: 400;
             word-wrap: break-word;
+            padding-top: 0 !important;
+            align-items: end !important;
+            margin-top: 0.5em !important;
+            margin-left: 0.5em !important;
             //padding-left: 0.2em;
             //margin-right: 0.2em !important;
             //padding-right: 1em;
@@ -255,8 +265,9 @@
     justify-content: center;
     input {
       border-radius: 0.5em !important;
-      border: 2px solid rgba(10, 180, 180, 1) !important;
-      background: rgba(20, 20, 20, .6) !important;
+      //border: 2px solid rgba(10, 180, 180, 1) !important;
+      //background: rgba(20, 20, 20, .6) !important;
+      background: #29374A !important;
       font-size: 18px !important;
       color: white !important;
       margin-top: 20px !important;
@@ -352,14 +363,16 @@
   }
 }
 .update-lesson-content {
-  background: rgba(19, 37, 41, 1) !important;
+  background: #1E2837 !important;
+  //background: rgba(19, 37, 41, 1) !important;
   box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
   .description {
     .header {
       padding: 1em 2em;
-      background: rgba(19, 37, 41, .8) !important;
+      background: #1E2837 !important;
+      //background: rgba(19, 37, 41, .8) !important;
       box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
-      border: 1px solid rgba(10, 180, 180, 1) !important;
+      border: 1px solid #d4d4d5 !important;
       border-radius: 0.5em !important;
     }
     form {
@@ -369,16 +382,17 @@
           font-size: 16px;
           padding: 10px;
           width: 250px;
-          border: 1px solid rgba(10, 180, 180, 1);
+          border: 1px solid #d4d4d5;
           border-top: none;
           border-left: none;
           border-right: none;
-          background: rgba(20, 20, 20, .2);
+          //background: rgba(20, 20, 20, .2);
+          background: #121922 !important;
           color: white;
           outline: none;
           &:hover {
             color: white !important;
-            background: rgba(19, 37, 41, .8) !important;
+            background: #121922 !important;
           }
         }
         textarea {
@@ -386,16 +400,16 @@
           font-size: 16px;
           padding: 10px;
           width: 250px;
-          border: 1px solid rgba(10, 180, 180, 1);
+          border: 1px solid #d4d4d5;
           border-top: none;
           border-left: none;
           border-right: none;
-          background: rgba(20, 20, 20, .2);
+          background: #121922 !important;
           color: white;
           outline: none;
           &:hover {
             color: white !important;
-            background: rgba(19, 37, 41, .8) !important;
+            background: #121922 !important;
           }
         }
         select {
@@ -404,16 +418,17 @@
           font-size: 16px;
           padding: 10px;
           width: 250px;
-          border: 1px solid rgba(10, 180, 180, 1);
+          border: 1px solid #d4d4d5;
           border-top: none;
           border-left: none;
           border-right: none;
-          background: rgba(20, 20, 20, .2);
+          background: #121922 !important;
+          //background: rgba(20, 20, 20, .2);
           color: white;
           outline: none;
           &:hover {
             color: white !important;
-            background: rgba(19, 37, 41, .8) !important;
+            background: #121922 !important;
           }
         }
         p {
