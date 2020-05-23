@@ -57,8 +57,10 @@ io.on('connection', socket => {
   socket.on('chatMessage', msg => {
     console.log('msg', msg)
     const user = getCurrentUser(socket.id);
-    if (user.room == null || user.room == undefined) {
-      return res.send('RoomError');
+    console.log(user)
+    if (!user) {
+      console.log('ça ne plante plus');
+      return console.log('User Room Vide');
     }
     io.to(user.room).emit('message', formatMessage(user.username, msg.content));
     console.log('msg.content', msg.content);

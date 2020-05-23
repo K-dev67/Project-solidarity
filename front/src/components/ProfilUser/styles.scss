@@ -44,20 +44,11 @@
     }
 }
 .titleContent {
-  color: white;
-  background: none;
+  color: white !important;
+  background: #1E2837 !important;
   padding: 0;
-  .content {
-    color: white !important;
-    box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
-    background: none !important;
-    //@extend: 1em;
-  }
-  .positive {
-    padding: 0;
-    margin: 0;
-    color: rgba(10, 180, 180, 1) !important;
-  }
+  box-shadow: inset 0 0 50px 5px rgba(255, 255, 255, .5) !important;
+
 }
 .signup-form {
   text-align: center;
@@ -121,7 +112,9 @@
     }
 }
 .passwordHeader {
-  color: white;
+  color: white !important;
+  background: #1E2837 !important;
+  box-shadow: inset 0 0 50px 5px rgba(255, 255, 255, .5) !important;
   padding: 0;
 }
 .mailModal {
@@ -143,6 +136,11 @@
           z-index: 500;
         }
     }
+}
+.mail-header {
+  color: white !important;
+  background: #1E2837 !important;
+  box-shadow: inset 0 0 50px 5px rgba(255, 255, 255, .5) !important;
 }
 .profil-user {
   transition: 0.4s;
@@ -243,13 +241,14 @@
     width: 100% !important;
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
-    background: rgba(19, 37, 41, 1) !important;
+    background: #1E2837 !important;
   .header {
-    border: 1px solid rgba(10, 180, 180, 1) !important;
+    color: white !important;
+    border: 1px solid #d4d4d5 !important;
     padding: 1em !important;
-    background: none !important;
+    background: #212C3D !important;
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
     border-radius: 0.5em;
-  }
+  } 
 }

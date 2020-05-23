@@ -17,7 +17,7 @@ const AddLessonModal = () => {
   };
   return (
     <Modal trigger={<Button onClick={handleClick} fluid>Proposer un cours</Button>}>
-      <Modal.Header>Proposer un cours</Modal.Header>
+      <Modal.Header className="lesson-title" >Proposer un cours</Modal.Header>
       <Modal.Content className="lessonContent">
         <MessagePositive />
         {/* <Image wrapped size="medium" src="/images/avatar/large/rachel.png" /> */}
