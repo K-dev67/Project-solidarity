@@ -202,6 +202,9 @@
          margin-bottom: 1em;
          border-top: 1px solid #BDC3C7;
       }
+      h4 {
+        font-weight: bold;
+      }
    }
   }
 }
@@ -380,29 +383,84 @@
       }
     }
   }
+  .teacherPresentation_cards {
+    // flex-direction: column;
+    .cardTeacher {
+      padding: 0;
+    }
+  }
 
 
 }
 
 
-@media (max-width: 620px) {
+@media (max-width: 650px) {
   .container_presentation {
     width: 98%;
     margin: 0px auto 50px;
+    img {
+      width: 90%;
+    }
   }
-  // .TeacherPresentation_main {
-  //   margin: 40px 10%;
-  // }
-  // .TopLessonsContainer {
-  //   margin-top: 5%;
-  // }
+  .container-assets-presentation {
+    margin: 1em 6%;
+  }
+  .teacherPresentation_main {
+    padding: 0.5em 0;
+    h2 {
+      text-align: center;
+      padding: 0 1em;
+    }
+
+  }
+  .teacherPresentation_cards {
+    margin-top: 0px;
+    flex-direction: column;
+    h4 {
+      margin-bottom: 1em !important;
+    }
+  }
+  .ourTeam {
+    .title-ourTeam {
+      margin-bottom: 0.5em;
+    }
+    &-container {
+      flex-direction: column;
+      // justify-content: center;
+      align-items: center;
+    }
+    &-user {
+      margin-bottom: 0.5em;
+    }
+  }
 }
 
-//! ==> telephone 450
-@media (max-width: 450px) {
+@media (max-width: 560px) {
   .container_presentation {
     // width: 98%;
     // margin: 0px auto 50px;
+    &_main {
+      margin: 0 1em;
+    }
+  }
+}
+
+//! ==> telephone 450
+@media (max-width: 490px) {
+  .container_presentation {
+    // width: 98%;
+    // margin: 0px auto 50px;
+    // &_main {
+    //   margin: 0 1em;
+    // }
+    &_image {
+      padding: 0;
+    }
+  }
+  .container-assets-presentation
+  .assetsPresentation_main {
+    padding: 1em 0;
+    margin-bottom: 1em;
   }
   .howItWorksPresentation-contents {
     &-bloc-image {
@@ -412,12 +470,7 @@
     }
   }
 
-  // .TeacherPresentation_main {
-  //   margin: 40px 10%;
-  // }
-  // .TopLessonsContainer {
-  //   margin-top: 5%;
-  // }
+
 }
 
 
