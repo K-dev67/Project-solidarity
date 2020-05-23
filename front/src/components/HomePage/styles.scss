@@ -139,6 +139,9 @@
         h3 {
           font-weight: 900;
         }
+        p {
+          padding: 0 6em 0 0;
+        }
         // padding: ;
       }
       .text-align-right {
@@ -281,36 +284,38 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    // padding-bottom: 5%;
   }
-}
-
-.topLessonsPresentation_Card p{
-color: #BDC3C7;
-text-align: center;
-}
-.topLessonsPresentation_Card{
-flex-basis:25% ;
-display: flex;
-flex-direction: column;
-align-items: center;
-padding:2% 5%;
-  .name-description {
+  .thanks-cards {
+    flex-basis:25% ;
     display: flex;
     flex-direction: column;
-     h4 {
-       text-align: center;
-       font-weight: bold;
-       margin: 10px !important;
-     }
-  }
+    align-items: center;
+    padding:2% 5%;
+      img {
+        width: 100%;
+      }
+      .name-description {
+        display: flex;
+        flex-direction: column;
+         h4 {
+           text-align: center;
+           font-weight: bold;
+           margin: 10px !important;
+         }
+         p {
+          color: #BDC3C7;
+          text-align: center;
+         }
+      }
+    }
 }
-.topLessonsPresentation_Card img{
-  width: 100%;
-}
-.topLessonsContainer button{
-  margin-top: 1em;
-}
+
+
+
+
+
+
+
 
 
 //!-----
@@ -331,89 +336,48 @@ padding:2% 5%;
       }
     }
   }
-      // .HowItWorksPresentation_main {
-      //   flex-direction: column;
-      //   align-items: center;
-      // }
-      // // user advise
-      // .UsersReviewsPresentation_container_card {
-      //   width: 75%;
-      // }
+  .howItWorksPresentation-container {
+    margin: 3em 5%;
+  }
+  .teacherPresentation_main {
+    margin: 3em 5%;
+  }
+
 }
 
 //! ipad => 768px
-@media (max-width: 900px) {
-
-  .howItWorksPresentation-contents-bloc {
-    flex-direction: row;
+@media (max-width: 800px) {
+  .howItWorksPresentation-container {
+    .howItWorksPresentation-title {
+      padding-bottom: 0;
+    }
+  }
+  .howItWorksPresentation-contents {
+    &-bloc {
+      p {
+        padding-right: 1em;
+      }
+      .icon {
+        display: none;
+      }
+    }
   }
 
-  // .container-assets-presentation {
-  //   display: flex;
-  //   // width: 80% !important;
-  //   .AssetsPresentation_main {
-  //     display: flex;
-  //     // align-items: center;
-  //     justify-content: space-around;
-  //     width: 80% !important;
-  //   }
-  //   .AssetsPresentation_card{
-  //     width: 30%;
-  //   }
-  // }
-
-  // // == teacher list
-  // .TeacherPresentation_main {
-  //   margin: 80px 10%;
-  //   h2 {
-  //     text-align: center;
-  //   }
-  //   .TeacherPresentation_card {
-  //     // width: 80%;
-  //     .OneCard {
-  //       width: 24%;
-  //     }
-  //   }
-
-  // }
-
-
-  // .TopLessonsPresentation_container {
-  //   flex-direction: column;
-  //   .TopLessonsPresentation_container_card {
-  //     .TopLessonsPresentation_Card {
-
-  //     }
-  //   }
-  // }
-
-  // .HowItWorksPresentation_content img {
-  //   // width: 680px;
-  // }
-
-  // .UsersReviewsPresentation_container_card {
-  //   flex-direction: column;
-  //   align-items: center;
-  //   .UsersReviewsPresentation_card {
-  //     width: 70%;
-  //     margin: 1em;
-  //   }
-  // }
 
 }
 
-//! ==> telephone
-@media (max-width: 450px) {
+//! ==> telephone 450
+@media (max-width: 620px) {
   .container_presentation {
     width: 98%;
     margin: 0px auto 50px;
   }
-  .TeacherPresentation_main {
-    margin: 40px 10%;
-  }
-  .TopLessonsContainer {
-    margin-top: 5%;
-  }
+  // .TeacherPresentation_main {
+  //   margin: 40px 10%;
+  // }
+  // .TopLessonsContainer {
+  //   margin-top: 5%;
+  // }
 }
 
 
