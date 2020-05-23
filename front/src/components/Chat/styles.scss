@@ -9,25 +9,30 @@
       //flex-wrap: wrap;
       .message-author {
         //border-bottom: 1px solid rgba(10, 180, 180, 1) !important;
-        padding: 1.5em;
+        //padding: 1.5em;
         margin-bottom: 1em;
 
       }
 
       .message-content {
-        margin-left: 1em;
-        padding-top: 0.7em;
+        //margin-left: 0.5em;
+        padding-top: 0.5em;
         div {
-          border: 1px solid rgba(10, 180, 180, 1) !important;
-          background: rgba(97, 121, 121, 0.2) !important;
+          //border: 1px solid rgba(10, 180, 180, 1) !important;
+          //background: rgba(97, 121, 121, 0.2) !important;
           position: relative;
           padding-top: 1em;
           padding: 0.5em;
           padding-right: 1em;
           border-radius: 0.6em;
+          span {
+            margin-right: 0px !important;
+            color: #f0f !important;
+          }
           div {
-          border: none!important;
-          background: none !important;
+            color: #f0f !important;
+            border: none!important;
+            background: none !important;
           }
         }
       }
