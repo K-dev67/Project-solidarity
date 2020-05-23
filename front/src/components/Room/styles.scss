@@ -439,6 +439,11 @@
     }
   }
 }
+@media (max-width: 800px) {
+  .container-update-room {
+    flex-wrap: wrap !important;
+  }
+}
 @media (max-width: 700px) {
   .app {
     .topbar {
