@@ -356,7 +356,7 @@
       flex-direction: column-reverse !important;
     }
     &-bloc {
-      padding-top: 1em;
+      padding: 1em 0;
       flex-direction: column !important;
       align-items: center;
       &-description {
@@ -462,12 +462,19 @@
     padding: 1em 0;
     margin-bottom: 1em;
   }
+  .howItWorksPresentation-container,
+  .teacherPresentation_main {
+    margin: 1em 5% !important
+  }
   .howItWorksPresentation-contents {
     &-bloc-image {
       img {
         height: 13em;
       }
     }
+  }
+  .thanksContainer {
+    margin-top: 2em;
   }
 
 
