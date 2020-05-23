@@ -36,7 +36,7 @@ const HowItWorksPresentation = () => (
 
       {/* 2eme partie */}
 
-      <div className="howItWorksPresentation-contents-bloc">
+      <div className="howItWorksPresentation-contents-bloc column-reverse">
 
         <div className="howItWorksPresentation-contents-bloc-description">
           <h3>Trouvez votre horaire</h3>
