@@ -27,7 +27,7 @@ import Video from '../VideoLive';
 import './styles.scss';
 import store from '../../store';
 
-import background from '../../assets/img/Pattern_fond.png';
+import background from '../../assets/img/Pattern_fond_bleu.png';
 
 const Room = ({ lesson }) => {
   // const dispatch = useDispatch();

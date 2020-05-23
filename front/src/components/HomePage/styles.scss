@@ -314,13 +314,9 @@
 
 
 
-
-
-
-
 //!-----
 
-// 1100 px
+// 1050 px
 @media (max-width: 1050px) {
   .container_presentation {
     flex-direction: column;
@@ -353,12 +349,34 @@
     }
   }
   .howItWorksPresentation-contents {
+    .column-reverse {
+      flex-direction: column-reverse !important;
+    }
     &-bloc {
+      padding-top: 1em;
+      flex-direction: column !important;
+      align-items: center;
+      &-description {
+        padding-top: 1em;
+        width: 90%;
+      }
       p {
         padding-right: 1em;
+        text-align: center;
+
+      }
+      h3 {
+        text-align: center;
       }
       .icon {
         display: none;
+      }
+      &-image {
+        display: flex;
+        justify-content: center;
+        img {
+          height: 15em;
+        }
       }
     }
   }
@@ -366,12 +384,34 @@
 
 }
 
-//! ==> telephone 450
+
 @media (max-width: 620px) {
   .container_presentation {
     width: 98%;
     margin: 0px auto 50px;
   }
+  // .TeacherPresentation_main {
+  //   margin: 40px 10%;
+  // }
+  // .TopLessonsContainer {
+  //   margin-top: 5%;
+  // }
+}
+
+//! ==> telephone 450
+@media (max-width: 450px) {
+  .container_presentation {
+    // width: 98%;
+    // margin: 0px auto 50px;
+  }
+  .howItWorksPresentation-contents {
+    &-bloc-image {
+      img {
+        height: 13em;
+      }
+    }
+  }
+
   // .TeacherPresentation_main {
   //   margin: 40px 10%;
   // }
