@@ -22,7 +22,7 @@ const UpdateAskLessonModal = ({ askLesson }) => {
   };
   return (
     <Modal trigger={<Icon name="pencil" onClick={handleClick} style={{ cursor: 'pointer' }} />}>
-      <Modal.Header className="update-lesson-header" style={contentStyle}>Modifier votre demande de cours</Modal.Header>
+      <Modal.Header className="ask-title" style={contentStyle}>Modifier votre demande de cours</Modal.Header>
       <Modal.Content className="addAskModal" image>
         <MessagePositive />
         <Modal.Description>

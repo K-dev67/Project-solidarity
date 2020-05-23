@@ -24,7 +24,7 @@ const UpdateMailModal = () => {
 
   return (
     <Modal trigger={<a><Icon className="penUpdateMail" name="pencil" onClick={handleClick} /></a>} closeIcon>
-      <Header style={contentStyle} icon="pencil" content="Modifier votre mail" />
+      <Header className="mail-header" style={contentStyle} icon="pencil" content="Modifier votre mail" />
       <MessagePositive />
       <Modal.Content className="mailModal">
         <FormUpdateMail />

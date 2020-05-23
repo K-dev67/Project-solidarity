@@ -15,7 +15,7 @@ const contentStyle = {
 
 const UpdateLessonModal = ({ lesson }) => (
   <Modal trigger={<Button>Modifier votre cours</Button>}>
-    <Modal.Header className="update-lesson-header" style={contentStyle}>Modifier votre cours</Modal.Header>
+    <Modal.Header className="lesson-title" style={contentStyle}>Modifier votre cours</Modal.Header>
     <Modal.Content className="update-lesson-content" image>
       <Modal.Description>
         <Header>Cours prévu le <Moment format="D MMM YYYY HH:mm" withTitle>{` ${lesson.plannified}`}</Moment></Header>
