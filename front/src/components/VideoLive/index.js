@@ -13,7 +13,8 @@ const Video = ({ lesson }) => {
   const userId = useSelector((state) => state.userId);
   const user = useSelector((state) => state.user);
   // == interface config
-  let inferfaceConfig = { TOOLBAR_BUTTONS: ['videoquality', 'fullscreen', 'raisehand', 'hangup'] };
+  let inferfaceConfig = { TOOLBAR_BUTTONS: ['videoquality', 'fullscreen', 'raisehand', 'hangup', 'camera',
+] };
   if (userId === lesson.teacher_id) {
     inferfaceConfig = {
       TOOLBAR_BUTTONS: [
@@ -83,7 +84,7 @@ const handleAPI = (JitsiMeetAPI) => {
     console.log('userId: ', userId);
     console.log('lesson.teacher_id: ', lesson.teacher_id);
 
-    if (userId === lesson.teacher_id) { 
+    if (userId === lesson.teacher_id) {
       JitsiMeetAPI.executeCommand('subject', 'Solidarity');
       JitsiMeetAPI.executeCommand('toggleShareScreen');
     } else {
@@ -102,7 +103,7 @@ const Video = ({ lesson }) => {
   // == interface config
   let inferfaceConfig = { TOOLBAR_BUTTONS: ['videoquality', 'fullscreen', 'raisehand', 'hangup'] };
   if (userId === lesson.teacher_id) {
-    
+
     inferfaceConfig = {
       TOOLBAR_BUTTONS: [
         'microphone',

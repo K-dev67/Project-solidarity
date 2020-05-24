@@ -1,5 +1,15 @@
 .homePage {
   color: #2A3E55;
+  h2 {
+    font-weight: bold;
+    font-size: 2.5em;
+  }
+  h1, h3 {
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
 }
 
 .container_presentation {
@@ -417,10 +427,11 @@
     margin-top: 0px;
     flex-direction: column;
     h4 {
-      margin-bottom: 1em !important;
+      margin-bottom: 0.5em !important;
     }
   }
   .ourTeam {
+    padding-top: 1em;
     .title-ourTeam {
       margin-bottom: 0.5em;
     }
@@ -447,12 +458,8 @@
 
 //! ==> telephone 450
 @media (max-width: 490px) {
+
   .container_presentation {
-    // width: 98%;
-    // margin: 0px auto 50px;
-    // &_main {
-    //   margin: 0 1em;
-    // }
     &_image {
       padding: 0;
     }
@@ -461,6 +468,9 @@
   .assetsPresentation_main {
     padding: 1em 0;
     margin-bottom: 1em;
+  }
+  .howItWorksPresentation-container {
+    padding: 1em 0;
   }
   .howItWorksPresentation-container,
   .teacherPresentation_main {

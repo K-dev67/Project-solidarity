@@ -102,13 +102,6 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    // == Input Nav
-    // case SET_INPUT_NAV: {
-    //   return {
-    //     ...state,
-    //     inputNav: action.payload,
-    //   };
-    // }
     case SET_FILTERED_LESSONS: {
       return {
         ...state,
@@ -169,20 +162,6 @@ export default (state = initialState, action = {}) => {
     case DISCONNECT: {
       sessionStorage.clear();
     }
-    // == si le auth ok
-    // case SET_USER: {
-    //   return {
-    //     ...state,
-    //     user: action.user,
-    //     userId: action.user.id,
-    //     username: action.user.nickname,
-    //     firstname: action.user.firstname,
-    //     lastname: action.user.lastname,
-    //     mail: action.user.email,
-    //     password: '',
-    //   };
-    // }
-    //!
     case SET_USER_DATA: {
       return {
         ...state,
@@ -430,12 +409,6 @@ export default (state = initialState, action = {}) => {
       next(action);
       // return;
     }
-    // case SET_RELATION_USER_SUBSCRIBE: {
-    //   return {
-    //     ...state,
-    //     relationUserSubscribe: action.payload,
-    //   };
-    // }
     case DELETE_CATEGORY_LABEL: {
       const { userId } = state;
       let { categoryId, lessonId } = action.payload;

@@ -49,7 +49,7 @@ const listTeachers = () => {
             <span className="date">Joined in 2015</span>
           </Card.Meta>
           <Card.Description>
-            {teacher.firstname} {teacher.lastname} is a musician living in Nashville.
+            {teacher.firstname} {teacher.lastname} est un enseignant de la plate forme Solidarity.
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
