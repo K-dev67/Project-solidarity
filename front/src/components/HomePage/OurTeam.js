@@ -29,7 +29,6 @@ const UsersReviewsPresentation = () => {
     },
   ];
   const ourTeamJsx = ourTeam.map((dev) => {
-    console.log('dev');
     return (
       <div
         key={dev.id}

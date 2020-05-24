@@ -38,7 +38,7 @@
 //     <>
 //       {/* <Image src={`/src/assets/img/category/${lesson.picture}.png`} size="medium" bordered /> */}
 //       {/* <Image src="./src/assets/img/category/Geographie.png" size="medium" bordered /> */}
-//       <Image src={source} size="medium" bordered />
+//       <Image src={picture} size="medium" bordered />
 //     </>
 //   );
 // };

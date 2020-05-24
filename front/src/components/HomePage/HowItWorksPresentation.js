@@ -7,8 +7,8 @@ import './styles.scss';
 import { Link } from 'react-router-dom';
 
 // == import image
-import presentationRoom from '../../assets/img/presentation_room.png';
-import presentationLessons from '../../assets/img/presentation_lessons.png';
+import presentationRoom from '../../assets/img/chatroomBlue.png';
+import presentationLessons from '../../assets/img/lessonsBlue.png';
 import calendarImage from '../../assets/img/calendarImage.jpg';
 
 const HowItWorksPresentation = () => (

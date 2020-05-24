@@ -29,7 +29,6 @@ const Chat = ({ lessonId }) => {
   // const userId = useSelector((state) => state.userId);
   const { messages, userId } = useSelector((state) => state);
   const messageJSX = messages.map((message) => {
-    console.log('bjr');
     let classAuthor = '';
     if (message.nickname === 'Robot') {
       classAuthor = 'chat-message robot';
