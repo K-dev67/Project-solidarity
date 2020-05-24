@@ -3,7 +3,7 @@ import React from 'react';
 // == style
 import './styles.scss';
 import logoRound from 'src/assets/img/S_logo_favicon_fonce.png';
-import image_elearning from '../../assets/img/elearning.png';
+// import image_elearning from '../../assets/img/elearning.png';
 
 
 const Presentation = () => {

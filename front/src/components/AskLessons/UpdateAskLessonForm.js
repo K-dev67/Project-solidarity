@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 // == react hook form
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import PropTypes from 'prop-types';
 // == actions
 import { UPDATE_ASKLESSON_IN_BDD } from 'src/store/actions';
 import getCategories from '../../utils/getCategories';
@@ -13,7 +14,6 @@ const UpdateAskLessonForm = ({ askLesson }) => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     dispatch({ type: UPDATE_ASKLESSON_IN_BDD, payload: data, askLessonId: askLesson.id });
-    // console.log(errors);
   };
 
   return (
@@ -53,6 +53,15 @@ const UpdateAskLessonForm = ({ askLesson }) => {
     </form>
   );
 };
+
+// UpdateAskLessonForm.propTypes = {
+//   askLesson: PropTypes.shape({
+//     id: PropTypes.number,
+//     title: PropTypes.string,
+//     description: PropTypes.string,
+//     level: PropTypes.string,
+//   }),
+// };
 
 
 export default UpdateAskLessonForm;

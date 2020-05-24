@@ -43,7 +43,7 @@ const Thanks = () => {
   ));
   return (
     <div className="thanksContainer">
-      <h2>Nos remerciements</h2>
+      <h3>Nos remerciements</h3>
       <div className="thanks-main">
         {thanksJSX}
       </div>

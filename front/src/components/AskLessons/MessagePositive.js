@@ -6,7 +6,7 @@ const MessagePositive = () => {
   const { messagePositif } = useSelector((state) => state);
   return (
     <Message positive hidden={!messagePositif}>
-      <Message.Header>Votre demande de cours a bien été ajouté</Message.Header>
+      <Message.Header>Votre demande de cours a bien été ajoutée</Message.Header>
     </Message>
   );
 };
