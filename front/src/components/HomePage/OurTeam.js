@@ -25,35 +25,33 @@ const UsersReviewsPresentation = () => {
       title: 'Technical Referent,',
       title2: 'Lead Back Developper',
       github: 'https://github.com/K-dev67',
-      linkedin: 'https://www.linkedin.com/in/kevin-storck/',
+      linkedin: 'https://www.linkedin.com/in/kevin-storck-223788195/',
     },
   ];
-  const ourTeamJsx = ourTeam.map((dev) => {
-    return (
-      <div
-        key={dev.id}
-        className="ourTeam-user"
-      >
-        <div className="ourTeam-user-avatar">
-          <img src={dev.avatar} alt="developer" />
+  const ourTeamJsx = ourTeam.map((dev) => (
+    <div
+      key={dev.id}
+      className="ourTeam-user"
+    >
+      <div className="ourTeam-user-avatar">
+        <img src={dev.avatar} alt="developer" />
+      </div>
+      <div className="ourTeam-user-presentation">
+        <h4 className="ourTeam-user-presentation-name">
+          {dev.name}
+        </h4>
+        <div className="ourTeam-user-presentation-title">
+          <p>{dev.title}</p>
+          <p>{dev.title2}</p>
         </div>
-        <div className="ourTeam-user-presentation">
-          <h4 className="ourTeam-user-presentation-name">
-            {dev.name}
-          </h4>
-          <div className="ourTeam-user-presentation-title">
-            <p>{dev.title}</p>
-            <p>{dev.title2}</p>
-          </div>
-          <div className="ourTeam-user-presentation-social">
-            <div><a href={dev.linkedin} target="_blank"><Icon name="linkedin" size="big" /></a></div>
-            <div><a href={dev.github} target="_blank"><Icon name="github" size="big" /></a></div>
-            <div><a href="https://oclock.io/" target="_blank"><img src={bifrostLogo} className="logo-bifrost" alt="logoBifrost" /></a></div>
-          </div>
+        <div className="ourTeam-user-presentation-social">
+          <div><a href={dev.linkedin} target="_blank"><Icon name="linkedin" size="big" /></a></div>
+          <div><a href={dev.github} target="_blank"><Icon name="github" size="big" /></a></div>
+          <div><a href="https://oclock.io/" target="_blank"><img src={bifrostLogo} className="logo-bifrost" alt="logoBifrost" /></a></div>
         </div>
       </div>
-    );
-  });
+    </div>
+  ));
   return (
     <>
       <div className="ourTeam">
