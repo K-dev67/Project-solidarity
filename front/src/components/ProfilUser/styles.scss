@@ -1,5 +1,5 @@
 .container-profil-page {
-    height: 85vh;
+    height: 88vh;
     padding: 3em;
     display: flex;
     justify-content: space-around;
@@ -11,14 +11,13 @@
 }
 
 
-
 .penUpdateMail {
     margin-left: 0.5em !important;
 }
 
 @media (max-width: 500px) {
     .container-profil-page {
-        height: 85vh;
+        height: 86vh;
     }
 }
 .modalContent {
@@ -66,7 +65,7 @@
     border: 1px solid #d4d4d5 !important;
     //@debug: 1px solid white;
     border-top: none !important;
-    border-left: none !important; 
+    border-left: none !important;
     border-right: none !important;
     background: #29374A !important;
     //background: rgba(20, 20, 20, .2) !important;
@@ -196,7 +195,7 @@
           border-radius: 0.2em;
           button {
             //align-self: center;
-            
+
             width: 95% !important;
             color: white !important;
             background: #1E2837 !important;
@@ -231,7 +230,7 @@
       &:hover {
         //border: 1px solid #00838d;
         box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
-        z-index: 500;   
+        z-index: 500;
       }
 }
 .update-user-modal {
@@ -250,5 +249,5 @@
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
     border-radius: 0.5em;
-  } 
+  }
 }
