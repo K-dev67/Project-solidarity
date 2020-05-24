@@ -12,7 +12,7 @@ const Presentation = () => {
     <div className="container_presentation">
       <div className="container_presentation_main">
         <h1>Cours en ligne</h1>
-        <p>Bienvenue sur la plateforme Solidarity. Ce site est basé sur le partage de connaissances, chacun(e) peut enseigner et/ou assister au cours qu'il souhaite. Amusez-vous !</p>
+        <p>Bienvenue sur la plateforme <strong>Solidarity</strong>. Ce site est basé sur <strong>le partage de connaissances</strong>, chacun(e) peut <strong>enseigner</strong> et/ou assister au <strong>cours</strong> qu'il souhaite. Amusez-vous !</p>
       </div>
       <div className="container_presentation_image">
         <img src={image} alt="image_elearning" />

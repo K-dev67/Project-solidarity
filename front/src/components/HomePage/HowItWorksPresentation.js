@@ -13,7 +13,7 @@ import calendarImage from '../../assets/img/calendarImage.jpg';
 
 const HowItWorksPresentation = () => (
   <div className="howItWorksPresentation-container">
-    <h2 className="howItWorksPresentation-title">Comment fonctionne Solidarity</h2>
+    <h2 className="howItWorksPresentation-title">Comment fonctionne Solidarity ?</h2>
     <div className="howItWorksPresentation-contents">
 
       <div className="howItWorksPresentation-contents-bloc">
@@ -25,10 +25,10 @@ const HowItWorksPresentation = () => (
         <div className="howItWorksPresentation-contents-bloc-icon"><Icon name="hand pointer" size="big" /></div>
 
         <div className="howItWorksPresentation-contents-bloc-description">
-          <h3>Trouver votre cours idéal</h3>
+          <h3>Trouvez votre cours idéal</h3>
           <p>
-            Parmi tous nos cours, vous trouverez votre cours idéal.
-            Le professeur adaptera ses compétences à vos besoins
+            Parmi tous nos <strong>cours</strong>, vous trouverez votre <strong>cours idéal</strong>.
+            Le <strong>professeur</strong> adaptera ses compétences à vos besoins
             et vous aidera à atteindre vos objectifs.
           </p>
         </div>
@@ -41,8 +41,8 @@ const HowItWorksPresentation = () => (
         <div className="howItWorksPresentation-contents-bloc-description">
           <h3>Trouvez votre horaire</h3>
           <p>
-            Le professeur propose un cours à une date et une heure qui lui convient.
-            En fonction de votre disponibilité, inscrivez vous au cours
+            Le professeur propose un cours à une <strong>date et une heure</strong> qui lui convient. Il choisit la <strong>matière</strong>.
+            En fonction de votre disponibilité, inscrivez vous au cours en ligne
           </p>
         </div>
 
@@ -67,9 +67,9 @@ const HowItWorksPresentation = () => (
         <div className="howItWorksPresentation-contents-bloc-description">
           <h3>Apprenez dans nos classes</h3>
           <p>
-            Dans chaque salle, l'enseignant peut partager son écran,
-            utiliser son micro et/ou activer sa camera. Chaque classe possède
-            également son propre chat afin que les élèves puissent interagir avec le professeur
+            Dans chaque <strong>salle interactive</strong>, l'enseignant peut <strong>partager son écran</strong>,
+            utiliser son <strong>micro</strong> ou activer sa <strong>webcam</strong>. Chaque classe possède
+            également son propre <strong>chat</strong> afin que les élèves puissent interagir avec le professeur
           </p>
         </div>
       </div>

@@ -10,17 +10,17 @@ const AssetsPresentation = () => (
       <div className="assetsPresentation_card">
         <Icon name="leaf" size="big" />
         <h3>Confort</h3>
-        <p>Profitez du confort de votre domicile pour suivre vos cours</p>
+        <p>Profiter du confort de votre <strong>domicile</strong> pour suivre vos <strong>cours</strong></p>
       </div>
       <div className="assetsPresentation_card">
         <Icon name="desktop" size="big" />
         <h3>Classes interactives</h3>
-        <p>Salles de cours facile à utliser et complète</p>
+        <p><strong>Salles de cours</strong> facile à utliser et complètes</p>
       </div>
       <div className="assetsPresentation_card">
         <Icon name="gift" size="big" />
         <h3>Bénevolat</h3>
-        <p>Assister à des cours ou en proposer, tout est gratuit...</p>
+        <p>Assister à des cours ou en proposer, tout est <strong>gratuit</strong>...</p>
       </div>
     </div>
 

@@ -19,7 +19,6 @@ import './styles.scss';
 
 const HomePage = () => {
   useEffect(getLessons, []);
-  // useEffect(getTeachers, []);
   useEffect(getCategories, []);
 
   return (
