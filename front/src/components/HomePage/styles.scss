@@ -1,3 +1,4 @@
+//! ----- bloc home page ------
 .homePage {
   color: #2A3E55;
   .logo-mobile {
@@ -14,7 +15,11 @@
     font-size: 1.5em;
   }
 }
+//! ----- ------------ ------
 
+
+
+//! ----- Presentation h1 etc .. ------
 .container_presentation {
     display: flex;
     justify-content: space-around;
@@ -42,6 +47,8 @@
      }
    }
 }
+//! ----- ----------  ------
+
 
 
 //!----------------- AssetsPresentation -----------------
@@ -224,8 +231,6 @@
 
 //! ----------- ---------------------- ---------------------
 
-
-
 //! ------ our team --------
 .ourTeam {
   .title-ourTeam {
@@ -326,11 +331,7 @@
     }
 }
 
-
-
-
-
-//!-----
+//!----- media queries
 
 // 1050 px
 @media (max-width: 1050px) {
@@ -379,7 +380,6 @@
       p {
         padding-right: 1em;
         text-align: center;
-
       }
       h3 {
         text-align: center;
@@ -397,13 +397,10 @@
     }
   }
   .teacherPresentation_cards {
-    // flex-direction: column;
     .cardTeacher {
       padding: 0;
     }
   }
-
-
 }
 
 
@@ -424,13 +421,16 @@
       text-align: center;
       padding: 0 1em;
     }
-
   }
   .teacherPresentation_cards {
     margin-top: 0px;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     h4 {
       margin-bottom: 0.5em !important;
+    }
+    .cardTeacher {
+      width: 45%;
     }
   }
   .ourTeam {
