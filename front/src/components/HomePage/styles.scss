@@ -1,5 +1,8 @@
 .homePage {
   color: #2A3E55;
+  .logo-mobile {
+    display: none;
+  }
   h2 {
     font-weight: bold;
     font-size: 2.5em;
@@ -459,10 +462,27 @@
 //! ==> telephone 450
 @media (max-width: 490px) {
 
+  .logo-mobile {
+
+    display: block !important;
+    width: 100% !important;
+    // height: 5em !important;
+    // width: auto !important;
+    margin-top: -3em;
+    margin-bottom: -2em;
+
+  }
+
   .container_presentation {
     &_image {
       padding: 0;
+      .image_elearning {
+        width: 98%;
+      }
     }
+  }
+  .container-assets-presentation {
+    margin: 1em 2%;
   }
   .container-assets-presentation
   .assetsPresentation_main {
@@ -482,6 +502,9 @@
         height: 13em;
       }
     }
+  }
+  .howItWorksPresentation_button {
+    margin-top: 1em;
   }
   .thanksContainer {
     margin-top: 2em;

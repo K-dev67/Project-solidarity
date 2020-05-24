@@ -2,6 +2,7 @@ import React from 'react';
 
 // == style
 import './styles.scss';
+import logoRound from 'src/assets/img/S_logo_favicon_fonce.png';
 import image_elearning from '../../assets/img/elearning.png';
 
 
@@ -12,10 +13,11 @@ const Presentation = () => {
     <div className="container_presentation">
       <div className="container_presentation_main">
         <h1>Cours en ligne</h1>
+        <img src={logoRound} className="logo-mobile" alt="logo_mobile" />
         <p>Bienvenue sur la plateforme <strong>Solidarity</strong>. Ce site est basé sur <strong>le partage de connaissances</strong>, chacun(e) peut <strong>enseigner</strong> et/ou assister au <strong>cours</strong> qu'il souhaite. Amusez-vous !</p>
       </div>
       <div className="container_presentation_image">
-        <img src={image} alt="image_elearning" />
+        <img src={image} alt="image_elearning" className="image_elearning" />
       </div>
     </div>
   );
