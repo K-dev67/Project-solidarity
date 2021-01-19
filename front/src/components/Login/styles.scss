@@ -1,0 +1,65 @@
+.app {
+  //background: #212C3D !important;
+}
+.login-form {
+    width: 500px;
+    margin: 5em auto;
+    min-height: 73vh;
+    margin-bottom: 5.5em;
+    //background: #212C3D !important;
+    .segment {
+      //border: 1px solid #d4d4d5 !important;
+      background: #1E2837 !important;
+      box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5) !important;
+      text-align: center;
+      border-radius: 1em !important;
+      &:hover {
+        //:  0px 0px 4px 4px #121922 !important;
+        //z-index: 500;
+      }
+    }
+    .button {
+      border: 1px solid #d4d4d5 !important;
+      background: #121922 !important;
+      font-size: 18px !important;
+      color: white !important;
+      margin-top: 21px !important;
+      padding: 10px 50px !important;
+      cursor: pointer !important;
+      transition: .4s !important;
+      &:hover {
+        box-shadow:  0px 0px 4px 4px rgba(255, 255, 255, 0.5) !important;
+        z-index: 500;
+      }
+    }
+    .field input {
+      margin: 15px 0 !important;
+      font-size: 16px !important;
+      padding: 10px !important;
+      width: 250px !important;
+      border: 1px solid #d4d4d5 !important;
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      background: rgba(20, 20, 20, .2) !important;
+      color: grey !important;
+      outline: none !important;
+      &:hover {
+        color: white !important;
+        background: #121922 !important;
+      }
+    }
+    .field label {
+      color: white !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .login-form {
+        margin: 1em auto;
+        width: 90%;
+        min-height: 86vh;
+    }
+
+}
+
